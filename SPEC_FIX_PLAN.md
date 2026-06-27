@@ -49,8 +49,7 @@ Use **Uploadthing** as the file storage service.
 ```
 Package: uploadthing @uploadthing/react
 Environment variables required:
-  UPLOADTHING_SECRET=...
-  UPLOADTHING_APP_ID=...
+  UPLOADTHING_TOKEN=...
 Upload route: app/api/uploadthing/core.ts
 Upload endpoint: app/api/uploadthing/route.ts
 Allowed file types: ["pdf", "docx", "image", "application/zip"]
