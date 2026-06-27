@@ -1,0 +1,46 @@
+{
+  "common": {
+    "required": "This field is required.",
+    "invalidEmail": "Enter a valid email address.",
+    "invalidPhone": "Enter a valid phone number.",
+    "submitError": "We could not send your request. Please try again or contact us on WhatsApp.",
+    "submitSuccess": "Your request was sent successfully. We will contact you soon.",
+    "honeypotLabel": "Leave this field empty",
+    "turnstileError": "Security verification failed. Please try again."
+  },
+  "fields": {
+    "name": "Name",
+    "company": "Company name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "service": "Requested service",
+    "services": "Requested services",
+    "budget": "Expected budget",
+    "timeline": "Timeline",
+    "message": "Project details",
+    "file": "Attached file",
+    "preferredContact": "Preferred contact method"
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "subtitle": "Tell us what you want to build and we will respond with a clear next step.",
+    "submit": "Send Quote Request"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Send your message and we will reply as soon as possible.",
+    "submit": "Send Message"
+  },
+  "consultation": {
+    "title": "Book a Free Consultation",
+    "subtitle": "Discuss your idea with our team and define the best path for your project.",
+    "submit": "Book Consultation"
+  },
+  "placeholders": {
+    "name": "Enter your full name",
+    "company": "Example: elReda Advertising",
+    "email": "name@example.com",
+    "phone": "+20 100 000 0000",
+    "message": "Write a short brief about your project and goals"
+  }
+}

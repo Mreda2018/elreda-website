@@ -1,0 +1,57 @@
+{
+  "brand": {
+    "name": "elReda Advertising",
+    "shortName": "elReda",
+    "tagline": "One partner for your brand, systems, and business growth"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "industries": "Industries",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "quote": "Get a Quote",
+    "consultation": "Book a Consultation",
+    "process": "Process",
+    "faq": "FAQ"
+  },
+  "buttons": {
+    "requestQuote": "Request a Quote",
+    "bookConsultation": "Book a Free Consultation",
+    "chatWhatsApp": "Chat on WhatsApp",
+    "seeWork": "See Our Work",
+    "viewAllServices": "View All Services",
+    "viewPortfolio": "View Full Portfolio",
+    "startProject": "Start Your Project",
+    "sendRequest": "Send My Request",
+    "learnAboutService": "Explore Service"
+  },
+  "footer": {
+    "servicesTitle": "Services",
+    "companyTitle": "Company",
+    "legalTitle": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "cookiesPolicy": "Cookies Policy",
+    "accessibility": "Accessibility",
+    "cookiePreferences": "Cookie Preferences",
+    "copyright": "All rights reserved for elReda Advertising."
+  },
+  "language": {
+    "ar": "العربية",
+    "en": "English",
+    "switchToArabic": "Switch to Arabic",
+    "switchToEnglish": "Switch to English"
+  },
+  "whatsapp": {
+    "defaultMessage": "Hello, I found your website and would like to learn more about your services.",
+    "ariaLabel": "Chat with us on WhatsApp"
+  },
+  "metadata": {
+    "siteTitle": "elReda Advertising",
+    "siteDescription": "A full-service creative and technology agency helping businesses build brands, websites, stores, systems, and marketing from one place."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "overview": {
+    "title": "Our Services",
+    "subtitle": "Integrated services covering the business journey from identity to digital growth and intelligent systems.",
+    "creative": "Creative Services",
+    "digital": "Digital Services",
+    "technology": "Technology Services"
+  },
+  "items": {
+    "branding": {
+      "title": "Branding & Visual Identity",
+      "shortDescription": "Logo, identity system, usage guidelines, and a professional presence that builds trust."
+    },
+    "graphicDesign": {
+      "title": "Graphic Design & Marketing Materials",
+      "shortDescription": "Social media designs, brochures, menus, catalogues, and printed or digital sales materials."
+    },
+    "printing": {
+      "title": "Professional Printing",
+      "shortDescription": "Printed marketing materials, outdoor advertising, and promotional gifts through trusted production partners."
+    },
+    "webDevelopment": {
+      "title": "Website Development",
+      "shortDescription": "Business websites, corporate sites, and fast, secure web applications built for search visibility."
+    },
+    "ecommerce": {
+      "title": "E-commerce Solutions",
+      "shortDescription": "Shopify, WooCommerce, or custom stores for products, orders, payments, and shipping."
+    },
+    "digitalMarketing": {
+      "title": "Digital Marketing",
+      "shortDescription": "Content, ads, and search visibility that help you attract qualified leads."
+    },
+    "mobileApps": {
+      "title": "Mobile Applications",
+      "shortDescription": "iOS, Android, and progressive web apps that create a smooth experience for clients and teams."
+    },
+    "erpSystems": {
+      "title": "Business Systems & ERP",
+      "shortDescription": "CRM, ERP, inventory, POS, HR, and dashboards tailored to your operations."
+    },
+    "aiAutomation": {
+      "title": "AI & Business Automation",
+      "shortDescription": "AI assistants, chatbots, API integrations, and automation for repetitive business tasks."
+    }
+  },
+  "cta": {
+    "title": "Not sure where to start?",
+    "subtitle": "Book a free consultation and we will help you choose the right service for your stage."
+  }
+}

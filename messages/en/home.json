@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "eyebrow": "Full-service creative and technology agency",
+    "title": "We build brands and digital systems that help your business grow",
+    "subtitle": "From identity and printing to websites, online stores, ERP systems, and AI automation, you get one partner who understands the business goal and delivers with professional quality.",
+    "primaryCta": "Request a Quote",
+    "secondaryCta": "See Our Work"
+  },
+  "trustBar": {
+    "projects": "Completed projects",
+    "industries": "Industries served",
+    "services": "Integrated services",
+    "markets": "Egypt and GCC"
+  },
+  "services": {
+    "eyebrow": "Everything your business needs",
+    "title": "Creative, digital, and technology services under one roof",
+    "subtitle": "We connect design, development, marketing, and systems so every part of your project works toward a clear outcome."
+  },
+  "portfolio": {
+    "eyebrow": "Selected work",
+    "title": "Projects designed to look strong and work intelligently",
+    "subtitle": "Examples of identities, websites, and digital experiences that help businesses earn trust and turn attention into clients."
+  },
+  "whyUs": {
+    "eyebrow": "Why elReda",
+    "title": "We think like a growth partner, not a disconnected vendor",
+    "items": {
+      "endToEnd": {
+        "title": "End-to-end delivery",
+        "description": "Brand, design, print, website, store, system, and marketing from one team."
+      },
+      "businessFirst": {
+        "title": "Results before decoration",
+        "description": "Every design or technical decision is tied to a measurable business goal."
+      },
+      "aiFirst": {
+        "title": "AI-first thinking",
+        "description": "We use automation and AI to move faster and build smarter solutions."
+      },
+      "longTerm": {
+        "title": "Long-term relationship",
+        "description": "We support launch, improvement, scale, and maintenance after delivery."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Process",
+    "title": "From idea to launch through clear steps",
+    "steps": {
+      "discover": "Discover",
+      "strategy": "Strategy",
+      "design": "Design",
+      "build": "Build",
+      "launch": "Launch",
+      "support": "Support"
+    }
+  },
+  "cta": {
+    "title": "Ready to build a project worthy of your ambition?",
+    "subtitle": "Share your idea with us and we will recommend the clearest path to deliver it professionally."
+  }
+}

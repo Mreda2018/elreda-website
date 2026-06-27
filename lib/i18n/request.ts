@@ -11,8 +11,15 @@ export default getRequestConfig(async ({ requestLocale }) => {
     notFound();
   }
 
+  const messages = {
+    common: (await import(`../../messages/${locale}/common.json`)).default,
+    home: (await import(`../../messages/${locale}/home.json`)).default,
+    services: (await import(`../../messages/${locale}/services.json`)).default,
+    forms: (await import(`../../messages/${locale}/forms.json`)).default,
+  };
+
   return {
     locale,
-    messages: {},
+    messages,
   };
 });

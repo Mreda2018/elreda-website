@@ -31,7 +31,7 @@
   - Default locale: `ar` (Arabic at root `/`)
   - Secondary locale: `en` (English at `/en/`)
   - See FIX-CON-01 in SPEC_FIX_PLAN.md
-- [ ] **T03** — Create namespaced translation files:
+- [x] **T03** — Create namespaced translation files:
   - `/messages/ar/common.json`, `/messages/ar/home.json`, `/messages/ar/services.json`, `/messages/ar/forms.json`
   - `/messages/en/common.json`, `/messages/en/home.json`, `/messages/en/services.json`, `/messages/en/forms.json`
 - [ ] **T04** — Configure locale detection: auto-detect from browser `Accept-Language`, fallback to Arabic, Arabic users land on root `/`

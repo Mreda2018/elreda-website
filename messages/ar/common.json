@@ -1,0 +1,57 @@
+{
+  "brand": {
+    "name": "الرضا للدعاية والإعلان",
+    "shortName": "الرضا",
+    "tagline": "شريك واحد لبناء علامتك وأنظمتك ونمو أعمالك"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "portfolio": "الأعمال",
+    "about": "من نحن",
+    "industries": "القطاعات",
+    "blog": "المدونة",
+    "pricing": "الأسعار",
+    "contact": "تواصل معنا",
+    "quote": "اطلب عرض سعر",
+    "consultation": "احجز استشارة",
+    "process": "طريقة العمل",
+    "faq": "الأسئلة الشائعة"
+  },
+  "buttons": {
+    "requestQuote": "اطلب عرض سعر",
+    "bookConsultation": "احجز استشارة مجانية",
+    "chatWhatsApp": "تحدث عبر واتساب",
+    "seeWork": "شاهد أعمالنا",
+    "viewAllServices": "عرض كل الخدمات",
+    "viewPortfolio": "عرض كل الأعمال",
+    "startProject": "ابدأ مشروعك",
+    "sendRequest": "أرسل الطلب",
+    "learnAboutService": "اكتشف الخدمة"
+  },
+  "footer": {
+    "servicesTitle": "الخدمات",
+    "companyTitle": "الشركة",
+    "legalTitle": "قانوني",
+    "privacyPolicy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام",
+    "cookiesPolicy": "سياسة ملفات الارتباط",
+    "accessibility": "إمكانية الوصول",
+    "cookiePreferences": "تفضيلات ملفات الارتباط",
+    "copyright": "جميع الحقوق محفوظة لشركة الرضا للدعاية والإعلان."
+  },
+  "language": {
+    "ar": "العربية",
+    "en": "English",
+    "switchToArabic": "التبديل إلى العربية",
+    "switchToEnglish": "Switch to English"
+  },
+  "whatsapp": {
+    "defaultMessage": "مرحباً، وجدت موقعكم وأريد أن أعرف أكثر عن خدماتكم.",
+    "ariaLabel": "تحدث معنا عبر واتساب"
+  },
+  "metadata": {
+    "siteTitle": "الرضا للدعاية والإعلان",
+    "siteDescription": "وكالة إبداعية وتقنية متكاملة تساعد الشركات على بناء الهوية، المواقع، المتاجر، الأنظمة، والتسويق من مكان واحد."
+  }
+}
