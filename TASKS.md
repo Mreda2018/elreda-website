@@ -34,17 +34,18 @@
 - [x] **T03** — Create namespaced translation files:
   - `/messages/ar/common.json`, `/messages/ar/home.json`, `/messages/ar/services.json`, `/messages/ar/forms.json`
   - `/messages/en/common.json`, `/messages/en/home.json`, `/messages/en/services.json`, `/messages/en/forms.json`
-- [ ] **T04** — Configure locale detection: auto-detect from browser `Accept-Language`, fallback to Arabic, Arabic users land on root `/`
-- [ ] **T05** — Set up Tailwind CSS v4 with custom design tokens from DESIGN_SYSTEM.md
+- [x] **T04** — Configure locale detection: auto-detect from browser `Accept-Language`, fallback to Arabic, Arabic users land on root `/`
+- [x] **T05** — Set up Tailwind CSS v4 with custom design tokens from DESIGN_SYSTEM.md
   - Include `--red-button: #B03020` (not `--red-primary: #C0392B`) for all button backgrounds
   - See FIX-SEC-04 in SPEC_FIX_PLAN.md
-- [ ] **T06** — Install Clash Display (self-hosted from Fontshare), Inter, and Tajawal via `next/font`
-- [ ] **T07** — Install and configure shadcn/ui with custom theme matching DESIGN_SYSTEM.md
-- [ ] **T08** — Install GSAP, Motion (Framer Motion), and Lenis
+- [x] **T06** — Install Clash Display (self-hosted from Fontshare), Inter, and Tajawal via `next/font`
+  - Inter and Tajawal configured with `next/font/google`; Clash Display token reserved for licensed self-hosted Fontshare files (not committed).
+- [x] **T07** — Install and configure shadcn/ui with custom theme matching DESIGN_SYSTEM.md
+- [x] **T08** — Install GSAP, Motion (Framer Motion), and Lenis
   - GSAP: dynamic import only (not global bundle)
   - Motion: tree-shaken imports
   - Lenis: eager global load (~8KB)
-- [ ] **T09** — Install Lucide React for icons
+- [x] **T09** — Install Lucide React for icons
 
 #### 1B — Cookie Consent (Required Before Analytics)
 
