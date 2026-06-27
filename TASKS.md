@@ -27,7 +27,7 @@
 
 - [x] **T01** — Verify Next.js 16.2.9 App Router is correctly installed and running
   - Verified: App Router build passes on Next.js `16.2.9`.
-- [ ] **T02** — Install and configure `next-intl` for bilingual routing
+- [x] **T02** — Install and configure `next-intl` for bilingual routing
   - Default locale: `ar` (Arabic at root `/`)
   - Secondary locale: `en` (English at `/en/`)
   - See FIX-CON-01 in SPEC_FIX_PLAN.md
