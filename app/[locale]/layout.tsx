@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Tajawal } from "next/font/google";
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -22,6 +23,8 @@ const tajawal = Tajawal({
   display: "swap",
   preload: true,
 });
+
+const cookieYesWebsiteKey = process.env.NEXT_PUBLIC_COOKIEYES_WEBSITE_KEY;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -54,6 +57,13 @@ export default async function RootLayout({
       className={`${inter.variable} ${tajawal.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {cookieYesWebsiteKey ? (
+          <Script
+            id="cookieyes"
+            src={`https://cdn-cookieyes.com/client_data/${cookieYesWebsiteKey}/script.js`}
+            strategy="beforeInteractive"
+          />
+        ) : null}
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
