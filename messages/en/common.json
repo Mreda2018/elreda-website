@@ -5,6 +5,7 @@
     "tagline": "One partner for your brand, systems, and business growth"
   },
   "navigation": {
+    "primaryLabel": "Primary navigation",
     "home": "Home",
     "services": "Services",
     "portfolio": "Portfolio",
