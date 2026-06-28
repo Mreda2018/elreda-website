@@ -378,11 +378,12 @@ Duration: 150ms, Ease: ease-out
 
 #### Primary CTA (Red)
 ```
-Background: var(--gradient-brand)  [starts at #B03020 — white text 5.1:1 contrast ✓]
+Background: var(--red-button)  [flat #B03020 — white text 5.1:1 contrast ✓]
 Text: White (#FFFFFF), Inter 500, 16px
 Padding: 14px 28px
 Border-radius: --radius-full
-Hover: Scale 1.02 + glow shadow
+Hover: brightness 110% + glow shadow
+Decision: Primary buttons use flat --red-button instead of --gradient-brand so all rendered states preserve WCAG contrast consistency.
 Note: NEVER use --red-primary (#C0392B) as button background — contrast fails at 3.9:1
 ```
 
@@ -399,6 +400,14 @@ Hover: Border brightens + background --glass-bg
 Background: transparent
 Text: --text-secondary
 Hover: Text becomes white + underline
+```
+
+#### Subtle (Glass)
+```
+Background: --glass-bg
+Border: 1px solid --border-light
+Text: --text-primary
+Use: Low-emphasis controls on dark surfaces where an outlined button is too strong
 ```
 
 #### WhatsApp CTA
