@@ -46,6 +46,9 @@
     "switchToArabic": "التبديل إلى العربية",
     "switchToEnglish": "Switch to English"
   },
+  "accessibility": {
+    "skipToMainContent": "تخطي إلى المحتوى الرئيسي"
+  },
   "whatsapp": {
     "defaultMessage": "مرحباً، وجدت موقعكم وأريد أن أعرف أكثر عن خدماتكم.",
     "ariaLabel": "تحدث معنا عبر واتساب"

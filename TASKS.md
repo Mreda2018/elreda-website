@@ -135,7 +135,7 @@
 
 #### 1J — Accessibility Foundation
 
-- [ ] **T22** — Build `components/common/SkipNavigation.tsx`
+- [x] **T22** — Build `components/common/SkipNavigation.tsx`
   - "Skip to main content" link
   - Visible on keyboard focus only
   - First focusable element on every page

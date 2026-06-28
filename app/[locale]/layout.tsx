@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { SkipNavigation } from "@/components/common/SkipNavigation";
 import { isLocale, routing } from "@/lib/i18n/routing";
 import "../globals.css";
 
@@ -64,6 +65,7 @@ export default async function RootLayout({
             strategy="beforeInteractive"
           />
         ) : null}
+        <SkipNavigation />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
