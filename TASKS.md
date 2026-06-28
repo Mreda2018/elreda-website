@@ -127,7 +127,7 @@
 
 #### 1I — Testing Setup
 
-- [ ] **T21** — Install Playwright (`@playwright/test`)
+- [x] **T21** — Install Playwright (`@playwright/test`)
   - Create `playwright.config.ts`
   - Configure test directory: `/tests/`
   - Set up GitHub Actions CI to run tests against Vercel preview URL on every PR
