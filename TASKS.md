@@ -109,9 +109,9 @@
 
 #### 1G — Sanity Dual Client Setup
 
-- [ ] **T18** — Create `lib/sanity/publicClient.ts`
+- [x] **T18** — Create `lib/sanity/publicClient.ts`
   - No token, `useCdn: true` — public published content
-- [ ] **T19** — Create `lib/sanity/previewClient.ts`
+- [x] **T19** — Create `lib/sanity/previewClient.ts`
   - `import 'server-only'` at top
   - Uses `SANITY_API_READ_TOKEN` (viewer level)
   - `useCdn: false` for real-time draft content
@@ -119,10 +119,11 @@
 
 #### 1H — Staging Environment
 
-- [ ] **T20** — Create two Sanity datasets: `production` and `development`
+- [!] **T20** — Create two Sanity datasets: `production` and `development`
   - Local dev and Vercel preview: `SANITY_DATASET=development`
   - Vercel production: `SANITY_DATASET=production`
   - See FIX-MISS-05
+  - Code wired for dataset separation; Sanity dashboard dataset creation remains external TODO.
 
 #### 1I — Testing Setup
 
@@ -160,24 +161,29 @@
 ### GROUP 2: Sanity CMS Setup
 *Complete before building content-driven pages*
 
-- [ ] **T27** — Create Sanity.io project (name: elreda-website), install dependencies (`next-sanity`, `@sanity/image-url`)
-- [ ] **T28** — Create Sanity schema: `service.ts`
+- [!] **T27** — Create Sanity.io project (name: elreda-website), install dependencies (`next-sanity`, `@sanity/image-url`)
+  - Dependencies and local config added; Sanity dashboard project creation remains external TODO.
+- [x] **T28** — Create Sanity schema: `service.ts`
   - `slug` field: `readOnly` after publish (see FIX-CMS-01)
   - `isTranslated` boolean field (see FIX-CMS-02)
   - Fields: title EN/AR, description, features, process, FAQ, relatedServices, portfolio
-- [ ] **T29** — Create Sanity schema: `portfolio.ts`
+- [x] **T29** — Create Sanity schema: `portfolio.ts`
   - Same slug protection and `isTranslated` field
   - Fields: title, client, industry, services, heroImage, gallery, case study fields, testimonial, featured
-- [ ] **T30** — Create Sanity schema: `blogPost.ts`
+- [x] **T30** — Create Sanity schema: `blogPost.ts`
   - Same slug protection and `isTranslated` field
   - Fields: title, body EN/AR, author, category, SEO
-- [ ] **T31** — Create Sanity schema: `testimonial.ts` (quote, client name, company, photo, rating)
-- [ ] **T32** — Create Sanity schema: `teamMember.ts` (name, position, bio, photo, social links)
-- [ ] **T33** — Create Sanity schema: `settings.ts` (singleton — contact info, social links, WhatsApp number)
-- [ ] **T34** — Create Sanity schema: `redirect.ts`
+- [x] **T31** — Create Sanity schema: `testimonial.ts` (quote, client name, company, photo, rating)
+- [x] **T32** — Create Sanity schema: `teamMember.ts` (name, position, bio, photo, social links)
+- [x] **T33** — Create Sanity schema: `settings.ts` (singleton — contact info, social links, WhatsApp number)
+- [x] **T34** — Create Sanity schema: `redirect.ts`
   - Fields: `from` (string), `to` (string), `permanent` (boolean)
   - Used by Next.js middleware to apply CMS-managed redirects
   - See FIX-CMS-01
+- [ ] **T34A** — Future: consume Sanity Redirect documents in Next middleware
+  - Query published `redirect` documents from Sanity
+  - Apply `permanent` as 301 and non-permanent as 307/308 per middleware requirements
+  - Not part of Sprint 1B.3; do not implement until scheduled
 - [ ] **T35** — Create `lib/sanity/queries.ts` with GROQ queries for all content types
 - [ ] **T36** — Create `lib/sanity/types.ts` with TypeScript types matching schemas
 - [ ] **T37** — Create `lib/i18n/getLocalizedValue.ts` utility for translation fallback with `lang` attribute
@@ -422,7 +428,7 @@
   - Validate booking request
   - Supabase insert + Resend email notifications
 
-- [ ] **T75** — Build `/app/api/revalidate/route.ts`
+- [x] **T75** — Build `/app/api/revalidate/route.ts`
   - HMAC-SHA256 signature verification using `SANITY_WEBHOOK_SECRET`
   - `crypto.timingSafeEqual()` comparison
   - Call `revalidatePath()` for the affected content type on verified request
