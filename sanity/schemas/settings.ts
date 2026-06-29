@@ -1,5 +1,25 @@
 import { defineField, defineType } from "sanity";
 
+const internalPathValidationMessage = "Use an internal path starting with /, or leave empty.";
+
+function validateInternalPath(value: unknown) {
+  if (!value || String(value).startsWith("/")) {
+    return true;
+  }
+
+  return internalPathValidationMessage;
+}
+
+const localizedStringFields = [
+  defineField({ name: "en", title: "English", type: "string" }),
+  defineField({ name: "ar", title: "Arabic", type: "string" }),
+];
+
+const localizedTextFields = [
+  defineField({ name: "en", title: "English", type: "text" }),
+  defineField({ name: "ar", title: "Arabic", type: "text" }),
+];
+
 export const settings = defineType({
   name: "settings",
   title: "Settings",
@@ -21,9 +41,100 @@ export const settings = defineType({
       name: "workingHours",
       title: "Working hours",
       type: "object",
+      fields: localizedStringFields,
+    }),
+    defineField({
+      name: "homeHero",
+      title: "Home hero",
+      type: "object",
       fields: [
-        defineField({ name: "en", title: "English", type: "string" }),
-        defineField({ name: "ar", title: "Arabic", type: "string" }),
+        defineField({
+          name: "isTranslated",
+          title: "Arabic translation complete",
+          type: "boolean",
+          initialValue: false,
+        }),
+        defineField({
+          name: "eyebrow",
+          title: "Eyebrow",
+          type: "object",
+          fields: localizedStringFields,
+        }),
+        defineField({
+          name: "headline",
+          title: "Headline",
+          type: "object",
+          fields: localizedStringFields,
+        }),
+        defineField({
+          name: "description",
+          title: "Description",
+          type: "object",
+          fields: localizedTextFields,
+        }),
+        defineField({
+          name: "primaryCta",
+          title: "Primary CTA",
+          type: "object",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "object",
+              fields: localizedStringFields,
+            }),
+            defineField({
+              name: "href",
+              title: "URL path",
+              type: "string",
+              validation: (rule) => rule.custom(validateInternalPath),
+            }),
+          ],
+        }),
+        defineField({
+          name: "secondaryCta",
+          title: "Secondary CTA",
+          type: "object",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "object",
+              fields: localizedStringFields,
+            }),
+            defineField({
+              name: "href",
+              title: "URL path",
+              type: "string",
+              validation: (rule) => rule.custom(validateInternalPath),
+            }),
+          ],
+        }),
+        defineField({
+          name: "statistics",
+          title: "Statistics",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({
+                  name: "value",
+                  title: "Value",
+                  type: "object",
+                  fields: localizedStringFields,
+                }),
+                defineField({
+                  name: "label",
+                  title: "Label",
+                  type: "object",
+                  fields: localizedStringFields,
+                }),
+              ],
+            },
+          ],
+          validation: (rule) => rule.max(3).warning("Hero supports up to 3 statistics."),
+        }),
       ],
     }),
     defineField({
@@ -41,4 +152,3 @@ export const settings = defineType({
     }),
   ],
 });
-
