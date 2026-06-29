@@ -11,15 +11,18 @@ function normalizeHref(href: string | null | undefined): string {
     return href;
   }
 
-  if (process.env.NODE_ENV !== "production") {
-    console.warn(`Ignoring invalid non-internal Sanity href: ${href}`);
-  }
-
   return "/";
 }
 
 export function mapHomeHero(data: SanityHomeHero, locale: Locale): HeroContent | null {
   if (!data) {
+    return null;
+  }
+
+  const primaryActionLabel = getLocalizedValue(data.primaryCta?.label, locale);
+  const secondaryActionLabel = getLocalizedValue(data.secondaryCta?.label, locale);
+
+  if (primaryActionLabel.text === "" || secondaryActionLabel.text === "") {
     return null;
   }
 
@@ -29,11 +32,11 @@ export function mapHomeHero(data: SanityHomeHero, locale: Locale): HeroContent |
     description: getLocalizedValue(data.description, locale),
     primaryAction: {
       href: normalizeHref(data.primaryCta?.href),
-      label: getLocalizedValue(data.primaryCta?.label, locale),
+      label: primaryActionLabel,
     },
     secondaryAction: {
       href: normalizeHref(data.secondaryCta?.href),
-      label: getLocalizedValue(data.secondaryCta?.label, locale),
+      label: secondaryActionLabel,
     },
     stats:
       data.statistics?.map((stat) => ({
