@@ -2,14 +2,14 @@ import type { ReactNode } from "react";
 
 import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
 
-export type ServiceSectionItem = {
+export type ServiceItem = {
   id: string;
   title: ReactNode;
   description: ReactNode;
   category?: ReactNode;
 };
 
-export type ServicesSectionCta = {
+type ServicesSectionCta = {
   label: ReactNode;
   ariaLabel?: string;
 };
@@ -18,18 +18,18 @@ export type ServicesSectionProps = {
   eyebrow?: ReactNode;
   heading: ReactNode;
   description: ReactNode;
-  services: ServiceSectionItem[];
+  services: ServiceItem[];
   cta?: ServicesSectionCta;
 };
 
-type ServiceCardProps = {
-  service: ServiceSectionItem;
+export type ServiceCardProps = {
+  service: ServiceItem;
 };
 
-function ServiceCard({ service }: ServiceCardProps) {
+export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Card
-      variant="surface"
+      variant="glass"
       padding="lg"
       className="flex h-full flex-col items-start gap-[var(--space-6)] text-start"
     >
@@ -56,10 +56,12 @@ export function ServicesSection({
   services,
   cta,
 }: ServicesSectionProps) {
+  const headingId = "services-section-heading";
+
   return (
-    <Section tone="dark">
+    <Section tone="dark" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <div className="flex flex-col gap-[var(--space-6)] lg:flex-row lg:items-end lg:justify-between">
+        <header className="flex flex-col gap-[var(--space-6)] lg:flex-row lg:items-end lg:justify-between">
           <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
             {eyebrow ? (
               <Badge variant="red" size="md">
@@ -68,7 +70,9 @@ export function ServicesSection({
             ) : null}
 
             <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading level={2}>{heading}</Heading>
+              <Heading id={headingId} level={2}>
+                {heading}
+              </Heading>
               <p className="max-w-[var(--container-narrow)] text-body-lg text-text-secondary rtl:text-ar-body-lg">
                 {description}
               </p>
@@ -79,14 +83,15 @@ export function ServicesSection({
             <Button
               variant="secondary"
               size="lg"
-              disabled
               aria-disabled="true"
               aria-label={cta.ariaLabel}
+              tabIndex={-1}
+              className="pointer-events-none opacity-50"
             >
               {cta.label}
             </Button>
           ) : null}
-        </div>
+        </header>
 
         <ul
           className="grid list-none gap-[var(--grid-gap)] p-0 sm:grid-cols-2 lg:grid-cols-3"
