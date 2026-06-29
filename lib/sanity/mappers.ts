@@ -1,6 +1,12 @@
 import type { Locale } from "@/lib/i18n/routing";
 import { getLocalizedValue } from "@/lib/i18n/getLocalizedValue";
-import type { HeroContent, SanityHomeHero } from "@/lib/sanity/types";
+import type {
+  HeroContent,
+  SanityHomeHero,
+  SanityHomeServices,
+  SanityServiceItem,
+  ServicesContent,
+} from "@/lib/sanity/types";
 
 function normalizeHref(href: string | null | undefined): string {
   if (!href) {
@@ -12,6 +18,10 @@ function normalizeHref(href: string | null | undefined): string {
   }
 
   return "/";
+}
+
+function isInternalHref(href: string | null | undefined): href is string {
+  return Boolean(href && href.startsWith("/") && !href.startsWith("//"));
 }
 
 export function mapHomeHero(data: SanityHomeHero, locale: Locale): HeroContent | null {
@@ -43,5 +53,72 @@ export function mapHomeHero(data: SanityHomeHero, locale: Locale): HeroContent |
         value: getLocalizedValue(stat.value, locale),
         label: getLocalizedValue(stat.label, locale),
       })) ?? [],
+  };
+}
+
+function mapServiceItem(
+  item: SanityServiceItem,
+  locale: Locale,
+  index: number,
+): ServicesContent["services"][number] | null {
+  if (!isInternalHref(item.href)) {
+    return null;
+  }
+
+  const title = getLocalizedValue(item.title, locale);
+  const description = getLocalizedValue(item.description, locale);
+
+  if (title.text === "" || description.text === "") {
+    return null;
+  }
+
+  const category = getLocalizedValue(item.category, locale);
+
+  return {
+    id: item._key ?? `${item.href}-${index}`,
+    title,
+    description,
+    href: item.href,
+    category: category.text === "" ? undefined : category,
+    icon: item.icon ?? undefined,
+    isTranslated: item.isTranslated ?? false,
+  };
+}
+
+export function mapHomeServices(
+  data: SanityHomeServices,
+  locale: Locale,
+): ServicesContent | null {
+  if (!data) {
+    return null;
+  }
+
+  const eyebrow = getLocalizedValue(data.eyebrow, locale);
+  const heading = getLocalizedValue(data.heading, locale);
+  const description = getLocalizedValue(data.description, locale);
+  const services =
+    data.serviceItems
+      ?.map((item, index) => mapServiceItem(item, locale, index))
+      .filter((item): item is ServicesContent["services"][number] => item !== null) ??
+    [];
+  const ctaLabel = getLocalizedValue(data.cta?.label, locale);
+  const ctaHref = data.cta?.href;
+
+  if (heading.text === "" || description.text === "" || services.length === 0) {
+    return null;
+  }
+
+  return {
+    ...(eyebrow.text === "" ? {} : { eyebrow }),
+    heading,
+    description,
+    services,
+    cta:
+      ctaLabel.text !== "" && isInternalHref(ctaHref)
+        ? {
+            href: ctaHref,
+            label: ctaLabel,
+          }
+        : undefined,
   };
 }

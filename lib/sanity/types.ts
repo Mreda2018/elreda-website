@@ -40,3 +40,45 @@ export type HeroContent = {
     label: LocalizedValue;
   }>;
 };
+
+export type SanityServicesAction = {
+  label?: LocalizedString | null;
+  href?: string | null;
+};
+
+export type SanityServiceItem = {
+  _key?: string | null;
+  title?: LocalizedString | null;
+  description?: LocalizedString | null;
+  href?: string | null;
+  category?: LocalizedString | null;
+  icon?: string | null;
+  isTranslated?: boolean | null;
+};
+
+export type SanityHomeServices = {
+  eyebrow?: LocalizedString | null;
+  heading?: LocalizedString | null;
+  description?: LocalizedString | null;
+  serviceItems?: SanityServiceItem[] | null;
+  cta?: SanityServicesAction | null;
+} | null;
+
+export type ServicesContent = {
+  eyebrow?: LocalizedValue;
+  heading: LocalizedValue;
+  description: LocalizedValue;
+  services: Array<{
+    id: string;
+    title: LocalizedValue;
+    description: LocalizedValue;
+    href: string;
+    category?: LocalizedValue;
+    icon?: string;
+    isTranslated: boolean;
+  }>;
+  cta?: {
+    href: string;
+    label: LocalizedValue;
+  };
+};

@@ -19,3 +19,24 @@ export const homeHeroQuery = groq`
     }
   }
 `;
+
+export const homeServicesQuery = groq`
+  *[_type == "settings" && _id == "settings"][0].homeServices{
+    eyebrow,
+    heading,
+    description,
+    serviceItems[]{
+      _key,
+      title,
+      description,
+      href,
+      category,
+      icon,
+      isTranslated
+    },
+    cta{
+      label,
+      href
+    }
+  }
+`;

@@ -3,7 +3,9 @@ import { defineField, defineType } from "sanity";
 const internalPathValidationMessage = "Use an internal path starting with /, or leave empty.";
 
 function validateInternalPath(value: unknown) {
-  if (!value || String(value).startsWith("/")) {
+  const path = String(value);
+
+  if (!value || (path.startsWith("/") && !path.startsWith("//"))) {
     return true;
   }
 
@@ -134,6 +136,99 @@ export const settings = defineType({
             },
           ],
           validation: (rule) => rule.max(3).warning("Hero supports up to 3 statistics."),
+        }),
+      ],
+    }),
+    defineField({
+      name: "homeServices",
+      title: "Home services section",
+      type: "object",
+      fields: [
+        defineField({
+          name: "eyebrow",
+          title: "Eyebrow",
+          type: "object",
+          fields: localizedStringFields,
+        }),
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "object",
+          fields: localizedStringFields,
+        }),
+        defineField({
+          name: "description",
+          title: "Description",
+          type: "object",
+          fields: localizedTextFields,
+        }),
+        defineField({
+          name: "serviceItems",
+          title: "Service items",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({
+                  name: "title",
+                  title: "Title",
+                  type: "object",
+                  fields: localizedStringFields,
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
+                  name: "description",
+                  title: "Description",
+                  type: "object",
+                  fields: localizedTextFields,
+                  validation: (rule) => rule.required(),
+                }),
+                defineField({
+                  name: "href",
+                  title: "URL path",
+                  type: "string",
+                  validation: (rule) => rule.required().custom(validateInternalPath),
+                }),
+                defineField({
+                  name: "category",
+                  title: "Category",
+                  type: "object",
+                  fields: localizedStringFields,
+                }),
+                defineField({
+                  name: "icon",
+                  title: "Icon placeholder",
+                  type: "string",
+                }),
+                defineField({
+                  name: "isTranslated",
+                  title: "Arabic translation complete",
+                  type: "boolean",
+                  initialValue: false,
+                }),
+              ],
+            },
+          ],
+        }),
+        defineField({
+          name: "cta",
+          title: "Section CTA",
+          type: "object",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "object",
+              fields: localizedStringFields,
+            }),
+            defineField({
+              name: "href",
+              title: "URL path",
+              type: "string",
+              validation: (rule) => rule.custom(validateInternalPath),
+            }),
+          ],
         }),
       ],
     }),

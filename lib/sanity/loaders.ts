@@ -1,9 +1,14 @@
 import "server-only";
 
 import type { Locale } from "@/lib/i18n/routing";
-import { mapHomeHero } from "@/lib/sanity/mappers";
-import { homeHeroQuery } from "@/lib/sanity/queries";
-import type { HeroContent, SanityHomeHero } from "@/lib/sanity/types";
+import { mapHomeHero, mapHomeServices } from "@/lib/sanity/mappers";
+import { homeHeroQuery, homeServicesQuery } from "@/lib/sanity/queries";
+import type {
+  HeroContent,
+  SanityHomeHero,
+  SanityHomeServices,
+  ServicesContent,
+} from "@/lib/sanity/types";
 
 export async function loadHomeHero(locale: Locale): Promise<HeroContent | null> {
   try {
@@ -13,6 +18,21 @@ export async function loadHomeHero(locale: Locale): Promise<HeroContent | null> 
     return mapHomeHero(data, locale);
   } catch (error) {
     console.error("loadHomeHero failed", error);
+
+    return null;
+  }
+}
+
+export async function loadHomeServices(
+  locale: Locale,
+): Promise<ServicesContent | null> {
+  try {
+    const { publicClient } = await import("@/lib/sanity/publicClient");
+    const data = await publicClient.fetch<SanityHomeServices>(homeServicesQuery);
+
+    return mapHomeServices(data, locale);
+  } catch (error) {
+    console.error("loadHomeServices failed", error);
 
     return null;
   }

@@ -6,6 +6,7 @@ export type ServiceItem = {
   id: string;
   title: ReactNode;
   description: ReactNode;
+  href: string;
   category?: ReactNode;
 };
 
