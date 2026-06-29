@@ -7,10 +7,25 @@
     "secondaryCta": "See Our Work"
   },
   "trustBar": {
-    "projects": "Completed projects",
-    "industries": "Industries served",
-    "services": "Integrated services",
-    "markets": "Egypt and GCC"
+    "ariaLabel": "Agency capabilities",
+    "items": {
+      "services": {
+        "value": "9",
+        "label": "Integrated services"
+      },
+      "tiers": {
+        "value": "3",
+        "label": "Creative, digital, and technology tiers"
+      },
+      "industries": {
+        "value": "8+",
+        "label": "Industries served"
+      },
+      "markets": {
+        "value": "Egypt + GCC",
+        "label": "Primary and secondary markets"
+      }
+    }
   },
   "services": {
     "eyebrow": "Everything your business needs",

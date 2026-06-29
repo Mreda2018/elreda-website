@@ -268,7 +268,7 @@
   - Scroll indicator
   - See FIX-PERF-01
 
-- [ ] **T48** — Build Trust Bar section (client logos marquee or key stats)
+- [x] **T48** — Build Trust Bar section (client logos marquee or key stats)
 
 - [ ] **T49** — Build Services Overview section
   - 9 service cards in responsive grid

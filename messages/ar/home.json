@@ -7,10 +7,25 @@
     "secondaryCta": "شاهد أعمالنا"
   },
   "trustBar": {
-    "projects": "مشاريع مكتملة",
-    "industries": "قطاعات نخدمها",
-    "services": "خدمات متكاملة",
-    "markets": "مصر والخليج"
+    "ariaLabel": "قدرات الوكالة",
+    "items": {
+      "services": {
+        "value": "٩",
+        "label": "خدمات متكاملة"
+      },
+      "tiers": {
+        "value": "٣",
+        "label": "مسارات إبداعية ورقمية وتقنية"
+      },
+      "industries": {
+        "value": "٨+",
+        "label": "قطاعات نخدمها"
+      },
+      "markets": {
+        "value": "مصر + الخليج",
+        "label": "أسواق رئيسية وثانوية"
+      }
+    }
   },
   "services": {
     "eyebrow": "كل ما يحتاجه عملك",
