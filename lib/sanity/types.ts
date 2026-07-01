@@ -82,3 +82,48 @@ export type ServicesContent = {
     label: LocalizedValue;
   };
 };
+
+export type SanityTestimonial = {
+  _id?: string | null;
+  quote?: LocalizedString | null;
+  clientName?: string | null;
+  company?: string | null;
+  rating?: number | null;
+};
+
+export type TestimonialItem = {
+  id: string;
+  quote: LocalizedValue;
+  clientName: string;
+  company?: string;
+  rating?: number;
+};
+
+export type TestimonialsContent = {
+  testimonials: TestimonialItem[];
+};
+
+export type SanityFooterSettings = {
+  contactPhone?: string | null;
+  contactEmail?: string | null;
+  whatsappNumber?: string | null;
+  address?: LocalizedString | null;
+  workingHours?: LocalizedString | null;
+  socialMedia?: Partial<
+    Record<"instagram" | "facebook" | "linkedin" | "behance" | "tiktok" | "youtube", string | null>
+  > | null;
+} | null;
+
+export type FooterSocialLink = {
+  platform: "instagram" | "facebook" | "linkedin" | "behance" | "tiktok" | "youtube";
+  href?: string;
+};
+
+export type FooterContent = {
+  contactEmail?: string;
+  contactPhone?: string;
+  whatsappNumber?: string;
+  address?: LocalizedValue;
+  workingHours?: LocalizedValue;
+  socialLinks: FooterSocialLink[];
+};

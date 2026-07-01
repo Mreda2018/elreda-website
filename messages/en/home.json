@@ -95,6 +95,12 @@
       }
     }
   },
+  "testimonials": {
+    "eyebrow": "Client feedback",
+    "title": "Trusted by business owners who care about quality and outcomes",
+    "subtitle": "Real client feedback will appear here as the CMS is populated with approved testimonials.",
+    "rating": "{rating} out of 5"
+  },
   "whyUs": {
     "eyebrow": "Why elReda",
     "title": "We think like a growth partner, not a disconnected vendor",

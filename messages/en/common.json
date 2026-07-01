@@ -31,9 +31,37 @@
     "learnAboutService": "Explore Service"
   },
   "footer": {
+    "navigationLabel": "Footer navigation",
     "servicesTitle": "Services",
     "companyTitle": "Company",
     "legalTitle": "Legal",
+    "contactTitle": "Contact",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "addressLabel": "Location",
+    "workingHoursLabel": "Working hours",
+    "socialTitle": "Social",
+    "emailFallback": "info@elreda.com",
+    "addressFallback": "Cairo, Egypt",
+    "workingHoursFallback": "Available by appointment",
+    "whatsappFallback": "WhatsApp Business",
+    "serviceLinks": {
+      "branding": "Branding & Identity",
+      "graphicDesign": "Graphic Design",
+      "printing": "Professional Printing",
+      "webDevelopment": "Website Development",
+      "ecommerce": "E-commerce Solutions",
+      "businessSystems": "Business Systems"
+    },
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "behance": "Behance",
+      "tiktok": "TikTok",
+      "youtube": "YouTube"
+    },
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms",
     "cookiesPolicy": "Cookies Policy",

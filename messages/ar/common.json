@@ -31,9 +31,37 @@
     "learnAboutService": "اكتشف الخدمة"
   },
   "footer": {
+    "navigationLabel": "تنقل التذييل",
     "servicesTitle": "الخدمات",
     "companyTitle": "الشركة",
     "legalTitle": "قانوني",
+    "contactTitle": "التواصل",
+    "emailLabel": "البريد الإلكتروني",
+    "phoneLabel": "الهاتف",
+    "whatsappLabel": "واتساب",
+    "addressLabel": "الموقع",
+    "workingHoursLabel": "مواعيد العمل",
+    "socialTitle": "التواصل الاجتماعي",
+    "emailFallback": "info@elreda.com",
+    "addressFallback": "القاهرة، مصر",
+    "workingHoursFallback": "متاح حسب الموعد",
+    "whatsappFallback": "واتساب للأعمال",
+    "serviceLinks": {
+      "branding": "الهوية البصرية",
+      "graphicDesign": "التصميم الجرافيكي",
+      "printing": "الطباعة الاحترافية",
+      "webDevelopment": "تطوير المواقع",
+      "ecommerce": "حلول التجارة الإلكترونية",
+      "businessSystems": "أنظمة الأعمال"
+    },
+    "social": {
+      "instagram": "إنستغرام",
+      "facebook": "فيسبوك",
+      "linkedin": "لينكدإن",
+      "behance": "بيهانس",
+      "tiktok": "تيك توك",
+      "youtube": "يوتيوب"
+    },
     "privacyPolicy": "سياسة الخصوصية",
     "terms": "الشروط والأحكام",
     "cookiesPolicy": "سياسة ملفات الارتباط",

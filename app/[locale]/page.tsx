@@ -6,18 +6,16 @@ import { Hero } from "@/components/sections/Hero";
 import { IndustriesPreviewSection } from "@/components/sections/IndustriesPreviewSection";
 import { PortfolioPreviewSection } from "@/components/sections/PortfolioPreviewSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
-import { loadHomeHero, loadHomeServices } from "@/lib/sanity/loaders";
+import {
+  loadHomeHero,
+  loadHomeServices,
+  loadHomeTestimonials,
+} from "@/lib/sanity/loaders";
 import type { LocalizedValue } from "@/lib/sanity/types";
-
-function renderLocalizedValue(value: LocalizedValue, locale: Locale): ReactNode {
-  if (value.lang === locale) {
-    return value.text;
-  }
-
-  return <span lang={value.lang}>{value.text}</span>;
-}
 
 function renderOptionalLocalizedValue(
   value: LocalizedValue | undefined,
@@ -33,13 +31,14 @@ export default async function Home({
 }) {
   const { locale } = await params;
   const t = await getTranslations("home");
-  const [hero, services] = await Promise.all([
+  const [hero, services, testimonials] = await Promise.all([
     loadHomeHero(locale),
     loadHomeServices(locale),
+    loadHomeTestimonials(locale),
   ]);
 
   if (!hero) {
-    return null;
+    return <div className="min-h-svh" />;
   }
 
   return (
@@ -177,6 +176,21 @@ export default async function Home({
           },
         ]}
       />
+      {testimonials ? (
+        <TestimonialsSection
+          eyebrow={t("testimonials.eyebrow")}
+          heading={t("testimonials.title")}
+          description={t("testimonials.subtitle")}
+          ratingLabel={(rating) => t("testimonials.rating", { rating })}
+          items={testimonials.testimonials.map((testimonial) => ({
+            id: testimonial.id,
+            quote: renderLocalizedValue(testimonial.quote, locale),
+            clientName: testimonial.clientName,
+            company: testimonial.company,
+            rating: testimonial.rating,
+          }))}
+        />
+      ) : null}
       <CTASection
         heading={t("cta.title")}
         description={t("cta.subtitle")}

@@ -1,11 +1,15 @@
 import type { Locale } from "@/lib/i18n/routing";
 import { getLocalizedValue } from "@/lib/i18n/getLocalizedValue";
 import type {
+  FooterContent,
   HeroContent,
+  SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
   SanityServiceItem,
+  SanityTestimonial,
   ServicesContent,
+  TestimonialsContent,
 } from "@/lib/sanity/types";
 
 function normalizeHref(href: string | null | undefined): string {
@@ -120,5 +124,90 @@ export function mapHomeServices(
             label: ctaLabel,
           }
         : undefined,
+  };
+}
+
+function mapTestimonialItem(
+  item: SanityTestimonial,
+  locale: Locale,
+  index: number,
+): TestimonialsContent["testimonials"][number] | null {
+  const quote = getLocalizedValue(item.quote, locale);
+
+  if (quote.text === "" || !item.clientName) {
+    return null;
+  }
+
+  const rating =
+    typeof item.rating === "number" && item.rating >= 1 && item.rating <= 5
+      ? item.rating
+      : undefined;
+
+  return {
+    id: item._id ?? `${item.clientName}-${index}`,
+    quote,
+    clientName: item.clientName,
+    company: item.company ?? undefined,
+    rating,
+  };
+}
+
+export function mapHomeTestimonials(
+  data: SanityTestimonial[] | null,
+  locale: Locale,
+): TestimonialsContent | null {
+  const testimonials =
+    data
+      ?.map((item, index) => mapTestimonialItem(item, locale, index))
+      .filter(
+        (item): item is TestimonialsContent["testimonials"][number] =>
+          item !== null,
+      ) ?? [];
+
+  if (testimonials.length === 0) {
+    return null;
+  }
+
+  return { testimonials };
+}
+
+function normalizeExternalHref(href: string | null | undefined): string | undefined {
+  if (!href) {
+    return undefined;
+  }
+
+  if (href.startsWith("https://") || href.startsWith("http://")) {
+    return href;
+  }
+
+  return undefined;
+}
+
+export function mapFooterSettings(
+  data: SanityFooterSettings,
+  locale: Locale,
+): FooterContent | null {
+  if (!data) {
+    return null;
+  }
+
+  const address = getLocalizedValue(data.address, locale);
+  const workingHours = getLocalizedValue(data.workingHours, locale);
+  const socialMedia = data.socialMedia ?? {};
+
+  return {
+    contactEmail: data.contactEmail ?? undefined,
+    contactPhone: data.contactPhone ?? undefined,
+    whatsappNumber: data.whatsappNumber ?? undefined,
+    address: address.text === "" ? undefined : address,
+    workingHours: workingHours.text === "" ? undefined : workingHours,
+    socialLinks: [
+      { platform: "instagram", href: normalizeExternalHref(socialMedia.instagram) },
+      { platform: "facebook", href: normalizeExternalHref(socialMedia.facebook) },
+      { platform: "linkedin", href: normalizeExternalHref(socialMedia.linkedin) },
+      { platform: "behance", href: normalizeExternalHref(socialMedia.behance) },
+      { platform: "tiktok", href: normalizeExternalHref(socialMedia.tiktok) },
+      { platform: "youtube", href: normalizeExternalHref(socialMedia.youtube) },
+    ],
   };
 }
