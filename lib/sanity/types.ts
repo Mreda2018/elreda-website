@@ -135,6 +135,41 @@ export type ServicesPageContent = {
   services: ServicesPageService[];
 };
 
+export type SanityPortfolioServiceRef = {
+  title?: LocalizedString | null;
+  slug?: string | null;
+};
+
+export type SanityPortfolioDocument = {
+  _id?: string | null;
+  title?: LocalizedString | null;
+  slug?: string | null;
+  client?: string | null;
+  industry?: string | null;
+  services?: SanityPortfolioServiceRef[] | null;
+  challenge?: LocalizedPortableText | null;
+  featured?: boolean | null;
+  publishedAt?: string | null;
+  isTranslated?: boolean | null;
+};
+
+export type PortfolioPageProject = {
+  id: string;
+  title: LocalizedValue;
+  href: string;
+  description?: LocalizedValue;
+  client?: string;
+  industry?: string;
+  services: LocalizedValue[];
+  featured: boolean;
+  publishedAt?: string;
+  isTranslated: boolean;
+};
+
+export type PortfolioPageContent = {
+  projects: PortfolioPageProject[];
+};
+
 export type SanityFooterSettings = {
   contactPhone?: string | null;
   contactEmail?: string | null;

@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Portfolio",
+    "description": "Explore selected elReda Advertising work across branding, websites, e-commerce, systems, AI automation, printing, and digital campaigns."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "portfolio": "Portfolio"
+  },
+  "hero": {
+    "eyebrow": "Portfolio",
+    "title": "Work built to make businesses look sharper and operate better",
+    "description": "A growing collection of brand, digital, and technology projects shaped around practical business outcomes."
+  },
+  "filters": {
+    "label": "Portfolio categories",
+    "eyebrow": "Browse by category",
+    "title": "Filter foundation",
+    "description": "Category filtering will connect to project data in a later sprint. The interface is prepared now for the full portfolio experience.",
+    "items": {
+      "all": "All",
+      "branding": "Branding",
+      "graphicDesign": "Graphic Design",
+      "packaging": "Packaging",
+      "websites": "Websites",
+      "ecommerce": "E-commerce",
+      "mobileApps": "Mobile Apps",
+      "erp": "ERP",
+      "ai": "AI",
+      "printing": "Printing",
+      "socialMedia": "Social Media",
+      "vehicleBranding": "Vehicle Branding",
+      "signage": "Signage"
+    }
+  },
+  "listing": {
+    "eyebrow": "Selected work",
+    "title": "Portfolio projects",
+    "description": "Each project card surfaces the client context, services involved, and the strategic challenge behind the work.",
+    "empty": "Portfolio projects are being prepared in the content system."
+  },
+  "card": {
+    "featured": "Featured",
+    "fallback": "English content",
+    "client": "Client",
+    "industry": "Industry",
+    "services": "Services",
+    "summaryFallback": "Project details will be added as the case study content is completed."
+  },
+  "cta": {
+    "title": "Ready to create work worth showing?",
+    "subtitle": "Tell us about your project and we will help shape the right creative, digital, or technology solution.",
+    "primary": "Request a quote",
+    "secondary": "Talk to our team"
+  }
+}

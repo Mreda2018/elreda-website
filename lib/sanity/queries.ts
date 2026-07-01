@@ -72,6 +72,35 @@ export const servicesPageQuery = groq`
   }
 `;
 
+export const portfolioPageQuery = groq`
+  *[_type == "portfolio" && defined(slug.current)] | order(featured desc, publishedAt desc, _createdAt desc){
+    _id,
+    title,
+    "slug": slug.current,
+    client,
+    industry,
+    services[]->{
+      title,
+      "slug": slug.current
+    },
+    challenge{
+      en[]{
+        children[]{
+          text
+        }
+      },
+      ar[]{
+        children[]{
+          text
+        }
+      }
+    },
+    featured,
+    publishedAt,
+    isTranslated
+  }
+`;
+
 export const footerSettingsQuery = groq`
   *[_type == "settings" && _id == "settings"][0]{
     contactPhone,

@@ -6,6 +6,7 @@ import {
   mapHomeHero,
   mapHomeServices,
   mapHomeTestimonials,
+  mapPortfolioPage,
   mapServicesPage,
 } from "@/lib/sanity/mappers";
 import {
@@ -13,14 +14,17 @@ import {
   homeHeroQuery,
   homeServicesQuery,
   homeTestimonialsQuery,
+  portfolioPageQuery,
   servicesPageQuery,
 } from "@/lib/sanity/queries";
 import type {
   FooterContent,
   HeroContent,
+  PortfolioPageContent,
   SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
+  SanityPortfolioDocument,
   SanityServiceDocument,
   SanityTestimonial,
   ServicesContent,
@@ -83,6 +87,22 @@ export async function loadServicesPage(
     return mapServicesPage(data, locale);
   } catch (error) {
     console.error("loadServicesPage failed", error);
+
+    return null;
+  }
+}
+
+export async function loadPortfolioPage(
+  locale: Locale,
+): Promise<PortfolioPageContent | null> {
+  try {
+    const { publicClient } = await import("@/lib/sanity/publicClient");
+    const data =
+      await publicClient.fetch<SanityPortfolioDocument[]>(portfolioPageQuery);
+
+    return mapPortfolioPage(data, locale);
+  } catch (error) {
+    console.error("loadPortfolioPage failed", error);
 
     return null;
   }

@@ -3,9 +3,11 @@ import { getLocalizedValue } from "@/lib/i18n/getLocalizedValue";
 import type {
   FooterContent,
   HeroContent,
+  PortfolioPageContent,
   SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
+  SanityPortfolioDocument,
   SanityPortableTextBlock,
   SanityServiceDocument,
   SanityServiceItem,
@@ -191,7 +193,7 @@ function getPlainTextFromBlocks(
 }
 
 function getLocalizedPortableTextValue(
-  value: SanityServiceDocument["description"],
+  value: SanityServiceDocument["description"] | SanityPortfolioDocument["challenge"],
   locale: Locale,
 ) {
   const requestedValue = getPlainTextFromBlocks(value?.[locale]);
@@ -210,7 +212,7 @@ function getLocalizedPortableTextValue(
   return { text: "", lang: locale };
 }
 
-function normalizeServiceSlug(slug: string | null | undefined): string | null {
+function normalizeContentSlug(slug: string | null | undefined): string | null {
   if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
     return null;
   }
@@ -223,7 +225,7 @@ function mapServicesPageItem(
   locale: Locale,
   index: number,
 ): ServicesPageContent["services"][number] | null {
-  const slug = normalizeServiceSlug(item.slug);
+  const slug = normalizeContentSlug(item.slug);
 
   if (!slug) {
     return null;
@@ -268,6 +270,68 @@ export function mapServicesPage(
   }
 
   return { services };
+}
+
+function mapPortfolioPageItem(
+  item: SanityPortfolioDocument,
+  locale: Locale,
+  index: number,
+): PortfolioPageContent["projects"][number] | null {
+  const slug = normalizeContentSlug(item.slug);
+
+  if (!slug) {
+    return null;
+  }
+
+  const href = `/portfolio/${slug}`;
+
+  if (!isInternalHref(href)) {
+    return null;
+  }
+
+  const title = getLocalizedValue(item.title, locale);
+
+  if (title.text === "") {
+    return null;
+  }
+
+  const description = getLocalizedPortableTextValue(item.challenge, locale);
+  const services =
+    item.services
+      ?.map((service) => getLocalizedValue(service.title, locale))
+      .filter((service) => service.text !== "") ?? [];
+
+  return {
+    id: item._id ?? `${slug}-${index}`,
+    title,
+    href,
+    description: description.text === "" ? undefined : description,
+    client: item.client ?? undefined,
+    industry: item.industry ?? undefined,
+    services,
+    featured: item.featured ?? false,
+    publishedAt: item.publishedAt ?? undefined,
+    isTranslated: item.isTranslated ?? false,
+  };
+}
+
+export function mapPortfolioPage(
+  data: SanityPortfolioDocument[] | null,
+  locale: Locale,
+): PortfolioPageContent | null {
+  const projects =
+    data
+      ?.map((item, index) => mapPortfolioPageItem(item, locale, index))
+      .filter(
+        (item): item is PortfolioPageContent["projects"][number] =>
+          item !== null,
+      ) ?? [];
+
+  if (projects.length === 0) {
+    return null;
+  }
+
+  return { projects };
 }
 
 function normalizeExternalHref(href: string | null | undefined): string | undefined {
