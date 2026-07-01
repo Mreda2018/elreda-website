@@ -35,7 +35,65 @@
   "portfolio": {
     "eyebrow": "Selected work",
     "title": "Projects designed to look strong and work intelligently",
-    "subtitle": "Examples of identities, websites, and digital experiences that help businesses earn trust and turn attention into clients."
+    "subtitle": "Examples of identities, websites, and digital experiences that help businesses earn trust and turn attention into clients.",
+    "cta": "View Full Portfolio",
+    "items": {
+      "identity": {
+        "category": "Brand identity",
+        "title": "Identity system preview",
+        "description": "A focused brand foundation built to make a business look credible across every touchpoint."
+      },
+      "commerce": {
+        "category": "E-commerce",
+        "title": "Commerce experience preview",
+        "description": "A sales-focused digital storefront layout for products, offers, and customer trust."
+      },
+      "operations": {
+        "category": "Business systems",
+        "title": "Operations system preview",
+        "description": "A structured internal tool direction for teams that need clearer workflows and reporting."
+      }
+    }
+  },
+  "industries": {
+    "eyebrow": "Industries",
+    "title": "Built for businesses that need brand, digital, and systems to work together",
+    "subtitle": "We support industries where trust, clear presentation, and smooth operations directly affect growth.",
+    "cta": "View Industry Solutions",
+    "items": {
+      "restaurants": {
+        "title": "Restaurants",
+        "description": "Menus, identity, local marketing, websites, and ordering experiences."
+      },
+      "retail": {
+        "title": "Retail",
+        "description": "Brand presence, product promotion, print materials, and sales channels."
+      },
+      "clinics": {
+        "title": "Clinics",
+        "description": "Professional trust-building identity, booking flows, and patient communication."
+      },
+      "realEstate": {
+        "title": "Real estate",
+        "description": "Project presentation, lead capture, campaign material, and sales support."
+      },
+      "ecommerce": {
+        "title": "E-commerce",
+        "description": "Stores, catalogues, product pages, ads, and automation foundations."
+      },
+      "startups": {
+        "title": "Startups",
+        "description": "Launch-ready identity, web presence, decks, and scalable systems."
+      },
+      "factories": {
+        "title": "Factories",
+        "description": "Corporate profiles, product catalogues, internal systems, and B2B marketing."
+      },
+      "corporate": {
+        "title": "Corporate",
+        "description": "Brand governance, digital platforms, process tools, and ongoing support."
+      }
+    }
   },
   "whyUs": {
     "eyebrow": "Why elReda",
@@ -73,6 +131,8 @@
   },
   "cta": {
     "title": "Ready to build a project worthy of your ambition?",
-    "subtitle": "Share your idea with us and we will recommend the clearest path to deliver it professionally."
+    "subtitle": "Share your idea with us and we will recommend the clearest path to deliver it professionally.",
+    "primary": "Request a Quote",
+    "secondary": "Chat on WhatsApp"
   }
 }
