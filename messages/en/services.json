@@ -1,4 +1,28 @@
 {
+  "metadata": {
+    "title": "Services",
+    "description": "Explore elReda Advertising services across branding, design, printing, websites, commerce, marketing, apps, business systems, and AI automation."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "services": "Services"
+  },
+  "hero": {
+    "eyebrow": "Services",
+    "title": "Creative, digital, and technology services for growing businesses",
+    "description": "Build the brand, channels, systems, and automation your business needs from one coordinated team."
+  },
+  "list": {
+    "eyebrow": "All services",
+    "title": "Services built around the full business journey",
+    "description": "From visual identity and marketing materials to websites, stores, business systems, and AI automation, each service is designed to connect with the next.",
+    "empty": "Services are being prepared in the content system."
+  },
+  "card": {
+    "index": "Service {index}",
+    "fallback": "English content"
+  },
   "overview": {
     "title": "Our Services",
     "subtitle": "Integrated services covering the business journey from identity to digital growth and intelligent systems.",
@@ -46,6 +70,8 @@
   },
   "cta": {
     "title": "Not sure where to start?",
-    "subtitle": "Book a free consultation and we will help you choose the right service for your stage."
+    "subtitle": "Book a free consultation and we will help you choose the right service for your stage.",
+    "primary": "Request a quote",
+    "secondary": "Talk to our team"
   }
 }

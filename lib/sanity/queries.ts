@@ -51,6 +51,27 @@ export const homeTestimonialsQuery = groq`
   }
 `;
 
+export const servicesPageQuery = groq`
+  *[_type == "service" && defined(slug.current)] | order(_createdAt asc){
+    _id,
+    title,
+    "slug": slug.current,
+    description{
+      en[]{
+        children[]{
+          text
+        }
+      },
+      ar[]{
+        children[]{
+          text
+        }
+      }
+    },
+    isTranslated
+  }
+`;
+
 export const footerSettingsQuery = groq`
   *[_type == "settings" && _id == "settings"][0]{
     contactPhone,

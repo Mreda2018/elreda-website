@@ -103,6 +103,38 @@ export type TestimonialsContent = {
   testimonials: TestimonialItem[];
 };
 
+export type SanityPortableTextSpan = {
+  text?: string | null;
+};
+
+export type SanityPortableTextBlock = {
+  children?: SanityPortableTextSpan[] | null;
+};
+
+export type LocalizedPortableText = Partial<
+  Record<Locale, SanityPortableTextBlock[] | null>
+>;
+
+export type SanityServiceDocument = {
+  _id?: string | null;
+  title?: LocalizedString | null;
+  slug?: string | null;
+  description?: LocalizedPortableText | null;
+  isTranslated?: boolean | null;
+};
+
+export type ServicesPageService = {
+  id: string;
+  title: LocalizedValue;
+  description: LocalizedValue;
+  href: string;
+  isTranslated: boolean;
+};
+
+export type ServicesPageContent = {
+  services: ServicesPageService[];
+};
+
 export type SanityFooterSettings = {
   contactPhone?: string | null;
   contactEmail?: string | null;

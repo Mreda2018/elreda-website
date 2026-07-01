@@ -6,9 +6,12 @@ import type {
   SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
+  SanityPortableTextBlock,
+  SanityServiceDocument,
   SanityServiceItem,
   SanityTestimonial,
   ServicesContent,
+  ServicesPageContent,
   TestimonialsContent,
 } from "@/lib/sanity/types";
 
@@ -169,6 +172,102 @@ export function mapHomeTestimonials(
   }
 
   return { testimonials };
+}
+
+function getPlainTextFromBlocks(
+  blocks: SanityPortableTextBlock[] | null | undefined,
+): string {
+  return (
+    blocks
+      ?.map((block) =>
+        block.children
+          ?.map((child) => child.text)
+          .filter((text): text is string => Boolean(text))
+          .join(""),
+      )
+      .filter((text): text is string => Boolean(text))
+      .join("\n\n") ?? ""
+  );
+}
+
+function getLocalizedPortableTextValue(
+  value: SanityServiceDocument["description"],
+  locale: Locale,
+) {
+  const requestedValue = getPlainTextFromBlocks(value?.[locale]);
+
+  if (requestedValue) {
+    return { text: requestedValue, lang: locale };
+  }
+
+  const fallbackLocale: Locale = locale === "ar" ? "en" : "ar";
+  const fallbackValue = getPlainTextFromBlocks(value?.[fallbackLocale]);
+
+  if (fallbackValue) {
+    return { text: fallbackValue, lang: fallbackLocale };
+  }
+
+  return { text: "", lang: locale };
+}
+
+function normalizeServiceSlug(slug: string | null | undefined): string | null {
+  if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+    return null;
+  }
+
+  return slug;
+}
+
+function mapServicesPageItem(
+  item: SanityServiceDocument,
+  locale: Locale,
+  index: number,
+): ServicesPageContent["services"][number] | null {
+  const slug = normalizeServiceSlug(item.slug);
+
+  if (!slug) {
+    return null;
+  }
+
+  const href = `/services/${slug}`;
+
+  if (!isInternalHref(href)) {
+    return null;
+  }
+
+  const title = getLocalizedValue(item.title, locale);
+  const description = getLocalizedPortableTextValue(item.description, locale);
+
+  if (title.text === "" || description.text === "") {
+    return null;
+  }
+
+  return {
+    id: item._id ?? `${slug}-${index}`,
+    title,
+    description,
+    href,
+    isTranslated: item.isTranslated ?? false,
+  };
+}
+
+export function mapServicesPage(
+  data: SanityServiceDocument[] | null,
+  locale: Locale,
+): ServicesPageContent | null {
+  const services =
+    data
+      ?.map((item, index) => mapServicesPageItem(item, locale, index))
+      .filter(
+        (item): item is ServicesPageContent["services"][number] =>
+          item !== null,
+      ) ?? [];
+
+  if (services.length === 0) {
+    return null;
+  }
+
+  return { services };
 }
 
 function normalizeExternalHref(href: string | null | undefined): string | undefined {
