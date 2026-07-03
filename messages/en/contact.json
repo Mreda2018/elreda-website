@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "title": "Contact elReda Advertising",
+    "description": "Contact elReda Advertising for brand identity, websites, marketing, systems, printing, and AI automation projects in Egypt and the GCC."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Contact",
+    "title": "Start the conversation with the team that can connect the full project",
+    "description": "Tell us what you are trying to launch, fix, or scale. We will help you turn the first message into a clear next step.",
+    "response": {
+      "label": "Expected response",
+      "value": "Within 24 hours",
+      "description": "For qualified project requests, we reply with the best next action: quote, discovery call, or WhatsApp follow-up."
+    }
+  },
+  "info": {
+    "eyebrow": "Direct lines",
+    "title": "Reach the right channel for your project",
+    "description": "Use the form for structured project details, or contact us directly when you need a faster first conversation.",
+    "cards": {
+      "whatsapp": {
+        "title": "WhatsApp",
+        "value": "+20 100 000 0000",
+        "description": "Best for quick questions, follow-ups, and sharing initial references."
+      },
+      "email": {
+        "title": "Email",
+        "value": "hello@elreda.com",
+        "description": "Best for briefs, attachments, company profiles, and formal requests."
+      },
+      "location": {
+        "title": "Location",
+        "value": "Cairo, Egypt",
+        "description": "Serving clients across Egypt, the GCC, and remote-first markets."
+      }
+    },
+    "hours": {
+      "title": "Business hours",
+      "weekdays": "Sunday to Thursday",
+      "weekdayHours": "10:00 AM - 6:00 PM",
+      "weekend": "Friday and Saturday",
+      "weekendHours": "Limited scheduled calls"
+    }
+  },
+  "form": {
+    "eyebrow": "Project message",
+    "title": "Send a focused brief",
+    "description": "This form is a layout foundation only. Backend submission, email, CRM, and bot protection will be connected in the scheduled form sprint.",
+    "servicePlaceholder": "Select a service",
+    "serviceOptions": {
+      "branding": "Branding & identity",
+      "web": "Website development",
+      "ecommerce": "E-commerce",
+      "marketing": "Digital marketing",
+      "erp": "Business systems / ERP",
+      "ai": "AI automation",
+      "printing": "Printing and production",
+      "notSure": "Not sure yet"
+    },
+    "submit": "Send message"
+  },
+  "cta": {
+    "title": "Need a detailed quote instead?",
+    "subtitle": "Use the quote request flow when you already know the service, budget range, and timeline.",
+    "primary": "Request a quote",
+    "secondary": "View services"
+  }
+}

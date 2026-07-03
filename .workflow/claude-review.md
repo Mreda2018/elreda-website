@@ -44,3 +44,15 @@ HIGH:
 UI quality below project standard.
 
 Suggest better interaction/layout inspired by 21st.dev patterns.
+
+Additional Review Rule
+
+Check for unnecessary component duplication.
+
+If similar components could have been reused,
+return:
+
+MEDIUM:
+Component duplication detected.
+
+Suggest the reusable abstraction.

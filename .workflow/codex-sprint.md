@@ -56,3 +56,42 @@ Before implementing any new section or page:
 - Choose the highest quality and explain why.
 
 5. Every new section should feel premium and agency-grade rather than generic.
+
+## Premium UI Rule (Mandatory)
+
+Every page must feel like a premium digital agency website.
+
+Never build a generic SaaS layout.
+
+Before implementing any section:
+
+1. Search modern references (21st.dev patterns).
+
+2. Improve:
+- hierarchy
+- whitespace
+- typography
+- rhythm
+- composition
+
+3. If two layouts are possible:
+Always choose the more premium one.
+
+4. Prioritize quality over speed.
+
+The project target is an award-quality creative agency website, not a standard corporate website.
+
+## Reuse First Rule (Mandatory)
+
+Before creating any new component:
+
+1. Search the existing project.
+
+2. If a similar component already exists:
+- Extend it.
+- Reuse it.
+- Never duplicate it.
+
+Only create a new component if no reusable solution exists.
+
+Always explain the reuse decision in the final summary.

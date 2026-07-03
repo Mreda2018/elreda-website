@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "title": "Request a Quote | elReda Advertising",
+    "description": "Request a structured project quote from elReda Advertising for branding, websites, e-commerce, marketing, ERP, printing, mobile apps, and AI automation."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "quote": "Request a Quote"
+  },
+  "hero": {
+    "eyebrow": "Quote request",
+    "title": "Share the project shape before the first call",
+    "description": "A structured brief helps us understand the service mix, budget, timeline, and decision path before we recommend the right next step.",
+    "note": "Layout foundation only. Submission, file upload, Turnstile, and Server Actions are scheduled separately."
+  },
+  "steps": {
+    "label": "Quote form steps",
+    "current": "Step 1 of 4: Quote request foundation",
+    "items": {
+      "services": "Service selection",
+      "details": "Project details",
+      "budget": "Budget",
+      "contact": "Contact details"
+    }
+  },
+  "form": {
+    "title": "Project brief foundation",
+    "description": "Use this structure to collect the minimum details needed for a useful quote conversation.",
+    "servicesLegend": "What services are you looking for?",
+    "detailsLegend": "Project details",
+    "budgetLegend": "Budget range",
+    "timelineLegend": "Timeline",
+    "contactLegend": "Your contact details",
+    "serviceOptions": {
+      "branding": {
+        "label": "Branding & identity",
+        "description": "Logo, identity system, brand guidelines, and launch materials."
+      },
+      "web": {
+        "label": "Website development",
+        "description": "Business websites, landing pages, and custom web experiences."
+      },
+      "ecommerce": {
+        "label": "E-commerce",
+        "description": "Online stores, payment setup, product structure, and conversion pages."
+      },
+      "erp": {
+        "label": "Business systems / ERP",
+        "description": "CRM, inventory, dashboards, portals, and operational systems."
+      },
+      "ai": {
+        "label": "AI automation",
+        "description": "Chatbots, workflow automation, integrations, and reporting assistants."
+      },
+      "printing": {
+        "label": "Printing and production",
+        "description": "Print-ready collateral, packaging, signage, and production coordination."
+      }
+    },
+    "budgetOptions": {
+      "starter": "Starter project",
+      "growth": "Growth project",
+      "premium": "Premium build",
+      "notSure": "I am not sure yet"
+    },
+    "timelineOptions": {
+      "urgent": "As soon as possible",
+      "month": "Within 1 month",
+      "quarter": "1-3 months",
+      "flexible": "Flexible timeline"
+    },
+    "preferredContactOptions": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "submit": "Prepare quote request"
+  },
+  "cta": {
+    "title": "Prefer to talk before writing the brief?",
+    "subtitle": "Send a shorter message through the contact page and we will help you decide what belongs in the quote.",
+    "primary": "Contact the team",
+    "secondary": "View services"
+  }
+}
