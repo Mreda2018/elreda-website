@@ -24,3 +24,23 @@ Return:
 
 If approved, write exactly:
 Approved for commit and push.
+
+Additional Review Rule:
+
+Verify that newly implemented UI is not generic.
+
+Check that:
+
+- the implementation follows modern premium UI patterns
+- visual hierarchy is strong
+- whitespace is balanced
+- motion readiness is preserved
+- the section feels comparable to high-end agency websites
+
+If the implementation looks like a default template,
+return:
+
+HIGH:
+UI quality below project standard.
+
+Suggest better interaction/layout inspired by 21st.dev patterns.

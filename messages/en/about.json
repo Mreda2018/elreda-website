@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "title": "About elReda Advertising",
+    "description": "Meet elReda Advertising, a Cairo-based creative and technology agency helping businesses build brands, websites, systems, and automation from one trusted partner."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "about": "About"
+  },
+  "hero": {
+    "eyebrow": "About elReda",
+    "title": "A creative and technology partner built for serious business growth",
+    "description": "We help founders and teams move from scattered suppliers to one coordinated partner for brand, digital presence, systems, and automation.",
+    "signalLabel": "Built from Cairo for Egypt, GCC, and remote-first clients",
+    "stats": {
+      "model": {
+        "value": "One",
+        "label": "partner from first concept to final delivery"
+      },
+      "coverage": {
+        "value": "9",
+        "label": "creative, digital, and technology service lines"
+      },
+      "mindset": {
+        "value": "AI-first",
+        "label": "workflow for modern business execution"
+      }
+    }
+  },
+  "story": {
+    "eyebrow": "Company story",
+    "title": "We built elReda for business owners tired of managing disconnected vendors.",
+    "lead": "Most growing businesses do not need more suppliers. They need one team that understands brand, digital channels, operations, and growth together.",
+    "paragraphs": {
+      "first": "elReda Advertising was shaped around a simple problem: founders often move between designers, printers, developers, marketers, and software teams without a shared strategy. Work gets delayed, quality becomes inconsistent, and the business owner carries the coordination burden.",
+      "second": "Our answer is a full-service creative and technology agency that treats every deliverable as part of a bigger business system. A logo should support trust. A website should generate leads. An ERP system should reduce operational friction. AI automation should save real time.",
+      "third": "We combine creative direction, digital execution, and practical technology thinking so clients can build with clarity instead of managing fragments."
+    },
+    "quote": "One trusted partner for your brand, digital presence, and business systems."
+  },
+  "missionVision": {
+    "eyebrow": "Direction",
+    "title": "Premium creative work with operational thinking behind it.",
+    "mission": {
+      "label": "Mission",
+      "title": "Deliver work that creates business momentum",
+      "description": "We combine strategic thinking, strong design, and modern technology to help clients launch, grow, and operate with more confidence."
+    },
+    "vision": {
+      "label": "Vision",
+      "title": "Become a leading creative technology agency in Egypt and the region",
+      "description": "We are building toward a regional agency that helps ambitious companies turn brand, digital, systems, and automation into long-term advantage."
+    }
+  },
+  "values": {
+    "eyebrow": "How we work",
+    "title": "Values that shape every project",
+    "items": {
+      "professional": {
+        "title": "Professional",
+        "description": "Clear communication, polished delivery, and reliable project handling from the first conversation."
+      },
+      "innovative": {
+        "title": "Innovative",
+        "description": "Modern design, automation, and AI-aware workflows without chasing trends that do not serve the business."
+      },
+      "creative": {
+        "title": "Creative",
+        "description": "Distinctive brand and content systems built to stand out in crowded markets."
+      },
+      "trustworthy": {
+        "title": "Trustworthy",
+        "description": "Transparent thinking, realistic scope, and decisions made in the client's long-term interest."
+      },
+      "resultsDriven": {
+        "title": "Results-driven",
+        "description": "Every deliverable is connected to a business purpose: leads, sales, efficiency, trust, or growth."
+      }
+    }
+  },
+  "team": {
+    "eyebrow": "Team",
+    "title": "A senior-led team structure, prepared for CMS profiles",
+    "description": "Public team profiles will be added once the CMS content is approved. Until then, the page shows the roles behind the operating model without inventing people.",
+    "items": {
+      "strategy": {
+        "title": "Brand and business strategy",
+        "description": "Discovery, positioning, messaging, and project direction."
+      },
+      "creative": {
+        "title": "Creative production",
+        "description": "Identity systems, campaign materials, content, and print-ready execution."
+      },
+      "technology": {
+        "title": "Digital and systems delivery",
+        "description": "Websites, commerce, business systems, integrations, and automation."
+      }
+    },
+    "status": "Profile coming soon"
+  },
+  "cta": {
+    "title": "Ready to build with one coordinated partner?",
+    "subtitle": "Tell us what you are trying to launch, improve, or automate. We will help you choose the right next step.",
+    "primary": "Request a quote",
+    "secondary": "Talk to our team"
+  }
+}
