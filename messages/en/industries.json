@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "title": "Industries We Serve | elReda Advertising",
+    "description": "Explore how elReda Advertising supports restaurants, retail, clinics, real estate, e-commerce, startups, factories, and corporate teams with brand, digital, systems, and automation."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "industries": "Industries"
+  },
+  "hero": {
+    "eyebrow": "Industries",
+    "title": "Specialized execution for businesses where trust and operations decide growth",
+    "description": "Each industry has a different pressure point. We connect brand, digital presence, marketing assets, and business systems around what customers need to believe before they buy.",
+    "panel": {
+      "title": "One operating model, adapted to the market realities of each client.",
+      "items": {
+        "coverage": {
+          "label": "Industry coverage",
+          "value": "8 priority sectors"
+        },
+        "model": {
+          "label": "Delivery model",
+          "value": "Brand + digital + systems"
+        },
+        "outcome": {
+          "label": "Primary outcome",
+          "value": "Sharper trust, leads, and workflow"
+        }
+      }
+    }
+  },
+  "grid": {
+    "eyebrow": "Sector focus",
+    "title": "Built around real business moments, not generic service menus",
+    "description": "The same service can solve a different problem from one sector to another. A restaurant needs menu clarity. A clinic needs trust. A factory needs B2B credibility and operational structure.",
+    "items": {
+      "restaurants": {
+        "market": "Hospitality",
+        "title": "Restaurants",
+        "description": "Identity, menus, local campaigns, websites, ordering experiences, and customer-facing content that makes decisions easier.",
+        "focus": "Best for launches, rebrands, menu systems, and local lead generation."
+      },
+      "retail": {
+        "market": "Commerce",
+        "title": "Retail",
+        "description": "Brand presence, product promotion, print materials, visual merchandising support, and digital sales channels.",
+        "focus": "Best for stores that need sharper product presentation and repeatable campaigns."
+      },
+      "clinics": {
+        "market": "Healthcare",
+        "title": "Clinics",
+        "description": "Professional identity, appointment flows, patient communication, service pages, and trust-building content systems.",
+        "focus": "Best for clinics that need credibility before the first booking."
+      },
+      "realEstate": {
+        "market": "Property",
+        "title": "Real estate",
+        "description": "Project presentation, sales collateral, landing pages, lead capture, outdoor campaigns, and follow-up systems.",
+        "focus": "Best for developers, brokerages, and property campaigns that need clear demand capture."
+      },
+      "ecommerce": {
+        "market": "Online sales",
+        "title": "E-commerce",
+        "description": "Store setup, product structure, catalogues, landing pages, ad assets, customer journeys, and automation foundations.",
+        "focus": "Best for brands that need online sales to become cleaner and more measurable."
+      },
+      "startups": {
+        "market": "Launch",
+        "title": "Startups",
+        "description": "Launch-ready identity, pitch materials, websites, product explainers, content systems, and scalable operating tools.",
+        "focus": "Best for founders who need to look credible before the market knows them."
+      },
+      "factories": {
+        "market": "Industrial",
+        "title": "Factories",
+        "description": "Corporate profiles, product catalogues, B2B websites, sales materials, internal dashboards, and operational systems.",
+        "focus": "Best for manufacturers that need stronger presentation and cleaner internal workflows."
+      },
+      "corporate": {
+        "market": "Enterprise",
+        "title": "Corporate teams",
+        "description": "Brand governance, digital platforms, process tools, campaign systems, documentation, and long-term support.",
+        "focus": "Best for teams that need consistency across departments, assets, and systems."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "How we adapt",
+    "title": "We start from the sector pressure, then choose the right creative and technical response",
+    "description": "A premium industry page should not pretend every business has the same problem. We frame each solution around buyer trust, sales movement, and operational friction.",
+    "quote": "The industry shapes the message. The business model shapes the system.",
+    "items": {
+      "diagnose": {
+        "title": "Diagnose the buying moment",
+        "description": "We identify what your customer needs to understand, trust, or compare before they contact, visit, book, or buy."
+      },
+      "connect": {
+        "title": "Connect brand, channels, and operations",
+        "description": "We align identity, website, printed material, campaigns, and internal tools so the business feels coherent from the outside and inside."
+      },
+      "scale": {
+        "title": "Build for repeatable growth",
+        "description": "We create structures that can be reused across locations, products, campaigns, departments, and future service expansion."
+      }
+    }
+  },
+  "cta": {
+    "title": "Need a solution shaped around your industry?",
+    "subtitle": "Tell us what market you operate in and what has to improve first: trust, leads, sales, workflow, or automation.",
+    "primary": "Request a quote",
+    "secondary": "Contact the team"
+  }
+}
