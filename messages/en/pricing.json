@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "title": "Pricing | elReda Advertising",
+    "description": "Explore elReda Advertising pricing tiers for creative services, digital growth, and custom technology projects."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "pricing": "Pricing"
+  },
+  "hero": {
+    "eyebrow": "Pricing",
+    "title": "Transparent pricing for serious brand, digital, and systems work",
+    "description": "We price around outcomes, scope, and the level of coordination your business needs, not a generic menu of disconnected deliverables.",
+    "panel": {
+      "title": "A practical pricing model for work that has to perform.",
+      "items": {
+        "clarity": {
+          "label": "Scope first",
+          "value": "Deliverables, ownership, and timeline are agreed before cost."
+        },
+        "fit": {
+          "label": "Right-sized engagement",
+          "value": "Choose a package, project quote, or ongoing retainer."
+        },
+        "momentum": {
+          "label": "Business momentum",
+          "value": "Investment is focused where it moves the company forward."
+        }
+      }
+    }
+  },
+  "plans": {
+    "eyebrow": "Pricing tiers",
+    "title": "Choose the level of partnership your next move needs",
+    "description": "These tiers frame typical starting points. Final scope is confirmed after discovery so the quote matches the work, not a template.",
+    "recommended": "Recommended",
+    "bestFor": "Best for",
+    "nextStep": "Next step",
+    "items": {
+      "creative": {
+        "category": "Creative foundation",
+        "title": "Brand Launch",
+        "summary": "A focused creative package for companies that need a sharper identity and practical launch assets.",
+        "priceLabel": "Starting point",
+        "price": "Fixed package",
+        "bestFor": "New ventures, refreshed brands, campaigns, and sales materials.",
+        "nextStep": "Confirm the visual scope, asset list, and delivery timeline.",
+        "features": {
+          "first": "Identity direction and core brand applications",
+          "second": "Print and digital launch collateral",
+          "third": "Production-ready files for everyday use",
+          "fourth": "Practical handoff for your internal team"
+        }
+      },
+      "growth": {
+        "category": "Digital growth",
+        "title": "Digital Growth Build",
+        "summary": "A stronger digital presence for businesses that need website, campaign, and conversion work aligned.",
+        "priceLabel": "Project model",
+        "price": "Scoped quote",
+        "bestFor": "Websites, e-commerce launches, acquisition campaigns, and digital operations.",
+        "nextStep": "Map the customer journey, content needs, and technical requirements.",
+        "features": {
+          "first": "Website or store experience foundation",
+          "second": "Conversion-led page and content structure",
+          "third": "Campaign-ready creative and channel support",
+          "fourth": "Analytics and performance measurement setup"
+        }
+      },
+      "systems": {
+        "category": "Technology",
+        "title": "Systems & Automation",
+        "summary": "Custom technology work for teams that need operations, integrations, and reporting to work together.",
+        "priceLabel": "Commercial model",
+        "price": "Custom quote",
+        "bestFor": "ERP workflows, automation, dashboards, AI-assisted processes, and integrations.",
+        "nextStep": "Run discovery to define risk, dependencies, milestones, and ownership.",
+        "features": {
+          "first": "Workflow and data structure mapping",
+          "second": "Integration and automation planning",
+          "third": "Dashboard and reporting foundations",
+          "fourth": "Milestone-based implementation roadmap"
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ preview",
+    "title": "Answers before the first pricing call",
+    "description": "A quick foundation for the questions teams usually ask before requesting a detailed proposal.",
+    "items": {
+      "startingPrice": {
+        "question": "Do you publish exact prices?",
+        "answer": "We publish pricing models, then confirm exact cost after scope. That keeps the proposal honest and avoids underquoting complex work."
+      },
+      "customQuote": {
+        "question": "When does a project need a custom quote?",
+        "answer": "Custom quotes are used when the work includes integrations, multiple stakeholders, advanced content, or operational dependencies."
+      },
+      "retainers": {
+        "question": "Can we work monthly?",
+        "answer": "Yes. Retainers are available for ongoing creative, marketing, website, and systems support after priorities are defined."
+      },
+      "changes": {
+        "question": "How are changes handled?",
+        "answer": "Each proposal defines review rounds, decision points, and what happens when scope changes after approval."
+      }
+    }
+  },
+  "cta": {
+    "title": "Not sure what budget fits the work?",
+    "subtitle": "Start with a clear conversation. We will help you choose the right tier, quote structure, or retainer model.",
+    "primary": "Request a quote",
+    "secondary": "Contact the team"
+  }
+}
