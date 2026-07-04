@@ -14,7 +14,7 @@ const sectionVariants = cva("relative w-full", {
     },
     spacing: {
       none: "py-0",
-      compact: "py-16",
+      compact: "py-[var(--space-16)]",
       default: "py-section-y",
     },
   },

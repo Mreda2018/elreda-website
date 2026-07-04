@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva("text-balance text-white", {
+const headingVariants = cva("max-w-[var(--container-narrow)] text-balance text-white", {
   variants: {
     level: {
       1: "text-h1 font-bold rtl:text-ar-h1 rtl:font-bold",

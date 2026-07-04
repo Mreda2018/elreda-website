@@ -11,23 +11,28 @@ export type CTASectionProps = {
   heading: ReactNode;
   description: ReactNode;
   actions?: CTASectionAction[];
+  headingId?: string;
 };
 
-export function CTASection({ heading, description, actions = [] }: CTASectionProps) {
-  const headingId = "home-cta-heading";
+export function CTASection({
+  heading,
+  description,
+  actions = [],
+  headingId = "site-cta-heading",
+}: CTASectionProps) {
 
   return (
     <Section
       tone="elevated"
       aria-labelledby={headingId}
-      className="border-y border-[color:var(--glass-border)]"
+      className="border-y border-[color:var(--glass-border)] bg-[image:var(--gradient-subtle)]"
     >
-      <Container className="flex max-w-[var(--container-narrow)] flex-col items-center gap-[var(--space-8)] text-center">
-        <div className="flex flex-col items-center gap-[var(--space-4)]">
+      <Container className="flex max-w-[var(--container-narrow)] flex-col items-center gap-[var(--space-10)] text-center">
+        <div className="flex flex-col items-center gap-[var(--space-5)]">
           <Heading id={headingId} level={2} align="center">
             {heading}
           </Heading>
-          <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
+          <p className="max-w-[var(--container-narrow)] text-body-lg text-text-secondary rtl:text-ar-body-lg">
             {description}
           </p>
         </div>

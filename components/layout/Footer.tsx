@@ -61,9 +61,15 @@ function getLocalizedHref(locale: Locale, path: string): string {
   return path === "/" ? "/en" : `/en${path}`;
 }
 
+function getWhatsAppHref(value: string): string {
+  const number = value.replace(/\D/g, "");
+
+  return `https://wa.me/${number}`;
+}
+
 function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
   return (
-    <div className="flex flex-col gap-[var(--space-4)]">
+    <div className="flex flex-col gap-[var(--space-5)]">
       <Heading level={3} className="text-h5" tone="primary">
         {title}
       </Heading>
@@ -72,7 +78,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-small text-text-secondary underline-offset-4 hover:text-white hover:underline rtl:text-ar-small"
+              className="inline-flex rounded-sm text-small text-text-secondary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
             >
               {link.label}
             </Link>
@@ -98,6 +104,7 @@ export async function Footer() {
   const email = settings?.contactEmail ?? t("footer.emailFallback");
   const phone = settings?.contactPhone;
   const whatsapp = settings?.whatsappNumber ?? t("footer.whatsappFallback");
+  const whatsappHref = getWhatsAppHref(whatsapp);
   const socialLinks = socialPlatforms.map((platform) => ({
     platform,
     href: settings?.socialLinks.find((link) => link.platform === platform)?.href,
@@ -117,65 +124,67 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-[color:var(--glass-border)] bg-[color:var(--black)]">
-      <Container className="flex flex-col gap-[var(--space-12)] py-[var(--space-16)]">
-        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.1fr_1.4fr]">
-          <div className="flex max-w-[var(--container-narrow)] flex-col gap-[var(--space-8)] text-start">
-            <div className="flex flex-col gap-[var(--space-3)]">
-              <span className="text-h4 font-semibold leading-snug text-white">
+      <Container className="flex flex-col gap-[var(--space-16)] py-[var(--space-20)]">
+        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.05fr_1.45fr]">
+          <div className="flex max-w-[var(--container-narrow)] flex-col gap-[var(--space-10)] text-start">
+            <div className="flex flex-col gap-[var(--space-4)] border-s border-red-primary/50 ps-[var(--space-5)]">
+              <span className="text-h3 font-semibold leading-tight text-white rtl:text-ar-h3">
                 {t("brand.name")}
               </span>
-              <p className="text-body text-text-secondary rtl:text-ar-body">
+              <p className="max-w-xl text-body-lg text-text-secondary rtl:text-ar-body-lg">
                 {t("brand.tagline")}
               </p>
             </div>
 
-            <address className="flex flex-col gap-[var(--space-4)] not-italic">
+            <address className="flex flex-col gap-[var(--space-5)] not-italic">
               <Heading level={3} className="text-h5" tone="primary">
                 {t("footer.contactTitle")}
               </Heading>
               <ul
-                className="flex list-none flex-col gap-[var(--space-3)] p-0 text-small text-text-secondary rtl:text-ar-small"
+                className="grid list-none gap-[var(--space-3)] p-0 text-small text-text-secondary rtl:text-ar-small"
                 role="list"
               >
-                <li>
-                  <span className="text-text-muted">{t("footer.emailLabel")}: </span>
+                <li className="grid gap-[var(--space-1)]">
+                  <span className="text-text-muted">{t("footer.emailLabel")}</span>
                   <a
                     href={`mailto:${email}`}
-                    className="underline-offset-4 hover:text-white hover:underline"
+                    className="w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
                   >
                     {email}
                   </a>
                 </li>
                 {phone ? (
-                  <li>
-                    <span className="text-text-muted">
-                      {t("footer.phoneLabel")}:{" "}
-                    </span>
+                  <li className="grid gap-[var(--space-1)]">
+                    <span className="text-text-muted">{t("footer.phoneLabel")}</span>
                     <a
                       href={`tel:${phone}`}
-                      className="underline-offset-4 hover:text-white hover:underline"
+                      className="w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
                     >
                       {phone}
                     </a>
                   </li>
                 ) : null}
-                <li>
-                  <span className="text-text-muted">
-                    {t("footer.whatsappLabel")}:{" "}
-                  </span>
-                  {whatsapp}
+                <li className="grid gap-[var(--space-1)]">
+                  <span className="text-text-muted">{t("footer.whatsappLabel")}</span>
+                  <a
+                    href={whatsappHref}
+                    aria-label={`${t("footer.whatsappLabel")}: ${whatsapp}`}
+                    className="w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {whatsapp}
+                  </a>
                 </li>
-                <li>
-                  <span className="text-text-muted">
-                    {t("footer.addressLabel")}:{" "}
-                  </span>
-                  {address}
+                <li className="grid gap-[var(--space-1)]">
+                  <span className="text-text-muted">{t("footer.addressLabel")}</span>
+                  <span>{address}</span>
                 </li>
-                <li>
+                <li className="grid gap-[var(--space-1)]">
                   <span className="text-text-muted">
-                    {t("footer.workingHoursLabel")}:{" "}
+                    {t("footer.workingHoursLabel")}
                   </span>
-                  {workingHours}
+                  <span>{workingHours}</span>
                 </li>
               </ul>
             </address>
@@ -183,7 +192,7 @@ export async function Footer() {
 
           <nav
             aria-label={t("footer.navigationLabel")}
-            className="grid gap-[var(--space-10)] sm:grid-cols-3"
+            className="grid gap-[var(--space-10)] rounded-md border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] p-[var(--space-8)] sm:grid-cols-3"
           >
             <FooterColumn title={t("footer.servicesTitle")} links={serviceLinks} />
             <FooterColumn title={t("footer.companyTitle")} links={companyLinks} />
@@ -192,7 +201,7 @@ export async function Footer() {
         </div>
 
         <div className="flex flex-col gap-[var(--space-8)] border-t border-[color:var(--glass-border)] pt-[var(--space-8)] lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex flex-col gap-[var(--space-4)]">
+          <div className="flex flex-col gap-[var(--space-5)]">
             <Heading level={3} className="text-h5" tone="primary">
               {t("footer.socialTitle")}
             </Heading>
@@ -202,7 +211,7 @@ export async function Footer() {
                   {link.href ? (
                     <a
                       href={link.href}
-                      className="inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2 text-small font-medium text-text-secondary underline-offset-4 hover:text-white hover:underline rtl:text-ar-small"
+                      className="inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-medium text-text-secondary underline-offset-4 outline-none hover:border-border-light hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -211,7 +220,7 @@ export async function Footer() {
                   ) : (
                     <span
                       aria-disabled="true"
-                      className="inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2 text-small font-medium text-text-muted rtl:text-ar-small"
+                      className="inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-medium text-text-muted rtl:text-ar-small"
                     >
                       {t(`footer.social.${link.platform}`)}
                     </span>

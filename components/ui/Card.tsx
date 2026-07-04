@@ -3,19 +3,19 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const cardVariants = cva("rounded-md border", {
+const cardVariants = cva("relative rounded-md border shadow-sm", {
   variants: {
     variant: {
       glass:
-        "border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] backdrop-blur-[20px]",
-      surface: "border-border bg-surface",
-      elevated: "border-border-light bg-surface-elevated shadow-md",
+        "border-[color:var(--glass-border)] bg-[color:color-mix(in_srgb,var(--glass-bg)_78%,var(--surface)_22%)] backdrop-blur-[20px]",
+      surface: "border-border bg-surface shadow-md",
+      elevated: "border-border-light bg-surface-elevated shadow-lg",
     },
     padding: {
       none: "p-0",
-      sm: "p-4",
-      md: "p-6",
-      lg: "p-8",
+      sm: "p-5",
+      md: "p-7",
+      lg: "p-8 lg:p-10",
     },
   },
   defaultVariants: {
