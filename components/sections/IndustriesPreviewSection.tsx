@@ -1,6 +1,13 @@
 import type { ReactNode } from "react";
 
-import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
+import {
+  Button,
+  Card,
+  Container,
+  Heading,
+  Section,
+  SectionHeader,
+} from "@/components/ui";
 
 export type IndustryPreviewItem = {
   id: string;
@@ -28,25 +35,13 @@ export function IndustriesPreviewSection({
   return (
     <Section tone="dark" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex flex-col gap-[var(--space-6)] lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-            {eyebrow ? (
-              <Badge variant="red" size="md">
-                {eyebrow}
-              </Badge>
-            ) : null}
-
-            <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading id={headingId} level={2}>
-                {heading}
-              </Heading>
-              <p className="max-w-[var(--container-narrow)] text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {description}
-              </p>
-            </div>
-          </div>
-
-          {ctaLabel ? (
+        <SectionHeader
+          badge={eyebrow}
+          title={heading}
+          description={description}
+          headingId={headingId}
+          layout="split"
+          actions={ctaLabel ? (
             <Button
               variant="secondary"
               size="lg"
@@ -57,7 +52,7 @@ export function IndustriesPreviewSection({
               {ctaLabel}
             </Button>
           ) : null}
-        </header>
+        />
 
         <ul
           className="grid list-none gap-[var(--grid-gap)] p-0 sm:grid-cols-2 lg:grid-cols-4"
@@ -68,7 +63,8 @@ export function IndustriesPreviewSection({
               <Card
                 variant="glass"
                 padding="md"
-                className="flex min-h-40 flex-col gap-[var(--space-3)] text-start"
+                composition="compact"
+                className="min-h-40 gap-[var(--space-3)]"
               >
                 <Heading level={3} className="text-h4">
                   {item.title}

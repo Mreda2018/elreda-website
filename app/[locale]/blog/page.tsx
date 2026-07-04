@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
-import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Badge, Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
@@ -116,51 +117,34 @@ async function BlogHero({ locale }: { locale: Locale }) {
   const headingId = "blog-page-heading";
 
   return (
-    <Section
-      tone="dark"
-      spacing="compact"
-      aria-labelledby={headingId}
-      className="overflow-hidden pt-[calc(var(--space-20)+var(--space-16))]"
-    >
-      <Container className="flex flex-col gap-[var(--space-12)]">
-        <BlogBreadcrumbs locale={locale} />
-
-        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.12fr_0.88fr] lg:items-end">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-6)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-5)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
-            </div>
+    <InnerPageHero
+      variant="editorial"
+      headingId={headingId}
+      breadcrumbs={<BlogBreadcrumbs locale={locale} />}
+      eyebrow={t("hero.eyebrow")}
+      title={t("hero.title")}
+      description={t("hero.description")}
+      aside={
+        <Card
+          variant="glass"
+          padding="lg"
+          className="relative overflow-hidden border-[color:var(--glass-border)] text-start"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+          />
+          <div className="flex flex-col gap-[var(--space-5)]">
+            <p className="text-h4 font-semibold leading-relaxed text-white rtl:text-ar-h3">
+              {t("hero.panel.title")}
+            </p>
+            <p className="text-body text-text-secondary rtl:text-ar-body">
+              {t("hero.panel.description")}
+            </p>
           </div>
-
-          <Card
-            variant="glass"
-            padding="lg"
-            className="relative overflow-hidden border-[color:var(--glass-border)] text-start"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
-            />
-            <div className="flex flex-col gap-[var(--space-5)]">
-              <p className="text-h4 font-semibold leading-relaxed text-white rtl:text-ar-h3">
-                {t("hero.panel.title")}
-              </p>
-              <p className="text-body text-text-secondary rtl:text-ar-body">
-                {t("hero.panel.description")}
-              </p>
-            </div>
-          </Card>
-        </div>
-      </Container>
-    </Section>
+        </Card>
+      }
+    />
   );
 }
 
@@ -171,19 +155,12 @@ async function BlogFilters() {
   return (
     <Section tone="surface" spacing="compact" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-8)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("filters.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("filters.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("filters.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("filters.eyebrow")}
+          title={t("filters.title")}
+          description={t("filters.description")}
+          headingId={headingId}
+        />
 
         <ul
           aria-label={t("filters.label")}

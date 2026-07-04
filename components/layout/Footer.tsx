@@ -78,7 +78,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
           <li key={link.href}>
             <Link
               href={link.href}
-              className="inline-flex rounded-sm text-small text-text-secondary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
+              className="micro-link inline-flex rounded-sm text-small text-text-secondary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
             >
               {link.label}
             </Link>
@@ -148,7 +148,7 @@ export async function Footer() {
                   <span className="text-text-muted">{t("footer.emailLabel")}</span>
                   <a
                     href={`mailto:${email}`}
-                    className="w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
+                    className="micro-link w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
                   >
                     {email}
                   </a>
@@ -158,7 +158,7 @@ export async function Footer() {
                     <span className="text-text-muted">{t("footer.phoneLabel")}</span>
                     <a
                       href={`tel:${phone}`}
-                      className="w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
+                      className="micro-link w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
                     >
                       {phone}
                     </a>
@@ -169,7 +169,7 @@ export async function Footer() {
                   <a
                     href={whatsappHref}
                     aria-label={`${t("footer.whatsappLabel")}: ${whatsapp}`}
-                    className="w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
+                    className="micro-link w-fit rounded-sm text-text-primary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -211,7 +211,7 @@ export async function Footer() {
                   {link.href ? (
                     <a
                       href={link.href}
-                      className="inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-medium text-text-secondary underline-offset-4 outline-none hover:border-border-light hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
+                      className="micro-pill inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-medium text-text-secondary underline-offset-4 outline-none hover:border-border-light hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
                       rel="noreferrer"
                       target="_blank"
                     >

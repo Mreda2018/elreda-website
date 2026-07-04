@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const cardVariants = cva("relative rounded-md border shadow-sm", {
+const cardVariants = cva("micro-card relative rounded-md border shadow-sm", {
   variants: {
     variant: {
       glass:
@@ -24,11 +24,39 @@ const cardVariants = cva("relative rounded-md border shadow-sm", {
   },
 });
 
-export type CardProps = HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof cardVariants>;
+export const cardCompositionVariants = cva("", {
+  variants: {
+    composition: {
+      feature:
+        "flex h-full min-h-[calc(var(--space-48)+var(--space-8))] flex-col gap-[var(--space-6)] text-start",
+      editorial:
+        "grid gap-[var(--space-8)] text-start lg:grid-cols-[0.8fr_1.2fr]",
+      metric:
+        "border-t border-[color:var(--glass-border)] pt-[var(--space-5)]",
+      compact: "flex h-full flex-col gap-[var(--space-4)] text-start",
+    },
+  },
+});
 
-export function Card({ className, variant, padding, ...props }: CardProps) {
+export type CardProps = HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof cardVariants> &
+  VariantProps<typeof cardCompositionVariants>;
+
+export function Card({
+  className,
+  variant,
+  padding,
+  composition,
+  ...props
+}: CardProps) {
   return (
-    <div className={cn(cardVariants({ variant, padding }), className)} {...props} />
+    <div
+      className={cn(
+        cardVariants({ variant, padding }),
+        cardCompositionVariants({ composition }),
+        className,
+      )}
+      {...props}
+    />
   );
 }

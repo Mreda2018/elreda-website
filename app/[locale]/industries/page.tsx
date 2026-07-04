@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
-import { Badge, Card, Container, Heading, Section } from "@/components/ui";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -105,63 +106,46 @@ async function IndustriesHero({ locale }: { locale: Locale }) {
   const headingId = "industries-page-heading";
 
   return (
-    <Section
-      tone="dark"
-      spacing="compact"
-      aria-labelledby={headingId}
-      className="overflow-hidden pt-[calc(var(--space-20)+var(--space-16))]"
-    >
-      <Container className="flex flex-col gap-[var(--space-12)]">
-        <IndustriesBreadcrumbs locale={locale} />
-
-        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.16fr_0.84fr] lg:items-end">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-6)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-5)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
-            </div>
+    <InnerPageHero
+      variant="proof"
+      headingId={headingId}
+      breadcrumbs={<IndustriesBreadcrumbs locale={locale} />}
+      eyebrow={t("hero.eyebrow")}
+      title={t("hero.title")}
+      description={t("hero.description")}
+      aside={
+        <Card
+          variant="glass"
+          padding="lg"
+          className="relative overflow-hidden border-[color:var(--glass-border)] text-start"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+          />
+          <div className="flex flex-col gap-[var(--space-8)]">
+            <p className="text-h4 font-semibold leading-relaxed text-white rtl:text-ar-h3">
+              {t("hero.panel.title")}
+            </p>
+            <dl className="grid gap-[var(--space-5)]">
+              {proofKeys.map((key) => (
+                <div
+                  key={key}
+                  className="border-t border-[color:var(--glass-border)] pt-[var(--space-5)]"
+                >
+                  <dt className="text-small text-text-muted rtl:text-ar-small">
+                    {t(`hero.panel.items.${key}.label`)}
+                  </dt>
+                  <dd className="m-0 mt-[var(--space-2)] font-body text-h4 font-semibold text-white">
+                    {t(`hero.panel.items.${key}.value`)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
-
-          <Card
-            variant="glass"
-            padding="lg"
-            className="relative overflow-hidden border-[color:var(--glass-border)] text-start"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
-            />
-            <div className="flex flex-col gap-[var(--space-8)]">
-              <p className="text-h4 font-semibold leading-relaxed text-white rtl:text-ar-h3">
-                {t("hero.panel.title")}
-              </p>
-              <dl className="grid gap-[var(--space-5)]">
-                {proofKeys.map((key) => (
-                  <div
-                    key={key}
-                    className="border-t border-[color:var(--glass-border)] pt-[var(--space-5)]"
-                  >
-                    <dt className="text-small text-text-muted rtl:text-ar-small">
-                      {t(`hero.panel.items.${key}.label`)}
-                    </dt>
-                    <dd className="m-0 mt-[var(--space-2)] font-body text-h4 font-semibold text-white">
-                      {t(`hero.panel.items.${key}.value`)}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </Card>
-        </div>
-      </Container>
-    </Section>
+        </Card>
+      }
+    />
   );
 }
 
@@ -172,19 +156,13 @@ async function IndustriesGrid({ locale }: { locale: Locale }) {
   return (
     <Section tone="surface" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="grid gap-[var(--space-8)] lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-          <div className="flex flex-col items-start gap-[var(--space-5)] text-start">
-            <Badge variant="red" size="md">
-              {t("grid.eyebrow")}
-            </Badge>
-            <Heading id={headingId} level={2}>
-              {t("grid.title")}
-            </Heading>
-          </div>
-          <p className="max-w-[var(--container-narrow)] text-body-lg text-text-secondary rtl:text-ar-body-lg">
-            {t("grid.description")}
-          </p>
-        </header>
+        <SectionHeader
+          badge={t("grid.eyebrow")}
+          title={t("grid.title")}
+          description={t("grid.description")}
+          headingId={headingId}
+          layout="split"
+        />
 
         <ul className="grid list-none gap-[var(--grid-gap)] p-0 lg:grid-cols-2" role="list">
           {industryKeys.map((key, index) => {
@@ -248,23 +226,19 @@ async function IndustryProcess({ locale }: { locale: Locale }) {
   return (
     <Section tone="dark" aria-labelledby={headingId}>
       <Container className="grid gap-[var(--space-12)] lg:grid-cols-[0.76fr_1.24fr]">
-        <header className="flex flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("process.eyebrow")}
-          </Badge>
-          <Heading id={headingId} level={2}>
-            {t("process.title")}
-          </Heading>
-          <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-            {t("process.description")}
-          </p>
-        </header>
+        <SectionHeader
+          badge={t("process.eyebrow")}
+          title={t("process.title")}
+          description={t("process.description")}
+          headingId={headingId}
+        />
 
         <div className="grid gap-[var(--grid-gap)]">
           <Card
             variant="glass"
             padding="lg"
-            className="grid gap-[var(--space-8)] border-[color:var(--glass-border)] lg:grid-cols-[0.8fr_1.2fr]"
+            composition="editorial"
+            className="border-[color:var(--glass-border)]"
           >
             <blockquote className="border-s border-red-primary ps-[var(--space-6)] text-h4 font-semibold leading-relaxed text-white rtl:text-ar-h3">
               {t("process.quote")}

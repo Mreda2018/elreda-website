@@ -1,6 +1,14 @@
 import type { ReactNode } from "react";
 
-import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  Container,
+  Heading,
+  Section,
+  SectionHeader,
+} from "@/components/ui";
 
 export type PortfolioPreviewItem = {
   id: string;
@@ -29,25 +37,13 @@ export function PortfolioPreviewSection({
   return (
     <Section tone="surface" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex flex-col gap-[var(--space-6)] lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-            {eyebrow ? (
-              <Badge variant="red" size="md">
-                {eyebrow}
-              </Badge>
-            ) : null}
-
-            <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading id={headingId} level={2}>
-                {heading}
-              </Heading>
-              <p className="max-w-[var(--container-narrow)] text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {description}
-              </p>
-            </div>
-          </div>
-
-          {ctaLabel ? (
+        <SectionHeader
+          badge={eyebrow}
+          title={heading}
+          description={description}
+          headingId={headingId}
+          layout="split"
+          actions={ctaLabel ? (
             <Button
               variant="secondary"
               size="lg"
@@ -58,7 +54,7 @@ export function PortfolioPreviewSection({
               {ctaLabel}
             </Button>
           ) : null}
-        </header>
+        />
 
         <ul
           className="grid list-none gap-[var(--grid-gap)] p-0 sm:grid-cols-2 lg:grid-cols-3"
@@ -69,7 +65,8 @@ export function PortfolioPreviewSection({
               <Card
                 variant="glass"
                 padding="lg"
-                className="flex min-h-64 flex-col text-start"
+                composition="compact"
+                className="min-h-64"
               >
                 <div className="flex flex-col gap-[var(--space-5)]">
                   {item.category ? (

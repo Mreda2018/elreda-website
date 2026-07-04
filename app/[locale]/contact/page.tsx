@@ -3,8 +3,9 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { SelectField, TextAreaField, TextField } from "@/components/forms";
-import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
+import { Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -96,56 +97,39 @@ async function ContactHero({ locale }: { locale: Locale }) {
   const headingId = "contact-page-heading";
 
   return (
-    <Section
-      tone="dark"
-      spacing="compact"
-      aria-labelledby={headingId}
-      className="overflow-hidden pt-[calc(var(--space-20)+var(--space-16))]"
-    >
-      <Container className="flex flex-col gap-[var(--space-10)]">
-        <ContactBreadcrumbs locale={locale} />
-
-        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
+    <InnerPageHero
+      variant="proof"
+      headingId={headingId}
+      breadcrumbs={<ContactBreadcrumbs locale={locale} />}
+      eyebrow={t("hero.eyebrow")}
+      title={t("hero.title")}
+      description={t("hero.description")}
+      aside={
+        <Card
+          variant="glass"
+          padding="lg"
+          className="relative overflow-hidden border-[color:var(--glass-border)] text-start"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+          />
+          <dl className="flex flex-col gap-[var(--space-4)]">
+            <div>
+              <dt className="text-small text-text-muted rtl:text-ar-small">
+                {t("hero.response.label")}
+              </dt>
+              <dd className="m-0 mt-[var(--space-2)] font-body text-h3 font-semibold text-white rtl:text-ar-h3">
+                {t("hero.response.value")}
+              </dd>
             </div>
-          </div>
-
-          <Card
-            variant="glass"
-            padding="lg"
-            className="relative overflow-hidden border-[color:var(--glass-border)] text-start"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
-            />
-            <dl className="flex flex-col gap-[var(--space-4)]">
-              <div>
-                <dt className="text-small text-text-muted rtl:text-ar-small">
-                  {t("hero.response.label")}
-                </dt>
-                <dd className="m-0 mt-[var(--space-2)] font-body text-h3 font-semibold text-white rtl:text-ar-h3">
-                  {t("hero.response.value")}
-                </dd>
-              </div>
-              <p className="m-0 text-body text-text-secondary rtl:text-ar-body">
-                {t("hero.response.description")}
-              </p>
-            </dl>
-          </Card>
-        </div>
-      </Container>
-    </Section>
+            <p className="m-0 text-body text-text-secondary rtl:text-ar-body">
+              {t("hero.response.description")}
+            </p>
+          </dl>
+        </Card>
+      }
+    />
   );
 }
 
@@ -156,19 +140,12 @@ async function ContactInformation() {
   return (
     <Section tone="surface" aria-labelledby={headingId}>
       <Container className="grid gap-[var(--space-12)] lg:grid-cols-[0.9fr_1.1fr]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("info.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("info.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("info.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("info.eyebrow")}
+          title={t("info.title")}
+          description={t("info.description")}
+          headingId={headingId}
+        />
 
         <div className="grid gap-[var(--grid-gap)] sm:grid-cols-2 lg:grid-cols-3">
           {contactCardKeys.map((key) => (
@@ -235,19 +212,12 @@ async function ContactFormLayout() {
   return (
     <Section tone="dark" aria-labelledby={headingId}>
       <Container className="grid gap-[var(--space-12)] lg:grid-cols-[0.82fr_1.18fr]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("form.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("form.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("form.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("form.eyebrow")}
+          title={t("form.title")}
+          description={t("form.description")}
+          headingId={headingId}
+        />
 
         <Card variant="glass" padding="lg" className="text-start">
           <form className="grid gap-[var(--space-6)]" aria-labelledby={headingId}>

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
-import { Badge, Card, Container, Heading, Section } from "@/components/ui";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -94,63 +95,46 @@ async function AboutHero({ locale }: { locale: Locale }) {
   const headingId = "about-page-heading";
 
   return (
-    <Section
-      tone="dark"
-      spacing="compact"
-      aria-labelledby={headingId}
-      className="overflow-hidden pt-[calc(var(--space-20)+var(--space-16))]"
-    >
-      <Container className="flex flex-col gap-[var(--space-12)]">
-        <AboutBreadcrumbs locale={locale} />
-
-        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-6)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-5)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
-            </div>
+    <InnerPageHero
+      variant="editorial"
+      headingId={headingId}
+      breadcrumbs={<AboutBreadcrumbs locale={locale} />}
+      eyebrow={t("hero.eyebrow")}
+      title={t("hero.title")}
+      description={t("hero.description")}
+      aside={
+        <Card
+          variant="glass"
+          padding="lg"
+          className="relative overflow-hidden border-[color:var(--glass-border)]"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+          />
+          <div className="flex flex-col gap-[var(--space-8)]">
+            <p className="text-h4 font-semibold text-white rtl:text-ar-h3">
+              {t("hero.signalLabel")}
+            </p>
+            <dl className="grid gap-[var(--space-5)] sm:grid-cols-3 lg:grid-cols-1">
+              {heroStatKeys.map((key) => (
+                <div
+                  key={key}
+                  className="border-t border-[color:var(--glass-border)] pt-[var(--space-5)]"
+                >
+                  <dt className="text-small text-text-muted rtl:text-ar-small">
+                    {t(`hero.stats.${key}.label`)}
+                  </dt>
+                  <dd className="m-0 mt-[var(--space-2)] text-h3 font-semibold text-white rtl:text-ar-h3">
+                    {t(`hero.stats.${key}.value`)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
-
-          <Card
-            variant="glass"
-            padding="lg"
-            className="relative overflow-hidden border-[color:var(--glass-border)]"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
-            />
-            <div className="flex flex-col gap-[var(--space-8)]">
-              <p className="text-h4 font-semibold text-white rtl:text-ar-h3">
-                {t("hero.signalLabel")}
-              </p>
-              <dl className="grid gap-[var(--space-5)] sm:grid-cols-3 lg:grid-cols-1">
-                {heroStatKeys.map((key) => (
-                  <div
-                    key={key}
-                    className="border-t border-[color:var(--glass-border)] pt-[var(--space-5)]"
-                  >
-                    <dt className="text-small text-text-muted rtl:text-ar-small">
-                      {t(`hero.stats.${key}.label`)}
-                    </dt>
-                    <dd className="m-0 mt-[var(--space-2)] text-h3 font-semibold text-white rtl:text-ar-h3">
-                      {t(`hero.stats.${key}.value`)}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </Card>
-        </div>
-      </Container>
-    </Section>
+        </Card>
+      }
+    />
   );
 }
 
@@ -161,23 +145,19 @@ async function CompanyStory() {
   return (
     <Section tone="surface" aria-labelledby={headingId}>
       <Container className="grid gap-[var(--space-12)] lg:grid-cols-[0.82fr_1.18fr]">
-        <header className="flex flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("story.eyebrow")}
-          </Badge>
-          <Heading id={headingId} level={2}>
-            {t("story.title")}
-          </Heading>
-          <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-            {t("story.lead")}
-          </p>
-        </header>
+        <SectionHeader
+          badge={t("story.eyebrow")}
+          title={t("story.title")}
+          description={t("story.lead")}
+          headingId={headingId}
+        />
 
         <div className="grid gap-[var(--space-6)]">
           <Card
             variant="glass"
             padding="lg"
-            className="grid gap-[var(--space-8)] border-[color:var(--glass-border)] lg:grid-cols-[0.85fr_1.15fr]"
+            composition="editorial"
+            className="border-[color:var(--glass-border)] lg:grid-cols-[0.85fr_1.15fr]"
           >
             <blockquote className="border-s border-red-primary ps-[var(--space-6)] text-h4 font-semibold leading-relaxed text-white rtl:text-ar-h3">
               {t("story.quote")}
@@ -206,14 +186,11 @@ async function MissionVision() {
   return (
     <Section tone="dark" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("missionVision.eyebrow")}
-          </Badge>
-          <Heading id={headingId} level={2}>
-            {t("missionVision.title")}
-          </Heading>
-        </header>
+        <SectionHeader
+          badge={t("missionVision.eyebrow")}
+          title={t("missionVision.title")}
+          headingId={headingId}
+        />
 
         <div className="grid gap-[var(--grid-gap)] lg:grid-cols-2">
           {(["mission", "vision"] as const).map((key) => (
@@ -247,14 +224,11 @@ async function ValuesSection() {
   return (
     <Section tone="elevated" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("values.eyebrow")}
-          </Badge>
-          <Heading id={headingId} level={2}>
-            {t("values.title")}
-          </Heading>
-        </header>
+        <SectionHeader
+          badge={t("values.eyebrow")}
+          title={t("values.title")}
+          headingId={headingId}
+        />
 
         <ul
           className="grid list-none gap-[var(--grid-gap)] p-0 md:grid-cols-2 xl:grid-cols-5"
@@ -265,7 +239,8 @@ async function ValuesSection() {
               <Card
                 variant="glass"
                 padding="lg"
-                className="flex h-full flex-col gap-[var(--space-5)] text-start"
+                composition="compact"
+                className="gap-[var(--space-5)]"
               >
                 <span
                   aria-hidden="true"
@@ -297,19 +272,12 @@ async function TeamSection() {
   return (
     <Section tone="surface" aria-labelledby={headingId}>
       <Container className="grid gap-[var(--space-12)] lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("team.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("team.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("team.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("team.eyebrow")}
+          title={t("team.title")}
+          description={t("team.description")}
+          headingId={headingId}
+        />
 
         <ul className="grid list-none gap-[var(--grid-gap)] p-0" role="list">
           {teamKeys.map((key) => (

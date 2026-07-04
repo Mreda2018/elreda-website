@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // Primary CTAs intentionally use flat --red-button instead of the brand gradient
 // so every rendered state keeps consistent WCAG AA contrast.
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full border text-body font-semibold leading-none shadow-sm outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-button disabled:pointer-events-none disabled:opacity-50 rtl:text-ar-body",
+  "micro-button inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full border text-body font-semibold leading-none shadow-sm outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-button disabled:pointer-events-none disabled:opacity-50 rtl:text-ar-body",
   {
     variants: {
       variant: {

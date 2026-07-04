@@ -3,8 +3,9 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { OptionCardField, SelectField, TextAreaField, TextField } from "@/components/forms";
-import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
+import { Button, Card, Container, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -89,37 +90,21 @@ async function QuoteHero({ locale }: { locale: Locale }) {
   const headingId = "quote-page-heading";
 
   return (
-    <Section
-      tone="dark"
-      spacing="compact"
-      aria-labelledby={headingId}
-      className="pt-[calc(var(--space-20)+var(--space-16))]"
-    >
-      <Container className="flex flex-col gap-[var(--space-10)]">
-        <QuoteBreadcrumbs locale={locale} />
-        <div className="grid gap-[var(--space-10)] lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
-            </div>
-          </div>
-
-          <Card variant="glass" padding="lg" className="text-start">
-            <p className="text-body text-text-secondary rtl:text-ar-body">
-              {t("hero.note")}
-            </p>
-          </Card>
-        </div>
-      </Container>
-    </Section>
+    <InnerPageHero
+      variant="proof"
+      headingId={headingId}
+      breadcrumbs={<QuoteBreadcrumbs locale={locale} />}
+      eyebrow={t("hero.eyebrow")}
+      title={t("hero.title")}
+      description={t("hero.description")}
+      aside={
+        <Card variant="glass" padding="lg" className="text-start">
+          <p className="text-body text-text-secondary rtl:text-ar-body">
+            {t("hero.note")}
+          </p>
+        </Card>
+      }
+    />
   );
 }
 
@@ -167,14 +152,11 @@ async function QuoteFormLayout() {
   return (
     <Section tone="surface" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-4)] text-start">
-          <Heading id={headingId} level={2}>
-            {t("form.title")}
-          </Heading>
-          <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-            {t("form.description")}
-          </p>
-        </header>
+        <SectionHeader
+          title={t("form.title")}
+          description={t("form.description")}
+          headingId={headingId}
+        />
 
         <Card variant="glass" padding="lg" className="text-start">
           <form className="grid gap-[var(--space-10)]" aria-labelledby={headingId}>

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
-import { Badge, Button, Card, Container, Heading, Section } from "@/components/ui";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Badge, Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
@@ -104,19 +105,12 @@ async function PortfolioFilters() {
   return (
     <Section tone="surface" spacing="compact" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-8)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("filters.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("filters.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("filters.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("filters.eyebrow")}
+          title={t("filters.title")}
+          description={t("filters.description")}
+          headingId={headingId}
+        />
 
         <ul
           aria-label={t("filters.label")}
@@ -160,19 +154,12 @@ async function PortfolioListing({
   return (
     <Section tone="dark" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("listing.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("listing.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("listing.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("listing.eyebrow")}
+          title={t("listing.title")}
+          description={t("listing.description")}
+          headingId={headingId}
+        />
 
         {projects.length > 0 ? (
           <ul
@@ -265,29 +252,13 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
 
   return (
     <>
-      <Section
-        tone="dark"
-        spacing="compact"
-        aria-labelledby={headingId}
-        className="pt-[calc(var(--space-20)+var(--space-16))]"
-      >
-        <Container className="flex flex-col gap-[var(--space-10)]">
-          <PortfolioBreadcrumbs locale={locale} />
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <InnerPageHero
+        headingId={headingId}
+        breadcrumbs={<PortfolioBreadcrumbs locale={locale} />}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
+      />
 
       <PortfolioFilters />
       <PortfolioListing locale={locale} projects={projects} />

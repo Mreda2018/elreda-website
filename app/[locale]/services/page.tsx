@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
-import { Badge, Card, Container, Heading, Section } from "@/components/ui";
+import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
 import { loadServicesPage } from "@/lib/sanity/loaders";
@@ -82,19 +83,12 @@ async function ServicesList({
   return (
     <Section tone="elevated" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          <Badge variant="red" size="md">
-            {t("list.eyebrow")}
-          </Badge>
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {t("list.title")}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {t("list.description")}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={t("list.eyebrow")}
+          title={t("list.title")}
+          description={t("list.description")}
+          headingId={headingId}
+        />
 
         {services.length > 0 ? (
           <ul
@@ -155,29 +149,13 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
 
   return (
     <>
-      <Section
-        tone="dark"
-        spacing="compact"
-        aria-labelledby={headingId}
-        className="pt-[calc(var(--space-20)+var(--space-16))]"
-      >
-        <Container className="flex flex-col gap-[var(--space-10)]">
-          <ServicesBreadcrumbs locale={locale} />
-          <div className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-            <Badge variant="red" size="md">
-              {t("hero.eyebrow")}
-            </Badge>
-            <div className="flex flex-col gap-[var(--space-4)]">
-              <Heading id={headingId} level={1}>
-                {t("hero.title")}
-              </Heading>
-              <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-                {t("hero.description")}
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <InnerPageHero
+        headingId={headingId}
+        breadcrumbs={<ServicesBreadcrumbs locale={locale} />}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
+      />
 
       <ServicesList locale={locale} services={services} />
 

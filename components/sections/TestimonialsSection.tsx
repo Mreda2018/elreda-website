@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Badge, Card, Container, Heading, Section } from "@/components/ui";
+import { Card, Container, Section, SectionHeader } from "@/components/ui";
 
 export type TestimonialCardItem = {
   id: string;
@@ -34,22 +34,12 @@ export function TestimonialsSection({
   return (
     <Section tone="elevated" aria-labelledby={headingId}>
       <Container className="flex flex-col gap-[var(--space-12)]">
-        <header className="flex max-w-[var(--container-narrow)] flex-col items-start gap-[var(--space-5)] text-start">
-          {eyebrow ? (
-            <Badge variant="red" size="md">
-              {eyebrow}
-            </Badge>
-          ) : null}
-
-          <div className="flex flex-col gap-[var(--space-4)]">
-            <Heading id={headingId} level={2}>
-              {heading}
-            </Heading>
-            <p className="text-body-lg text-text-secondary rtl:text-ar-body-lg">
-              {description}
-            </p>
-          </div>
-        </header>
+        <SectionHeader
+          badge={eyebrow}
+          title={heading}
+          description={description}
+          headingId={headingId}
+        />
 
         <ul
           className="grid list-none gap-[var(--grid-gap)] p-0 md:grid-cols-2 lg:grid-cols-3"

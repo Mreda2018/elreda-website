@@ -36,7 +36,7 @@ export function HeaderNavigation({ ariaLabel, items }: HeaderNavigationProps) {
             href={item.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "rounded-full px-4 py-2.5 text-small font-medium leading-none text-text-secondary outline-none hover:bg-surface-elevated hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-button rtl:text-ar-small",
+              "micro-nav-link rounded-full px-4 py-2.5 text-small font-medium leading-none text-text-secondary outline-none hover:bg-surface-elevated hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-button rtl:text-ar-small",
               isActive &&
                 "bg-surface-elevated text-white shadow-sm ring-1 ring-[color:var(--glass-border)]",
             )}
