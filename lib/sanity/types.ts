@@ -170,6 +170,46 @@ export type PortfolioPageContent = {
   projects: PortfolioPageProject[];
 };
 
+export type SanityBlogAuthor = {
+  name?: string | null;
+};
+
+export type SanityBlogSeo = {
+  description?: string | null;
+};
+
+export type SanityBlogPostDocument = {
+  _id?: string | null;
+  title?: LocalizedString | null;
+  slug?: string | null;
+  author?: SanityBlogAuthor | null;
+  category?: string | null;
+  tags?: string[] | null;
+  body?: LocalizedPortableText | null;
+  seo?: SanityBlogSeo | null;
+  publishedAt?: string | null;
+  featured?: boolean | null;
+  isTranslated?: boolean | null;
+};
+
+export type BlogPageArticle = {
+  id: string;
+  title: LocalizedValue;
+  href: string;
+  excerpt?: LocalizedValue;
+  author?: string;
+  category?: string;
+  tags: string[];
+  publishedAt?: string;
+  readTimeMinutes: number;
+  featured: boolean;
+  isTranslated: boolean;
+};
+
+export type BlogPageContent = {
+  articles: BlogPageArticle[];
+};
+
 export type SanityFooterSettings = {
   contactPhone?: string | null;
   contactEmail?: string | null;

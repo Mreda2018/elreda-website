@@ -1,9 +1,11 @@
 import type { Locale } from "@/lib/i18n/routing";
 import { getLocalizedValue } from "@/lib/i18n/getLocalizedValue";
 import type {
+  BlogPageContent,
   FooterContent,
   HeroContent,
   PortfolioPageContent,
+  SanityBlogPostDocument,
   SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
@@ -193,7 +195,10 @@ function getPlainTextFromBlocks(
 }
 
 function getLocalizedPortableTextValue(
-  value: SanityServiceDocument["description"] | SanityPortfolioDocument["challenge"],
+  value:
+    | SanityServiceDocument["description"]
+    | SanityPortfolioDocument["challenge"]
+    | SanityBlogPostDocument["body"],
   locale: Locale,
 ) {
   const requestedValue = getPlainTextFromBlocks(value?.[locale]);
@@ -332,6 +337,76 @@ export function mapPortfolioPage(
   }
 
   return { projects };
+}
+
+function getReadTimeMinutes(text: string): number {
+  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
+
+  return Math.max(1, Math.ceil(wordCount / 220));
+}
+
+function mapBlogPageItem(
+  item: SanityBlogPostDocument,
+  locale: Locale,
+  index: number,
+): BlogPageContent["articles"][number] | null {
+  const slug = normalizeContentSlug(item.slug);
+
+  if (!slug) {
+    return null;
+  }
+
+  const href = `/blog/${slug}`;
+
+  if (!isInternalHref(href)) {
+    return null;
+  }
+
+  const title = getLocalizedValue(item.title, locale);
+
+  if (title.text === "") {
+    return null;
+  }
+
+  const bodyExcerpt = getLocalizedPortableTextValue(item.body, locale);
+  const seoDescription = item.seo?.description?.trim();
+  const excerpt =
+    bodyExcerpt.text === "" && seoDescription
+      ? { text: seoDescription, lang: locale }
+      : bodyExcerpt;
+  const readTimeSource = bodyExcerpt.text || seoDescription || title.text;
+
+  return {
+    id: item._id ?? `${slug}-${index}`,
+    title,
+    href,
+    excerpt: excerpt.text === "" ? undefined : excerpt,
+    author: item.author?.name ?? undefined,
+    category: item.category ?? undefined,
+    tags: item.tags?.filter((tag): tag is string => Boolean(tag)) ?? [],
+    publishedAt: item.publishedAt ?? undefined,
+    readTimeMinutes: getReadTimeMinutes(readTimeSource),
+    featured: item.featured ?? false,
+    isTranslated: item.isTranslated ?? false,
+  };
+}
+
+export function mapBlogPage(
+  data: SanityBlogPostDocument[] | null,
+  locale: Locale,
+): BlogPageContent | null {
+  const articles =
+    data
+      ?.map((item, index) => mapBlogPageItem(item, locale, index))
+      .filter(
+        (item): item is BlogPageContent["articles"][number] => item !== null,
+      ) ?? [];
+
+  if (articles.length === 0) {
+    return null;
+  }
+
+  return { articles };
 }
 
 function normalizeExternalHref(href: string | null | undefined): string | undefined {

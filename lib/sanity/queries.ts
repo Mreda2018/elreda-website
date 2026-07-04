@@ -101,6 +101,37 @@ export const portfolioPageQuery = groq`
   }
 `;
 
+export const blogPageQuery = groq`
+  *[_type == "blogPost" && defined(slug.current)] | order(featured desc, publishedAt desc, _createdAt desc){
+    _id,
+    title,
+    "slug": slug.current,
+    author->{
+      name
+    },
+    category,
+    tags,
+    body{
+      en[]{
+        children[]{
+          text
+        }
+      },
+      ar[]{
+        children[]{
+          text
+        }
+      }
+    },
+    seo{
+      description
+    },
+    publishedAt,
+    featured,
+    isTranslated
+  }
+`;
+
 export const footerSettingsQuery = groq`
   *[_type == "settings" && _id == "settings"][0]{
     contactPhone,

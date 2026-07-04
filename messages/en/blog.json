@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "title": "Blog | elReda Advertising",
+    "description": "Read elReda Advertising insights on branding, websites, marketing, technology, AI automation, printing, and business growth."
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "blog": "Blog"
+  },
+  "hero": {
+    "eyebrow": "Blog",
+    "title": "Insights, guides, and resources for businesses that want to grow with clarity",
+    "description": "Practical thinking from the intersection of brand, digital presence, marketing, systems, and AI automation.",
+    "panel": {
+      "title": "Editorial notes for founders, operators, and teams making serious business decisions.",
+      "description": "The blog is built to answer the questions clients ask before they invest: what matters, what it costs, what to avoid, and how to choose the right next step."
+    }
+  },
+  "filters": {
+    "label": "Blog categories",
+    "eyebrow": "Browse by topic",
+    "title": "Category foundation",
+    "description": "Filtering will connect to article data in a later sprint. The interface is prepared now for a structured editorial library.",
+    "items": {
+      "all": "All",
+      "branding": "Branding",
+      "design": "Design",
+      "web": "Web",
+      "technology": "Tech",
+      "ai": "AI",
+      "marketing": "Marketing",
+      "printing": "Printing",
+      "business": "Business"
+    }
+  },
+  "listing": {
+    "eyebrow": "Latest thinking",
+    "title": "Articles and practical guides",
+    "description": "Each article is shaped to help business owners make sharper decisions before they brief an agency, choose a platform, or commit to a new system.",
+    "empty": "Blog articles are being prepared in the content system."
+  },
+  "card": {
+    "featured": "Featured",
+    "fallback": "English content",
+    "readTime": "Read time",
+    "published": "Published",
+    "author": "Author",
+    "minutes": "{minutes, plural, one {# minute} other {# minutes}}",
+    "excerptFallback": "Article summary will be added as the editorial content is completed."
+  },
+  "cta": {
+    "title": "Need advice for a real project, not just an article?",
+    "subtitle": "Tell us what you are trying to build. We will help you turn the thinking into a practical next step.",
+    "primary": "Request a quote",
+    "secondary": "Talk to our team"
+  }
+}

@@ -2,6 +2,7 @@ import "server-only";
 
 import type { Locale } from "@/lib/i18n/routing";
 import {
+  mapBlogPage,
   mapFooterSettings,
   mapHomeHero,
   mapHomeServices,
@@ -10,6 +11,7 @@ import {
   mapServicesPage,
 } from "@/lib/sanity/mappers";
 import {
+  blogPageQuery,
   footerSettingsQuery,
   homeHeroQuery,
   homeServicesQuery,
@@ -18,9 +20,11 @@ import {
   servicesPageQuery,
 } from "@/lib/sanity/queries";
 import type {
+  BlogPageContent,
   FooterContent,
   HeroContent,
   PortfolioPageContent,
+  SanityBlogPostDocument,
   SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
@@ -103,6 +107,21 @@ export async function loadPortfolioPage(
     return mapPortfolioPage(data, locale);
   } catch (error) {
     console.error("loadPortfolioPage failed", error);
+
+    return null;
+  }
+}
+
+export async function loadBlogPage(
+  locale: Locale,
+): Promise<BlogPageContent | null> {
+  try {
+    const { publicClient } = await import("@/lib/sanity/publicClient");
+    const data = await publicClient.fetch<SanityBlogPostDocument[]>(blogPageQuery);
+
+    return mapBlogPage(data, locale);
+  } catch (error) {
+    console.error("loadBlogPage failed", error);
 
     return null;
   }
