@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { OptionCardField, SelectField, TextAreaField, TextField } from "@/components/forms";
 import { Button, Card, Container, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
@@ -301,20 +302,24 @@ export default async function QuotePage({ params }: QuotePageProps) {
   return (
     <>
       <QuoteHero locale={locale} />
-      <QuoteFormLayout />
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="editorial">
+        <QuoteFormLayout />
+      </Reveal>
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }

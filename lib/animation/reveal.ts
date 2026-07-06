@@ -156,7 +156,7 @@ export function getRevealFromVars(
     axis === "x" && direction === "rtl" ? -variant.distance : variant.distance;
 
   return {
-    autoAlpha: 0,
+    opacity: 0.01,
     [axis]: distance,
   };
 }
@@ -165,7 +165,7 @@ export function getRevealToVars(variant: RevealVariant) {
   const axis = variant.axis === "x" ? "x" : "y";
 
   return {
-    autoAlpha: 1,
+    opacity: 1,
     [axis]: 0,
     duration: variant.duration,
     ease: variant.easing,

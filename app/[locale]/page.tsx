@@ -105,108 +105,116 @@ export default async function Home({
           />
         </Reveal>
       ) : null}
-      <PortfolioPreviewSection
-        eyebrow={t("portfolio.eyebrow")}
-        heading={t("portfolio.title")}
-        description={t("portfolio.subtitle")}
-        ctaLabel={t("portfolio.cta")}
-        items={[
-          {
-            id: "identity-system",
-            category: t("portfolio.items.identity.category"),
-            title: t("portfolio.items.identity.title"),
-            description: t("portfolio.items.identity.description"),
-          },
-          {
-            id: "commerce-experience",
-            category: t("portfolio.items.commerce.category"),
-            title: t("portfolio.items.commerce.title"),
-            description: t("portfolio.items.commerce.description"),
-          },
-          {
-            id: "operations-system",
-            category: t("portfolio.items.operations.category"),
-            title: t("portfolio.items.operations.title"),
-            description: t("portfolio.items.operations.description"),
-          },
-        ]}
-      />
-      <IndustriesPreviewSection
-        eyebrow={t("industries.eyebrow")}
-        heading={t("industries.title")}
-        description={t("industries.subtitle")}
-        ctaLabel={t("industries.cta")}
-        items={[
-          {
-            id: "restaurants",
-            title: t("industries.items.restaurants.title"),
-            description: t("industries.items.restaurants.description"),
-          },
-          {
-            id: "retail",
-            title: t("industries.items.retail.title"),
-            description: t("industries.items.retail.description"),
-          },
-          {
-            id: "clinics",
-            title: t("industries.items.clinics.title"),
-            description: t("industries.items.clinics.description"),
-          },
-          {
-            id: "real-estate",
-            title: t("industries.items.realEstate.title"),
-            description: t("industries.items.realEstate.description"),
-          },
-          {
-            id: "ecommerce",
-            title: t("industries.items.ecommerce.title"),
-            description: t("industries.items.ecommerce.description"),
-          },
-          {
-            id: "startups",
-            title: t("industries.items.startups.title"),
-            description: t("industries.items.startups.description"),
-          },
-          {
-            id: "factories",
-            title: t("industries.items.factories.title"),
-            description: t("industries.items.factories.description"),
-          },
-          {
-            id: "corporate",
-            title: t("industries.items.corporate.title"),
-            description: t("industries.items.corporate.description"),
-          },
-        ]}
-      />
-      {testimonials ? (
-        <TestimonialsSection
-          eyebrow={t("testimonials.eyebrow")}
-          heading={t("testimonials.title")}
-          description={t("testimonials.subtitle")}
-          ratingLabel={(rating) => t("testimonials.rating", { rating })}
-          items={testimonials.testimonials.map((testimonial) => ({
-            id: testimonial.id,
-            quote: renderLocalizedValue(testimonial.quote, locale),
-            clientName: testimonial.clientName,
-            company: testimonial.company,
-            rating: testimonial.rating,
-          }))}
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <PortfolioPreviewSection
+          eyebrow={t("portfolio.eyebrow")}
+          heading={t("portfolio.title")}
+          description={t("portfolio.subtitle")}
+          ctaLabel={t("portfolio.cta")}
+          items={[
+            {
+              id: "identity-system",
+              category: t("portfolio.items.identity.category"),
+              title: t("portfolio.items.identity.title"),
+              description: t("portfolio.items.identity.description"),
+            },
+            {
+              id: "commerce-experience",
+              category: t("portfolio.items.commerce.category"),
+              title: t("portfolio.items.commerce.title"),
+              description: t("portfolio.items.commerce.description"),
+            },
+            {
+              id: "operations-system",
+              category: t("portfolio.items.operations.category"),
+              title: t("portfolio.items.operations.title"),
+              description: t("portfolio.items.operations.description"),
+            },
+          ]}
         />
+      </Reveal>
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <IndustriesPreviewSection
+          eyebrow={t("industries.eyebrow")}
+          heading={t("industries.title")}
+          description={t("industries.subtitle")}
+          ctaLabel={t("industries.cta")}
+          items={[
+            {
+              id: "restaurants",
+              title: t("industries.items.restaurants.title"),
+              description: t("industries.items.restaurants.description"),
+            },
+            {
+              id: "retail",
+              title: t("industries.items.retail.title"),
+              description: t("industries.items.retail.description"),
+            },
+            {
+              id: "clinics",
+              title: t("industries.items.clinics.title"),
+              description: t("industries.items.clinics.description"),
+            },
+            {
+              id: "real-estate",
+              title: t("industries.items.realEstate.title"),
+              description: t("industries.items.realEstate.description"),
+            },
+            {
+              id: "ecommerce",
+              title: t("industries.items.ecommerce.title"),
+              description: t("industries.items.ecommerce.description"),
+            },
+            {
+              id: "startups",
+              title: t("industries.items.startups.title"),
+              description: t("industries.items.startups.description"),
+            },
+            {
+              id: "factories",
+              title: t("industries.items.factories.title"),
+              description: t("industries.items.factories.description"),
+            },
+            {
+              id: "corporate",
+              title: t("industries.items.corporate.title"),
+              description: t("industries.items.corporate.description"),
+            },
+          ]}
+        />
+      </Reveal>
+      {testimonials ? (
+        <Reveal variant="cards" itemSelector="[data-reveal-item]">
+          <TestimonialsSection
+            eyebrow={t("testimonials.eyebrow")}
+            heading={t("testimonials.title")}
+            description={t("testimonials.subtitle")}
+            ratingLabel={(rating) => t("testimonials.rating", { rating })}
+            items={testimonials.testimonials.map((testimonial) => ({
+              id: testimonial.id,
+              quote: renderLocalizedValue(testimonial.quote, locale),
+              clientName: testimonial.clientName,
+              company: testimonial.company,
+              rating: testimonial.rating,
+            }))}
+          />
+        </Reveal>
       ) : null}
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }

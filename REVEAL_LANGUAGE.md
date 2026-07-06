@@ -1,7 +1,10 @@
 # Reveal Language System
 
 Milestone 6.3 defines the reusable reveal system for future section animation.
-It introduces one live demonstration only: the homepage Services card list.
+It introduced one live demonstration only: the homepage Services card list.
+
+Milestone 6.4 applies the same system across completed public pages below page
+heroes only.
 
 ## Reveal Variants
 
@@ -37,6 +40,9 @@ Each reveal defines:
 - `getRevealToVars()`: creates final visible tween values.
 - `Reveal`: reusable client wrapper for a single scroll-triggered reveal group.
 
+Live reveal wrappers use `data-motion="reveal-group"` so they do not activate
+the lower-level `data-motion="reveal"` clip-path primitive.
+
 ## Performance Limits
 
 - Use one reveal group per viewport until broader performance testing is done.
@@ -65,10 +71,16 @@ Each reveal defines:
 - Do not use `hero-secondary` until a future sprint explicitly approves hero
   supporting-content animation.
 
-## Demonstration
+## Rollout
 
-The only live Milestone 6.3 demonstration is the homepage Services section card
-list, using `variant="cards"` and child targets marked with `data-reveal-item`.
+Milestone 6.4 applies reveal to:
 
-This section is after the Hero and Trust Bar, so it is not initial hero content
-or the first viewport.
+- Homepage sections after Hero, excluding Trust Bar for first-viewport safety.
+- Services content below the page hero.
+- Portfolio filters and listing below the page hero.
+- About story, mission/vision, values, team, and CTA below the page hero.
+- Contact and Quote content/form sections below the page hero.
+- Industries, Pricing, and Blog content sections below the page hero.
+
+Card/list groups use child targets marked with `data-reveal-item`. Form sections
+reveal as one section-level block to avoid animating every input.

@@ -6,6 +6,7 @@ import {
   getRevealFromVars,
   getRevealToVars,
   getRevealVariant,
+  motionAttributes,
   withGsap,
   type RevealDirection,
   type RevealVariantName,
@@ -80,7 +81,7 @@ export function Reveal({
     <div
       ref={rootRef}
       className={cn(className)}
-      data-motion="reveal-demo"
+      data-motion={motionAttributes.revealGroup}
       data-reveal={variant}
       data-reveal-id={revealId}
     >

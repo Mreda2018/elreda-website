@@ -168,4 +168,4 @@ The approved variants are:
 - `split`
 - `hero-secondary`
 
-The only live demonstration is the homepage Services card list. No Hero, H1, first-viewport, Footer, or navigation reveal is active in this milestone.
+Milestone 6.4 rolls these variants across completed public pages below page heroes only. No Hero, H1, first-viewport Trust Bar, Footer, or navigation reveal is active.

@@ -6,6 +6,8 @@ Milestone 6.1 adds the reusable motion vocabulary in `MOTION_LANGUAGE.md` and `l
 
 Milestone 6.3 adds the reveal vocabulary in `REVEAL_LANGUAGE.md` and `lib/animation/reveal.ts`, with one non-LCP Services section demonstration.
 
+Milestone 6.4 rolls the approved reveal system across completed public pages below page heroes only.
+
 ## What Exists
 
 - `lib/animation/tokens.ts` defines shared durations, GSAP easings, CSS easing references, stagger values, motion attributes, and ScrollTrigger defaults.

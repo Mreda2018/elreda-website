@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
@@ -205,6 +206,7 @@ async function ArticleCard({
 
   return (
     <Card
+      data-reveal-item
       variant={featured ? "elevated" : "glass"}
       padding="lg"
       className="flex h-full flex-col gap-[var(--space-6)] text-start"
@@ -338,21 +340,27 @@ export default async function BlogPage({ params }: BlogPageProps) {
   return (
     <>
       <BlogHero locale={locale} />
-      <BlogFilters />
-      <BlogListing locale={locale} articles={articles} />
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="editorial">
+        <BlogFilters />
+      </Reveal>
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <BlogListing locale={locale} articles={articles} />
+      </Reveal>
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }

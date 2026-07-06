@@ -37,6 +37,7 @@ export const scrollTriggerDefaults = {
 export const motionAttributes = {
   fadeUp: "fade-up",
   reveal: "reveal",
+  revealGroup: "reveal-group",
   staggerGroup: "stagger-group",
   parallax: "parallax",
   sectionEntrance: "section-entrance",

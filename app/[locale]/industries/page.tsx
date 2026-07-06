@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
@@ -171,6 +172,7 @@ async function IndustriesGrid({ locale }: { locale: Locale }) {
             return (
               <li
                 key={key}
+                data-reveal-item
                 className={cn(
                   "lg:col-span-1",
                   isFeatureCard && "lg:col-span-2",
@@ -280,21 +282,27 @@ export default async function IndustriesPage({ params }: IndustriesPageProps) {
   return (
     <>
       <IndustriesHero locale={locale} />
-      <IndustriesGrid locale={locale} />
-      <IndustryProcess locale={locale} />
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <IndustriesGrid locale={locale} />
+      </Reveal>
+      <Reveal variant="split">
+        <IndustryProcess locale={locale} />
+      </Reveal>
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }

@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { SelectField, TextAreaField, TextField } from "@/components/forms";
 import { Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
@@ -151,6 +152,7 @@ async function ContactInformation() {
           {contactCardKeys.map((key) => (
             <Card
               key={key}
+              data-reveal-item
               variant="glass"
               padding="lg"
               className="flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-4)] text-start"
@@ -168,6 +170,7 @@ async function ContactInformation() {
           ))}
 
           <Card
+            data-reveal-item
             variant="glass"
             padding="lg"
             className="flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-5)] text-start sm:col-span-2 lg:col-span-3"
@@ -284,21 +287,27 @@ export default async function ContactPage({ params }: ContactPageProps) {
   return (
     <>
       <ContactHero locale={locale} />
-      <ContactInformation />
-      <ContactFormLayout />
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <ContactInformation />
+      </Reveal>
+      <Reveal variant="editorial">
+        <ContactFormLayout />
+      </Reveal>
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }

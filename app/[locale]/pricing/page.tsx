@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
@@ -163,7 +164,7 @@ async function PricingPlans({ locale }: { locale: Locale }) {
             const isRecommended = key === "growth";
 
             return (
-              <li key={key}>
+              <li key={key} data-reveal-item>
                 <Card
                   variant={isRecommended ? "elevated" : "glass"}
                   padding="lg"
@@ -270,7 +271,7 @@ async function PricingFaqPreview() {
 
         <ul className="grid list-none gap-[var(--grid-gap)] p-0 md:grid-cols-2" role="list">
           {faqKeys.map((key) => (
-            <li key={key}>
+            <li key={key} data-reveal-item>
               <Card
                 variant="glass"
                 padding="lg"
@@ -298,21 +299,27 @@ export default async function PricingPage({ params }: PricingPageProps) {
   return (
     <>
       <PricingHero locale={locale} />
-      <PricingPlans locale={locale} />
-      <PricingFaqPreview />
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <PricingPlans locale={locale} />
+      </Reveal>
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <PricingFaqPreview />
+      </Reveal>
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }

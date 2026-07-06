@@ -59,7 +59,7 @@ export function IndustriesPreviewSection({
           role="list"
         >
           {items.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} data-reveal-item>
               <Card
                 variant="glass"
                 padding="md"

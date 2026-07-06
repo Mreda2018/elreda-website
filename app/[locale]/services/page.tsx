@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
@@ -96,7 +97,7 @@ async function ServicesList({
             role="list"
           >
             {services.map((service, index) => (
-              <li key={service.id}>
+              <li key={service.id} data-reveal-item>
                 <Card
                   variant="glass"
                   padding="lg"
@@ -157,21 +158,25 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
         description={t("hero.description")}
       />
 
-      <ServicesList locale={locale} services={services} />
+      <Reveal variant="cards" itemSelector="[data-reveal-item]">
+        <ServicesList locale={locale} services={services} />
+      </Reveal>
 
-      <CTASection
-        heading={t("cta.title")}
-        description={t("cta.subtitle")}
-        actions={[
-          {
-            label: t("cta.primary"),
-          },
-          {
-            label: t("cta.secondary"),
-            variant: "secondary",
-          },
-        ]}
-      />
+      <Reveal variant="statement">
+        <CTASection
+          heading={t("cta.title")}
+          description={t("cta.subtitle")}
+          actions={[
+            {
+              label: t("cta.primary"),
+            },
+            {
+              label: t("cta.secondary"),
+              variant: "secondary",
+            },
+          ]}
+        />
+      </Reveal>
     </>
   );
 }
