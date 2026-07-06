@@ -139,7 +139,7 @@ Additional rules:
 - Component hover animation wiring.
 - ScrollTrigger timelines.
 - Hero animation changes.
-- Lenis activation.
+- Lenis visual effects; the smooth scrolling foundation is gated separately in `MOTION_FOUNDATION.md`.
 - 3D or shader work.
 
 ## Milestone 6.2 Micro-Interactions

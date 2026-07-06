@@ -4,6 +4,7 @@ import { scrollTriggerDefaults } from "./tokens";
 const SCROLL_TRIGGER_START = scrollTriggerDefaults.start;
 
 let gsapLoader: Promise<typeof import("gsap").gsap> | null = null;
+let updateScrollTrigger: (() => void) | null = null;
 
 export async function loadGsap() {
   if (typeof window === "undefined") {
@@ -17,6 +18,7 @@ export async function loadGsap() {
 
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.defaults(scrollTriggerDefaults);
+      updateScrollTrigger = () => ScrollTrigger.update();
 
       return gsap;
     },
@@ -43,6 +45,10 @@ export async function withGsap(
   }
 
   return setup(gsap) ?? (() => {});
+}
+
+export function updateLoadedScrollTrigger() {
+  updateScrollTrigger?.();
 }
 
 export { SCROLL_TRIGGER_START };

@@ -8,6 +8,8 @@ Milestone 6.3 adds the reveal vocabulary in `REVEAL_LANGUAGE.md` and `lib/animat
 
 Milestone 6.4 rolls the approved reveal system across completed public pages below page heroes only.
 
+Milestone 6.5 adds a controlled Lenis smooth scrolling foundation in `components/motion/SmoothScroll.tsx`.
+
 ## What Exists
 
 - `lib/animation/tokens.ts` defines shared durations, GSAP easings, CSS easing references, stagger values, motion attributes, and ScrollTrigger defaults.
@@ -15,6 +17,8 @@ Milestone 6.4 rolls the approved reveal system across completed public pages bel
 - `lib/animation/usePrefersReducedMotion.ts` exposes a client hook for future interactive animation components.
 - `lib/animation/gsap.ts` lazy-loads GSAP and ScrollTrigger only in the browser, applies the required `start: "top 90%"` default, and skips setup when reduced motion is requested.
 - `lib/animation/reveal.ts` defines typed reveal variants and direction-aware GSAP var helpers.
+- `lib/animation/lenis.ts` dynamically loads Lenis only in the browser and only when reduced motion is not requested.
+- `components/motion/SmoothScroll.tsx` centralizes Lenis setup, ScrollTrigger updates, RAF ownership, and cleanup.
 - `app/globals.css` defines inert `data-motion` primitives for future opt-in animation setup.
 - `lib/animation/presets.ts` defines reusable motion names and budgets without applying them to UI.
 
@@ -87,6 +91,44 @@ These primitives are inert until a future component sets `data-motion-state="rea
 - Avoid animating layout properties such as width, height, padding, margin, top, left, or grid placement.
 - Keep scroll animations one-time by default.
 - Do not add page-wide animation orchestration until bundle impact is measured.
+
+## Smooth Scrolling Foundation
+
+Lenis is available behind `NEXT_PUBLIC_ENABLE_SMOOTH_SCROLL=true`.
+
+Default behavior:
+
+- Smooth scrolling is disabled unless the public flag is explicitly set to `"true"`.
+- Native browser scrolling remains the default fallback.
+- `SmoothScroll` is the only component allowed to initialize Lenis.
+- Do not create page-level or section-level Lenis instances.
+
+Reduced-motion behavior:
+
+- If `prefers-reduced-motion: reduce` is active, Lenis does not initialize.
+- If the preference changes while mounted, the provider cleans up the active Lenis instance.
+- Reduced-motion users keep native scrolling and visible content.
+
+ScrollTrigger compatibility:
+
+- Lenis scroll events call `updateLoadedScrollTrigger()`.
+- `updateLoadedScrollTrigger()` is a no-op until GSAP/ScrollTrigger has already been loaded by a reveal group.
+- The smooth scroll provider must not import GSAP or ScrollTrigger directly.
+- Do not add a GSAP ticker loop for Lenis; `SmoothScroll` owns one `requestAnimationFrame` loop and cancels it on unmount.
+
+Accessibility rules:
+
+- Keyboard scrolling, anchor navigation, skip links, tab navigation, and focus movement must remain native-safe.
+- Do not intercept clicks, focus, keyboard events, or hash changes for scroll effects.
+- Do not use smooth scrolling to hide or delay content.
+- Do not activate Lenis on pages where it interferes with forms, keyboard navigation, or assistive technology QA.
+
+Performance and mobile rules:
+
+- Keep `syncTouch: false` so touch scrolling remains native.
+- Do not add parallax, progress bars, cursor effects, page transitions, or scroll-jacking on top of Lenis.
+- Use Lenis only as a scroll feel enhancement after QA on iOS Safari, Android Chrome, keyboard navigation, and reduced motion.
+- Destroy Lenis and remove listeners on unmount to avoid memory leaks.
 
 ## Deferred Intentionally
 

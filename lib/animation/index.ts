@@ -2,9 +2,10 @@ export {
   SCROLL_TRIGGER_START,
   loadGsap,
   loadGsapWhenMotionAllowed,
+  updateLoadedScrollTrigger,
   withGsap,
 } from "./gsap";
-export { createLenis, lenisOptions } from "./lenis";
+export { createLenis, lenisOptions, type LenisInstance } from "./lenis";
 export {
   REDUCED_MOTION_QUERY,
   canUseDOM,
@@ -36,3 +37,4 @@ export {
   motionStaggers,
   scrollTriggerDefaults,
 } from "./tokens";
+export { usePrefersReducedMotion } from "./usePrefersReducedMotion";

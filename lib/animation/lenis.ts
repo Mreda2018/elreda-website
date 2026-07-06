@@ -1,6 +1,8 @@
-import Lenis from "lenis";
+import type Lenis from "lenis";
 
 import { prefersReducedMotion } from "./preferences";
+
+export type LenisInstance = Lenis;
 
 export const lenisOptions = {
   duration: 1.1,
@@ -9,10 +11,16 @@ export const lenisOptions = {
   syncTouch: false,
 } satisfies ConstructorParameters<typeof Lenis>[0];
 
-export function createLenis() {
+export async function createLenis(): Promise<LenisInstance | null> {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   if (prefersReducedMotion()) {
     return null;
   }
+
+  const { default: Lenis } = await import("lenis");
 
   return new Lenis(lenisOptions);
 }

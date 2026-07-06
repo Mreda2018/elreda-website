@@ -11,6 +11,7 @@ import {
 } from "@/components/common/SkipNavigation";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { isLocale, routing } from "@/lib/i18n/routing";
 import "../globals.css";
 
@@ -31,6 +32,7 @@ const tajawal = Tajawal({
 });
 
 const cookieYesWebsiteKey = process.env.NEXT_PUBLIC_COOKIEYES_WEBSITE_KEY;
+const smoothScrollEnabled = process.env.NEXT_PUBLIC_ENABLE_SMOOTH_SCROLL === "true";
 
 export const metadata: Metadata = {
   title: {
@@ -81,15 +83,17 @@ export default async function RootLayout({
         ) : null}
         <SkipNavigation />
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main
-            id={MAIN_CONTENT_ID}
-            tabIndex={-1}
-            className="flex-1 bg-[image:var(--gradient-dark)] outline-none"
-          >
-            {children}
-          </main>
-          <Footer />
+          <SmoothScroll enabled={smoothScrollEnabled}>
+            <Header />
+            <main
+              id={MAIN_CONTENT_ID}
+              tabIndex={-1}
+              className="flex-1 bg-[image:var(--gradient-dark)] outline-none"
+            >
+              {children}
+            </main>
+            <Footer />
+          </SmoothScroll>
         </NextIntlClientProvider>
       </body>
     </html>
