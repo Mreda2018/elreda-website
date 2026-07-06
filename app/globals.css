@@ -362,6 +362,10 @@ body {
     text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
+:dir(rtl) .micro-link {
+  transform-origin: right center;
+}
+
 .micro-nav-link,
 .micro-pill {
   transform-origin: center center;
@@ -382,7 +386,7 @@ body {
     transform: translate3d(0, 0, 0) scale(0.99);
   }
 
-  .micro-card:hover {
+  .micro-card:is(a, button, [role="link"], [role="button"], [data-interactive="true"]):hover {
     transform: translate3d(0, -3px, 0);
     border-color: color-mix(in srgb, var(--red-primary) 28%, var(--glass-border));
     box-shadow: var(--shadow-lg);

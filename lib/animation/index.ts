@@ -18,6 +18,17 @@ export {
   type MotionTransformOrigin,
 } from "./presets";
 export {
+  getRevealFromVars,
+  getRevealToVars,
+  getRevealVariant,
+  revealVariants,
+  type RevealAxis,
+  type RevealDirection,
+  type RevealReducedMotionBehavior,
+  type RevealVariant,
+  type RevealVariantName,
+} from "./reveal";
+export {
   cssEasings,
   gsapEasings,
   motionAttributes,

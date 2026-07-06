@@ -95,7 +95,7 @@ export function ServicesSection({
           role="list"
         >
           {services.map((service) => (
-            <li key={service.id}>
+            <li key={service.id} data-reveal-item>
               <ServiceCard service={service} />
             </li>
           ))}

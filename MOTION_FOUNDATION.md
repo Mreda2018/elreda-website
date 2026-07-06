@@ -4,12 +4,15 @@ Milestone 5 creates architecture only. No page or section animation should run f
 
 Milestone 6.1 adds the reusable motion vocabulary in `MOTION_LANGUAGE.md` and `lib/animation/presets.ts`. It is still architecture only.
 
+Milestone 6.3 adds the reveal vocabulary in `REVEAL_LANGUAGE.md` and `lib/animation/reveal.ts`, with one non-LCP Services section demonstration.
+
 ## What Exists
 
 - `lib/animation/tokens.ts` defines shared durations, GSAP easings, CSS easing references, stagger values, motion attributes, and ScrollTrigger defaults.
 - `lib/animation/preferences.ts` provides SSR-safe reduced-motion helpers.
 - `lib/animation/usePrefersReducedMotion.ts` exposes a client hook for future interactive animation components.
 - `lib/animation/gsap.ts` lazy-loads GSAP and ScrollTrigger only in the browser, applies the required `start: "top 90%"` default, and skips setup when reduced motion is requested.
+- `lib/animation/reveal.ts` defines typed reveal variants and direction-aware GSAP var helpers.
 - `app/globals.css` defines inert `data-motion` primitives for future opt-in animation setup.
 - `lib/animation/presets.ts` defines reusable motion names and budgets without applying them to UI.
 

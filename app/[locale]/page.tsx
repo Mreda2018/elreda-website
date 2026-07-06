@@ -8,6 +8,7 @@ import { PortfolioPreviewSection } from "@/components/sections/PortfolioPreviewS
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { Reveal } from "@/components/motion/Reveal";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
 import {
@@ -82,25 +83,27 @@ export default async function Home({
         ]}
       />
       {services ? (
-        <ServicesSection
-          eyebrow={renderOptionalLocalizedValue(services.eyebrow, locale)}
-          heading={renderLocalizedValue(services.heading, locale)}
-          description={renderLocalizedValue(services.description, locale)}
-          services={services.services.map((service) => ({
-            id: service.id,
-            href: service.href,
-            title: renderLocalizedValue(service.title, locale),
-            description: renderLocalizedValue(service.description, locale),
-            category: renderOptionalLocalizedValue(service.category, locale),
-          }))}
-          cta={
-            services.cta
-              ? {
-                  label: renderLocalizedValue(services.cta.label, locale),
-                }
-              : undefined
-          }
-        />
+        <Reveal variant="cards" itemSelector="[data-reveal-item]">
+          <ServicesSection
+            eyebrow={renderOptionalLocalizedValue(services.eyebrow, locale)}
+            heading={renderLocalizedValue(services.heading, locale)}
+            description={renderLocalizedValue(services.description, locale)}
+            services={services.services.map((service) => ({
+              id: service.id,
+              href: service.href,
+              title: renderLocalizedValue(service.title, locale),
+              description: renderLocalizedValue(service.description, locale),
+              category: renderOptionalLocalizedValue(service.category, locale),
+            }))}
+            cta={
+              services.cta
+                ? {
+                    label: renderLocalizedValue(services.cta.label, locale),
+                  }
+                : undefined
+            }
+          />
+        </Reveal>
       ) : null}
       <PortfolioPreviewSection
         eyebrow={t("portfolio.eyebrow")}

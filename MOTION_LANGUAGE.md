@@ -147,9 +147,25 @@ Additional rules:
 Shared CSS classes implement the first approved micro-interactions:
 
 - `.micro-button` maps to `motion.button.hover` and `motion.button.press`.
-- `.micro-card` maps to `motion.card.hover`.
+- `.micro-card` maps to `motion.card.hover` only for interactive card surfaces: links, buttons, link/button roles, or cards marked with `data-interactive="true"`.
 - `.micro-nav-link` maps to `motion.nav.hover` and `motion.nav.active`.
 - `.micro-link` maps to the base `motion.hover` link language.
 - `.micro-pill` maps to footer/social pill hover language.
 
 These interactions use CSS transitions only, avoid layout-changing properties, and are disabled under `prefers-reduced-motion: reduce`.
+
+## Milestone 6.3 Reveal Language
+
+Reusable reveal variants are documented in `REVEAL_LANGUAGE.md` and exported from `lib/animation/reveal.ts`.
+
+The approved variants are:
+
+- `editorial`
+- `statement`
+- `cards`
+- `metrics`
+- `stagger`
+- `split`
+- `hero-secondary`
+
+The only live demonstration is the homepage Services card list. No Hero, H1, first-viewport, Footer, or navigation reveal is active in this milestone.
