@@ -11,6 +11,7 @@ import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
 import { loadBlogPage } from "@/lib/sanity/loaders";
 import type { BlogPageArticle } from "@/lib/sanity/types";
+import { cn } from "@/lib/utils";
 
 type BlogPageProps = {
   params: Promise<{ locale: Locale }>;
@@ -209,67 +210,96 @@ async function ArticleCard({
       data-reveal-item
       variant={featured ? "elevated" : "glass"}
       padding="lg"
-      className="flex h-full flex-col gap-[var(--space-6)] text-start"
+      className={cn(
+        "flex h-full flex-col gap-[var(--space-6)] text-start",
+        featured &&
+          "relative overflow-hidden border-border-light bg-[image:var(--gradient-subtle)] lg:grid lg:grid-cols-[1.12fr_0.88fr]",
+      )}
     >
-      <div className="flex flex-wrap items-center gap-[var(--space-3)]">
-        {featured ? (
-          <Badge variant="red" size="sm">
-            {t("card.featured")}
-          </Badge>
-        ) : null}
-        {article.category ? (
-          <Badge variant="glass" size="sm">
-            {article.category}
-          </Badge>
-        ) : null}
-        {!article.isTranslated && locale === "ar" ? (
-          <Badge variant="glass" size="sm">
-            {t("card.fallback")}
-          </Badge>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-[var(--space-4)]">
-        <Heading level={3}>{renderLocalizedValue(article.title, locale)}</Heading>
-        <p className="whitespace-pre-line text-body text-text-secondary rtl:text-ar-body">
-          {article.excerpt
-            ? renderLocalizedValue(article.excerpt, locale)
-            : t("card.excerptFallback")}
-        </p>
-      </div>
-
-      {article.tags.length > 0 ? (
-        <ul className="flex list-none flex-wrap gap-[var(--space-2)] p-0" role="list">
-          {article.tags.slice(0, 3).map((tag) => (
-            <li key={tag}>
-              <span className="rounded-full border border-[color:var(--glass-border)] px-3 py-1 text-small text-text-secondary rtl:text-ar-small">
-                {tag}
-              </span>
-            </li>
-          ))}
-        </ul>
+      {featured ? (
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+        />
       ) : null}
-
-      <dl className="mt-auto grid gap-[var(--space-4)] border-t border-[color:var(--glass-border)] pt-[var(--space-5)] text-small rtl:text-ar-small">
-        <div className="flex flex-col gap-[var(--space-1)]">
-          <dt className="text-text-muted">{t("card.readTime")}</dt>
-          <dd className="m-0 text-text-primary">
-            {t("card.minutes", { minutes: article.readTimeMinutes })}
-          </dd>
+      <div className="flex flex-col gap-[var(--space-6)]">
+        <div className="flex flex-wrap items-center gap-[var(--space-3)]">
+          {featured ? (
+            <Badge variant="red" size="sm">
+              {t("card.featured")}
+            </Badge>
+          ) : null}
+          {article.category ? (
+            <Badge variant="glass" size="sm">
+              {article.category}
+            </Badge>
+          ) : null}
+          {!article.isTranslated && locale === "ar" ? (
+            <Badge variant="glass" size="sm">
+              {t("card.fallback")}
+            </Badge>
+          ) : null}
         </div>
-        {publishedDate ? (
-          <div className="flex flex-col gap-[var(--space-1)]">
-            <dt className="text-text-muted">{t("card.published")}</dt>
-            <dd className="m-0 text-text-primary">{publishedDate}</dd>
-          </div>
+
+        <div className="flex flex-col gap-[var(--space-4)]">
+          <Heading
+            level={3}
+            className={featured ? "max-w-4xl text-h2 rtl:text-ar-h2" : undefined}
+          >
+            {renderLocalizedValue(article.title, locale)}
+          </Heading>
+          <p
+            className={cn(
+              "whitespace-pre-line text-body text-text-secondary rtl:text-ar-body",
+              featured && "max-w-[var(--container-narrow)] text-body-lg rtl:text-ar-body-lg",
+            )}
+          >
+            {article.excerpt
+              ? renderLocalizedValue(article.excerpt, locale)
+              : t("card.excerptFallback")}
+          </p>
+        </div>
+      </div>
+
+      <div
+        className={cn(
+          "flex flex-col gap-[var(--space-6)]",
+          featured && "lg:border-s lg:border-[color:var(--glass-border)] lg:ps-[var(--space-8)]",
+        )}
+      >
+        {article.tags.length > 0 ? (
+          <ul className="flex list-none flex-wrap gap-[var(--space-2)] p-0" role="list">
+            {article.tags.slice(0, 3).map((tag) => (
+              <li key={tag}>
+                <span className="rounded-full border border-[color:var(--glass-border)] px-3 py-1 text-small text-text-secondary rtl:text-ar-small">
+                  {tag}
+                </span>
+              </li>
+            ))}
+          </ul>
         ) : null}
-        {article.author ? (
+
+        <dl className="mt-auto grid gap-[var(--space-4)] border-t border-[color:var(--glass-border)] pt-[var(--space-5)] text-small rtl:text-ar-small">
           <div className="flex flex-col gap-[var(--space-1)]">
-            <dt className="text-text-muted">{t("card.author")}</dt>
-            <dd className="m-0 text-text-primary">{article.author}</dd>
+            <dt className="text-text-muted">{t("card.readTime")}</dt>
+            <dd className="m-0 text-text-primary">
+              {t("card.minutes", { minutes: article.readTimeMinutes })}
+            </dd>
           </div>
-        ) : null}
-      </dl>
+          {publishedDate ? (
+            <div className="flex flex-col gap-[var(--space-1)]">
+              <dt className="text-text-muted">{t("card.published")}</dt>
+              <dd className="m-0 text-text-primary">{publishedDate}</dd>
+            </div>
+          ) : null}
+          {article.author ? (
+            <div className="flex flex-col gap-[var(--space-1)]">
+              <dt className="text-text-muted">{t("card.author")}</dt>
+              <dd className="m-0 text-text-primary">{article.author}</dd>
+            </div>
+          ) : null}
+        </dl>
+      </div>
     </Card>
   );
 }

@@ -10,6 +10,7 @@ import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
 import { loadServicesPage } from "@/lib/sanity/loaders";
 import type { ServicesPageService } from "@/lib/sanity/types";
+import { cn } from "@/lib/utils";
 
 type ServicesPageProps = {
   params: Promise<{ locale: Locale }>;
@@ -96,38 +97,65 @@ async function ServicesList({
             className="grid list-none gap-[var(--grid-gap)] p-0 sm:grid-cols-2 lg:grid-cols-3"
             role="list"
           >
-            {services.map((service, index) => (
-              <li key={service.id} data-reveal-item>
-                <Card
-                  variant="glass"
-                  padding="lg"
-                  className="flex min-h-[calc(var(--space-48)+var(--space-32))] flex-col gap-[var(--space-6)] text-start"
-                >
-                  <div className="flex items-center justify-between gap-[var(--space-4)]">
-                    <span
-                      aria-hidden="true"
-                      className="text-small font-semibold text-red-primary rtl:text-ar-small"
-                    >
-                      {t("card.index", { index: index + 1 })}
-                    </span>
-                    {!service.isTranslated && locale === "ar" ? (
-                      <Badge variant="glass" size="sm">
-                        {t("card.fallback")}
-                      </Badge>
-                    ) : null}
-                  </div>
+            {services.map((service, index) => {
+              const isFeatured = index === 0;
 
-                  <div className="flex flex-col gap-[var(--space-3)]">
-                    <Heading level={3}>
-                      {renderLocalizedValue(service.title, locale)}
-                    </Heading>
-                    <p className="whitespace-pre-line text-body text-text-secondary rtl:text-ar-body">
-                      {renderLocalizedValue(service.description, locale)}
-                    </p>
-                  </div>
-                </Card>
-              </li>
-            ))}
+              return (
+                <li
+                  key={service.id}
+                  data-reveal-item
+                  className={isFeatured ? "lg:col-span-2" : undefined}
+                >
+                  <Card
+                    variant={isFeatured ? "elevated" : "glass"}
+                    padding="lg"
+                    className={cn(
+                      "flex min-h-[calc(var(--space-48)+var(--space-32))] flex-col gap-[var(--space-6)] text-start",
+                      isFeatured &&
+                        "relative overflow-hidden border-border-light bg-[image:var(--gradient-subtle)]",
+                    )}
+                  >
+                    {isFeatured ? (
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+                      />
+                    ) : null}
+                    <div className="flex items-center justify-between gap-[var(--space-4)]">
+                      <span
+                        aria-hidden="true"
+                        className="text-small font-semibold text-red-primary rtl:text-ar-small"
+                      >
+                        {t("card.index", { index: index + 1 })}
+                      </span>
+                      {!service.isTranslated && locale === "ar" ? (
+                        <Badge variant="glass" size="sm">
+                          {t("card.fallback")}
+                        </Badge>
+                      ) : null}
+                    </div>
+
+                    <div className="flex flex-col gap-[var(--space-3)]">
+                      <Heading
+                        level={3}
+                        className={isFeatured ? "max-w-4xl text-h2 rtl:text-ar-h2" : undefined}
+                      >
+                        {renderLocalizedValue(service.title, locale)}
+                      </Heading>
+                      <p
+                        className={cn(
+                          "whitespace-pre-line text-body text-text-secondary rtl:text-ar-body",
+                          isFeatured &&
+                            "max-w-[var(--container-narrow)] text-body-lg rtl:text-ar-body-lg",
+                        )}
+                      >
+                        {renderLocalizedValue(service.description, locale)}
+                      </p>
+                    </div>
+                  </Card>
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <Card variant="glass" padding="lg" className="text-start">

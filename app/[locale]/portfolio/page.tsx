@@ -151,6 +151,8 @@ async function PortfolioListing({
 }) {
   const t = await getTranslations("portfolio");
   const headingId = "portfolio-listing-heading";
+  const featuredProject = projects[0];
+  const remainingProjects = projects.slice(1);
 
   return (
     <Section tone="dark" aria-labelledby={headingId}>
@@ -162,76 +164,149 @@ async function PortfolioListing({
           headingId={headingId}
         />
 
-        {projects.length > 0 ? (
-          <ul
-            className="grid list-none gap-[var(--grid-gap)] p-0 sm:grid-cols-2 lg:grid-cols-3"
-            role="list"
-          >
-            {projects.map((project) => (
-              <li key={project.id} data-reveal-item>
-                <Card
-                  variant="glass"
-                  padding="lg"
-                  className="flex min-h-[calc(var(--space-48)+var(--space-32))] flex-col gap-[var(--space-6)] text-start"
-                >
+        {featuredProject ? (
+          <div className="grid gap-[var(--grid-gap)]">
+            <article data-reveal-item>
+              <Card
+                variant="elevated"
+                padding="lg"
+                className="relative grid overflow-hidden text-start lg:grid-cols-[1.08fr_0.92fr]"
+              >
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+                />
+                <div className="flex min-h-[calc(var(--space-48)+var(--space-16))] flex-col gap-[var(--space-6)] lg:pe-[var(--space-8)]">
                   <div className="flex flex-wrap items-center gap-[var(--space-3)]">
-                    {project.featured ? (
+                    {featuredProject.featured ? (
                       <Badge variant="red" size="sm">
                         {t("card.featured")}
                       </Badge>
                     ) : null}
-                    {!project.isTranslated && locale === "ar" ? (
+                    {!featuredProject.isTranslated && locale === "ar" ? (
                       <Badge variant="glass" size="sm">
                         {t("card.fallback")}
                       </Badge>
                     ) : null}
                   </div>
 
-                  <div className="flex flex-col gap-[var(--space-3)]">
-                    <Heading level={3}>
-                      {renderLocalizedValue(project.title, locale)}
+                  <div className="flex flex-col gap-[var(--space-4)]">
+                    <Heading level={3} className="max-w-4xl text-h2 rtl:text-ar-h2">
+                      {renderLocalizedValue(featuredProject.title, locale)}
                     </Heading>
-                    <p className="whitespace-pre-line text-body text-text-secondary rtl:text-ar-body">
-                      {project.description
-                        ? renderLocalizedValue(project.description, locale)
+                    <p className="max-w-[var(--container-narrow)] whitespace-pre-line text-body-lg text-text-secondary rtl:text-ar-body-lg">
+                      {featuredProject.description
+                        ? renderLocalizedValue(featuredProject.description, locale)
                         : t("card.summaryFallback")}
                     </p>
                   </div>
+                </div>
 
-                  <dl className="mt-auto grid gap-[var(--space-4)] border-t border-[color:var(--glass-border)] pt-[var(--space-5)] text-small rtl:text-ar-small">
-                    {project.client ? (
-                      <div className="flex flex-col gap-[var(--space-1)]">
-                        <dt className="text-text-muted">{t("card.client")}</dt>
-                        <dd className="m-0 text-text-primary">{project.client}</dd>
+                <dl className="grid content-end gap-[var(--space-5)] border-t border-[color:var(--glass-border)] pt-[var(--space-6)] text-small rtl:text-ar-small lg:border-s lg:border-t-0 lg:ps-[var(--space-8)] lg:pt-0">
+                  {featuredProject.client ? (
+                    <div className="flex flex-col gap-[var(--space-1)]">
+                      <dt className="text-text-muted">{t("card.client")}</dt>
+                      <dd className="m-0 text-text-primary">{featuredProject.client}</dd>
+                    </div>
+                  ) : null}
+                  {featuredProject.industry ? (
+                    <div className="flex flex-col gap-[var(--space-1)]">
+                      <dt className="text-text-muted">{t("card.industry")}</dt>
+                      <dd className="m-0 text-text-primary">{featuredProject.industry}</dd>
+                    </div>
+                  ) : null}
+                  {featuredProject.services.length > 0 ? (
+                    <div className="flex flex-col gap-[var(--space-2)]">
+                      <dt className="text-text-muted">{t("card.services")}</dt>
+                      <dd className="m-0 flex flex-wrap gap-[var(--space-2)]">
+                        {featuredProject.services.map((service) => (
+                          <Badge
+                            key={`${service.lang}-${service.text}`}
+                            variant="glass"
+                            size="sm"
+                          >
+                            {renderLocalizedValue(service, locale)}
+                          </Badge>
+                        ))}
+                      </dd>
+                    </div>
+                  ) : null}
+                </dl>
+              </Card>
+            </article>
+
+            {remainingProjects.length > 0 ? (
+              <ul
+                className="grid list-none gap-[var(--grid-gap)] p-0 sm:grid-cols-2 lg:grid-cols-3"
+                role="list"
+              >
+                {remainingProjects.map((project) => (
+                  <li key={project.id} data-reveal-item>
+                    <Card
+                      variant="glass"
+                      padding="lg"
+                      className="flex min-h-[calc(var(--space-48)+var(--space-32))] flex-col gap-[var(--space-6)] text-start"
+                    >
+                      <div className="flex flex-wrap items-center gap-[var(--space-3)]">
+                        {project.featured ? (
+                          <Badge variant="red" size="sm">
+                            {t("card.featured")}
+                          </Badge>
+                        ) : null}
+                        {!project.isTranslated && locale === "ar" ? (
+                          <Badge variant="glass" size="sm">
+                            {t("card.fallback")}
+                          </Badge>
+                        ) : null}
                       </div>
-                    ) : null}
-                    {project.industry ? (
-                      <div className="flex flex-col gap-[var(--space-1)]">
-                        <dt className="text-text-muted">{t("card.industry")}</dt>
-                        <dd className="m-0 text-text-primary">{project.industry}</dd>
+
+                      <div className="flex flex-col gap-[var(--space-3)]">
+                        <Heading level={3}>
+                          {renderLocalizedValue(project.title, locale)}
+                        </Heading>
+                        <p className="whitespace-pre-line text-body text-text-secondary rtl:text-ar-body">
+                          {project.description
+                            ? renderLocalizedValue(project.description, locale)
+                            : t("card.summaryFallback")}
+                        </p>
                       </div>
-                    ) : null}
-                    {project.services.length > 0 ? (
-                      <div className="flex flex-col gap-[var(--space-2)]">
-                        <dt className="text-text-muted">{t("card.services")}</dt>
-                        <dd className="m-0 flex flex-wrap gap-[var(--space-2)]">
-                          {project.services.map((service) => (
-                            <Badge
-                              key={`${service.lang}-${service.text}`}
-                              variant="glass"
-                              size="sm"
-                            >
-                              {renderLocalizedValue(service, locale)}
-                            </Badge>
-                          ))}
-                        </dd>
-                      </div>
-                    ) : null}
-                  </dl>
-                </Card>
-              </li>
-            ))}
-          </ul>
+
+                      <dl className="mt-auto grid gap-[var(--space-4)] border-t border-[color:var(--glass-border)] pt-[var(--space-5)] text-small rtl:text-ar-small">
+                        {project.client ? (
+                          <div className="flex flex-col gap-[var(--space-1)]">
+                            <dt className="text-text-muted">{t("card.client")}</dt>
+                            <dd className="m-0 text-text-primary">{project.client}</dd>
+                          </div>
+                        ) : null}
+                        {project.industry ? (
+                          <div className="flex flex-col gap-[var(--space-1)]">
+                            <dt className="text-text-muted">{t("card.industry")}</dt>
+                            <dd className="m-0 text-text-primary">{project.industry}</dd>
+                          </div>
+                        ) : null}
+                        {project.services.length > 0 ? (
+                          <div className="flex flex-col gap-[var(--space-2)]">
+                            <dt className="text-text-muted">{t("card.services")}</dt>
+                            <dd className="m-0 flex flex-wrap gap-[var(--space-2)]">
+                              {project.services.map((service) => (
+                                <Badge
+                                  key={`${service.lang}-${service.text}`}
+                                  variant="glass"
+                                  size="sm"
+                                >
+                                  {renderLocalizedValue(service, locale)}
+                                </Badge>
+                              ))}
+                            </dd>
+                          </div>
+                        ) : null}
+                      </dl>
+                    </Card>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
         ) : (
           <Card variant="glass" padding="lg" className="text-start">
             <p className="text-body text-text-secondary rtl:text-ar-body">

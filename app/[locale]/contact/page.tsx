@@ -9,6 +9,7 @@ import { ContactForm } from "@/components/forms";
 import { Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
+import { cn } from "@/lib/utils";
 
 type ContactPageProps = {
   params: Promise<{ locale: Locale }>;
@@ -149,25 +150,39 @@ async function ContactInformation() {
         />
 
         <div className="grid gap-[var(--grid-gap)] sm:grid-cols-2 lg:grid-cols-3">
-          {contactCardKeys.map((key) => (
-            <Card
-              key={key}
-              data-reveal-item
-              variant="glass"
-              padding="lg"
-              className="flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-4)] text-start"
-            >
-              <Heading level={3} className="text-h4">
-                {t(`info.cards.${key}.title`)}
-              </Heading>
-              <p className="font-body text-h5 font-semibold text-white">
-                {t(`info.cards.${key}.value`)}
-              </p>
-              <p className="text-small text-text-secondary rtl:text-ar-small">
-                {t(`info.cards.${key}.description`)}
-              </p>
-            </Card>
-          ))}
+          {contactCardKeys.map((key, index) => {
+            const isPrimaryChannel = index === 0;
+
+            return (
+              <Card
+                key={key}
+                data-reveal-item
+                variant={isPrimaryChannel ? "elevated" : "glass"}
+                padding="lg"
+                className={cn(
+                  "flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-4)] text-start",
+                  isPrimaryChannel &&
+                    "relative overflow-hidden border-border-light bg-[image:var(--gradient-subtle)] sm:col-span-2 lg:col-span-1",
+                )}
+              >
+                {isPrimaryChannel ? (
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
+                  />
+                ) : null}
+                <Heading level={3} className="text-h4">
+                  {t(`info.cards.${key}.title`)}
+                </Heading>
+                <p className="font-body text-h5 font-semibold text-white">
+                  {t(`info.cards.${key}.value`)}
+                </p>
+                <p className="text-small text-text-secondary rtl:text-ar-small">
+                  {t(`info.cards.${key}.description`)}
+                </p>
+              </Card>
+            );
+          })}
 
           <Card
             data-reveal-item

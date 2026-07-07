@@ -20,19 +20,22 @@ export function CTASection({
   actions = [],
   headingId = "site-cta-heading",
 }: CTASectionProps) {
-
   return (
     <Section
       tone="elevated"
       aria-labelledby={headingId}
-      className="border-y border-[color:var(--glass-border)] bg-[image:var(--gradient-subtle)]"
+      className="relative overflow-hidden border-y border-[color:var(--glass-border)] bg-[image:var(--gradient-subtle)]"
     >
-      <Container className="flex max-w-[var(--container-narrow)] flex-col items-center gap-[var(--space-10)] text-center">
-        <div className="flex flex-col items-center gap-[var(--space-5)]">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-[image:var(--gradient-brand)]"
+      />
+      <Container className="flex max-w-5xl flex-col items-center gap-[var(--space-10)] text-center">
+        <div className="flex flex-col items-center gap-[var(--space-6)] border-x border-[color:var(--glass-border)] px-[var(--space-6)] md:px-[var(--space-12)]">
           <Heading id={headingId} level={2} align="center">
             {heading}
           </Heading>
-          <p className="max-w-[var(--container-narrow)] text-body-lg text-text-secondary rtl:text-ar-body-lg">
+          <p className="max-w-[var(--container-narrow)] text-body-lg leading-relaxed text-text-secondary rtl:text-ar-body-lg">
             {description}
           </p>
         </div>
