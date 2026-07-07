@@ -5,8 +5,8 @@ import { getTranslations } from "next-intl/server";
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { Reveal } from "@/components/motion/Reveal";
-import { SelectField, TextAreaField, TextField } from "@/components/forms";
-import { Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
+import { ContactForm } from "@/components/forms";
+import { Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -203,7 +203,7 @@ async function ContactInformation() {
   );
 }
 
-async function ContactFormLayout() {
+async function ContactFormLayout({ locale }: { locale: Locale }) {
   const t = await getTranslations("contact");
   const forms = await getTranslations("forms");
   const headingId = "contact-form-heading";
@@ -223,57 +223,29 @@ async function ContactFormLayout() {
         />
 
         <Card variant="glass" padding="lg" className="text-start">
-          <form className="grid gap-[var(--space-6)]" aria-labelledby={headingId}>
-            <div className="grid gap-[var(--space-5)] sm:grid-cols-2">
-              <TextField
-                id="contact-name"
-                name="name"
-                label={forms("fields.name")}
-                placeholder={forms("placeholders.name")}
-                autoComplete="name"
-              />
-              <TextField
-                id="contact-company"
-                name="company"
-                label={forms("fields.company")}
-                placeholder={forms("placeholders.company")}
-                autoComplete="organization"
-              />
-              <TextField
-                id="contact-email"
-                name="email"
-                type="email"
-                label={forms("fields.email")}
-                placeholder={forms("placeholders.email")}
-                autoComplete="email"
-              />
-              <TextField
-                id="contact-phone"
-                name="phone"
-                type="tel"
-                label={forms("fields.phone")}
-                placeholder={forms("placeholders.phone")}
-                autoComplete="tel"
-              />
-            </div>
-
-            <SelectField
-              id="contact-service"
-              name="service"
-              label={forms("fields.service")}
-              placeholder={t("form.servicePlaceholder")}
-              options={serviceOptions}
-            />
-            <TextAreaField
-              id="contact-message"
-              name="message"
-              label={forms("fields.message")}
-              placeholder={forms("placeholders.message")}
-            />
-            <Button type="submit" size="lg" disabled className="w-full sm:w-auto">
-              {t("form.submit")}
-            </Button>
-          </form>
+          <ContactForm
+            locale={locale}
+            ariaLabelledBy={headingId}
+            labels={{
+              name: forms("fields.name"),
+              company: forms("fields.company"),
+              email: forms("fields.email"),
+              phone: forms("fields.phone"),
+              service: forms("fields.service"),
+              message: forms("fields.message"),
+              honeypot: forms("common.honeypotLabel"),
+            }}
+            placeholders={{
+              name: forms("placeholders.name"),
+              company: forms("placeholders.company"),
+              email: forms("placeholders.email"),
+              phone: forms("placeholders.phone"),
+              message: forms("placeholders.message"),
+              service: t("form.servicePlaceholder"),
+            }}
+            serviceOptions={serviceOptions}
+            submitLabel={t("form.submit")}
+          />
         </Card>
       </Container>
     </Section>
@@ -291,7 +263,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         <ContactInformation />
       </Reveal>
       <Reveal variant="editorial">
-        <ContactFormLayout />
+        <ContactFormLayout locale={locale} />
       </Reveal>
       <Reveal variant="statement">
         <CTASection

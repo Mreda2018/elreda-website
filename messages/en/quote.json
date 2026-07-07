@@ -12,7 +12,7 @@
     "eyebrow": "Quote request",
     "title": "Share the project shape before the first call",
     "description": "A structured brief helps us understand the service mix, budget, timeline, and decision path before we recommend the right next step.",
-    "note": "Layout foundation only. Submission, file upload, Turnstile, and Server Actions are scheduled separately."
+    "note": "Submit the essentials now. File uploads, email automation, and bot protection remain scheduled separately."
   },
   "steps": {
     "label": "Quote form steps",
@@ -75,7 +75,7 @@
       "email": "Email",
       "phone": "Phone"
     },
-    "submit": "Prepare quote request"
+    "submit": "Send quote request"
   },
   "cta": {
     "title": "Prefer to talk before writing the brief?",

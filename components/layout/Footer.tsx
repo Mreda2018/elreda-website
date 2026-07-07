@@ -234,9 +234,7 @@ export async function Footer() {
             <Button
               variant="subtle"
               size="sm"
-              aria-disabled="true"
-              tabIndex={-1}
-              className="pointer-events-none opacity-50"
+              className="cky-banner-element"
             >
               {t("footer.cookiePreferences")}
             </Button>

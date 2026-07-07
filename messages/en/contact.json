@@ -50,7 +50,7 @@
   "form": {
     "eyebrow": "Project message",
     "title": "Send a focused brief",
-    "description": "This form is a layout foundation only. Backend submission, email, CRM, and bot protection will be connected in the scheduled form sprint.",
+    "description": "Send the project details you have now. We store the request securely and follow up with the right next step.",
     "servicePlaceholder": "Select a service",
     "serviceOptions": {
       "branding": "Branding & identity",

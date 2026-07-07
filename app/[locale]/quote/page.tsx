@@ -5,8 +5,8 @@ import { getTranslations } from "next-intl/server";
 import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { Reveal } from "@/components/motion/Reveal";
-import { OptionCardField, SelectField, TextAreaField, TextField } from "@/components/forms";
-import { Button, Card, Container, Section, SectionHeader } from "@/components/ui";
+import { QuoteForm } from "@/components/forms";
+import { Card, Container, Section, SectionHeader } from "@/components/ui";
 import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -109,38 +109,15 @@ async function QuoteHero({ locale }: { locale: Locale }) {
   );
 }
 
-async function QuoteProgress() {
-  const t = await getTranslations("quote");
-
-  return (
-    <nav aria-label={t("steps.label")}>
-      <ol className="grid list-none gap-[var(--space-3)] p-0 md:grid-cols-4" role="list">
-        {stepKeys.map((key, index) => (
-          <li
-            key={key}
-            aria-current={index === 0 ? "step" : undefined}
-            className="rounded-md border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] p-[var(--space-4)] text-small text-text-secondary rtl:text-ar-small"
-          >
-            <span
-              aria-hidden="true"
-              className="mb-[var(--space-2)] block font-body font-semibold text-red-primary"
-            >
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <span className={index === 0 ? "text-text-primary" : undefined}>
-              {t(`steps.items.${key}`)}
-            </span>
-          </li>
-        ))}
-      </ol>
-    </nav>
-  );
-}
-
-async function QuoteFormLayout() {
+async function QuoteFormLayout({ locale }: { locale: Locale }) {
   const t = await getTranslations("quote");
   const forms = await getTranslations("forms");
   const headingId = "quote-form-heading";
+  const serviceOptions = serviceKeys.map((key) => ({
+    value: key,
+    label: t(`form.serviceOptions.${key}.label`),
+    description: t(`form.serviceOptions.${key}.description`),
+  }));
   const budgetOptions = budgetKeys.map((key) => ({
     value: key,
     label: t(`form.budgetOptions.${key}`),
@@ -160,135 +137,48 @@ async function QuoteFormLayout() {
         />
 
         <Card variant="glass" padding="lg" className="text-start">
-          <form className="grid gap-[var(--space-10)]" aria-labelledby={headingId}>
-            <QuoteProgress />
-            <div aria-live="polite" aria-atomic="true" className="sr-only">
-              {t("steps.current")}
-            </div>
-
-            <fieldset className="grid gap-[var(--space-5)] border-0 p-0">
-              <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
-                {t("form.servicesLegend")}
-              </legend>
-              <div className="grid gap-[var(--grid-gap)] md:grid-cols-2 xl:grid-cols-3">
-                {serviceKeys.map((key) => (
-                  <OptionCardField
-                    key={key}
-                    name="services"
-                    value={key}
-                    label={t(`form.serviceOptions.${key}.label`)}
-                    description={t(`form.serviceOptions.${key}.description`)}
-                  />
-                ))}
-              </div>
-            </fieldset>
-
-            <fieldset className="grid gap-[var(--space-5)] border-0 p-0">
-              <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
-                {t("form.detailsLegend")}
-              </legend>
-              <div className="grid gap-[var(--space-5)] sm:grid-cols-2">
-                <TextField
-                  id="quote-company"
-                  name="company"
-                  label={forms("fields.company")}
-                  placeholder={forms("placeholders.company")}
-                  autoComplete="organization"
-                />
-                <TextField
-                  id="quote-name"
-                  name="name"
-                  label={forms("fields.name")}
-                  placeholder={forms("placeholders.name")}
-                  autoComplete="name"
-                />
-              </div>
-              <TextAreaField
-                id="quote-message"
-                name="message"
-                label={forms("fields.message")}
-                placeholder={forms("placeholders.message")}
-              />
-            </fieldset>
-
-            <div className="grid gap-[var(--grid-gap)] lg:grid-cols-2">
-              <fieldset className="border-0 p-0">
-                <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
-                  {t("form.budgetLegend")}
-                </legend>
-                <div className="grid gap-[var(--space-3)]">
-                  {budgetOptions.map((option) => (
-                    <OptionCardField
-                      key={option.value}
-                      type="radio"
-                      name="budget"
-                      value={option.value}
-                      label={option.label}
-                    />
-                  ))}
-                </div>
-              </fieldset>
-
-              <fieldset className="border-0 p-0">
-                <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
-                  {t("form.timelineLegend")}
-                </legend>
-                <div className="grid gap-[var(--space-3)]">
-                  {timelineOptions.map((option) => (
-                    <OptionCardField
-                      key={option.value}
-                      type="radio"
-                      name="timeline"
-                      value={option.value}
-                      label={option.label}
-                    />
-                  ))}
-                </div>
-              </fieldset>
-            </div>
-
-            <fieldset className="grid gap-[var(--space-5)] border-0 p-0">
-              <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
-                {t("form.contactLegend")}
-              </legend>
-              <div className="grid gap-[var(--space-5)] sm:grid-cols-2">
-                <TextField
-                  id="quote-email"
-                  name="email"
-                  type="email"
-                  label={forms("fields.email")}
-                  placeholder={forms("placeholders.email")}
-                  autoComplete="email"
-                />
-                <TextField
-                  id="quote-phone"
-                  name="phone"
-                  type="tel"
-                  label={forms("fields.phone")}
-                  placeholder={forms("placeholders.phone")}
-                  autoComplete="tel"
-                />
-                <SelectField
-                  id="quote-preferred-contact"
-                  name="preferredContact"
-                  label={forms("fields.preferredContact")}
-                  options={[
-                    {
-                      value: "whatsapp",
-                      label: t("form.preferredContactOptions.whatsapp"),
-                    },
-                    { value: "email", label: t("form.preferredContactOptions.email") },
-                    { value: "phone", label: t("form.preferredContactOptions.phone") },
-                  ]}
-                  className="sm:col-span-2"
-                />
-              </div>
-            </fieldset>
-
-            <Button type="submit" size="lg" disabled className="w-full sm:w-auto">
-              {t("form.submit")}
-            </Button>
-          </form>
+          <QuoteForm
+            locale={locale}
+            ariaLabelledBy={headingId}
+            steps={{
+              label: t("steps.label"),
+              current: t("steps.current"),
+              items: stepKeys.map((key) => t(`steps.items.${key}`)),
+            }}
+            labels={{
+              services: t("form.servicesLegend"),
+              details: t("form.detailsLegend"),
+              budget: t("form.budgetLegend"),
+              timeline: t("form.timelineLegend"),
+              contact: t("form.contactLegend"),
+              company: forms("fields.company"),
+              name: forms("fields.name"),
+              message: forms("fields.message"),
+              email: forms("fields.email"),
+              phone: forms("fields.phone"),
+              preferredContact: forms("fields.preferredContact"),
+              honeypot: forms("common.honeypotLabel"),
+            }}
+            placeholders={{
+              company: forms("placeholders.company"),
+              name: forms("placeholders.name"),
+              message: forms("placeholders.message"),
+              email: forms("placeholders.email"),
+              phone: forms("placeholders.phone"),
+            }}
+            serviceOptions={serviceOptions}
+            budgetOptions={budgetOptions}
+            timelineOptions={timelineOptions}
+            preferredContactOptions={[
+              {
+                value: "whatsapp",
+                label: t("form.preferredContactOptions.whatsapp"),
+              },
+              { value: "email", label: t("form.preferredContactOptions.email") },
+              { value: "phone", label: t("form.preferredContactOptions.phone") },
+            ]}
+            submitLabel={t("form.submit")}
+          />
         </Card>
       </Container>
     </Section>
@@ -303,7 +193,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
     <>
       <QuoteHero locale={locale} />
       <Reveal variant="editorial">
-        <QuoteFormLayout />
+        <QuoteFormLayout locale={locale} />
       </Reveal>
       <Reveal variant="statement">
         <CTASection
