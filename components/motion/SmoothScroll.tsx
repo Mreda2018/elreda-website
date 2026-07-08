@@ -4,10 +4,10 @@ import { useEffect, type ReactNode } from "react";
 
 import {
   createLenis,
-  updateLoadedScrollTrigger,
-  usePrefersReducedMotion,
   type LenisInstance,
-} from "@/lib/animation";
+} from "@/lib/animation/lenis";
+import { updateLoadedScrollTrigger } from "@/lib/animation/gsap";
+import { usePrefersReducedMotion } from "@/lib/animation/usePrefersReducedMotion";
 
 export type SmoothScrollProps = {
   children: ReactNode;
@@ -18,10 +18,18 @@ export function SmoothScroll({
   children,
   enabled = false,
 }: SmoothScrollProps) {
+  if (!enabled) {
+    return children;
+  }
+
+  return <SmoothScrollRuntime>{children}</SmoothScrollRuntime>;
+}
+
+function SmoothScrollRuntime({ children }: { children: ReactNode }) {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (!enabled || prefersReducedMotion) {
+    if (prefersReducedMotion) {
       return;
     }
 
@@ -63,7 +71,7 @@ export function SmoothScroll({
       lenis?.destroy();
       lenis = null;
     };
-  }, [enabled, prefersReducedMotion]);
+  }, [prefersReducedMotion]);
 
   return children;
 }

@@ -2,16 +2,18 @@
 
 import { useEffect, useId, useRef, type ReactNode } from "react";
 
+import { withGsap } from "@/lib/animation/gsap";
 import {
   animationBudget,
+} from "@/lib/animation/presets";
+import {
   getRevealFromVars,
   getRevealToVars,
   getRevealVariant,
-  motionAttributes,
-  withGsap,
   type RevealDirection,
   type RevealVariantName,
-} from "@/lib/animation";
+} from "@/lib/animation/reveal";
+import { motionAttributes } from "@/lib/animation/tokens";
 import { cn } from "@/lib/utils";
 
 export type RevealProps = {

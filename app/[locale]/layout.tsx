@@ -65,6 +65,19 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
+  const pageShell = (
+    <>
+      <Header />
+      <main
+        id={MAIN_CONTENT_ID}
+        tabIndex={-1}
+        className="flex-1 bg-[image:var(--gradient-dark)] outline-none"
+      >
+        {children}
+      </main>
+      <Footer />
+    </>
+  );
 
   return (
     <html
@@ -83,17 +96,11 @@ export default async function RootLayout({
         ) : null}
         <SkipNavigation />
         <NextIntlClientProvider messages={messages}>
-          <SmoothScroll enabled={smoothScrollEnabled}>
-            <Header />
-            <main
-              id={MAIN_CONTENT_ID}
-              tabIndex={-1}
-              className="flex-1 bg-[image:var(--gradient-dark)] outline-none"
-            >
-              {children}
-            </main>
-            <Footer />
-          </SmoothScroll>
+          {smoothScrollEnabled ? (
+            <SmoothScroll enabled>{pageShell}</SmoothScroll>
+          ) : (
+            pageShell
+          )}
         </NextIntlClientProvider>
       </body>
     </html>
