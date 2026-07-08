@@ -95,7 +95,7 @@ export function QuoteForm({
 
   return (
     <form
-      className="grid gap-[var(--space-10)]"
+      className="grid gap-[var(--space-8)] md:gap-[var(--space-10)]"
       action={formAction}
       aria-labelledby={ariaLabelledBy}
       aria-busy={pending}
@@ -113,7 +113,7 @@ export function QuoteForm({
       </div>
 
       <nav aria-label={steps.label}>
-        <ol className="grid list-none gap-[var(--space-3)] p-0 md:grid-cols-4" role="list">
+        <ol className="grid list-none gap-[var(--space-3)] p-0 sm:grid-cols-2 lg:grid-cols-4" role="list">
           {steps.items.map((item, index) => (
             <li
               key={item}
@@ -137,8 +137,8 @@ export function QuoteForm({
         {steps.current}
       </div>
 
-      <fieldset className="grid gap-[var(--space-5)] border-0 p-0">
-        <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
+      <fieldset className="grid gap-[var(--space-4)] border-0 p-0 md:gap-[var(--space-5)]">
+        <legend className="mb-[var(--space-4)] text-h5 font-semibold text-white md:mb-[var(--space-5)] md:text-h4 rtl:text-ar-body-lg md:rtl:text-ar-h3">
           {labels.services}
         </legend>
         <div className="grid gap-[var(--grid-gap)] md:grid-cols-2 xl:grid-cols-3">
@@ -154,11 +154,11 @@ export function QuoteForm({
         </div>
       </fieldset>
 
-      <fieldset className="grid gap-[var(--space-5)] border-0 p-0">
-        <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
+      <fieldset className="grid gap-[var(--space-4)] border-0 p-0 md:gap-[var(--space-5)]">
+        <legend className="mb-[var(--space-4)] text-h5 font-semibold text-white md:mb-[var(--space-5)] md:text-h4 rtl:text-ar-body-lg md:rtl:text-ar-h3">
           {labels.details}
         </legend>
-        <div className="grid gap-[var(--space-5)] sm:grid-cols-2">
+        <div className="grid gap-[var(--space-4)] sm:grid-cols-2 md:gap-[var(--space-5)]">
           <TextField
             id="quote-company"
             name="company"
@@ -186,7 +186,7 @@ export function QuoteForm({
 
       <div className="grid gap-[var(--grid-gap)] lg:grid-cols-2">
         <fieldset className="border-0 p-0">
-          <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
+          <legend className="mb-[var(--space-4)] text-h5 font-semibold text-white md:mb-[var(--space-5)] md:text-h4 rtl:text-ar-body-lg md:rtl:text-ar-h3">
             {labels.budget}
           </legend>
           <div className="grid gap-[var(--space-3)]">
@@ -204,7 +204,7 @@ export function QuoteForm({
         </fieldset>
 
         <fieldset className="border-0 p-0">
-          <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
+          <legend className="mb-[var(--space-4)] text-h5 font-semibold text-white md:mb-[var(--space-5)] md:text-h4 rtl:text-ar-body-lg md:rtl:text-ar-h3">
             {labels.timeline}
           </legend>
           <div className="grid gap-[var(--space-3)]">
@@ -222,11 +222,11 @@ export function QuoteForm({
         </fieldset>
       </div>
 
-      <fieldset className="grid gap-[var(--space-5)] border-0 p-0">
-        <legend className="mb-[var(--space-5)] text-h4 font-semibold text-white rtl:text-ar-h3">
+      <fieldset className="grid gap-[var(--space-4)] border-0 p-0 md:gap-[var(--space-5)]">
+        <legend className="mb-[var(--space-4)] text-h5 font-semibold text-white md:mb-[var(--space-5)] md:text-h4 rtl:text-ar-body-lg md:rtl:text-ar-h3">
           {labels.contact}
         </legend>
-        <div className="grid gap-[var(--space-5)] sm:grid-cols-2">
+        <div className="grid gap-[var(--space-4)] sm:grid-cols-2 md:gap-[var(--space-5)]">
           <TextField
             id="quote-email"
             name="email"

@@ -15,7 +15,7 @@ const cardVariants = cva("micro-card relative rounded-md border shadow-sm", {
       none: "p-0",
       sm: "p-5",
       md: "p-7",
-      lg: "p-8 lg:p-10",
+      lg: "p-6 sm:p-8 lg:p-10",
     },
   },
   defaultVariants: {

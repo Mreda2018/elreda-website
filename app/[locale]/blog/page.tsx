@@ -244,14 +244,15 @@ async function ArticleCard({
         <div className="flex flex-col gap-[var(--space-4)]">
           <Heading
             level={3}
-            className={featured ? "max-w-4xl text-h2 rtl:text-ar-h2" : undefined}
+            className={featured ? "max-w-4xl md:text-h2 md:rtl:text-ar-h2" : undefined}
           >
             {renderLocalizedValue(article.title, locale)}
           </Heading>
           <p
             className={cn(
               "whitespace-pre-line text-body text-text-secondary rtl:text-ar-body",
-              featured && "max-w-[var(--container-narrow)] text-body-lg rtl:text-ar-body-lg",
+              featured &&
+                "max-w-[var(--container-narrow)] md:text-body-lg md:rtl:text-ar-body-lg",
             )}
           >
             {article.excerpt

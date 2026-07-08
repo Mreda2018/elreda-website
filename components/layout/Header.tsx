@@ -33,7 +33,7 @@ export async function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-[color:var(--glass-border)] bg-[color:color-mix(in_srgb,var(--black)_86%,transparent)] shadow-lg backdrop-blur-[20px]">
-      <div className="mx-auto flex min-h-24 w-full max-w-container items-center justify-between gap-[var(--space-8)] px-section-x">
+      <div className="mx-auto flex min-h-20 w-full max-w-container items-center justify-between gap-[var(--space-4)] px-section-x lg:min-h-24 lg:gap-[var(--space-8)]">
         <Link
           href={getLocalizedHref(locale, "/")}
           aria-label={t("navigation.home")}
@@ -41,7 +41,7 @@ export async function Header() {
         >
           <div
             aria-hidden="true"
-            className="grid size-12 shrink-0 place-items-center rounded-md border border-red-primary/40 bg-[image:var(--gradient-subtle)] text-h5 font-bold leading-none text-white shadow-md"
+            className="grid size-10 shrink-0 place-items-center rounded-md border border-red-primary/40 bg-[image:var(--gradient-subtle)] text-h5 font-bold leading-none text-white shadow-md sm:size-12"
           >
             {t("brand.shortName").slice(0, 1)}
           </div>
@@ -73,7 +73,7 @@ export async function Header() {
         </div>
 
         <div className="flex shrink-0 items-center md:hidden">
-          <span className="rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2 text-small font-semibold leading-none text-text-secondary rtl:text-ar-small">
+          <span className="rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-3 py-2 text-small font-semibold leading-none text-text-secondary sm:px-4 rtl:text-ar-small">
             {t("language.ar")} / {t("language.en")}
           </span>
         </div>

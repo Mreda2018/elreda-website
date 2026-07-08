@@ -110,7 +110,7 @@ async function ServicesList({
                     variant={isFeatured ? "elevated" : "glass"}
                     padding="lg"
                     className={cn(
-                      "flex min-h-[calc(var(--space-48)+var(--space-32))] flex-col gap-[var(--space-6)] text-start",
+                      "flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-6)] text-start md:min-h-[calc(var(--space-48)+var(--space-32))]",
                       isFeatured &&
                         "relative overflow-hidden border-border-light bg-[image:var(--gradient-subtle)]",
                     )}
@@ -138,7 +138,7 @@ async function ServicesList({
                     <div className="flex flex-col gap-[var(--space-3)]">
                       <Heading
                         level={3}
-                        className={isFeatured ? "max-w-4xl text-h2 rtl:text-ar-h2" : undefined}
+                        className={isFeatured ? "max-w-4xl md:text-h2 md:rtl:text-ar-h2" : undefined}
                       >
                         {renderLocalizedValue(service.title, locale)}
                       </Heading>
@@ -146,7 +146,7 @@ async function ServicesList({
                         className={cn(
                           "whitespace-pre-line text-body text-text-secondary rtl:text-ar-body",
                           isFeatured &&
-                            "max-w-[var(--container-narrow)] text-body-lg rtl:text-ar-body-lg",
+                            "max-w-[var(--container-narrow)] md:text-body-lg md:rtl:text-ar-body-lg",
                         )}
                       >
                         {renderLocalizedValue(service.description, locale)}

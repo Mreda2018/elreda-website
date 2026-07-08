@@ -176,7 +176,7 @@ async function PortfolioListing({
                   aria-hidden="true"
                   className="absolute inset-x-0 top-0 h-1 bg-[image:var(--gradient-brand)]"
                 />
-                <div className="flex min-h-[calc(var(--space-48)+var(--space-16))] flex-col gap-[var(--space-6)] lg:pe-[var(--space-8)]">
+                <div className="flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-6)] md:min-h-[calc(var(--space-48)+var(--space-16))] lg:pe-[var(--space-8)]">
                   <div className="flex flex-wrap items-center gap-[var(--space-3)]">
                     {featuredProject.featured ? (
                       <Badge variant="red" size="sm">
@@ -191,7 +191,7 @@ async function PortfolioListing({
                   </div>
 
                   <div className="flex flex-col gap-[var(--space-4)]">
-                    <Heading level={3} className="max-w-4xl text-h2 rtl:text-ar-h2">
+                    <Heading level={3} className="max-w-4xl md:text-h2 md:rtl:text-ar-h2">
                       {renderLocalizedValue(featuredProject.title, locale)}
                     </Heading>
                     <p className="max-w-[var(--container-narrow)] whitespace-pre-line text-body-lg text-text-secondary rtl:text-ar-body-lg">
@@ -245,7 +245,7 @@ async function PortfolioListing({
                     <Card
                       variant="glass"
                       padding="lg"
-                      className="flex min-h-[calc(var(--space-48)+var(--space-32))] flex-col gap-[var(--space-6)] text-start"
+                      className="flex min-h-[calc(var(--space-40)+var(--space-8))] flex-col gap-[var(--space-6)] text-start md:min-h-[calc(var(--space-48)+var(--space-32))]"
                     >
                       <div className="flex flex-wrap items-center gap-[var(--space-3)]">
                         {project.featured ? (

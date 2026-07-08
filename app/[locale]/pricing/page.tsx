@@ -171,7 +171,7 @@ async function PricingPlans({ locale }: { locale: Locale }) {
                   className={cn(
                     "relative flex h-full flex-col gap-[var(--space-7)] overflow-hidden text-start",
                     isRecommended &&
-                      "border-border-light bg-[image:var(--gradient-subtle)] lg:-mt-[var(--space-6)] lg:pb-[calc(var(--space-8)+var(--space-6))]",
+                      "border-border-light bg-[image:var(--gradient-subtle)] xl:-mt-[var(--space-6)] xl:pb-[calc(var(--space-8)+var(--space-6))]",
                   )}
                 >
                   {isRecommended ? (

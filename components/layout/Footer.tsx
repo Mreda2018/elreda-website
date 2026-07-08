@@ -124,9 +124,9 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-[color:var(--glass-border)] bg-[color:var(--black)]">
-      <Container className="flex flex-col gap-[var(--space-16)] py-[var(--space-20)]">
-        <div className="grid gap-[var(--space-12)] lg:grid-cols-[1.05fr_1.45fr]">
-          <div className="flex max-w-[var(--container-narrow)] flex-col gap-[var(--space-10)] text-start">
+      <Container className="flex flex-col gap-[var(--space-12)] py-[var(--space-16)] md:gap-[var(--space-16)] md:py-[var(--space-20)]">
+        <div className="grid gap-[var(--space-10)] md:gap-[var(--space-12)] lg:grid-cols-[1.05fr_1.45fr]">
+          <div className="flex max-w-[var(--container-narrow)] flex-col gap-[var(--space-8)] text-start md:gap-[var(--space-10)]">
             <div className="flex flex-col gap-[var(--space-4)] border-s border-red-primary/50 ps-[var(--space-5)]">
               <span className="text-h3 font-semibold leading-tight text-white rtl:text-ar-h3">
                 {t("brand.name")}
@@ -192,7 +192,7 @@ export async function Footer() {
 
           <nav
             aria-label={t("footer.navigationLabel")}
-            className="grid gap-[var(--space-10)] rounded-md border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] p-[var(--space-8)] sm:grid-cols-3"
+            className="grid gap-[var(--space-8)] rounded-md border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] p-[var(--space-6)] md:grid-cols-3 md:gap-[var(--space-10)] md:p-[var(--space-8)]"
           >
             <FooterColumn title={t("footer.servicesTitle")} links={serviceLinks} />
             <FooterColumn title={t("footer.companyTitle")} links={companyLinks} />

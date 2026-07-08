@@ -30,8 +30,8 @@ export function CTASection({
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-px bg-[image:var(--gradient-brand)]"
       />
-      <Container className="flex max-w-5xl flex-col items-center gap-[var(--space-10)] text-center">
-        <div className="flex flex-col items-center gap-[var(--space-6)] border-x border-[color:var(--glass-border)] px-[var(--space-6)] md:px-[var(--space-12)]">
+      <Container className="flex max-w-5xl flex-col items-center gap-[var(--space-8)] text-center md:gap-[var(--space-10)]">
+        <div className="flex flex-col items-center gap-[var(--space-5)] px-0 sm:border-x sm:border-[color:var(--glass-border)] sm:px-[var(--space-6)] md:gap-[var(--space-6)] md:px-[var(--space-12)]">
           <Heading id={headingId} level={2} align="center">
             {heading}
           </Heading>
@@ -49,7 +49,7 @@ export function CTASection({
                 size="lg"
                 aria-disabled="true"
                 tabIndex={-1}
-                className="pointer-events-none opacity-50"
+                className="pointer-events-none w-full opacity-50 sm:w-auto"
               >
                 {action.label}
               </Button>

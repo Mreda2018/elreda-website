@@ -25,7 +25,7 @@ export function OptionCardField({
     <label
       htmlFor={inputId}
       className={cn(
-        "flex h-full cursor-pointer flex-col gap-[var(--space-3)] rounded-md border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] p-[var(--space-5)] text-start transition-colors focus-within:border-red-button focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-red-button",
+        "flex min-h-12 cursor-pointer flex-col gap-[var(--space-3)] rounded-md border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] p-[var(--space-4)] text-start transition-colors focus-within:border-red-button focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-red-button sm:h-full sm:p-[var(--space-5)]",
         className,
       )}
     >
