@@ -45,4 +45,87 @@ test.describe("accessibility foundation", () => {
     expect(results.testEngine.name).toBe("axe-core");
     expect(Array.isArray(results.violations)).toBe(true);
   });
+
+  test("header navigation exposes active route state", async ({ page }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "chromium",
+      "Desktop navigation is hidden until the approved mobile menu sprint.",
+    );
+
+    await page.goto("/en/about");
+
+    const primaryNavigation = page.getByRole("navigation", {
+      name: "Primary navigation",
+    });
+    const aboutLink = primaryNavigation.getByRole("link", {
+      name: "About",
+    });
+
+    await expect(aboutLink).toHaveAttribute("aria-current", "page");
+  });
+
+  test("breadcrumbs are semantic and mark the current page", async ({ page }) => {
+    await page.goto("/en/about");
+
+    const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
+    const breadcrumbList = breadcrumb.getByRole("list");
+    const currentPage = breadcrumb.getByText("About");
+
+    await expect(breadcrumbList).toBeVisible();
+    await expect(currentPage).toHaveAttribute("aria-current", "page");
+  });
+
+  test("disabled placeholder controls are announced and skipped by tab order", async ({
+    page,
+  }) => {
+    await page.goto("/en/portfolio");
+
+    const disabledFilter = page.getByRole("button", {
+      name: "Branding",
+      exact: true,
+    });
+
+    await expect(disabledFilter).toHaveAttribute("aria-disabled", "true");
+    await expect(disabledFilter).toHaveAttribute("tabindex", "-1");
+
+    await page.keyboard.press("Tab");
+    await expect(disabledFilter).not.toBeFocused();
+  });
+
+  test("contact form keeps labels, autocomplete, and busy semantics", async ({
+    page,
+  }) => {
+    await page.goto("/en/contact");
+
+    const form = page.getByRole("form", { name: "Send a focused brief" });
+
+    await expect(form).toHaveAttribute("aria-busy", "false");
+    await expect(
+      page.getByRole("textbox", { name: "Name", exact: true }),
+    ).toHaveAttribute("autocomplete", "name");
+    await expect(page.getByLabel("Email address")).toHaveAttribute(
+      "autocomplete",
+      "email",
+    );
+    await expect(page.getByLabel("Phone number")).toHaveAttribute(
+      "autocomplete",
+      "tel",
+    );
+  });
+
+  test("quote form keeps fieldset grouping and step semantics", async ({ page }) => {
+    await page.goto("/en/quote");
+
+    await expect(
+      page.getByRole("group", {
+        name: "What services are you looking for?",
+      }),
+    ).toBeVisible();
+    await expect(page.getByRole("group", { name: "Budget range" })).toBeVisible();
+    await expect(page.getByRole("group", { name: "Timeline" })).toBeVisible();
+    await expect(page.getByText("Service selection").locator("..")).toHaveAttribute(
+      "aria-current",
+      "step",
+    );
+  });
 });

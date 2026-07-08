@@ -69,6 +69,7 @@ function FormStatus({ state }: { state: SubmissionActionState }) {
           : "border-error/40 bg-error/10 text-text-primary",
       )}
       role={state.status === "error" ? "alert" : "status"}
+      aria-atomic="true"
     >
       {state.message}
     </p>
@@ -97,6 +98,7 @@ export function QuoteForm({
       className="grid gap-[var(--space-10)]"
       action={formAction}
       aria-labelledby={ariaLabelledBy}
+      aria-busy={pending}
     >
       <input type="hidden" name="locale" value={locale} />
       <div className="sr-only" aria-hidden="true">
