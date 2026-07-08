@@ -46,10 +46,14 @@ the lower-level `data-motion="reveal"` clip-path primitive.
 ## Performance Limits
 
 - Use one reveal group per viewport until broader performance testing is done.
+- `Reveal` caps item-selector animation targets to the shared animation budget
+  (`maxSimultaneousAnimations`). Additional items remain visible and static.
 - Keep reveal animation to transform and opacity.
 - Do not animate layout properties such as margin, padding, width, height, grid
   placement, or top/left offsets.
 - Keep stagger at or below `motionStaggers.loose`.
+- Card-grid reveals use `motionStaggers.tight` to avoid long stagger tails on
+  larger grids.
 - Keep normal reveal duration at or below `motionDurations.slower`.
 - Use GSAP only through the existing dynamic `withGsap()` helper.
 

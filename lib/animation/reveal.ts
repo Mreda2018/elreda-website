@@ -71,7 +71,7 @@ export const revealVariants = {
       start: scrollTriggerDefaults.start,
       once: true,
     },
-    stagger: motionStaggers.normal,
+    stagger: motionStaggers.tight,
     duration: motionDurations.slow,
     easing: gsapEasings.premium,
     distance: 28,

@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, type ReactNode } from "react";
 
 import {
+  animationBudget,
   getRevealFromVars,
   getRevealToVars,
   getRevealVariant,
@@ -35,6 +36,7 @@ export function Reveal({
 
   useEffect(() => {
     let cleanup = () => {};
+    let isActive = true;
 
     withGsap((gsap) => {
       const root = rootRef.current;
@@ -45,9 +47,12 @@ export function Reveal({
 
       const revealVariant = getRevealVariant(variant);
       const direction = getElementDirection(root);
-      const targets = itemSelector
+      const allTargets = itemSelector
         ? Array.from(root.querySelectorAll<HTMLElement>(itemSelector))
         : [root];
+      const targets = itemSelector
+        ? allTargets.slice(0, animationBudget.maxSimultaneousAnimations)
+        : allTargets;
 
       if (targets.length === 0) {
         return cleanup;
@@ -71,10 +76,18 @@ export function Reveal({
         context.revert();
       };
     }).then((fn) => {
-      cleanup = fn;
+      if (isActive) {
+        cleanup = fn;
+        return;
+      }
+
+      fn();
     });
 
-    return () => cleanup();
+    return () => {
+      isActive = false;
+      cleanup();
+    };
   }, [itemSelector, variant]);
 
   return (

@@ -17,6 +17,8 @@ Milestone 6.5 adds a controlled Lenis smooth scrolling foundation in `components
 - `lib/animation/usePrefersReducedMotion.ts` exposes a client hook for future interactive animation components.
 - `lib/animation/gsap.ts` lazy-loads GSAP and ScrollTrigger only in the browser, applies the required `start: "top 90%"` default, and skips setup when reduced motion is requested.
 - `lib/animation/reveal.ts` defines typed reveal variants and direction-aware GSAP var helpers.
+- `components/motion/Reveal.tsx` caps staggered item targets to the shared
+  animation budget and leaves any extra items visible/static.
 - `lib/animation/lenis.ts` dynamically loads Lenis only in the browser and only when reduced motion is not requested.
 - `components/motion/SmoothScroll.tsx` centralizes Lenis setup, ScrollTrigger updates, RAF ownership, and cleanup.
 - `app/globals.css` defines inert `data-motion` primitives for future opt-in animation setup.
