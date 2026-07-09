@@ -6,8 +6,8 @@ import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
-import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildPageMetadata } from "@/lib/seo/site";
 import { cn } from "@/lib/utils";
 
 type PricingPageProps = {
@@ -27,12 +27,6 @@ function getLocalizedHref(locale: Locale, path: "/" | `/${string}`): string {
   return path === "/" ? "/en" : `/en${path}`;
 }
 
-function getCanonicalUrl(locale: Locale): string {
-  const siteUrl = getOptionalPublicEnv("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000";
-
-  return new URL(getLocalizedHref(locale, "/pricing"), siteUrl).toString();
-}
-
 function formatIndex(locale: Locale, index: number): string {
   return new Intl.NumberFormat(locale, {
     minimumIntegerDigits: 2,
@@ -47,22 +41,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "pricing" });
   const title = t("metadata.title");
   const description = t("metadata.description");
-  const canonical = getCanonicalUrl(locale);
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: "/pricing",
     title,
     description,
-    alternates: {
-      canonical,
-    },
-    openGraph: {
-      title,
-      description,
-      locale: locale === "ar" ? "ar_EG" : "en_US",
-      type: "website",
-      url: canonical,
-    },
-  };
+  });
 }
 
 async function PricingBreadcrumbs({ locale }: { locale: Locale }) {

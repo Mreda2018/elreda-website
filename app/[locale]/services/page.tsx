@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildPageMetadata } from "@/lib/seo/site";
 import { loadServicesPage } from "@/lib/sanity/loaders";
 import type { ServicesPageService } from "@/lib/sanity/types";
 import { cn } from "@/lib/utils";
@@ -23,7 +24,6 @@ function getLocalizedHref(locale: Locale, path: "/" | `/${string}`): string {
 
   return path === "/" ? "/en" : `/en${path}`;
 }
-
 export async function generateMetadata({
   params,
 }: ServicesPageProps): Promise<Metadata> {
@@ -32,16 +32,12 @@ export async function generateMetadata({
   const title = t("metadata.title");
   const description = t("metadata.description");
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: "/services",
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      locale: locale === "ar" ? "ar_EG" : "en_US",
-      type: "website",
-    },
-  };
+  });
 }
 
 async function ServicesBreadcrumbs({ locale }: { locale: Locale }) {

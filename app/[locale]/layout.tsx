@@ -9,10 +9,13 @@ import {
   MAIN_CONTENT_ID,
   SkipNavigation,
 } from "@/components/common/SkipNavigation";
+import { SchemaMarkup } from "@/components/common/SchemaMarkup";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { isLocale, routing } from "@/lib/i18n/routing";
+import { getOrganizationSchema, getWebSiteSchema } from "@/lib/seo/schema";
+import { getSiteUrl } from "@/lib/seo/site";
 import "../globals.css";
 
 const inter = Inter({
@@ -35,12 +38,17 @@ const cookieYesWebsiteKey = process.env.NEXT_PUBLIC_COOKIEYES_WEBSITE_KEY;
 const smoothScrollEnabled = process.env.NEXT_PUBLIC_ENABLE_SMOOTH_SCROLL === "true";
 
 export const metadata: Metadata = {
+  metadataBase: getSiteUrl(),
   title: {
     default: "elReda Advertising",
     template: "%s | elReda Advertising",
   },
   description:
     "A full-service creative and technology agency helping businesses build brands, websites, stores, systems, and marketing from one place.",
+  openGraph: {
+    siteName: "elReda Advertising",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {
@@ -94,6 +102,12 @@ export default async function RootLayout({
             strategy="beforeInteractive"
           />
         ) : null}
+        <SchemaMarkup
+          schema={{
+            "@context": "https://schema.org",
+            "@graph": [getOrganizationSchema(), getWebSiteSchema()],
+          }}
+        />
         <SkipNavigation />
         <NextIntlClientProvider messages={messages}>
           {smoothScrollEnabled ? (

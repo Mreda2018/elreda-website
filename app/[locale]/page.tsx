@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 
@@ -11,6 +12,7 @@ import { TrustBar } from "@/components/sections/TrustBar";
 import { Reveal } from "@/components/motion/Reveal";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildPageMetadata } from "@/lib/seo/site";
 import {
   loadHomeHero,
   loadHomeServices,
@@ -23,6 +25,22 @@ function renderOptionalLocalizedValue(
   locale: Locale,
 ): ReactNode | undefined {
   return value ? renderLocalizedValue(value, locale) : undefined;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "common" });
+
+  return buildPageMetadata({
+    locale,
+    path: "/",
+    title: t("metadata.siteTitle"),
+    description: t("metadata.siteDescription"),
+  });
 }
 
 export default async function Home({

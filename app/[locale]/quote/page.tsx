@@ -7,8 +7,8 @@ import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { QuoteForm } from "@/components/forms";
 import { Card, Container, Section, SectionHeader } from "@/components/ui";
-import { getOptionalPublicEnv } from "@/lib/env";
 import type { Locale } from "@/lib/i18n/routing";
+import { buildPageMetadata } from "@/lib/seo/site";
 
 type QuotePageProps = {
   params: Promise<{ locale: Locale }>;
@@ -27,12 +27,6 @@ function getLocalizedHref(locale: Locale, path: "/" | `/${string}`): string {
   return path === "/" ? "/en" : `/en${path}`;
 }
 
-function getCanonicalUrl(locale: Locale): string {
-  const siteUrl = getOptionalPublicEnv("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000";
-
-  return new URL(getLocalizedHref(locale, "/quote"), siteUrl).toString();
-}
-
 export async function generateMetadata({
   params,
 }: QuotePageProps): Promise<Metadata> {
@@ -40,22 +34,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "quote" });
   const title = t("metadata.title");
   const description = t("metadata.description");
-  const canonical = getCanonicalUrl(locale);
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: "/quote",
     title,
     description,
-    alternates: {
-      canonical,
-    },
-    openGraph: {
-      title,
-      description,
-      locale: locale === "ar" ? "ar_EG" : "en_US",
-      type: "website",
-      url: canonical,
-    },
-  };
+  });
 }
 
 async function QuoteBreadcrumbs({ locale }: { locale: Locale }) {

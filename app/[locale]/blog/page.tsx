@@ -6,11 +6,11 @@ import { CTASection } from "@/components/sections/CTASection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { Badge, Button, Card, Container, Heading, Section, SectionHeader } from "@/components/ui";
-import { getOptionalPublicEnv } from "@/lib/env";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
 import { loadBlogPage } from "@/lib/sanity/loaders";
 import type { BlogPageArticle } from "@/lib/sanity/types";
+import { buildPageMetadata } from "@/lib/seo/site";
 import { cn } from "@/lib/utils";
 
 type BlogPageProps = {
@@ -35,12 +35,6 @@ function getLocalizedHref(locale: Locale, path: "/" | `/${string}`): string {
   }
 
   return path === "/" ? "/en" : `/en${path}`;
-}
-
-function getCanonicalUrl(locale: Locale): string {
-  const siteUrl = getOptionalPublicEnv("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000";
-
-  return new URL(getLocalizedHref(locale, "/blog"), siteUrl).toString();
 }
 
 function formatDate(locale: Locale, value: string | undefined): string | null {
@@ -68,22 +62,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "blog" });
   const title = t("metadata.title");
   const description = t("metadata.description");
-  const canonical = getCanonicalUrl(locale);
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: "/blog",
     title,
     description,
-    alternates: {
-      canonical,
-    },
-    openGraph: {
-      title,
-      description,
-      locale: locale === "ar" ? "ar_EG" : "en_US",
-      type: "website",
-      url: canonical,
-    },
-  };
+  });
 }
 
 async function BlogBreadcrumbs({ locale }: { locale: Locale }) {
