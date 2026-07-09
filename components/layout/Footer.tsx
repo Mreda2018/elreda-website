@@ -20,12 +20,12 @@ type SocialPlatform =
   | "youtube";
 
 const serviceKeys = [
-  { key: "branding", path: "/services/branding" },
-  { key: "graphicDesign", path: "/services/graphic-design" },
-  { key: "printing", path: "/services/printing" },
-  { key: "webDevelopment", path: "/services/web-development" },
-  { key: "ecommerce", path: "/services/ecommerce" },
-  { key: "businessSystems", path: "/services/erp-systems" },
+  { key: "branding", path: "/services" },
+  { key: "graphicDesign", path: "/services" },
+  { key: "printing", path: "/services" },
+  { key: "webDevelopment", path: "/services" },
+  { key: "ecommerce", path: "/services" },
+  { key: "businessSystems", path: "/services" },
 ] as const;
 
 const companyKeys = [
@@ -75,7 +75,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
       </Heading>
       <ul className="flex list-none flex-col gap-[var(--space-3)] p-0" role="list">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={`${link.href}-${link.label}`}>
             <Link
               href={link.href}
               className="micro-link inline-flex rounded-sm text-small text-text-secondary underline-offset-4 outline-none hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"

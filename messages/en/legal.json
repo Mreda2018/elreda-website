@@ -1,0 +1,169 @@
+{
+  "shared": {
+    "breadcrumbsLabel": "Breadcrumb",
+    "home": "Home",
+    "reviewNoticeTitle": "Draft notice",
+    "reviewNotice": "This page is a launch-safe draft and must be reviewed by qualified legal counsel before the public production launch.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdated": "Draft for legal review"
+  },
+  "privacyPolicy": {
+    "metadata": {
+      "title": "Privacy Policy",
+      "description": "Draft privacy policy for elReda Advertising, covering contact data, quote requests, cookies, and legal review status."
+    },
+    "breadcrumbsCurrent": "Privacy Policy",
+    "eyebrow": "Legal",
+    "title": "Privacy Policy",
+    "description": "A plain-language draft explaining what information may be collected when you use the elReda Advertising website.",
+    "sections": [
+      {
+        "title": "Information we may collect",
+        "body": [
+          "When you contact us or request a quote, we may receive the information you choose to provide, such as your name, company, email address, phone number, project details, service interests, budget range, and message content.",
+          "The website may also process basic technical information needed to operate the site, protect forms, measure performance, and understand consent preferences."
+        ]
+      },
+      {
+        "title": "How information may be used",
+        "body": [
+          "We use submitted information to respond to inquiries, prepare project discussions, manage quote requests, improve the website experience, and maintain reasonable operational records.",
+          "We do not use this draft page to make final legal commitments. Final processing terms, retention periods, and user rights must be confirmed by legal review."
+        ]
+      },
+      {
+        "title": "Service providers",
+        "body": [
+          "The website may use trusted service providers for hosting, content management, form storage, consent management, analytics after consent, error monitoring, and file handling where enabled.",
+          "Production configuration and final provider terms must be verified before launch."
+        ]
+      },
+      {
+        "title": "Your choices",
+        "body": [
+          "You can contact us at info@elreda.com about privacy questions or requests related to information you submitted through the website.",
+          "Cookie preferences are managed through the Cookie Preferences control in the footer when the production CookieYes key is configured."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "metadata": {
+      "title": "Terms",
+      "description": "Draft website terms for elReda Advertising, covering website use, inquiries, project discussions, and legal review status."
+    },
+    "breadcrumbsCurrent": "Terms",
+    "eyebrow": "Legal",
+    "title": "Terms",
+    "description": "A launch-safe draft of basic website terms for visitors and prospective clients.",
+    "sections": [
+      {
+        "title": "Website use",
+        "body": [
+          "This website presents information about elReda Advertising services, work approach, and ways to contact the team.",
+          "You should not misuse the website, attempt unauthorized access, submit harmful content, or interfere with normal operation."
+        ]
+      },
+      {
+        "title": "Service inquiries",
+        "body": [
+          "Submitting a contact form, quote request, or message does not create a client relationship, contract, or obligation to start work.",
+          "Project scope, fees, timelines, deliverables, payment terms, and ownership terms must be agreed separately in a written proposal or contract."
+        ]
+      },
+      {
+        "title": "Content and accuracy",
+        "body": [
+          "We aim to keep website information clear and useful, but service descriptions, examples, timelines, and availability may change.",
+          "Final commercial commitments should be confirmed directly with the elReda Advertising team."
+        ]
+      },
+      {
+        "title": "Legal review required",
+        "body": [
+          "These terms are draft website copy for launch readiness and are not a substitute for final legal terms prepared for the business.",
+          "Qualified legal counsel should review and approve this page before the public production launch."
+        ]
+      }
+    ]
+  },
+  "cookiesPolicy": {
+    "metadata": {
+      "title": "Cookies Policy",
+      "description": "Draft cookies policy for elReda Advertising, covering essential cookies, consent preferences, and analytics after consent."
+    },
+    "breadcrumbsCurrent": "Cookies Policy",
+    "eyebrow": "Legal",
+    "title": "Cookies Policy",
+    "description": "A draft explanation of how cookies and similar technologies may be used on the website.",
+    "sections": [
+      {
+        "title": "What cookies are",
+        "body": [
+          "Cookies are small files or identifiers stored by a browser to help a website work, remember choices, or support measurement and security features.",
+          "Similar technologies may also be used for consent management, analytics, error monitoring, or embedded services."
+        ]
+      },
+      {
+        "title": "Types of cookies",
+        "body": [
+          "Essential cookies may be used to operate the website, preserve language or consent choices, and support security or form behavior.",
+          "Analytics or marketing cookies should only run according to the configured consent settings and production tag setup."
+        ]
+      },
+      {
+        "title": "Managing preferences",
+        "body": [
+          "When the production CookieYes key is configured, visitors can use the Cookie Preferences control in the footer to review or change consent choices.",
+          "Browser settings may also allow you to block or delete cookies, but some website features may not work as expected."
+        ]
+      },
+      {
+        "title": "Production verification",
+        "body": [
+          "Cookie categories, consent mode, analytics tags, and retention details must be verified with the final CookieYes production configuration before launch.",
+          "This draft should be reviewed by legal counsel before publication."
+        ]
+      }
+    ]
+  },
+  "accessibility": {
+    "metadata": {
+      "title": "Accessibility",
+      "description": "Draft accessibility statement for elReda Advertising, covering bilingual accessibility intent and feedback contact."
+    },
+    "breadcrumbsCurrent": "Accessibility",
+    "eyebrow": "Accessibility",
+    "title": "Accessibility Statement",
+    "description": "A draft statement of elReda Advertising's intent to provide an accessible bilingual website experience.",
+    "sections": [
+      {
+        "title": "Our intent",
+        "body": [
+          "elReda Advertising aims to provide a website experience that is usable by visitors across Arabic and English, keyboard navigation, and a range of assistive technologies.",
+          "The site is built with semantic landmarks, visible focus states, skip navigation, labeled form fields, and RTL/LTR support."
+        ]
+      },
+      {
+        "title": "Known review needs",
+        "body": [
+          "Automated accessibility checks are part of the development workflow, but manual Arabic and English screen reader testing remains required before public production launch.",
+          "Real-device testing should also be completed with final content and production integrations."
+        ]
+      },
+      {
+        "title": "Feedback",
+        "body": [
+          "If you find an accessibility issue, contact us at info@elreda.com and include the page URL, device, browser, and a description of the issue.",
+          "We will use feedback to prioritize improvements and reduce access barriers."
+        ]
+      },
+      {
+        "title": "Legal review required",
+        "body": [
+          "This accessibility statement is a draft for route readiness. Any final compliance claims, standards references, or legal obligations should be reviewed before launch."
+        ]
+      }
+    ]
+  }
+}

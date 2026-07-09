@@ -12,7 +12,11 @@ export type PublicPath =
   | "/pricing"
   | "/blog"
   | "/contact"
-  | "/quote";
+  | "/quote"
+  | "/privacy-policy"
+  | "/terms"
+  | "/cookies-policy"
+  | "/accessibility";
 
 const DEFAULT_SITE_URL = "https://elreda.com";
 
