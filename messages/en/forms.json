@@ -6,7 +6,11 @@
     "submitError": "We could not send your request. Please try again or contact us on WhatsApp.",
     "submitSuccess": "Your request was sent successfully. We will contact you soon.",
     "honeypotLabel": "Leave this field empty",
-    "turnstileError": "Security verification failed. Please try again."
+    "turnstileLabel": "Security check",
+    "turnstileHelp": "This quick check helps protect the form from automated spam.",
+    "turnstileUnavailable": "Security verification is not configured yet, so public submissions are blocked until launch settings are complete.",
+    "turnstileError": "Security verification failed. Please try again.",
+    "rateLimitError": "Too many submissions were sent from this connection. Please wait before trying again or contact us on WhatsApp."
   },
   "fields": {
     "name": "Name",

@@ -143,6 +143,9 @@ async function QuoteFormLayout({ locale }: { locale: Locale }) {
               phone: forms("fields.phone"),
               preferredContact: forms("fields.preferredContact"),
               honeypot: forms("common.honeypotLabel"),
+              turnstile: forms("common.turnstileLabel"),
+              turnstileHelp: forms("common.turnstileHelp"),
+              turnstileUnavailable: forms("common.turnstileUnavailable"),
             }}
             placeholders={{
               company: forms("placeholders.company"),

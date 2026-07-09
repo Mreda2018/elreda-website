@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
 import type { SubmissionActionState } from "@/app/actions/_shared/submissionState";
+import { protectFormSubmission } from "@/app/actions/_shared/security";
 import {
   honeypotSchema,
   localeSchema,
@@ -32,9 +33,21 @@ export async function submitContactForm(
   _state: SubmissionActionState,
   formData: FormData,
 ): Promise<SubmissionActionState> {
+  const requestedLocale = localeSchema.safeParse(readFormDataString(formData, "locale"));
+  const locale = requestedLocale.success ? requestedLocale.data : "ar";
+  const t = await getTranslations({ locale, namespace: "forms" });
+  const website = readFormDataString(formData, "website");
+
+  if (website) {
+    return {
+      status: "success",
+      message: t("common.submitSuccess"),
+    };
+  }
+
   const parsed = contactSchema.safeParse({
-    locale: readFormDataString(formData, "locale"),
-    website: readFormDataString(formData, "website"),
+    locale,
+    website,
     name: readFormDataString(formData, "name"),
     company: readFormDataString(formData, "company") || undefined,
     email: readFormDataString(formData, "email"),
@@ -43,13 +56,25 @@ export async function submitContactForm(
     message: readFormDataString(formData, "message"),
   });
 
-  const locale = parsed.success ? parsed.data.locale : "ar";
-  const t = await getTranslations({ locale, namespace: "forms" });
-
   if (!parsed.success) {
     return {
       status: "error",
       message: t("common.submitError"),
+    };
+  }
+
+  const protection = await protectFormSubmission({
+    formType: "contact",
+    turnstileToken: readFormDataString(formData, "cf-turnstile-response"),
+  });
+
+  if (!protection.allowed) {
+    return {
+      status: "error",
+      message:
+        protection.reason === "rate_limited"
+          ? t("common.rateLimitError")
+          : t("common.turnstileError"),
     };
   }
 

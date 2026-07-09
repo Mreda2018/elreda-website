@@ -11,6 +11,7 @@ import { Button } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/routing";
 import { cn } from "@/lib/utils";
 import { SelectField, TextAreaField, TextField } from "./FormField";
+import { TurnstileField } from "./TurnstileField";
 
 type ContactFormOption = {
   value: string;
@@ -28,6 +29,9 @@ export type ContactFormProps = {
     service: string;
     message: string;
     honeypot: string;
+    turnstile: string;
+    turnstileHelp: string;
+    turnstileUnavailable: string;
   };
   placeholders: {
     name: string;
@@ -142,6 +146,13 @@ export function ContactForm({
         label={labels.message}
         placeholder={placeholders.message}
         required
+      />
+      <TurnstileField
+        id="contact-turnstile-label"
+        locale={locale}
+        label={labels.turnstile}
+        help={labels.turnstileHelp}
+        unavailable={labels.turnstileUnavailable}
       />
       <FormStatus state={state} />
       <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">

@@ -12,6 +12,7 @@ import type { Locale } from "@/lib/i18n/routing";
 import { cn } from "@/lib/utils";
 import { OptionCardField } from "./OptionCardField";
 import { SelectField, TextAreaField, TextField } from "./FormField";
+import { TurnstileField } from "./TurnstileField";
 
 type FieldOption = {
   value: string;
@@ -40,6 +41,9 @@ export type QuoteFormProps = {
     phone: string;
     preferredContact: string;
     honeypot: string;
+    turnstile: string;
+    turnstileHelp: string;
+    turnstileUnavailable: string;
   };
   placeholders: {
     company: string;
@@ -255,6 +259,13 @@ export function QuoteForm({
         </div>
       </fieldset>
 
+      <TurnstileField
+        id="quote-turnstile-label"
+        locale={locale}
+        label={labels.turnstile}
+        help={labels.turnstileHelp}
+        unavailable={labels.turnstileUnavailable}
+      />
       <FormStatus state={state} />
       <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
         {pending ? `${submitLabel}...` : submitLabel}

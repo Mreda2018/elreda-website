@@ -234,6 +234,9 @@ async function ContactFormLayout({ locale }: { locale: Locale }) {
               service: forms("fields.service"),
               message: forms("fields.message"),
               honeypot: forms("common.honeypotLabel"),
+              turnstile: forms("common.turnstileLabel"),
+              turnstileHelp: forms("common.turnstileHelp"),
+              turnstileUnavailable: forms("common.turnstileUnavailable"),
             }}
             placeholders={{
               name: forms("placeholders.name"),

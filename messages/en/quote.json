@@ -12,7 +12,7 @@
     "eyebrow": "Quote request",
     "title": "Share the project shape before the first call",
     "description": "A structured brief helps us understand the service mix, budget, timeline, and decision path before we recommend the right next step.",
-    "note": "Submit the essentials now. File uploads, email automation, and bot protection remain scheduled separately."
+    "note": "Submit the essentials now. Security checks protect the form, while file exchange and email follow-up are handled manually during launch."
   },
   "steps": {
     "label": "Quote form steps",
