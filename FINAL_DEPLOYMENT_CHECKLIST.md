@@ -14,6 +14,9 @@ DNS, and monitoring dashboards.
 Arabic remains the default root locale. English remains under `/en`. Do not add
 or link an alternate Arabic URL prefix.
 
+For staging preparation, use `STAGING_DEPLOYMENT_PLAN.md` and
+`STAGING_QA_CHECKLIST.md` before any production launch decision.
+
 ## Remaining Launch Blockers
 
 - Configure final production `NEXT_PUBLIC_SITE_URL` with the canonical HTTPS
