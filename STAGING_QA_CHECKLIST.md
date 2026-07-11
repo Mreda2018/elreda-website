@@ -148,6 +148,7 @@ Commit SHA:
 |---|---|---|
 | `/` | Pending | |
 | `/en` | Pending | |
+| `/studio` | Pending | Confirm authenticated Sanity Studio loads. |
 | `/robots.txt` | Pending | |
 | `/sitemap.xml` | Pending | |
 | `/llms.txt` | Pending | |

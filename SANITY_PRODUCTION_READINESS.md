@@ -42,6 +42,14 @@ Production launch requires:
   `/en`. Do not create or publish links that depend on an alternate Arabic URL
   prefix.
 
+Sanity project CORS settings must allow these Studio origins:
+
+- `https://elreda-website.vercel.app`
+- `http://localhost:3000`
+
+Allow credentials for these origins if Sanity Studio authentication requires
+credentialed requests.
+
 ## Required Singleton
 
 The `settings` singleton must be published with `_id` exactly `settings`.
