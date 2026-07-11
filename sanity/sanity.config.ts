@@ -26,6 +26,7 @@ const structure: StructureResolver = (S) =>
 export default defineConfig({
   name: "elreda-website",
   title: "elReda Website",
+  basePath: "/studio",
   projectId,
   dataset,
   plugins: [structureTool({ structure })],
