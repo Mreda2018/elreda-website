@@ -6,6 +6,8 @@
   },
   "navigation": {
     "primaryLabel": "التنقل الرئيسي",
+    "openMenu": "فتح قائمة التنقل",
+    "closeMenu": "إغلاق قائمة التنقل",
     "home": "الرئيسية",
     "services": "الخدمات",
     "portfolio": "الأعمال",
@@ -73,7 +75,7 @@
     "ar": "العربية",
     "en": "English",
     "switchToArabic": "التبديل إلى العربية",
-    "switchToEnglish": "Switch to English"
+    "switchToEnglish": "التبديل إلى الإنجليزية"
   },
   "accessibility": {
     "skipToMainContent": "تخطي إلى المحتوى الرئيسي"

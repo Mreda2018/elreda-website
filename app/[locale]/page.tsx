@@ -17,6 +17,7 @@ import {
   loadHomeHero,
   loadHomeServices,
   loadHomeTestimonials,
+  loadFooterSettings,
 } from "@/lib/sanity/loaders";
 import type { LocalizedValue } from "@/lib/sanity/types";
 
@@ -50,11 +51,13 @@ export default async function Home({
 }) {
   const { locale } = await params;
   const t = await getTranslations("home");
-  const [hero, services, testimonials] = await Promise.all([
+  const [hero, services, testimonials, footerSettings] = await Promise.all([
     loadHomeHero(locale),
     loadHomeServices(locale),
     loadHomeTestimonials(locale),
+    loadFooterSettings(locale),
   ]);
+  const whatsappNumber = footerSettings?.whatsappNumber?.replace(/\D/g, "");
 
   if (!hero) {
     return <div className="min-h-svh" />;
@@ -229,6 +232,9 @@ export default async function Home({
             {
               label: t("cta.secondary"),
               variant: "secondary",
+              href: whatsappNumber
+                ? `https://wa.me/${whatsappNumber}`
+                : getLocalizedHref(locale, "/contact"),
             },
           ]}
         />

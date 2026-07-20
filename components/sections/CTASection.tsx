@@ -1,10 +1,17 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { Button, Container, Heading, Section } from "@/components/ui";
+import { buttonVariants, Container, Heading, Section } from "@/components/ui";
+import { getLocalizedHref, type Locale } from "@/lib/i18n/routing";
+import { cn } from "@/lib/utils";
 
 export type CTASectionAction = {
   label: ReactNode;
   variant?: "primary" | "secondary";
+  href?: string;
 };
 
 export type CTASectionProps = {
@@ -14,12 +21,31 @@ export type CTASectionProps = {
   headingId?: string;
 };
 
+function getDefaultActionHref(pathname: string, index: number): string {
+  const pathWithoutLocale =
+    pathname.replace(/^\/(?:ar|en)(?=\/|$)/, "").replace(/\/$/, "") || "/";
+
+  if (pathWithoutLocale === "/contact") {
+    return index === 0 ? "/quote" : "/services";
+  }
+
+  if (pathWithoutLocale === "/quote") {
+    return index === 0 ? "/contact" : "/services";
+  }
+
+  return index === 0 ? "/quote" : "/contact";
+}
+
 export function CTASection({
   heading,
   description,
   actions = [],
   headingId = "site-cta-heading",
 }: CTASectionProps) {
+  const pathname = usePathname();
+  const locale: Locale =
+    pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ar";
+
   return (
     <Section
       tone="elevated"
@@ -42,17 +68,23 @@ export function CTASection({
 
         {actions.length > 0 ? (
           <div className="flex w-full flex-col justify-center gap-[var(--space-4)] sm:w-auto sm:flex-row">
-            {actions.map((action) => (
-              <Button
-                key={`${action.variant ?? "primary"}-${String(action.label)}`}
-                variant={action.variant ?? "primary"}
-                size="lg"
-                aria-disabled="true"
-                tabIndex={-1}
-                className="pointer-events-none w-full opacity-50 sm:w-auto"
+            {actions.map((action, index) => (
+              <Link
+                key={`${action.variant ?? "primary"}-${index}`}
+                href={getLocalizedHref(
+                  locale,
+                  action.href ?? getDefaultActionHref(pathname, index),
+                )}
+                className={cn(
+                  buttonVariants({
+                    variant: action.variant ?? "primary",
+                    size: "lg",
+                  }),
+                  "w-full sm:w-auto",
+                )}
               >
                 {action.label}
-              </Button>
+              </Link>
             ))}
           </div>
         ) : null}

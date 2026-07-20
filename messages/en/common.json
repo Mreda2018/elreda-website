@@ -6,6 +6,8 @@
   },
   "navigation": {
     "primaryLabel": "Primary navigation",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
     "home": "Home",
     "services": "Services",
     "portfolio": "Portfolio",

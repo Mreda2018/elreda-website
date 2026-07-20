@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { buttonVariants } from "@/components/ui";
 import { HeaderNavigation } from "@/components/layout/HeaderNavigation";
-import type { Locale } from "@/lib/i18n/routing";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { MobileMenu } from "@/components/layout/MobileMenu";
+import { buttonVariants } from "@/components/ui";
+import { getLocalizedHref, type Locale } from "@/lib/i18n/routing";
 
 type NavigationItem = {
   key: "services" | "portfolio" | "about" | "industries" | "blog" | "pricing";
@@ -18,10 +20,6 @@ const navigationItems = [
   { key: "blog", path: "/blog" },
   { key: "pricing", path: "/pricing" },
 ] as const satisfies readonly NavigationItem[];
-
-function getLocalizedHref(locale: Locale, path: "/" | `/${string}`): string {
-  return locale === "ar" ? path : `/en${path}`;
-}
 
 export async function Header() {
   const t = await getTranslations("common");
@@ -60,10 +58,14 @@ export async function Header() {
           items={localizedNavigationItems}
         />
 
-        <div className="hidden shrink-0 items-center gap-[var(--space-3)] md:flex">
-          <div className="rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-semibold leading-none text-text-secondary rtl:text-ar-small">
-            {t("language.ar")} / {t("language.en")}
-          </div>
+        <div className="hidden shrink-0 items-center gap-[var(--space-3)] lg:flex">
+          <LanguageSwitcher
+            locale={locale}
+            arabicLabel={t("language.ar")}
+            englishLabel={t("language.en")}
+            switchToArabicLabel={t("language.switchToArabic")}
+            switchToEnglishLabel={t("language.switchToEnglish")}
+          />
           <Link
             href={getLocalizedHref(locale, "/quote")}
             className={buttonVariants({ size: "sm" })}
@@ -72,11 +74,19 @@ export async function Header() {
           </Link>
         </div>
 
-        <div className="flex shrink-0 items-center md:hidden">
-          <span className="rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-3 py-2 text-small font-semibold leading-none text-text-secondary sm:px-4 rtl:text-ar-small">
-            {t("language.ar")} / {t("language.en")}
-          </span>
-        </div>
+        <MobileMenu
+          locale={locale}
+          ariaLabel={t("navigation.primaryLabel")}
+          openLabel={t("navigation.openMenu")}
+          closeLabel={t("navigation.closeMenu")}
+          items={localizedNavigationItems}
+          quoteLabel={t("buttons.requestQuote")}
+          quoteHref={getLocalizedHref(locale, "/quote")}
+          arabicLabel={t("language.ar")}
+          englishLabel={t("language.en")}
+          switchToArabicLabel={t("language.switchToArabic")}
+          switchToEnglishLabel={t("language.switchToEnglish")}
+        />
       </div>
     </header>
   );
