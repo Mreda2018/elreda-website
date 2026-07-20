@@ -2,25 +2,26 @@
 
 - Date: 2026-07-20
 - Branch: `staging`
-- Deployed commit investigated: `676dc78b596374c6702cdff573cc7f8b0b693d75`
+- Deployed commit verified: `cfdf9db0c259d3fc3586adbd277791eaa3c2f959`
 - Staging deployment: `https://elreda-website-git-staging-mohamedreda2005-3712s-projects.vercel.app`
 
 ## Final Recommendation
 
 **NOT READY FOR MERGE**
 
-The four repository-side blockers identified in the previous QA pass are fixed in
-the current working tree. However, these fixes have not been committed or deployed,
-the protected preview still redirects automation to Vercel SSO, and the failed
-preview E2E job has not yet been rerun successfully. Merge readiness requires a new
-preview deployment, an automation access path, a green E2E rerun, and a final
-browser interaction pass on that deployment.
+The repository-side blockers identified in the previous QA pass are fixed and
+deployed in commit `cfdf9db`. The live language-switcher click-through matrix now
+passes. The sole remaining merge blocker is external browser automation access:
+the protected preview still redirects the unauthenticated GitHub Actions runner to
+Vercel SSO, and the latest `Vercel Preview E2E` check consequently remains red.
+Merge readiness requires an approved automation bypass or public staging URL and a
+green E2E rerun. No remaining app-side blocker was identified in this rerun.
 
-## Blockers Fixed in the Working Tree
+## Blocker Status
 
 ### 1. Mobile navigation
 
-Status: **Fixed locally; deployment verification pending.**
+Status: **Fixed and deployed.**
 
 - A menu button is now rendered below the desktop `lg` breakpoint.
 - The menu opens a modal navigation panel containing the localized primary links,
@@ -36,21 +37,16 @@ Status: **Fixed locally; deployment verification pending.**
 
 ### 2. Language switching
 
-Status: **Explicit button fix applied locally; deployment and user retest pending.**
+Status: **Pass — fixed, deployed, and manually verified live.**
 
-The user retested the protected Vercel branch preview in an Incognito browser after
-the prior local fix. The visible “العربية / English” text could be selected, but
-clicking it did not navigate.
+The earlier live user test showed the visible “العربية / English” text but no
+navigation. This was a real observed staging failure caused by an outdated
+deployment: the tested preview was still serving commit `676dc78`, whose desktop
+and mobile language labels were static, noninteractive markup. Redeploying commit
+`cfdf9db` replaced that stale output with the current interactive implementation
+and resolved the issue.
 
-Root cause found: the live preview is still built from remote `staging` commit
-`676dc78b596374c6702cdff573cc7f8b0b693d75`. That commit renders the combined
-language text as a static, noninteractive `<div>` on desktop and `<span>` on mobile;
-it does not contain `LanguageSwitcher.tsx`, the mobile menu, or any of the current
-working-tree fixes. The exact combined label in the user screenshot matches that
-old placeholder. The previous Link-prefetch diagnosis therefore did not describe
-this specific live failure: the tested deployment never ran the Link implementation.
-
-The current implementation was additionally hardened as requested:
+The deployed implementation:
 
 - The switcher is now an explicit `<button type="button">`; it no longer relies on
   `next/link` for interaction or navigation.
@@ -72,24 +68,21 @@ The current implementation was additionally hardened as requested:
 - English remains under `/en`.
 - No `/ar` href was found in the rendered HTML of the 14 requested local routes.
 
-Required real-browser click-through matrix:
+Manual live-browser click-through matrix completed after redeploying `cfdf9db`:
 
-| Start | Click | Expected stable destination | Result in this session |
+| Start | Click | Expected stable destination | Live result |
 |---|---|---|---|
-| `/en` | Arabic | `/` | Pending after commit, push, and redeployment |
-| `/en/services` | Arabic | `/services` | Pending after commit, push, and redeployment |
-| `/` | English | `/en` | Pending after commit, push, and redeployment |
-| `/services` | English | `/en/services` | Pending after commit, push, and redeployment |
+| `/en` | Arabic | `/` | Pass; landed on `/` and remained there |
+| `/en/services` | Arabic | `/services` | Pass; landed on `/services` and remained there |
+| `/` | English | `/en` | Pass; landed on `/en` and remained there |
+| `/services` | English | `/en/services` | Pass; landed on `/en/services` and remained there |
 
-The browser-control connection available to this QA session still reports no
-attached browser. More importantly, the existing live URL cannot exercise this
-button until the current working tree is committed, pushed to `staging`, and a new
-preview deployment completes. No click-through pass is claimed until the user
-confirms that deployed version in the live browser.
+The user also confirmed that the old combined static label is gone, the switcher is
+clickable on the redeployed staging site, and no `/ar` route was generated.
 
 ### 3. Shared closing CTAs
 
-Status: **Fixed locally; deployment verification pending.**
+Status: **Fixed and deployed.**
 
 The shared closing actions are now links using the existing button styles. They no
 longer render with `aria-disabled="true"`, `tabIndex={-1}`, reduced opacity, or
@@ -107,32 +100,35 @@ routes. External WhatsApp URLs are not locale-prefixed.
 
 ### 4. GitHub Actions clean-install failure
 
-Status: **Fixed locally; CI rerun pending.**
+Status: **Fixed, deployed, and confirmed by the latest CI install step.**
 
 The lockfile was regenerated with npm 10.9.2, matching the npm major used by the
 Node 22 GitHub Actions job. The regenerated lock includes the missing nested
 `@swc/helpers@0.5.23` record and the new mobile-menu focus-trap dependencies.
 
 The updated tree passes the same npm 10 clean-install validation that failed for
-the deployed commit.
+the previous deployed commit. In the latest preview E2E job for `cfdf9db`, both
+`Install dependencies` and `Install Playwright browser` passed before the runner
+reached the browser tests.
 
 ## Pages Checked
 
 The route shells and shared header/CTA output were probed from a local Next.js
-production server after the fixes. The exact Vercel preview remains protected, so
-the deployed results are still pending.
+production server after the fixes. The manual live retest covered the four
+language-switch paths below. Unauthenticated automation remains blocked by Vercel
+SSO, so this retest does not claim a new automated pass for the other routes.
 
 | Page | Local production result | Deployed staging result |
 |---|---|---|
-| `/` | Arabic shell and fixed header rendered; CMS sections unavailable locally | Blocked by Vercel SSO |
-| `/services` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
+| `/` | Arabic shell and fixed header rendered; CMS sections unavailable locally | Manual language-switch pass; automation blocked by Vercel SSO |
+| `/services` | Arabic route, fixed header, Quote/Contact CTA links | Manual language-switch pass; automation blocked by Vercel SSO |
 | `/portfolio` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
 | `/about` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
 | `/blog` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
 | `/contact` | Arabic route, fixed header, Quote/Services CTA links and form shell | Blocked by Vercel SSO |
 | `/quote` | Arabic route, fixed header, Contact/Services CTA links and form shell | Blocked by Vercel SSO |
-| `/en` | English shell and fixed header rendered; CMS sections unavailable locally | Blocked by Vercel SSO |
-| `/en/services` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
+| `/en` | English shell and fixed header rendered; CMS sections unavailable locally | Manual language-switch pass; automation blocked by Vercel SSO |
+| `/en/services` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Manual language-switch pass; automation blocked by Vercel SSO |
 | `/en/portfolio` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
 | `/en/about` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
 | `/en/blog` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
@@ -147,7 +143,7 @@ environment variables.
 
 ## Arabic and English Routing Status
 
-Status: **Local implementation passes; deployed verification pending.**
+Status: **Pass for implementation and deployed language switching.**
 
 - `next-intl` remains configured with Arabic as `defaultLocale: "ar"` and
   `localePrefix: "as-needed"`.
@@ -157,6 +153,8 @@ Status: **Local implementation passes; deployed verification pending.**
 - The same localized navigation data is used by desktop and mobile navigation.
 - Local rendered output for all requested routes contains the expected document
   language and no `/ar` links.
+- Live click-through verification confirms that Arabic remains on root routes and
+  English remains under `/en` for the root and Services paths.
 
 ## CMS Rendering Status
 
@@ -195,6 +193,8 @@ Status: **No regressions found in source; deployed viewport QA pending.**
 - The mobile panel reuses the existing black surfaces, glass borders, spacing,
   typography, red focus outline, and button variants; no redesign was introduced.
 - The language link and menu trigger reuse the existing header control styling.
+- The user confirmed that the deployed switcher is clickable and the obsolete
+  combined static language text is no longer present.
 - Shared CTAs retain their existing layout and visual variants; only their disabled
   semantics and destinations changed.
 - No images, gray placeholders, portfolio/blog detail interactions, Team content,
@@ -255,6 +255,26 @@ Reference: [Vercel Protection Bypass for Automation](https://vercel.com/docs/dep
 
 No Vercel protection setting or GitHub secret was changed during this task.
 
+### Latest rerun for `cfdf9db`
+
+The new deployment triggered GitHub Actions run `29739844941`, job `88343805254`:
+
+- `Checkout`: passed
+- `Setup Node`: passed
+- `Install dependencies`: passed
+- `Install Playwright browser`: passed
+- `Run Playwright against preview`: failed
+- Playwright summary: 9 failed, 1 passed
+
+The failing assertions consistently report that normal application elements are
+absent across Arabic and English routes, including skip links, primary navigation,
+breadcrumbs, forms, and the document shells. At the same time, an unauthenticated
+request to the exact branch preview returns HTTP 302 to `https://vercel.com/sso-api`.
+Together, this confirms that the new failure is the external Vercel protection/SSO
+barrier, not the prior lockfile problem or a language-switcher regression. The
+manual browser click-through can pass for an authorized user while the GitHub
+Actions browser remains unable to reach the application.
+
 ## Commands and Checks Run
 
 | Check | Result |
@@ -265,8 +285,10 @@ No Vercel protection setting or GitHub secret was changed during this task.
 | `npx --yes npm@10.9.2 ci --ignore-scripts --dry-run --prefer-offline` against `676dc78` | Fail reproduced: missing `@swc/helpers@0.5.23` |
 | Same npm 10.9.2 clean-install validation against the fixed tree | Pass; exit code 0 |
 | Local production HTTP probes for all 14 requested routes | Route/header/CTA shell checks pass; CMS unavailable locally |
-| `git ls-remote origin refs/heads/staging` | Remote branch still points to `676dc78`; current fixes are not deployed |
-| `curl -I` against the branch preview | HTTP 302 to Vercel SSO confirmed |
+| Live manual language-switch matrix on the branch preview | Pass for all four required transitions; no `/ar` route generated |
+| `git ls-remote origin refs/heads/staging` | Pass; remote `staging` points to `cfdf9db` |
+| Latest `Vercel Preview E2E` check | Fail; browser step reached the protected preview and reported 9 failures, 1 pass |
+| `curl -I` against the branch preview | HTTP 302 to Vercel SSO still confirmed for unauthenticated automation |
 | `git diff --check` | Pass; no whitespace errors |
 
 ## Known Approved Minor Notes
