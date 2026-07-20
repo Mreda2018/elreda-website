@@ -105,10 +105,14 @@ export async function Footer() {
   const phone = settings?.contactPhone;
   const whatsapp = settings?.whatsappNumber ?? t("footer.whatsappFallback");
   const whatsappHref = getWhatsAppHref(whatsapp);
-  const socialLinks = socialPlatforms.map((platform) => ({
-    platform,
-    href: settings?.socialLinks.find((link) => link.platform === platform)?.href,
-  }));
+  const socialLinks = socialPlatforms
+    .map((platform) => ({
+      platform,
+      href: settings?.socialLinks.find((link) => link.platform === platform)?.href,
+    }))
+    .filter((link): link is { platform: SocialPlatform; href: string } =>
+      Boolean(link.href),
+    );
   const serviceLinks = serviceKeys.map((item) => ({
     label: t(`footer.serviceLinks.${item.key}`),
     href: getLocalizedHref(locale, item.path),
@@ -201,14 +205,14 @@ export async function Footer() {
         </div>
 
         <div className="flex flex-col gap-[var(--space-8)] border-t border-[color:var(--glass-border)] pt-[var(--space-8)] lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex flex-col gap-[var(--space-5)]">
-            <Heading level={3} className="text-h5" tone="primary">
-              {t("footer.socialTitle")}
-            </Heading>
-            <ul className="flex list-none flex-wrap gap-[var(--space-3)] p-0" role="list">
-              {socialLinks.map((link) => (
-                <li key={link.platform}>
-                  {link.href ? (
+          {socialLinks.length > 0 ? (
+            <div className="flex flex-col gap-[var(--space-5)]">
+              <Heading level={3} className="text-h5" tone="primary">
+                {t("footer.socialTitle")}
+              </Heading>
+              <ul className="flex list-none flex-wrap gap-[var(--space-3)] p-0" role="list">
+                {socialLinks.map((link) => (
+                  <li key={link.platform}>
                     <a
                       href={link.href}
                       className="micro-pill inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-medium text-text-secondary underline-offset-4 outline-none hover:border-border-light hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button rtl:text-ar-small"
@@ -217,18 +221,11 @@ export async function Footer() {
                     >
                       {t(`footer.social.${link.platform}`)}
                     </a>
-                  ) : (
-                    <span
-                      aria-disabled="true"
-                      className="inline-flex rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-bg)] px-4 py-2.5 text-small font-medium text-text-muted rtl:text-ar-small"
-                    >
-                      {t(`footer.social.${link.platform}`)}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           <div className="flex flex-col items-start gap-[var(--space-4)] text-start lg:items-end lg:text-end">
             <Button

@@ -12,3 +12,17 @@ export type Locale = (typeof routing.locales)[number];
 export function isLocale(locale: string): locale is Locale {
   return routing.locales.includes(locale as Locale);
 }
+
+export function getLocalizedHref(locale: Locale, path: string): string {
+  if (!path.startsWith("/") || path.startsWith("//")) {
+    return path;
+  }
+
+  const pathWithoutLocale = path.replace(/^\/(?:ar|en)(?=\/|$)/, "") || "/";
+
+  if (locale === "ar") {
+    return pathWithoutLocale;
+  }
+
+  return pathWithoutLocale === "/" ? "/en" : `/en${pathWithoutLocale}`;
+}

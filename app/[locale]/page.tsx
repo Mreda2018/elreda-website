@@ -11,7 +11,7 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Reveal } from "@/components/motion/Reveal";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
-import type { Locale } from "@/lib/i18n/routing";
+import { getLocalizedHref, type Locale } from "@/lib/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/site";
 import {
   loadHomeHero,
@@ -67,11 +67,11 @@ export default async function Home({
         title={renderLocalizedValue(hero.title, locale)}
         description={renderLocalizedValue(hero.description, locale)}
         primaryAction={{
-          href: hero.primaryAction.href,
+          href: getLocalizedHref(locale, hero.primaryAction.href),
           label: renderLocalizedValue(hero.primaryAction.label, locale),
         }}
         secondaryAction={{
-          href: hero.secondaryAction.href,
+          href: getLocalizedHref(locale, hero.secondaryAction.href),
           label: renderLocalizedValue(hero.secondaryAction.label, locale),
         }}
         stats={hero.stats.map((stat) => ({
@@ -108,7 +108,7 @@ export default async function Home({
             description={renderLocalizedValue(services.description, locale)}
             services={services.services.map((service) => ({
               id: service.id,
-              href: service.href,
+              href: getLocalizedHref(locale, service.href),
               title: renderLocalizedValue(service.title, locale),
               description: renderLocalizedValue(service.description, locale),
               category: renderOptionalLocalizedValue(service.category, locale),
