@@ -183,6 +183,26 @@ Status: **Automated Preview accessibility suite passes.**
 - The final protected Preview run passed all configured accessibility and foundation
   tests; prior manual QA notes remain unchanged.
 
+## INP Investigation — Sanity Studio Upload Input
+
+Status: **Admin-only; non-blocking for the public website.**
+
+- The reported `input#-_r_14_` matches Sanity Studio's bundled
+  `FileInputButton`. That component renders a hidden `input[type="file"]` with
+  `data-testid="file-button-input"` and constructs its ID as
+  `` `${idProp || ""}-${useId()}` ``. With React's generated `_r_14_` value,
+  the resulting ID is exactly `-_r_14_`.
+- This control belongs to Sanity Studio image/file authoring under `/studio`,
+  including image upload fields such as the Settings logo and Home hero image.
+- Public Contact and Quote controls use explicit IDs such as `contact-name` and
+  `quote-email`. They are uncontrolled inputs with no `onInput` or `onChange`
+  validation path; submission validation runs through Server Actions.
+- Public search, mobile navigation, and language switching do not render this
+  generated-ID input.
+- The reported 244.4 ms handler therefore measures an admin authoring interaction
+  in third-party Studio UI and does not affect public-site INP. No application code
+  was changed.
+
 ## Visual QA Notes
 
 Status: **No blocking visual regressions identified.**
