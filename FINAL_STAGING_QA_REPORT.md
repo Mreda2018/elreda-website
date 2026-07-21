@@ -1,13 +1,16 @@
 # Final Staging QA Report
 
-- Date: 2026-07-20
+- Date: 2026-07-21
 - Branch: `staging`
-- Deployed commit verified: `cfdf9db0c259d3fc3586adbd277791eaa3c2f959`
+- Current deployed staging commit: `bfcb188650a485d15b0a7b4e173043b05c44ad1a`
+- App-fix commit verified: `cfdf9db0c259d3fc3586adbd277791eaa3c2f959`
 - Staging deployment: `https://elreda-website-git-staging-mohamedreda2005-3712s-projects.vercel.app`
 
 ## Final Recommendation
 
-**NOT READY FOR MERGE**
+**App code: QA-APPROVED**
+
+**Merge status: NOT READY FOR MERGE — external automation blocker only**
 
 The repository-side blockers identified in the previous QA pass are fixed and
 deployed in commit `cfdf9db`. The live language-switcher click-through matrix now
@@ -255,9 +258,10 @@ Reference: [Vercel Protection Bypass for Automation](https://vercel.com/docs/dep
 
 No Vercel protection setting or GitHub secret was changed during this task.
 
-### Latest rerun for `cfdf9db`
+### Latest rerun for deployed staging commit `bfcb188`
 
-The new deployment triggered GitHub Actions run `29739844941`, job `88343805254`:
+The current deployment triggered GitHub Actions run `29742573677`, job
+`88352573276`:
 
 - `Checkout`: passed
 - `Setup Node`: passed
@@ -286,7 +290,7 @@ Actions browser remains unable to reach the application.
 | Same npm 10.9.2 clean-install validation against the fixed tree | Pass; exit code 0 |
 | Local production HTTP probes for all 14 requested routes | Route/header/CTA shell checks pass; CMS unavailable locally |
 | Live manual language-switch matrix on the branch preview | Pass for all four required transitions; no `/ar` route generated |
-| `git ls-remote origin refs/heads/staging` | Pass; remote `staging` points to `cfdf9db` |
+| `git ls-remote origin refs/heads/staging` | Pass; remote `staging` points to `bfcb188` |
 | Latest `Vercel Preview E2E` check | Fail; browser step reached the protected preview and reported 9 failures, 1 pass |
 | `curl -I` against the branch preview | HTTP 302 to Vercel SSO still confirmed for unauthenticated automation |
 | `git diff --check` | Pass; no whitespace errors |
@@ -303,11 +307,13 @@ These notes remain approved and are not blockers.
 
 ## Remaining Blockers Before Merge
 
-1. Commit and deploy the current fixes to a new staging preview.
-2. Configure an approved Vercel automation bypass or a public staging exception for
-   the GitHub Actions runner.
-3. Rerun `Vercel Preview E2E` and require a green result on the new commit.
-4. Complete the browser-based mobile menu, language switching, keyboard, CMS,
-   forms, reduced-motion, and mobile/desktop visual pass against that exact preview.
+The app-code fixes are committed, deployed, manually verified, and QA-approved. No
+app-code blocker remains.
 
-Until those checks are complete, the staging branch remains **NOT READY FOR MERGE**.
+The only remaining blocker is external: Vercel Deployment Protection redirects the
+unauthenticated GitHub Actions browser to SSO. Configure an approved automation
+bypass or public staging exception, then rerun `Vercel Preview E2E` and require a
+green result.
+
+Until external Preview E2E access is resolved and the check passes, the staging
+branch remains **NOT READY FOR MERGE**.
