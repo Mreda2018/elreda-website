@@ -183,9 +183,11 @@ Status: **Automated Preview accessibility suite passes.**
 - The final protected Preview run passed all configured accessibility and foundation
   tests; prior manual QA notes remain unchanged.
 
-## INP Investigation — Sanity Studio Upload Input
+## INP Investigations — Sanity Studio
 
 Status: **Admin-only; non-blocking for the public website.**
+
+### Hidden upload input — 244.4 ms
 
 - The reported `input#-_r_14_` matches Sanity Studio's bundled
   `FileInputButton`. That component renders a hidden `input[type="file"]` with
@@ -202,6 +204,23 @@ Status: **Admin-only; non-blocking for the public website.**
 - The reported 244.4 ms handler therefore measures an admin authoring interaction
   in third-party Studio UI and does not affect public-site INP. No application code
   was changed.
+
+### Text-overflow span — 241.2 ms
+
+- The reported
+  `span.SpanWithTextOverflow-sc-ol2i3b-0.bwSltN` is owned by
+  `@sanity/ui@3.2.0`. Its internal `SpanWithTextOverflow` component is a
+  styled `<span>` used by the Sanity UI `Text`, `Label`, and `Heading` primitives
+  when `textOverflow="ellipsis"` is enabled.
+- `sc-ol2i3b-0` is the fixed styled-components ID emitted for that Sanity UI
+  component, while `bwSltN` is its generated runtime style hash. Neither class is
+  declared or rendered by a public application component.
+- Sanity UI enters this application through `NextStudio` on the `/studio` route.
+  The public component tree does not import `@sanity/ui` or styled-components.
+- The span can be the event target for a handler attached to a surrounding Studio
+  control, but it is an admin authoring element rather than a public-site control.
+  The reported 241.2 ms interaction is therefore non-blocking for public-site INP,
+  and no application code was changed.
 
 ## Visual QA Notes
 
