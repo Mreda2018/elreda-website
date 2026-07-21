@@ -27,6 +27,22 @@ export const settings = defineType({
   title: "Settings",
   type: "document",
   fields: [
+    defineField({
+      name: "logo",
+      title: "Site logo",
+      type: "image",
+      description: "Used in the website header and footer.",
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative text",
+          type: "object",
+          description: "Describe the logo in each language. The website falls back to the brand name.",
+          fields: localizedStringFields,
+        }),
+      ],
+    }),
     defineField({ name: "contactPhone", title: "Contact phone", type: "string" }),
     defineField({ name: "contactEmail", title: "Contact email", type: "email" }),
     defineField({ name: "whatsappNumber", title: "WhatsApp number", type: "string" }),
@@ -73,6 +89,23 @@ export const settings = defineType({
           title: "Description",
           type: "object",
           fields: localizedTextFields,
+        }),
+        defineField({
+          name: "homeHeroImage",
+          title: "Hero image",
+          type: "image",
+          description: "Displayed in the visual panel beside the homepage hero content.",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alternative text",
+              type: "object",
+              description:
+                "Describe an informative image in each language, or leave blank when it is decorative.",
+              fields: localizedStringFields,
+            }),
+          ],
         }),
         defineField({
           name: "primaryCta",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { SanityImage } from "@/components/common/SanityImage";
 import {
   Badge,
   Container,
@@ -10,6 +11,7 @@ import {
   buttonVariants,
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import type { CmsImage } from "@/lib/sanity/types";
 
 export type HeroStat = {
   value: ReactNode;
@@ -29,6 +31,7 @@ export type HeroProps = {
   primaryAction: HeroAction;
   secondaryAction: HeroAction;
   stats: HeroStat[];
+  image?: CmsImage;
   className?: string;
 };
 
@@ -39,6 +42,7 @@ export function Hero({
   primaryAction,
   secondaryAction,
   stats,
+  image,
   className,
 }: HeroProps) {
   return (
@@ -108,9 +112,29 @@ export function Hero({
         </div>
 
         <div
-          aria-hidden="true"
-          className="min-h-[360px] rounded-md border border-[color:var(--glass-border)] bg-[image:var(--gradient-hero)] shadow-xl lg:min-h-[560px]"
-        />
+          aria-hidden={image ? undefined : true}
+          className="relative min-h-[360px] overflow-hidden rounded-md border border-[color:var(--glass-border)] bg-[image:var(--gradient-hero)] shadow-xl lg:min-h-[560px]"
+        >
+          {image ? (
+            <>
+              <SanityImage
+                image={image.source}
+                alt={image.alt?.text ?? ""}
+                lang={image.alt?.lang}
+                fill
+                preload
+                sizes="(max-width: 1023px) 100vw, 41vw"
+                sourceWidth={1920}
+                className="object-cover"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-black/20" />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-1/2 bg-[image:linear-gradient(to_top,var(--black),transparent)]"
+              />
+            </>
+          ) : null}
+        </div>
       </Container>
     </Section>
   );

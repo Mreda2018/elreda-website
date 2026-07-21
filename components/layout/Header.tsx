@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { SanityImage } from "@/components/common/SanityImage";
 import { HeaderNavigation } from "@/components/layout/HeaderNavigation";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { buttonVariants } from "@/components/ui";
 import { getLocalizedHref, type Locale } from "@/lib/i18n/routing";
+import { loadFooterSettings } from "@/lib/sanity/loaders";
 
 type NavigationItem = {
   key: "services" | "portfolio" | "about" | "industries" | "blog" | "pricing";
@@ -24,6 +26,7 @@ const navigationItems = [
 export async function Header() {
   const t = await getTranslations("common");
   const locale = (await getLocale()) as Locale;
+  const settings = await loadFooterSettings(locale);
   const localizedNavigationItems = navigationItems.map((item) => ({
     label: t(`navigation.${item.key}`),
     href: getLocalizedHref(locale, item.path),
@@ -37,20 +40,36 @@ export async function Header() {
           aria-label={t("navigation.home")}
           className="flex min-w-0 items-center gap-[var(--space-3)] rounded-md outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-button"
         >
-          <div
-            aria-hidden="true"
-            className="grid size-10 shrink-0 place-items-center rounded-md border border-red-primary/40 bg-[image:var(--gradient-subtle)] text-h5 font-bold leading-none text-white shadow-md sm:size-12"
-          >
-            {t("brand.shortName").slice(0, 1)}
-          </div>
-          <div className="flex min-w-0 flex-col gap-[var(--space-1)]">
-            <span className="truncate text-h5 font-semibold leading-tight text-white">
-              {t("brand.shortName")}
+          {settings?.logo ? (
+            <span className="relative block h-10 w-36 shrink-0 sm:h-12 sm:w-48">
+              <SanityImage
+                image={settings.logo.source}
+                alt={settings.logo.alt?.text || t("brand.name")}
+                lang={settings.logo.alt?.lang}
+                fill
+                sizes="(max-width: 639px) 144px, 192px"
+                sourceWidth={512}
+                className="object-contain object-left rtl:object-right"
+              />
             </span>
-            <span className="hidden max-w-72 truncate text-small leading-relaxed text-text-secondary sm:block rtl:text-ar-small">
-              {t("brand.tagline")}
-            </span>
-          </div>
+          ) : (
+            <>
+              <div
+                aria-hidden="true"
+                className="grid size-10 shrink-0 place-items-center rounded-md border border-red-primary/40 bg-[image:var(--gradient-subtle)] text-h5 font-bold leading-none text-white shadow-md sm:size-12"
+              >
+                {t("brand.shortName").slice(0, 1)}
+              </div>
+              <div className="flex min-w-0 flex-col gap-[var(--space-1)]">
+                <span className="truncate text-h5 font-semibold leading-tight text-white">
+                  {t("brand.shortName")}
+                </span>
+                <span className="hidden max-w-72 truncate text-small leading-relaxed text-text-secondary sm:block rtl:text-ar-small">
+                  {t("brand.tagline")}
+                </span>
+              </div>
+            </>
+          )}
         </Link>
 
         <HeaderNavigation

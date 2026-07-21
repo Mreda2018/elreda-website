@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { SanityImage } from "@/components/common/SanityImage";
 import { Button, Container, Heading } from "@/components/ui";
 import { renderLocalizedValue } from "@/lib/i18n/renderLocalizedValue";
 import type { Locale } from "@/lib/i18n/routing";
@@ -132,9 +133,23 @@ export async function Footer() {
         <div className="grid gap-[var(--space-10)] md:gap-[var(--space-12)] lg:grid-cols-[1.05fr_1.45fr]">
           <div className="flex max-w-[var(--container-narrow)] flex-col gap-[var(--space-8)] text-start md:gap-[var(--space-10)]">
             <div className="flex flex-col gap-[var(--space-4)] border-s border-red-primary/50 ps-[var(--space-5)]">
-              <span className="text-h3 font-semibold leading-tight text-white rtl:text-ar-h3">
-                {t("brand.name")}
-              </span>
+              {settings?.logo ? (
+                <span className="relative block h-16 w-56 max-w-full">
+                  <SanityImage
+                    image={settings.logo.source}
+                    alt={settings.logo.alt?.text || t("brand.name")}
+                    lang={settings.logo.alt?.lang}
+                    fill
+                    sizes="224px"
+                    sourceWidth={640}
+                    className="object-contain object-left rtl:object-right"
+                  />
+                </span>
+              ) : (
+                <span className="text-h3 font-semibold leading-tight text-white rtl:text-ar-h3">
+                  {t("brand.name")}
+                </span>
+              )}
               <p className="max-w-xl text-body-lg text-text-secondary rtl:text-ar-body-lg">
                 {t("brand.tagline")}
               </p>
