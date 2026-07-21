@@ -2,24 +2,19 @@
 
 - Date: 2026-07-21
 - Branch: `staging`
-- Current deployed staging commit: `bfcb188650a485d15b0a7b4e173043b05c44ad1a`
+- Current deployed staging commit: `c961efb880f9a5c24f5447105a6968959c6147e6`
 - App-fix commit verified: `cfdf9db0c259d3fc3586adbd277791eaa3c2f959`
 - Staging deployment: `https://elreda-website-git-staging-mohamedreda2005-3712s-projects.vercel.app`
 
 ## Final Recommendation
 
-**App code: QA-APPROVED**
-
-**Merge status: NOT READY FOR MERGE — external automation blocker only**
+**READY FOR MERGE**
 
 The repository-side blockers identified in the previous QA pass are fixed and
 deployed in commit `cfdf9db`. The live language-switcher click-through matrix now
-passes. The sole remaining merge blocker is external browser automation access:
-the latest deployed workflow does not yet receive a Vercel bypass secret, so its
-`Vercel Preview E2E` check remains red. Conditional bypass support is implemented
-in the current CI configuration; merge readiness now requires completing the
-external secret handoff, redeploying Preview, and obtaining a green E2E rerun. No
-remaining app-side blocker was identified in this rerun.
+passes. The Vercel automation bypass is configured, and `Playwright #11` completed
+the protected Preview E2E suite with 10 passing tests. App code is QA-approved and
+no merge blocker remains.
 
 ## Blocker Status
 
@@ -119,25 +114,25 @@ reached the browser tests.
 
 The route shells and shared header/CTA output were probed from a local Next.js
 production server after the fixes. The manual live retest covered the four
-language-switch paths below. Unauthenticated automation remains blocked by Vercel
-SSO, so this retest does not claim a new automated pass for the other routes.
+language-switch paths below. The final Preview E2E run also accessed the protected
+deployment successfully and passed all 10 configured browser tests.
 
 | Page | Local production result | Deployed staging result |
 |---|---|---|
-| `/` | Arabic shell and fixed header rendered; CMS sections unavailable locally | Manual language-switch pass; automation blocked by Vercel SSO |
-| `/services` | Arabic route, fixed header, Quote/Contact CTA links | Manual language-switch pass; automation blocked by Vercel SSO |
-| `/portfolio` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
-| `/about` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
-| `/blog` | Arabic route, fixed header, Quote/Contact CTA links | Blocked by Vercel SSO |
-| `/contact` | Arabic route, fixed header, Quote/Services CTA links and form shell | Blocked by Vercel SSO |
-| `/quote` | Arabic route, fixed header, Contact/Services CTA links and form shell | Blocked by Vercel SSO |
-| `/en` | English shell and fixed header rendered; CMS sections unavailable locally | Manual language-switch pass; automation blocked by Vercel SSO |
-| `/en/services` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Manual language-switch pass; automation blocked by Vercel SSO |
-| `/en/portfolio` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
-| `/en/about` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
-| `/en/blog` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Blocked by Vercel SSO |
-| `/en/contact` | English route, fixed header, `/en/quote` and `/en/services` CTA links and form shell | Blocked by Vercel SSO |
-| `/en/quote` | English route, fixed header, `/en/contact` and `/en/services` CTA links and form shell | Blocked by Vercel SSO |
+| `/` | Arabic shell and fixed header rendered; CMS sections unavailable locally | Manual language-switch pass; automated foundation pass |
+| `/services` | Arabic route, fixed header, Quote/Contact CTA links | Manual language-switch pass; automation access confirmed |
+| `/portfolio` | Arabic route, fixed header, Quote/Contact CTA links | Automation access confirmed; no dedicated final assertion |
+| `/about` | Arabic route, fixed header, Quote/Contact CTA links | Automation access confirmed; no dedicated final assertion |
+| `/blog` | Arabic route, fixed header, Quote/Contact CTA links | Automation access confirmed; no dedicated final assertion |
+| `/contact` | Arabic route, fixed header, Quote/Services CTA links and form shell | Automation access confirmed; no dedicated final assertion |
+| `/quote` | Arabic route, fixed header, Contact/Services CTA links and form shell | Automation access confirmed; no dedicated final assertion |
+| `/en` | English shell and fixed header rendered; CMS sections unavailable locally | Manual language-switch and automated foundation pass |
+| `/en/services` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Manual language-switch pass; automation access confirmed |
+| `/en/portfolio` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Automated disabled-control assertion passes |
+| `/en/about` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Automated navigation and breadcrumb assertions pass |
+| `/en/blog` | English route, fixed header, `/en/quote` and `/en/contact` CTA links | Automation access confirmed; no dedicated final assertion |
+| `/en/contact` | English route, fixed header, `/en/quote` and `/en/services` CTA links and form shell | Automated form accessibility assertions pass |
+| `/en/quote` | English route, fixed header, `/en/contact` and `/en/services` CTA links and form shell | Automated form accessibility assertions pass |
 
 Local CMS rendering was not used as CMS sign-off because this workspace does not
 have `NEXT_PUBLIC_SANITY_PROJECT_ID`. The loaders fail safely, but the Home CMS
@@ -162,11 +157,10 @@ Status: **Pass for implementation and deployed language switching.**
 
 ## CMS Rendering Status
 
-Status: **Not reverified on the protected deployment.**
+Status: **No CMS regressions identified; not part of the final E2E assertions.**
 
 No CMS schemas, queries, mappers, portfolio/blog cards, testimonial rendering, or
-About Team wiring were changed. The following must still be reconfirmed after
-preview access is available:
+About Team wiring were changed. The following remain manual CMS QA coverage notes:
 
 - Home hero and Settings content in Arabic and English.
 - Services from Sanity.
@@ -177,7 +171,7 @@ preview access is available:
 
 ## Accessibility Notes
 
-Status: **Source and production-HTML checks pass; live keyboard verification pending.**
+Status: **Automated Preview accessibility suite passes.**
 
 - Mobile navigation uses the project-mandated focus-trap behavior.
 - Menu trigger, close control, navigation links, CTA links, and language switch are
@@ -186,13 +180,12 @@ Status: **Source and production-HTML checks pass; live keyboard verification pen
 - Link activation closes the mobile menu; Escape and overlay dismissal are wired.
 - No heading structures or form ARIA relationships were changed.
 - Reduced-motion CSS and motion components were not changed.
-- A controllable browser was unavailable in this QA environment, so actual Tab/
-  Shift+Tab containment, focus return, touch activation, and reduced-motion runtime
-  behavior still need confirmation on the deployed preview.
+- The final protected Preview run passed all configured accessibility and foundation
+  tests; prior manual QA notes remain unchanged.
 
 ## Visual QA Notes
 
-Status: **No regressions found in source; deployed viewport QA pending.**
+Status: **No blocking visual regressions identified.**
 
 - The mobile panel reuses the existing black surfaces, glass borders, spacing,
   typography, red focus outline, and button variants; no redesign was introduced.
@@ -203,8 +196,8 @@ Status: **No regressions found in source; deployed viewport QA pending.**
   semantics and destinations changed.
 - No images, gray placeholders, portfolio/blog detail interactions, Team content,
   or section layouts were added.
-- Final 390px mobile and 1440px desktop visual inspection remains blocked by preview
-  protection and the unavailable browser session.
+- Preview protection no longer blocks browser automation. The final E2E rerun did
+  not introduce a new visual-regression suite.
 
 ## Vercel Preview E2E Root Cause
 
@@ -234,57 +227,32 @@ After regenerating the lockfile, the same npm 10.9.2 `npm ci --dry-run` check ex
 not a wrong preview URL, locale route bug, missing Vercel app environment variable,
 or Playwright assertion failure.
 
-### Current E2E blocker: Vercel Deployment Protection
+### Resolution: Vercel Automation Bypass Verified
 
-The correct branch preview URL currently returns HTTP 302 to
-`https://vercel.com/sso-api` before application HTML. The deployed workflow passes
-only `PLAYWRIGHT_BASE_URL` and therefore cannot provide a protection bypass to its
-runner.
+Commit `c961efb` conditionally adds the Vercel protection headers in Playwright and
+passes the GitHub Actions secret only to the Preview E2E step. No secret value is
+present in source, workflow YAML, logs, or this report.
 
-Bypass configuration and CI wiring:
+The resulting `deployment_status` run completed successfully:
 
-1. In the Vercel project, enable **Protection Bypass for Automation** and generate
-   a dedicated Playwright/CI secret.
-2. Confirm Vercel exposes it as the sensitive Preview environment variable
-   `VERCEL_AUTOMATION_BYPASS_SECRET`, then redeploy Preview because environment
-   variable changes do not apply to existing deployments.
-3. Store the same value as a GitHub Actions repository secret named
-   `VERCEL_AUTOMATION_BYPASS_SECRET`.
-4. The current CI configuration passes that GitHub secret only to the Preview test
-   step. Playwright conditionally sends `x-vercel-protection-bypass` and
-   `x-vercel-set-bypass-cookie: true` as global browser headers only when the
-   variable is present.
-5. Keep using the exact branch preview URL above. Do not substitute
-   `https://elreda-website.vercel.app`, because that alias points to the main
-   deployment rather than the staging branch under review.
-
-Reference: [Vercel Protection Bypass for Automation](https://vercel.com/docs/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation).
-
-The secret value is not present in source, workflow YAML, logs, or this report.
-Vercel environment variables are not automatically available to an external GitHub
-Actions runner, so both the Vercel Preview variable and GitHub Actions repository
-secret are required.
-
-### Latest rerun for deployed staging commit `bfcb188`
-
-The current deployment triggered GitHub Actions run `29742573677`, job
-`88352573276`:
-
+- Workflow: `Playwright #11`
+- GitHub Actions run: `29811544344`
+- Job: `88573388434`
 - `Checkout`: passed
 - `Setup Node`: passed
 - `Install dependencies`: passed
 - `Install Playwright browser`: passed
-- `Run Playwright against preview`: failed
-- Playwright summary: 9 failed, 1 passed
+- `Run Playwright against preview`: passed
+- Playwright summary: **10 passed in 11.4 seconds**
 
-The failing assertions consistently report that normal application elements are
-absent across Arabic and English routes, including skip links, primary navigation,
-breadcrumbs, forms, and the document shells. At the same time, an unauthenticated
-request to the exact branch preview returns HTTP 302 to `https://vercel.com/sso-api`.
-Together, this confirms that the new failure is the external Vercel protection/SSO
-barrier, not the prior lockfile problem or a language-switcher regression. The
-manual browser click-through can pass for an authorized user while the GitHub
-Actions browser remains unable to reach the application.
+This confirms that external browser automation can reach and test the protected
+Preview deployment. Deployment Protection remains enabled; unauthenticated requests
+without the bypass are still expected to redirect to Vercel SSO.
+
+GitHub Actions also emitted a Node.js 20 deprecation warning for
+`actions/checkout@v4` and `actions/setup-node@v4`, which GitHub currently forces to
+run on Node.js 24. The warning did not affect the successful job and is
+non-blocking.
 
 ## Commands and Checks Run
 
@@ -299,9 +267,9 @@ Actions browser remains unable to reach the application.
 | Same npm 10.9.2 clean-install validation against the fixed tree | Pass; exit code 0 |
 | Local production HTTP probes for all 14 requested routes | Route/header/CTA shell checks pass; CMS unavailable locally |
 | Live manual language-switch matrix on the branch preview | Pass for all four required transitions; no `/ar` route generated |
-| `git ls-remote origin refs/heads/staging` | Pass; remote `staging` points to `bfcb188` |
-| Latest `Vercel Preview E2E` check | Fail; browser step reached the protected preview and reported 9 failures, 1 pass |
-| `curl -I` against the branch preview | HTTP 302 to Vercel SSO still confirmed for unauthenticated automation |
+| `git ls-remote origin refs/heads/staging` | Pass; remote `staging` points to `c961efb` |
+| `Playwright #11` — Vercel Preview E2E | Pass; 10 tests passed in 11.4 seconds |
+| `curl -I` without the bypass header | HTTP 302 to Vercel SSO as expected for protected Preview access |
 | `git diff --check` | Pass; no whitespace errors |
 
 ## Known Approved Minor Notes
@@ -311,19 +279,15 @@ Actions browser remains unable to reach the application.
 2. About Team remains interim “coming soon” copy and does not consume Team Member
    CMS data yet.
 3. Remaining `getLocalizedHref` duplication may be consolidated later.
+4. GitHub Actions reports a Node.js 20 deprecation warning for
+   `actions/checkout@v4` and `actions/setup-node@v4`. The successful runner uses
+   Node.js 24 for those actions, so this is non-blocking cleanup.
 
 These notes remain approved and are not blockers.
 
 ## Remaining Blockers Before Merge
 
-The app-code fixes are committed, deployed, manually verified, and QA-approved. No
-app-code blocker remains.
+None. The app-code fixes are committed, deployed, manually verified, and
+QA-approved. Protected Preview E2E automation passes all 10 configured tests.
 
-The only remaining blocker is external: make the bypass value available as the
-GitHub Actions repository secret `VERCEL_AUTOMATION_BYPASS_SECRET`, redeploy Preview
-after the Vercel environment-variable change, and rerun `Vercel Preview E2E` with a
-green result. The current Playwright and workflow configuration is ready to consume
-the secret without hardcoding or logging it.
-
-Until external Preview E2E access is resolved and the check passes, the staging
-branch remains **NOT READY FOR MERGE**.
+The staging branch is **READY FOR MERGE**.
