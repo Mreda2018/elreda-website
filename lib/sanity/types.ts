@@ -1,8 +1,27 @@
+import type {
+  SanityImageCrop,
+  SanityImageHotspot,
+  SanityImageObject,
+  SanityReference,
+} from "@sanity/image-url";
+
 import type { Locale } from "@/lib/i18n/routing";
 import type { LocalizedValue } from "@/lib/i18n/getLocalizedValue";
 
 export type LocalizedString = Partial<Record<Locale, string>>;
 export type { LocalizedValue };
+
+export type SanityCmsImage = {
+  asset?: SanityReference | null;
+  crop?: SanityImageCrop | null;
+  hotspot?: SanityImageHotspot | null;
+  alt?: LocalizedString | null;
+};
+
+export type CmsImage = {
+  source: SanityImageObject;
+  alt?: LocalizedValue;
+};
 
 export type SanityHeroAction = {
   label?: LocalizedString | null;
@@ -18,6 +37,7 @@ export type SanityHomeHero = {
   eyebrow?: LocalizedString | null;
   headline?: LocalizedString | null;
   description?: LocalizedString | null;
+  homeHeroImage?: SanityCmsImage | null;
   primaryCta?: SanityHeroAction | null;
   secondaryCta?: SanityHeroAction | null;
   statistics?: SanityHeroStatistic[] | null;
@@ -27,6 +47,7 @@ export type HeroContent = {
   eyebrow: LocalizedValue;
   title: LocalizedValue;
   description: LocalizedValue;
+  image?: CmsImage;
   primaryAction: {
     href: string;
     label: LocalizedValue;
@@ -211,6 +232,7 @@ export type BlogPageContent = {
 };
 
 export type SanityFooterSettings = {
+  logo?: SanityCmsImage | null;
   contactPhone?: string | null;
   contactEmail?: string | null;
   whatsappNumber?: string | null;
@@ -227,6 +249,7 @@ export type FooterSocialLink = {
 };
 
 export type FooterContent = {
+  logo?: CmsImage;
   contactEmail?: string;
   contactPhone?: string;
   whatsappNumber?: string;

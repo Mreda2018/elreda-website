@@ -2,10 +2,12 @@ import type { Locale } from "@/lib/i18n/routing";
 import { getLocalizedValue } from "@/lib/i18n/getLocalizedValue";
 import type {
   BlogPageContent,
+  CmsImage,
   FooterContent,
   HeroContent,
   PortfolioPageContent,
   SanityBlogPostDocument,
+  SanityCmsImage,
   SanityFooterSettings,
   SanityHomeHero,
   SanityHomeServices,
@@ -18,6 +20,23 @@ import type {
   ServicesPageContent,
   TestimonialsContent,
 } from "@/lib/sanity/types";
+
+function mapCmsImage(data: SanityCmsImage | null | undefined, locale: Locale): CmsImage | undefined {
+  if (!data?.asset?._ref) {
+    return undefined;
+  }
+
+  const alt = getLocalizedValue(data.alt, locale);
+
+  return {
+    source: {
+      asset: data.asset,
+      ...(data.crop ? { crop: data.crop } : {}),
+      ...(data.hotspot ? { hotspot: data.hotspot } : {}),
+    },
+    ...(alt.text === "" ? {} : { alt }),
+  };
+}
 
 function normalizeHref(href: string | null | undefined): string {
   if (!href) {
@@ -51,6 +70,7 @@ export function mapHomeHero(data: SanityHomeHero, locale: Locale): HeroContent |
     eyebrow: getLocalizedValue(data.eyebrow, locale),
     title: getLocalizedValue(data.headline, locale),
     description: getLocalizedValue(data.description, locale),
+    image: mapCmsImage(data.homeHeroImage, locale),
     primaryAction: {
       href: normalizeHref(data.primaryCta?.href),
       label: primaryActionLabel,
@@ -434,6 +454,7 @@ export function mapFooterSettings(
   const socialMedia = data.socialMedia ?? {};
 
   return {
+    logo: mapCmsImage(data.logo, locale),
     contactEmail: data.contactEmail ?? undefined,
     contactPhone: data.contactPhone ?? undefined,
     whatsappNumber: data.whatsappNumber ?? undefined,

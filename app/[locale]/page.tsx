@@ -77,6 +77,7 @@ export default async function Home({
           href: getLocalizedHref(locale, hero.secondaryAction.href),
           label: renderLocalizedValue(hero.secondaryAction.label, locale),
         }}
+        image={hero.image}
         stats={hero.stats.map((stat) => ({
           value: renderLocalizedValue(stat.value, locale),
           label: renderLocalizedValue(stat.label, locale),

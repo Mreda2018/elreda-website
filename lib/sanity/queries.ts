@@ -5,6 +5,12 @@ export const homeHeroQuery = groq`
     eyebrow,
     headline,
     description,
+    homeHeroImage{
+      asset,
+      crop,
+      hotspot,
+      alt
+    },
     primaryCta{
       label,
       href
@@ -134,6 +140,12 @@ export const blogPageQuery = groq`
 
 export const footerSettingsQuery = groq`
   *[_type == "settings" && _id == "settings"][0]{
+    logo{
+      asset,
+      crop,
+      hotspot,
+      alt
+    },
     contactPhone,
     contactEmail,
     whatsappNumber,
