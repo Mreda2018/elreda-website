@@ -15,10 +15,11 @@
 The repository-side blockers identified in the previous QA pass are fixed and
 deployed in commit `cfdf9db`. The live language-switcher click-through matrix now
 passes. The sole remaining merge blocker is external browser automation access:
-the protected preview still redirects the unauthenticated GitHub Actions runner to
-Vercel SSO, and the latest `Vercel Preview E2E` check consequently remains red.
-Merge readiness requires an approved automation bypass or public staging URL and a
-green E2E rerun. No remaining app-side blocker was identified in this rerun.
+the latest deployed workflow does not yet receive a Vercel bypass secret, so its
+`Vercel Preview E2E` check remains red. Conditional bypass support is implemented
+in the current CI configuration; merge readiness now requires completing the
+external secret handoff, redeploying Preview, and obtaining a green E2E rerun. No
+remaining app-side blocker was identified in this rerun.
 
 ## Blocker Status
 
@@ -233,30 +234,36 @@ After regenerating the lockfile, the same npm 10.9.2 `npm ci --dry-run` check ex
 not a wrong preview URL, locale route bug, missing Vercel app environment variable,
 or Playwright assertion failure.
 
-### Next expected E2E blocker: Vercel Deployment Protection
+### Current E2E blocker: Vercel Deployment Protection
 
 The correct branch preview URL currently returns HTTP 302 to
-`https://vercel.com/sso-api` before application HTML. The workflow currently passes
-only `PLAYWRIGHT_BASE_URL` and does not provide a protection bypass. Once dependency
-installation succeeds, the runner will still need an approved automation access
-path.
+`https://vercel.com/sso-api` before application HTML. The deployed workflow passes
+only `PLAYWRIGHT_BASE_URL` and therefore cannot provide a protection bypass to its
+runner.
 
-Required external configuration:
+Bypass configuration and CI wiring:
 
 1. In the Vercel project, enable **Protection Bypass for Automation** and generate
    a dedicated Playwright/CI secret.
-2. Store that value as a GitHub Actions secret, for example
+2. Confirm Vercel exposes it as the sensitive Preview environment variable
+   `VERCEL_AUTOMATION_BYPASS_SECRET`, then redeploy Preview because environment
+   variable changes do not apply to existing deployments.
+3. Store the same value as a GitHub Actions repository secret named
    `VERCEL_AUTOMATION_BYPASS_SECRET`.
-3. Configure Playwright to send `x-vercel-protection-bypass` with that secret and,
-   for browser navigation, `x-vercel-set-bypass-cookie: true`.
-4. Keep using the exact branch preview URL above, or provide a dedicated public
-   staging domain/Deployment Protection exception. Do not substitute
+4. The current CI configuration passes that GitHub secret only to the Preview test
+   step. Playwright conditionally sends `x-vercel-protection-bypass` and
+   `x-vercel-set-bypass-cookie: true` as global browser headers only when the
+   variable is present.
+5. Keep using the exact branch preview URL above. Do not substitute
    `https://elreda-website.vercel.app`, because that alias points to the main
    deployment rather than the staging branch under review.
 
 Reference: [Vercel Protection Bypass for Automation](https://vercel.com/docs/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation).
 
-No Vercel protection setting or GitHub secret was changed during this task.
+The secret value is not present in source, workflow YAML, logs, or this report.
+Vercel environment variables are not automatically available to an external GitHub
+Actions runner, so both the Vercel Preview variable and GitHub Actions repository
+secret are required.
 
 ### Latest rerun for deployed staging commit `bfcb188`
 
@@ -286,6 +293,8 @@ Actions browser remains unable to reach the application.
 | `npm run lint` | Pass; exit code 0 |
 | `npm run typecheck` | Pass; exit code 0 |
 | `npm run build` | Pass; Next.js 16.2.9 generated 32 static pages |
+| Playwright configuration load without the bypass variable | Pass; existing local behavior preserved |
+| Playwright configuration load with a non-secret test placeholder | Pass; conditional bypass configuration enabled |
 | `npx --yes npm@10.9.2 ci --ignore-scripts --dry-run --prefer-offline` against `676dc78` | Fail reproduced: missing `@swc/helpers@0.5.23` |
 | Same npm 10.9.2 clean-install validation against the fixed tree | Pass; exit code 0 |
 | Local production HTTP probes for all 14 requested routes | Route/header/CTA shell checks pass; CMS unavailable locally |
@@ -310,10 +319,11 @@ These notes remain approved and are not blockers.
 The app-code fixes are committed, deployed, manually verified, and QA-approved. No
 app-code blocker remains.
 
-The only remaining blocker is external: Vercel Deployment Protection redirects the
-unauthenticated GitHub Actions browser to SSO. Configure an approved automation
-bypass or public staging exception, then rerun `Vercel Preview E2E` and require a
-green result.
+The only remaining blocker is external: make the bypass value available as the
+GitHub Actions repository secret `VERCEL_AUTOMATION_BYPASS_SECRET`, redeploy Preview
+after the Vercel environment-variable change, and rerun `Vercel Preview E2E` with a
+green result. The current Playwright and workflow configuration is ready to consume
+the secret without hardcoding or logging it.
 
 Until external Preview E2E access is resolved and the check passes, the staging
 branch remains **NOT READY FOR MERGE**.

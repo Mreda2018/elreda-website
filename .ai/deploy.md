@@ -10,6 +10,39 @@
 
 ---
 
+## Protected Preview E2E Access
+
+Use Vercel's **Protection Bypass for Automation** for Playwright tests against
+protected Preview deployments:
+
+1. In Vercel, open Project → Settings → Deployment Protection → Protection Bypass
+   for Automation and create a dedicated secret for Playwright/CI.
+2. In Project → Settings → Environment Variables, confirm
+   `VERCEL_AUTOMATION_BYPASS_SECRET` uses that generated value, is marked sensitive,
+   and is scoped to **Preview**. Vercel may create this system environment variable
+   automatically when the bypass is designated.
+3. In GitHub, open Repository → Settings → Secrets and variables → Actions and add
+   the same value as a repository secret named
+   `VERCEL_AUTOMATION_BYPASS_SECRET`. A Vercel Preview environment variable is not
+   automatically available to the external GitHub Actions runner.
+4. Redeploy the Preview after creating, changing, or rotating the Vercel variable;
+   environment-variable changes do not apply to existing deployments.
+
+The Preview E2E workflow exposes the GitHub secret only to the Playwright test step.
+When the variable is present, `playwright.config.ts` adds these global browser
+headers:
+
+```text
+x-vercel-protection-bypass: <secret from the CI environment>
+x-vercel-set-bypass-cookie: true
+```
+
+When the variable is absent, Playwright adds neither header, so local E2E behavior
+is unchanged. Never put the secret value in source code, workflow YAML, logs, URLs,
+or committed environment files.
+
+---
+
 ## Pre-Deployment Checklist
 
 Complete every item before pushing to production. Claude must approve before launch.
