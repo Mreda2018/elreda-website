@@ -123,6 +123,7 @@ export function Hero({
                 lang={image.alt?.lang}
                 fill
                 preload
+                unoptimized
                 sizes="(max-width: 1023px) 100vw, 41vw"
                 sourceWidth={1920}
                 className="object-cover"
