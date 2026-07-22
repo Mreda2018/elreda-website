@@ -39,7 +39,11 @@ import type {
 export async function loadHomeHero(locale: Locale): Promise<HeroContent | null> {
   try {
     const { publicClient } = await import("@/lib/sanity/publicClient");
-    const data = await publicClient.fetch<SanityHomeHero>(homeHeroQuery);
+    const data = await publicClient.fetch<SanityHomeHero>(
+      homeHeroQuery,
+      {},
+      { cache: "no-store" },
+    );
 
     return mapHomeHero(data, locale);
   } catch (error) {
@@ -134,6 +138,8 @@ export async function loadFooterSettings(
     const { publicClient } = await import("@/lib/sanity/publicClient");
     const data = await publicClient.fetch<SanityFooterSettings>(
       footerSettingsQuery,
+      {},
+      { cache: "no-store" },
     );
 
     return mapFooterSettings(data, locale);
