@@ -8,74 +8,17 @@
   var STORE_KEY = 'elreda-lang';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------------- 1. i18n ---------------- */
-  var dict = window.I18N || { ar: {}, en: {} };
-  var lang = 'ar';
+  /* ---------------- 1. Language ----------------
+     Each language has its own static HTML (Arabic at /, English at /en/),
+     so search engines and AI crawlers read real text without running JS.
+     The button in the header is a normal link between the two versions.
+     Here we only read the current language for the runtime strings.      */
+  var lang = (document.documentElement.getAttribute('lang') === 'en') ? 'en' : 'ar';
+  var dict = (window.I18N && window.I18N[lang]) || {};
+  function t(key) { return (key in dict) ? dict[key] : key; }
 
-  function t(key) {
-    var d = dict[lang] || {};
-    return (key in d) ? d[key] : ((dict.ar && dict.ar[key]) || key);
-  }
-
-  function applyLang(next, animate) {
-    lang = (next === 'en') ? 'en' : 'ar';
-    var html = document.documentElement;
-    html.setAttribute('lang', lang);
-    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-    try { localStorage.setItem(STORE_KEY, lang); } catch (e) {}
-
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var key = el.getAttribute('data-i18n');
-      var val = t(key);
-      if (el.hasAttribute('data-i18n-html')) el.innerHTML = val;
-      else el.textContent = val;
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
-      el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph')));
-    });
-    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
-      el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
-    });
-    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
-      el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
-    });
-
-    /* document title + description */
-    var body = document.body;
-    var suffix = t('brand.name') + ' ' + t('brand.tagline');
-    var tk = body.getAttribute('data-title-key');
-    document.title = tk ? (t(tk) + ' | ' + suffix)
-                        : (suffix + ' — ' + t('brand.short'));
-    var dk = body.getAttribute('data-desc-key');
-    var meta = document.querySelector('meta[name="description"]');
-    if (meta && dk) meta.setAttribute('content', t(dk));
-
-    /* toggle button label */
-    var lb = document.querySelectorAll('[data-lang-label]');
-    lb.forEach(function (el) { el.textContent = t('lang.switch'); });
-
-    if (animate) {
-      body.style.transition = 'opacity .35s ease';
-      body.style.opacity = '0';
-      setTimeout(function () { body.style.opacity = '1'; }, 180);
-    }
-    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
-  }
-
-  function initLang() {
-    var saved = null;
-    try { saved = localStorage.getItem(STORE_KEY); } catch (e) {}
-    var url = new URLSearchParams(location.search).get('lang');
-    applyLang(url || saved || 'ar', false);
-  }
-  initLang();
-
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('[data-lang-toggle]');
-    if (!btn) return;
-    e.preventDefault();
-    applyLang(lang === 'ar' ? 'en' : 'ar', true);
-  });
+  /* remember the visitor's choice, but never auto-redirect (bad for SEO) */
+  try { localStorage.setItem(STORE_KEY, lang); } catch (e) {}
 
   /* ---------------- 2. Preloader ---------------- */
   var pre = document.getElementById('preloader');
@@ -121,13 +64,14 @@
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove('open');
-    if (burger) burger.classList.remove('open');
+    if (burger) { burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }
     document.body.classList.remove('is-locked');
   }
   if (burger && drawer) {
     burger.addEventListener('click', function () {
       var open = drawer.classList.toggle('open');
       burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.classList.toggle('is-locked', open);
     });
     drawer.querySelectorAll('a').forEach(function (a) {
@@ -262,7 +206,7 @@
     acc.addEventListener('click', function (e) {
       var q = e.target.closest('.acc__q');
       if (!q) return;
-      var item = q.parentElement;
+      var item = q.closest('.acc__item');
       var body = item.querySelector('.acc__a');
       var isOpen = item.classList.contains('open');
       acc.querySelectorAll('.acc__item').forEach(function (it) {
@@ -277,7 +221,7 @@
       }
     });
   });
-  document.addEventListener('langchange', function () {
+  window.addEventListener('resize', function () {
     document.querySelectorAll('.acc__item.open .acc__a').forEach(function (b) {
       b.style.maxHeight = b.scrollHeight + 'px';
     });
@@ -356,8 +300,7 @@
         vals[f.id] = el.value;
         if (wrap) {
           wrap.classList.toggle('invalid', !good);
-          var errEl = wrap.querySelector('.err');
-          if (errEl) { errEl.setAttribute('data-i18n', f.err); errEl.textContent = t(f.err); }
+          el.setAttribute('aria-invalid', good ? 'false' : 'true');
         }
         if (!good && ok) { el.focus(); ok = false; }
         else if (!good) ok = false;
