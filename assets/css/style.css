@@ -543,7 +543,7 @@ html[lang="ar"] .brand-sub{font-size:.7rem;letter-spacing:0;text-transform:none;
   border:1px solid rgba(212,32,39,.3);color:var(--red);
 }
 .info-item__ico svg{width:20px;height:20px}
-.info-item span{display:block;font-size:.78rem;color:var(--muted-2);letter-spacing:.06em}
+.info-item div>span{display:block;font-size:.78rem;color:var(--muted-2);letter-spacing:.06em}
 .info-item strong{font-size:1rem;font-weight:700;word-break:break-word}
 .map-wrap{margin-top:20px;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);filter:grayscale(1) invert(.9) contrast(.85);transition:filter .5s}
 .map-wrap:hover{filter:none}
@@ -778,3 +778,10 @@ figure{margin:0}
 
 /* keep mixed Arabic/Latin runs from re-ordering awkwardly */
 .fact dd,.tbl td,.tbl th,.work__desc,.info-item strong{unicode-bidi:isolate}
+
+/* contact info icons: keep the brand red and stay centred in their tile */
+.info-item .info-item__ico{
+  display:grid;place-items:center;color:var(--red);
+  width:46px;height:46px;flex:none;line-height:0;
+}
+.info-item .info-item__ico svg{width:20px;height:20px;display:block}
