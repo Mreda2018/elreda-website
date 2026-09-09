@@ -6,3 +6,6 @@ node_modules/
 .idea/
 .vercel
 .netlify
+
+# ملفات معاينة يحفظها تطبيق Claude داخل المجلد
+Claude outputs/
