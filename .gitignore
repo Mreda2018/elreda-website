@@ -6,6 +6,3 @@ node_modules/
 .idea/
 .vercel
 .netlify
-
-# ملفات معاينة من Claude
-Claude outputs/

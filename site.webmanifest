@@ -1,0 +1,16 @@
+{
+  "name": "الرضا للدعاية والإعلان — Elreda Advertising",
+  "short_name": "الرضا",
+  "description": "تصميم · طباعة · مواقع إلكترونية · أنظمة محاسبية وضريبية",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08080A",
+  "theme_color": "#08080A",
+  "icons": [
+    { "src": "/assets/img/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -36,6 +36,7 @@
 <link rel="icon" href="assets/img/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -162,7 +163,10 @@
         </div>
       </div>
       <div class="svc__media" data-reveal="end" style="aspect-ratio:3/4">
-        <img src="assets/img/work/work-brandboard-1.jpg" alt="نظام الهوية البصرية لشركة الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="991" height="1400">
+        <picture>
+          <source srcset="assets/img/work/work-brandboard-1.webp" type="image/webp">
+          <img src="assets/img/work/work-brandboard-1.jpg" alt="نظام الهوية البصرية لشركة الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="991" height="1400">
+        </picture>
         <span class="badge-abs">نظام الهوية البصرية</span>
       </div>
     </div>
@@ -297,9 +301,12 @@
       <p class="lead" style="margin-inline:auto">نماذج من هوياتنا البصرية وتطبيقاتها المطبوعة والرقمية.</p>
     </div>
     <div class="works">
-      <article class="work" data-cat="print" data-full="assets/img/work/work-identity-1.jpg" data-reveal="up" data-delay="0">
+      <article class="work" data-cat="print" data-full="assets/img/work/work-identity-1.jpg" data-full-webp="assets/img/work/work-identity-1.webp" data-reveal="up" data-delay="0">
         <div class="work__img">
-          <img src="assets/img/work/work-identity-1-thumb.jpg" alt="تطبيقات الهوية البصرية — الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="700" height="990">
+          <picture>
+            <source srcset="assets/img/work/work-identity-1-thumb.webp" type="image/webp">
+            <img src="assets/img/work/work-identity-1-thumb.jpg" alt="تطبيقات الهوية البصرية — الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="700" height="990">
+          </picture>
           <span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
         </div>
         <div class="work__meta">
@@ -308,9 +315,12 @@
           
         </div>
       </article>
-      <article class="work" data-cat="digital" data-full="assets/img/work/work-digital-1.jpg" data-reveal="up" data-delay="80">
+      <article class="work" data-cat="digital" data-full="assets/img/work/work-digital-1.jpg" data-full-webp="assets/img/work/work-digital-1.webp" data-reveal="up" data-delay="80">
         <div class="work__img">
-          <img src="assets/img/work/work-digital-1-thumb.jpg" alt="المنظومة الرقمية — الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="700" height="990">
+          <picture>
+            <source srcset="assets/img/work/work-digital-1-thumb.webp" type="image/webp">
+            <img src="assets/img/work/work-digital-1-thumb.jpg" alt="المنظومة الرقمية — الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="700" height="990">
+          </picture>
           <span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
         </div>
         <div class="work__meta">
@@ -319,9 +329,12 @@
           
         </div>
       </article>
-      <article class="work" data-cat="identity" data-full="assets/img/work/work-brandboard-1.jpg" data-reveal="up" data-delay="160">
+      <article class="work" data-cat="identity" data-full="assets/img/work/work-brandboard-1.jpg" data-full-webp="assets/img/work/work-brandboard-1.webp" data-reveal="up" data-delay="160">
         <div class="work__img">
-          <img src="assets/img/work/work-brandboard-1-thumb.jpg" alt="نظام الهوية البصرية — الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="700" height="990">
+          <picture>
+            <source srcset="assets/img/work/work-brandboard-1-thumb.webp" type="image/webp">
+            <img src="assets/img/work/work-brandboard-1-thumb.jpg" alt="نظام الهوية البصرية — الرضا للدعاية والإعلان" loading="lazy" decoding="async" width="700" height="990">
+          </picture>
           <span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
         </div>
         <div class="work__meta">
@@ -503,7 +516,7 @@
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="معرض الأعمال">
   <button class="lb-close" type="button" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
   <button class="lb-nav lb-prev" type="button" aria-label="السابق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-  <img src="" alt="">
+  <img alt="">
   <button class="lb-nav lb-next" type="button" aria-label="التالي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
 </div>
 

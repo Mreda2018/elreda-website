@@ -36,6 +36,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -114,7 +115,10 @@
         </div>
       </div>
       <div class="svc__media" data-reveal="end" style="aspect-ratio:3/4">
-        <img src="../assets/img/work/work-applications-en.jpg" alt="Elreda digital and environmental identity applications" loading="lazy" decoding="async" width="1120" height="1400">
+        <picture>
+          <source srcset="../assets/img/work/work-applications-en.webp" type="image/webp">
+          <img src="../assets/img/work/work-applications-en.jpg" alt="Elreda digital and environmental identity applications" loading="lazy" decoding="async" width="1120" height="1400">
+        </picture>
       </div>
     </div>
   </div>
@@ -330,7 +334,7 @@
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Work gallery">
   <button class="lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
   <button class="lb-nav lb-prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-  <img src="" alt="">
+  <img alt="">
   <button class="lb-nav lb-next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
 </div>
 

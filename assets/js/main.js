@@ -252,10 +252,19 @@
   function buildGallery() {
     gallery = Array.prototype.slice.call(document.querySelectorAll('.work:not(.hide)'));
   }
+  /* use WebP for the full-size view when the browser supports it */
+  var supportsWebp = (function () {
+    try {
+      var c = document.createElement('canvas');
+      return c.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    } catch (e) { return false; }
+  })();
+
   function openLightbox(i) {
     if (!lb || !gallery.length) return;
     gIndex = (i + gallery.length) % gallery.length;
-    var src = gallery[gIndex].getAttribute('data-full');
+    var el = gallery[gIndex];
+    var src = (supportsWebp && el.getAttribute('data-full-webp')) || el.getAttribute('data-full');
     if (src && lbImg) lbImg.src = src;
     lb.classList.add('open');
     document.body.classList.add('is-locked');
