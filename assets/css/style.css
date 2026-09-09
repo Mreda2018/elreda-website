@@ -785,3 +785,8 @@ figure{margin:0}
   width:46px;height:46px;flex:none;line-height:0;
 }
 .info-item .info-item__ico svg{width:20px;height:20px;display:block}
+
+/* footer links: keep every row aligned to the column's start, even when the
+   text itself is Latin (phone / e-mail) — <bdi> handles the internal order */
+.footer__links a{justify-content:flex-start;text-align:start}
+.footer__links bdi{unicode-bidi:isolate}
