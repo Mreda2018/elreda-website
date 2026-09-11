@@ -790,3 +790,33 @@ figure{margin:0}
    text itself is Latin (phone / e-mail) — <bdi> handles the internal order */
 .footer__links a{justify-content:flex-start;text-align:start}
 .footer__links bdi{unicode-bidi:isolate}
+
+/* ============================================================
+   25. Pricing — "starting from" figures on the services page
+   ============================================================ */
+.tbl__price{white-space:nowrap}
+.tbl__price b{
+  font-size:1.05rem;font-weight:800;color:var(--red);
+  font-variant-numeric:tabular-nums;
+}
+.tbl__price span{font-size:.82rem;color:var(--muted);font-weight:600;margin-inline-start:3px}
+.tbl__time{color:var(--muted)!important;font-weight:500}
+/* the last-column rule from section 13 coloured the duration red — price owns that now */
+.tbl tbody tr td:last-child{color:inherit}
+
+.pack-price{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;
+  margin:0 0 2px;line-height:1.3;
+}
+.pack-price__from{font-size:.8rem;color:var(--muted);font-weight:600}
+.pack-price b{
+  font-size:2.1rem;font-weight:900;line-height:1;
+  background:linear-gradient(120deg,#fff,var(--red));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-variant-numeric:tabular-nums;
+}
+.pack-price__cur{font-size:.9rem;color:var(--white);font-weight:700}
+.pack-price__save{
+  margin:0 0 16px;font-size:.8rem;color:var(--muted-2);
+  padding-bottom:16px;border-bottom:1px solid var(--line);
+}

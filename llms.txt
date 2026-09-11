@@ -40,6 +40,30 @@
 | نظام محاسبي وضريبي | 5 – 10 أيام عمل |
 | باقة سوشيال ميديا | 3 – 5 أيام عمل |
 
+## الأسعار / Pricing
+
+كل الأسعار بالجنيه المصري و**تبدأ من** الأرقام التالية — يُحدَّد السعر النهائي حسب حجم المشروع وعدد التطبيقات والخامات. الدفع 50% مقدمًا و50% عند التسليم. آخر تحديث: سبتمبر 2026.
+All prices are in Egyptian pounds and are **starting-from** figures; the final price depends on project scope, number of applications and materials. Payment is 50% up front, 50% on delivery. Last updated September 2026.
+
+| الخدمة / Service | يبدأ من / From (EGP) |
+|---|---|
+| هوية بصرية كاملة + دليل استخدام / Full visual identity + usage guide | 11,000 |
+| طباعة 1000 كارت شخصي 300 جرام مع تشطيب / 1,000 business cards, 300gsm, finished | 450 |
+| موقع تعريفي 5 صفحات + استضافة سنوية ودومين / 5-page website + annual hosting and domain | 22,000 |
+| متجر إلكتروني + بوابات دفع / Online store + payment gateways | 35,000 |
+| نظام محاسبي وضريبي مع ربط الفاتورة الإلكترونية / Accounting & tax system with e-invoice integration | 8,000 |
+| باقة سوشيال ميديا 10 تصاميم / Social media pack, 10 designs | 3,500 |
+
+### أسعار الباقات / Package prices
+
+| الباقة / Package | تبدأ من / From (EGP) | منفصلة / Bought separately |
+|---|---|---|
+| باقة البداية / Starter | 5,500 | 6,400 |
+| باقة الهوية الكاملة / Full Identity | 15,000 | 17,600 |
+| باقة الإطلاق الكاملة / Full Launch | 39,000 | 45,600 |
+
+خدمات متكررة / Recurring: استضافة ودومين سنويًا **4,000** · صيانة ومتابعة شهرية **1,000** · تعديلات محتوى إضافية **500/ساعة**.
+
 ## الصفحات / Pages
 
 - [الرئيسية](https://www.elreda-ads.com/): نظرة عامة، الخدمات الأربع، الأعمال، جدول المدد، الأسئلة الشائعة.
