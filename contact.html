@@ -131,17 +131,24 @@
           <label for="f-service">نوع الخدمة <b aria-hidden="true">*</b></label>
           <select id="f-service" name="service" required>
             <option value="">اختر الخدمة المطلوبة</option>
-            <option value="design">خدمات التصميم</option>
-            <option value="print">خدمات الطباعة</option>
-            <option value="web">خدمات الويب</option>
-            <option value="acc">الأنظمة المحاسبية والضريبية</option>
+            <optgroup label="الخدمات">
+              <option value="design">خدمات التصميم</option>
+              <option value="print">خدمات الطباعة</option>
+              <option value="web">خدمات الويب</option>
+              <option value="acc">الأنظمة المحاسبية والضريبية</option>
+            </optgroup>
+            <optgroup label="الباقات الجاهزة">
+              <option value="pack1" data-pack="باقة البداية">باقة البداية — تبدأ من 5,500 ج.م</option>
+              <option value="pack2" data-pack="باقة الهوية الكاملة">باقة الهوية الكاملة — تبدأ من 15,000 ج.م</option>
+              <option value="pack3" data-pack="باقة الإطلاق الكاملة">باقة الإطلاق الكاملة — تبدأ من 39,000 ج.م</option>
+            </optgroup>
           </select>
           <span class="err" data-err="ct.err.service">من فضلك اختر نوع الخدمة.</span>
         </div>
 
         <div class="field">
           <label for="f-msg">وصف الطلب <b aria-hidden="true">*</b></label>
-          <textarea id="f-msg" name="message" placeholder="احكِ لنا عن مشروعك وما تحتاجه بالتفصيل..." required></textarea>
+          <textarea id="f-msg" name="message" placeholder="احكِ لنا عن مشروعك وما تحتاجه بالتفصيل..." data-pack-template="مهتم بـ«{pack}» — حابب أعرف تفاصيل أكتر وعرض سعر." required></textarea>
           <span class="err" data-err="ct.err.msg">من فضلك اكتب وصفًا مختصرًا لطلبك.</span>
         </div>
 

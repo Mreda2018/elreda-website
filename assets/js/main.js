@@ -348,12 +348,34 @@
     });
   }
 
-  /* prefill service from ?service= */
+  /* arriving from a service card or a package button: preselect it,
+     and for a package, open the message with a line naming it */
   (function () {
-    var s = new URLSearchParams(location.search).get('service');
+    var wanted = new URLSearchParams(location.search).get('service');
     var sel = document.getElementById('f-service');
-    if (s && sel) {
-      Array.prototype.forEach.call(sel.options, function (o) { if (o.value === s) sel.value = s; });
+    if (!wanted || !sel) return;
+
+    var picked = null;
+    Array.prototype.forEach.call(sel.options, function (o) {
+      if (o.value === wanted) { sel.value = wanted; picked = o; }
+    });
+    if (!picked) return;
+
+    var msg = document.getElementById('f-msg');
+    var packName = picked.getAttribute('data-pack');
+    if (msg && packName && !msg.value.trim()) {
+      var tpl = msg.getAttribute('data-pack-template') || '';
+      if (tpl) msg.value = tpl.replace('{pack}', packName);
+    }
+
+    /* bring the form into view so it is obvious the choice carried over */
+    if (!reduced) {
+      requestAnimationFrame(function () {
+        var form = document.getElementById('order-form');
+        if (!form) return;
+        var off = (header ? header.offsetHeight : 70) + 20;
+        window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
+      });
     }
   })();
 
