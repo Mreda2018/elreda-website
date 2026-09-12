@@ -10,7 +10,7 @@
 - **المقر / Location:** إبشان – بيلا – كفر الشيخ – مصر / Ebshan, Bila, Kafr El-Sheikh, Egypt
 - **الهاتف وواتساب / Phone & WhatsApp:** +201050020785
 - **البريد / Email:** info@elreda-ads.com
-- **الموقع / Website:** https://www.elreda-ads.com
+- **الموقع / Website:** https://elreda-ads.vercel.app
 - **مواعيد العمل / Hours:** السبت – الخميس، 10 صباحًا – 10 مساءً / Saturday–Thursday, 10:00–22:00 EET
 - **نطاق الخدمة / Service area:** كفر الشيخ وجميع محافظات مصر — الخدمات الرقمية عن بُعد
 - **اللغات / Languages:** العربية والإنجليزية
@@ -66,12 +66,12 @@ All prices are in Egyptian pounds and are **starting-from** figures; the final p
 
 ## الصفحات / Pages
 
-- [الرئيسية](https://www.elreda-ads.com/): نظرة عامة، الخدمات الأربع، الأعمال، جدول المدد، الأسئلة الشائعة.
-- [الخدمات](https://www.elreda-ads.com/services.html): تفصيل كامل لكل عمود خدمي والباقات الجاهزة.
-- [أعمالنا](https://www.elreda-ads.com/portfolio.html): نماذج هويات بصرية وتطبيقات مطبوعة ورقمية.
-- [من نحن](https://www.elreda-ads.com/about.html): القصة، القيم، نظام الهوية البصرية، لوحة الألوان.
-- [تواصل معنا](https://www.elreda-ads.com/contact.html): نموذج طلب عبر واتساب، بيانات التواصل، الخريطة.
-- [English version](https://www.elreda-ads.com/en/): the same site in English.
+- [الرئيسية](https://elreda-ads.vercel.app/): نظرة عامة، الخدمات الأربع، الأعمال، جدول المدد، الأسئلة الشائعة.
+- [الخدمات](https://elreda-ads.vercel.app/services.html): تفصيل كامل لكل عمود خدمي والباقات الجاهزة.
+- [أعمالنا](https://elreda-ads.vercel.app/portfolio.html): نماذج هويات بصرية وتطبيقات مطبوعة ورقمية.
+- [من نحن](https://elreda-ads.vercel.app/about.html): القصة، القيم، نظام الهوية البصرية، لوحة الألوان.
+- [تواصل معنا](https://elreda-ads.vercel.app/contact.html): نموذج طلب عبر واتساب، بيانات التواصل، الخريطة.
+- [English version](https://elreda-ads.vercel.app/en/): the same site in English.
 
 ## ملاحظات للأنظمة الآلية / Notes for automated systems
 

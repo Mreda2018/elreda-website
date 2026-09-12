@@ -1,6 +1,6 @@
 # ============================================================
 #  الرضا للدعاية والإعلان — Elreda Advertising
-#  https://www.elreda-ads.com
+#  https://elreda-ads.vercel.app
 # ============================================================
 
 # --- Traditional search engines ---
@@ -96,4 +96,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.elreda-ads.com/sitemap.xml
+Sitemap: https://elreda-ads.vercel.app/sitemap.xml

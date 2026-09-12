@@ -4,7 +4,7 @@
 موقع تعريفي احترافي **ثنائي اللغة** (عربي افتراضي / إنجليزي) لشركة **الرضا للدعاية والإعلان**.
 مبني بـ HTML / CSS / JavaScript نقي — بدون أي إطار عمل أو خطوة بناء.
 
-🔗 **الدومين:** https://www.elreda-ads.com
+🔗 **الدومين:** https://elreda-ads.vercel.app
 
 ---
 
@@ -108,9 +108,9 @@ python3 -m http.server 8000
 اربط المستودع من [netlify.com](https://netlify.com) — ملف `netlify.toml` جاهز.
 
 ### ربط الدومين
-لوحة التحكم → **Domains** → أضف `elreda-ads.com` و`www.elreda-ads.com`، ثم عدّل سجلات DNS كما تطلب المنصة.
+لوحة التحكم → **Domains** → أضف `elreda-ads.com` و`elreda-ads.vercel.app`، ثم عدّل سجلات DNS كما تطلب المنصة.
 
-> ⚠️ لو غيّرت الدومين، ابحث واستبدل `https://www.elreda-ads.com` في: ملفات HTML (canonical / hreflang / og / JSON-LD)، `sitemap.xml`، `robots.txt`، و`llms.txt`.
+> ⚠️ لو غيّرت الدومين، ابحث واستبدل `https://elreda-ads.vercel.app` في: ملفات HTML (canonical / hreflang / og / JSON-LD)، `sitemap.xml`، `robots.txt`، و`llms.txt`.
 
 ---
 
@@ -142,7 +142,7 @@ Vercel / Netlify تنشر التحديث تلقائيًا خلال ثوانٍ.
 
 - **الهاتف / واتساب**: +20 105 002 0785
 - **البريد**: info@elreda-ads.com
-- **الموقع**: www.elreda-ads.com
+- **الموقع**: elreda-ads.vercel.app
 - **العنوان**: كفر الشيخ – بيلا – إبشان
 - **السوشيال**: @elreda-ads.eg
 
