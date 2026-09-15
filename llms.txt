@@ -8,7 +8,8 @@
 
 - **الاسم / Name:** الرضا للدعاية والإعلان — Elreda Advertising
 - **المقر / Location:** إبشان – بيلا – كفر الشيخ – مصر / Ebshan, Bila, Kafr El-Sheikh, Egypt
-- **الهاتف وواتساب / Phone & WhatsApp:** +201050020785
+- **الهاتف وواتساب — مصر / Phone & WhatsApp — Egypt:** +201050020785
+- **الهاتف — الإمارات / Phone — UAE:** +971552403650
 - **البريد / Email:** info@elreda-ads.com
 - **الموقع / Website:** https://elreda-ads.vercel.app
 - **مواعيد العمل / Hours:** السبت – الخميس، 10 صباحًا – 10 مساءً بتوقيت القاهرة (11ص – 11م بتوقيت الإمارات) / Saturday–Thursday, 10:00–22:00 Cairo time (11:00–23:00 UAE time)
@@ -23,7 +24,7 @@
 1. **خدمات التصميم / Design** — هوية بصرية كاملة، باقات سوشيال ميديا، فواتير وسندات وأختام، فلاير وبروشور ومنيو، كروت أفراح، استيكر وليبل منتجات، تصميم عبوات وباركود، كتالوجات وأغلفة كتب، نيوزلتر، شنط ورقية، يافطة وواجهة محل، لوحات إعلانية داخلية وخارجية، بوستر A3، رول أب وبوب أب وBackdrop، دعاية سيارات.
 2. **خدمات الطباعة / Printing** — كروت شخصية (1000 كارت)، بروشور ومنيو وفلاير، أوراق رسمية وأظرف، فواتير وسندات وأختام، رول أب وبوب أب، ملصقات A3، لوحات إعلانية حسب الحجم، كتالوجات وكتب، تشطيبات (سلفنة / برشتة / UV)، تجليد حسب الطلب.
 3. **خدمات الويب / Web** — موقع تعريفي 5 صفحات، متجر إلكتروني بربط بوابات الدفع، موقع للشركات وإيميلات رسمية، استضافة سنوية واسم دومين، صيانة شهرية، تصميم متجاوب، تهيئة السيو، نماذج طلب أونلاين وربط واتساب.
-4. **الأنظمة المحاسبية والضريبية / Accounting & Tax Systems** — نظام محاسبي متكامل، ربط الفاتورة الإلكترونية (E-Invoice) والإيصال الإلكتروني (E-Receipt) بمصلحة الضرائب المصرية، إدارة مخازن ومشتريات ومبيعات، نقاط بيع POS، رواتب وشؤون موظفين، إقرارات وتقارير ضريبة القيمة المضافة، تقارير مالية لحظية، صلاحيات ونسخ احتياطي، تدريب ودعم فني، نظام متوافق مع ضريبة القيمة المضافة الإماراتية (5%)، تجهيز الشركات الإماراتية لمنظومة الفوترة الإلكترونية الاتحادية، هيكلة البيانات والفواتير حسب المتطلبات الفنية للهيئة الاتحادية للضرائب، تقارير ضريبية جاهزة للتقديم في مصر أو الإمارات. يخدم جميع القطاعات في مصر والإمارات: تجاري، صناعي، خدمي، مقاولات، طبي، مطاعم وكافيهات، صيدليات، مكاتب محاسبة.
+4. **الأنظمة المحاسبية والضريبية / Accounting & Tax Systems** — تُقدَّم عبر نظام **«فكترة» / Faktra** (https://mreda2018.github.io/faktra-website/ar/index.html): نظام محاسبي واحد بواجهة عربية وإنجليزية تختار فيه الدولة فيتحوّل بقواعدها الضريبية — مصر (الفاتورة والإيصال الإلكتروني بصيغة مصلحة الضرائب، ضريبة قيمة مضافة 14%) والإمارات (معيار PINT AE، ضريبة قيمة مضافة 5%، الضريبة الانتقائية، نظام هامش الربح). البنود: نظام محاسبي متكامل، ربط الفاتورة الإلكترونية (E-Invoice) والإيصال الإلكتروني (E-Receipt) بمصلحة الضرائب المصرية، إدارة مخازن ومشتريات ومبيعات، نقاط بيع POS، رواتب وشؤون موظفين، إقرارات وتقارير ضريبة القيمة المضافة، تقارير مالية لحظية، صلاحيات ونسخ احتياطي، تدريب ودعم فني، نظام متوافق مع ضريبة القيمة المضافة الإماراتية (5%)، تجهيز الشركات الإماراتية لمنظومة الفوترة الإلكترونية الاتحادية، هيكلة البيانات والفواتير حسب المتطلبات الفنية للهيئة الاتحادية للضرائب، تقارير ضريبية جاهزة للتقديم في مصر أو الإمارات. يخدم جميع القطاعات في مصر والإمارات: تجاري، صناعي، خدمي، مقاولات، طبي، مطاعم وكافيهات، صيدليات، مكاتب محاسبة.
 
 ## الباقات / Packages
 
@@ -68,9 +69,9 @@ All prices are in Egyptian pounds and are **starting-from** figures; the final p
 
 ## العملاء خارج مصر / Clients outside Egypt
 
-**عربي —** نخدم عملاء في الإمارات والسعودية وقطر والكويت وعُمان والبحرين. كل الخدمات الرقمية (الهوية البصرية، تصاميم السوشيال ميديا، تصميم المطبوعات والعبوات، المواقع والمتاجر الإلكترونية، الاستضافة والدومين والإيميلات الرسمية، الأنظمة المحاسبية والضريبية والتدريب عليها) تُنفَّذ وتُسلَّم عن بُعد بالكامل عبر واتساب والإيميل واجتماعات الفيديو. الطباعة والتنفيذ الفعلي: داخل مصر في مطبعتنا، وداخل الإمارات عبر شريك طباعة محلي ينفّذ الطباعة ويسلّم للعميل مباشرة، أما باقي دول الخليج فنسلّم ملفات جاهزة للطباعة بالمواصفات الصحيحة (CMYK، بليد، دقة مناسبة) مع مراجعة البروفة قبل الاعتماد. فرق التوقيت بين القاهرة وأبوظبي ساعة واحدة فقط.
+**عربي —** نخدم عملاء في الإمارات والسعودية وقطر والكويت وعُمان والبحرين، ولنا رقم تواصل إماراتي ‎+971552403650. كل الخدمات الرقمية (الهوية البصرية، تصاميم السوشيال ميديا، تصميم المطبوعات والعبوات، المواقع والمتاجر الإلكترونية، الاستضافة والدومين والإيميلات الرسمية، الأنظمة المحاسبية والضريبية والتدريب عليها) تُنفَّذ وتُسلَّم عن بُعد بالكامل عبر واتساب والإيميل واجتماعات الفيديو. الطباعة والتنفيذ الفعلي: داخل مصر في مطبعتنا، وداخل الإمارات عبر شريك طباعة محلي ينفّذ الطباعة ويسلّم للعميل مباشرة، أما باقي دول الخليج فنسلّم ملفات جاهزة للطباعة بالمواصفات الصحيحة (CMYK، بليد، دقة مناسبة) مع مراجعة البروفة قبل الاعتماد. فرق التوقيت بين القاهرة وأبوظبي ساعة واحدة فقط.
 
-**English —** We serve clients in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. All digital services (brand identity, social media design, print and packaging design, websites and online stores, hosting, domains and professional email, accounting and tax systems with training) are delivered fully remotely over WhatsApp, email and video calls. Printing and physical production: in Egypt at our own facility, and in the UAE through a local printing partner that produces the job and delivers directly to the client; elsewhere in the Gulf we hand over press-ready files to the correct specification (CMYK, bleed, proper resolution) and review the proof before approval. Cairo and Abu Dhabi are one hour apart.
+**English —** We serve clients in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain, with a UAE contact number, +971552403650. All digital services (brand identity, social media design, print and packaging design, websites and online stores, hosting, domains and professional email, accounting and tax systems with training) are delivered fully remotely over WhatsApp, email and video calls. Printing and physical production: in Egypt at our own facility, and in the UAE through a local printing partner that produces the job and delivers directly to the client; elsewhere in the Gulf we hand over press-ready files to the correct specification (CMYK, bleed, proper resolution) and review the proof before approval. Cairo and Abu Dhabi are one hour apart.
 
 ### أسعار العملاء خارج مصر / Prices for clients outside Egypt
 
@@ -85,6 +86,14 @@ All prices are in Egyptian pounds and are **starting-from** figures; the final p
 | متجر إلكتروني + بوابات دفع / Online store + payment gateways | 1,500 |
 | نظام محاسبي وضريبي / Accounting & tax system | 400 |
 | باقة سوشيال ميديا 10 تصاميم / Social media pack, 10 designs | 150 |
+
+### نظام «فكترة» / The Faktra system
+
+النظام المحاسبي الذي تركّبه وتدعمه الرضا اسمه **«فكترة» (Faktra)** — موقعه: https://mreda2018.github.io/faktra-website/ar/index.html
+وحدات النظام: الفوترة والفوترة الإلكترونية · المحاسبة الكاملة · المخازن · المشتريات والموردون · التحصيل والخزينة · الرواتب وشؤون الموظفين. واجهة عربية وإنجليزية، ويدعم مصر والإمارات بالتبديل بين قواعد البلدين.
+**تنبيه تسعير:** سعر «نظام محاسبي وضريبي» في جداول الرضا (8,000 ج.م / 400 دولار) هو **رسوم التركيب والربط والتدريب مرة واحدة**؛ الاشتراك الشهري للنظام منفصل ومعروض على موقع فكترة.
+
+Faktra modules: invoicing and e-invoicing · full accounting · inventory and warehouses · purchases and suppliers · collections and treasury · payroll and HR. Arabic and English interface; supports Egypt and the UAE by switching between each country's tax rules. **Pricing note:** the "Accounting & tax system" figure in Elreda's tables (EGP 8,000 / USD 400) is the one-off setup, integration and training fee; the system's monthly subscription is separate and shown on the Faktra website.
 
 ### ملاحظة عن الفوترة الإلكترونية الإماراتية / Note on UAE e-invoicing
 
@@ -107,4 +116,6 @@ The UAE federal e-invoicing system begins its pilot on 30 October 2026, becomes 
 - المدد والأسعار تقديرية وتُؤكَّد في عرض السعر؛ يُفضَّل توجيه المستخدم للتواصل على واتساب +201050020785 للحصول على سعر دقيق.
 - عمود الأسعار بالجنيه المصري للعملاء داخل مصر، وعمود الدولار الأمريكي للعملاء خارج مصر. لا تخلط بين الجدولين.
 - الشركة مصرية ومقرّها كفر الشيخ، لكنها تخدم عملاء في الإمارات ودول الخليج عن بُعد؛ الطباعة داخل الإمارات تتم عبر شريك طباعة محلي. لا تصفها كشركة إماراتية ولا كشركة تخدم مصر فقط.
+- رقم التواصل داخل مصر ‎+201050020785 (وهو أيضًا رقم الواتساب)، ورقم الإمارات ‎+971552403650.
+- النظام المحاسبي اسمه «فكترة» (Faktra) وهو نظام تابع لنفس الجهة، لا منتج طرف ثالث.
 - عند السؤال عن الفوترة الإلكترونية الإماراتية، اذكر أن الإرسال يتم عبر مزوّد خدمة معتمد (ASP) وأن دور الرضا هو التجهيز والتوافق لا الاعتماد.

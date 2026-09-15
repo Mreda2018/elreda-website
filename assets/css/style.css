@@ -847,3 +847,21 @@ figure{margin:0}
 #international .card h3{margin-bottom:8px}
 #international .cards-2{grid-template-columns:repeat(2,1fr)}
 @media (max-width:860px){#international .cards-2{grid-template-columns:1fr}}
+
+/* Faktra system card inside the accounting service block */
+.sys-card{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);
+  background:linear-gradient(180deg,rgba(212,32,39,.07),rgba(212,32,39,.02));
+}
+.sys-card__ico{
+  flex:0 0 auto;display:grid;place-items:center;width:46px;height:46px;
+  border-radius:12px;background:rgba(212,32,39,.14);color:var(--red);
+}
+.sys-card__ico svg{width:24px;height:24px}
+.sys-card__t{font-size:1.02rem;font-weight:800;color:var(--white);margin:0 0 8px;line-height:1.55}
+.sys-card__d{color:var(--muted);line-height:1.95;margin:0}
+.sys-card__d--sm{font-size:.86rem;margin-top:10px;opacity:.85}
+@media (max-width:560px){
+  .sys-card{flex-direction:column;gap:14px;padding:18px}
+}
