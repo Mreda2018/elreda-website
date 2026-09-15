@@ -848,20 +848,33 @@ figure{margin:0}
 #international .cards-2{grid-template-columns:repeat(2,1fr)}
 @media (max-width:860px){#international .cards-2{grid-template-columns:1fr}}
 
-/* Faktra system card inside the accounting service block */
+/* Full-width row inside a service block (spans both grid columns).
+   order:9 keeps it after the media (order:2 on .svc--rev) and the text column,
+   otherwise grid auto-placement pushes the media into its own full-width row. */
+.svc__wide{order:9;grid-column:1/-1;margin-top:8px}
+/* the accounting column is much taller than the others, so give its image a
+   portrait ratio (the source art is 991x1400) instead of leaving dead space */
+.svc--wide .svc__media{aspect-ratio:3/4}
+@media(max-width:880px){.svc--wide .svc__media{aspect-ratio:4/3}}
+
+/* Faktra system card */
 .sys-card{
-  display:flex;gap:18px;align-items:flex-start;
-  padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);
+  display:flex;gap:16px;align-items:flex-start;
+  padding:22px 24px;border:1px solid var(--line);border-radius:var(--r-lg);
   background:linear-gradient(180deg,rgba(212,32,39,.07),rgba(212,32,39,.02));
 }
 .sys-card__ico{
-  flex:0 0 auto;display:grid;place-items:center;width:46px;height:46px;
-  border-radius:12px;background:rgba(212,32,39,.14);color:var(--red);
+  flex:0 0 auto;display:grid;place-items:center;
+  width:38px;height:38px;min-width:38px;
+  border-radius:11px;background:rgba(212,32,39,.14);color:var(--red);
 }
-.sys-card__ico svg{width:24px;height:24px}
+.sys-card__ico svg{width:20px;height:20px;display:block}
+.sys-card__body{min-width:0}
 .sys-card__t{font-size:1.02rem;font-weight:800;color:var(--white);margin:0 0 8px;line-height:1.55}
 .sys-card__d{color:var(--muted);line-height:1.95;margin:0}
 .sys-card__d--sm{font-size:.86rem;margin-top:10px;opacity:.85}
 @media (max-width:560px){
-  .sys-card{flex-direction:column;gap:14px;padding:18px}
+  .sys-card{gap:14px;padding:18px}
+  .sys-card__ico{width:34px;height:34px;min-width:34px;border-radius:10px}
+  .sys-card__ico svg{width:18px;height:18px}
 }
