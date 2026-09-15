@@ -1,8 +1,8 @@
 # الرضا للدعاية والإعلان — Elreda Advertising
 
-> شركة مصرية مقرّها إبشان – مركز بيلا – محافظة كفر الشيخ، تقدّم أربع خدمات تحت سقف واحد: تصميم الهوية البصرية والمطبوعات، الطباعة الاحترافية بكل تشطيباتها، تصميم وبرمجة المواقع والمتاجر الإلكترونية، والأنظمة المحاسبية والضريبية المربوطة بمنظومة الفاتورة الإلكترونية والإيصال الإلكتروني لدى مصلحة الضرائب المصرية. تخدم عملاءها في كفر الشيخ وجميع محافظات مصر.
+> شركة مصرية مقرّها إبشان – مركز بيلا – محافظة كفر الشيخ، تقدّم أربع خدمات تحت سقف واحد: تصميم الهوية البصرية والمطبوعات، الطباعة الاحترافية بكل تشطيباتها، تصميم وبرمجة المواقع والمتاجر الإلكترونية، والأنظمة المحاسبية والضريبية المتوافقة مع مصلحة الضرائب المصرية والهيئة الاتحادية للضرائب الإماراتية. تخدم عملاء في مصر والإمارات ودول الخليج: الخدمات الرقمية تُنفَّذ وتُسلَّم عن بُعد بالكامل لأي دولة، والطباعة تُنفَّذ داخل مصر في مطبعتها وفي الإمارات عبر شريك طباعة محلي يطبع ويسلّم للعميل مباشرة.
 >
-> An Egyptian company based in Ebshan, Bila, Kafr El-Sheikh, offering four services under one roof: visual identity and print design, professional printing with full finishing, website and e-commerce development, and accounting/tax systems integrated with the Egyptian Tax Authority's e-invoice and e-receipt platforms. Serves clients in Kafr El-Sheikh and across Egypt.
+> An Egyptian company based in Ebshan, Bila, Kafr El-Sheikh, offering four services under one roof: visual identity and print design, professional printing with full finishing, website and e-commerce development, and accounting/tax systems compliant with the Egyptian Tax Authority and the UAE Federal Tax Authority. Serves clients in Egypt, the UAE and the Gulf: digital services are delivered fully remotely to any country, while printing is produced in Egypt at its own facility and in the UAE through a local printing partner that prints and delivers directly to the client.
 
 ## بيانات أساسية / Key facts
 
@@ -11,17 +11,19 @@
 - **الهاتف وواتساب / Phone & WhatsApp:** +201050020785
 - **البريد / Email:** info@elreda-ads.com
 - **الموقع / Website:** https://elreda-ads.vercel.app
-- **مواعيد العمل / Hours:** السبت – الخميس، 10 صباحًا – 10 مساءً / Saturday–Thursday, 10:00–22:00 EET
-- **نطاق الخدمة / Service area:** كفر الشيخ وجميع محافظات مصر — الخدمات الرقمية عن بُعد
+- **مواعيد العمل / Hours:** السبت – الخميس، 10 صباحًا – 10 مساءً بتوقيت القاهرة (11ص – 11م بتوقيت الإمارات) / Saturday–Thursday, 10:00–22:00 Cairo time (11:00–23:00 UAE time)
+- **نطاق الخدمة / Service area:** مصر (كفر الشيخ وجميع المحافظات) · الإمارات · السعودية · قطر · الكويت · عُمان · البحرين — الخدمات الرقمية عن بُعد بالكامل، والطباعة في مصر وفي الإمارات عبر شريك طباعة محلي / Egypt, UAE, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain — digital services fully remote; printing in Egypt and in the UAE via a local printing partner
 - **اللغات / Languages:** العربية والإنجليزية
-- **الدفع / Payment:** جنيه مصري — نقدًا، تحويل بنكي، إنستاباي، فودافون كاش
+- **الدفع داخل مصر / Payment in Egypt:** جنيه مصري — نقدًا، تحويل بنكي، إنستاباي، فودافون كاش
+- **الدفع من الخارج / Payment from abroad:** دولار أمريكي — تحويل بنكي دولي، Wise، PayPal / USD — international bank transfer, Wise, PayPal
+- **نظام الدفع / Terms:** 50% مقدمًا و50% عند التسليم / 50% up front, 50% on delivery
 
 ## الخدمات / Services
 
 1. **خدمات التصميم / Design** — هوية بصرية كاملة، باقات سوشيال ميديا، فواتير وسندات وأختام، فلاير وبروشور ومنيو، كروت أفراح، استيكر وليبل منتجات، تصميم عبوات وباركود، كتالوجات وأغلفة كتب، نيوزلتر، شنط ورقية، يافطة وواجهة محل، لوحات إعلانية داخلية وخارجية، بوستر A3، رول أب وبوب أب وBackdrop، دعاية سيارات.
 2. **خدمات الطباعة / Printing** — كروت شخصية (1000 كارت)، بروشور ومنيو وفلاير، أوراق رسمية وأظرف، فواتير وسندات وأختام، رول أب وبوب أب، ملصقات A3، لوحات إعلانية حسب الحجم، كتالوجات وكتب، تشطيبات (سلفنة / برشتة / UV)، تجليد حسب الطلب.
 3. **خدمات الويب / Web** — موقع تعريفي 5 صفحات، متجر إلكتروني بربط بوابات الدفع، موقع للشركات وإيميلات رسمية، استضافة سنوية واسم دومين، صيانة شهرية، تصميم متجاوب، تهيئة السيو، نماذج طلب أونلاين وربط واتساب.
-4. **الأنظمة المحاسبية والضريبية / Accounting & Tax Systems** — نظام محاسبي متكامل، ربط الفاتورة الإلكترونية (E-Invoice) والإيصال الإلكتروني (E-Receipt) بمصلحة الضرائب المصرية، إدارة مخازن ومشتريات ومبيعات، نقاط بيع POS، رواتب وشؤون موظفين، إقرارات وتقارير ضريبة القيمة المضافة، تقارير مالية لحظية، صلاحيات ونسخ احتياطي، تدريب ودعم فني.
+4. **الأنظمة المحاسبية والضريبية / Accounting & Tax Systems** — نظام محاسبي متكامل، ربط الفاتورة الإلكترونية (E-Invoice) والإيصال الإلكتروني (E-Receipt) بمصلحة الضرائب المصرية، إدارة مخازن ومشتريات ومبيعات، نقاط بيع POS، رواتب وشؤون موظفين، إقرارات وتقارير ضريبة القيمة المضافة، تقارير مالية لحظية، صلاحيات ونسخ احتياطي، تدريب ودعم فني، نظام متوافق مع ضريبة القيمة المضافة الإماراتية (5%)، تجهيز الشركات الإماراتية لمنظومة الفوترة الإلكترونية الاتحادية، هيكلة البيانات والفواتير حسب المتطلبات الفنية للهيئة الاتحادية للضرائب، تقارير ضريبية جاهزة للتقديم في مصر أو الإمارات. يخدم جميع القطاعات في مصر والإمارات: تجاري، صناعي، خدمي، مقاولات، طبي، مطاعم وكافيهات، صيدليات، مكاتب محاسبة.
 
 ## الباقات / Packages
 
@@ -64,6 +66,31 @@ All prices are in Egyptian pounds and are **starting-from** figures; the final p
 
 خدمات متكررة / Recurring: استضافة ودومين سنويًا **4,000** · صيانة ومتابعة شهرية **1,000** · تعديلات محتوى إضافية **500/ساعة**.
 
+## العملاء خارج مصر / Clients outside Egypt
+
+**عربي —** نخدم عملاء في الإمارات والسعودية وقطر والكويت وعُمان والبحرين. كل الخدمات الرقمية (الهوية البصرية، تصاميم السوشيال ميديا، تصميم المطبوعات والعبوات، المواقع والمتاجر الإلكترونية، الاستضافة والدومين والإيميلات الرسمية، الأنظمة المحاسبية والضريبية والتدريب عليها) تُنفَّذ وتُسلَّم عن بُعد بالكامل عبر واتساب والإيميل واجتماعات الفيديو. الطباعة والتنفيذ الفعلي: داخل مصر في مطبعتنا، وداخل الإمارات عبر شريك طباعة محلي ينفّذ الطباعة ويسلّم للعميل مباشرة، أما باقي دول الخليج فنسلّم ملفات جاهزة للطباعة بالمواصفات الصحيحة (CMYK، بليد، دقة مناسبة) مع مراجعة البروفة قبل الاعتماد. فرق التوقيت بين القاهرة وأبوظبي ساعة واحدة فقط.
+
+**English —** We serve clients in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. All digital services (brand identity, social media design, print and packaging design, websites and online stores, hosting, domains and professional email, accounting and tax systems with training) are delivered fully remotely over WhatsApp, email and video calls. Printing and physical production: in Egypt at our own facility, and in the UAE through a local printing partner that produces the job and delivers directly to the client; elsewhere in the Gulf we hand over press-ready files to the correct specification (CMYK, bleed, proper resolution) and review the proof before approval. Cairo and Abu Dhabi are one hour apart.
+
+### أسعار العملاء خارج مصر / Prices for clients outside Egypt
+
+أسعار **تبدأ من** بالدولار الأمريكي للخدمات الرقمية. الطباعة في الإمارات بعرض سعر حسب الطلب لأنها تعتمد على الخامة والكمية والتشطيب. آخر تحديث: سبتمبر 2026.
+**Starting-from** prices in US dollars for digital services. Printing in the UAE is quoted on request, as it depends on material, quantity and finishing. Last updated September 2026.
+
+| الخدمة / Service | يبدأ من / From (USD) |
+|---|---|
+| هوية بصرية كاملة + دليل استخدام / Full visual identity + usage guide | 450 |
+| طباعة / Printing | حسب الطلب / On request |
+| موقع تعريفي 5 صفحات + استضافة ودومين / 5-page website + hosting and domain | 750 |
+| متجر إلكتروني + بوابات دفع / Online store + payment gateways | 1,500 |
+| نظام محاسبي وضريبي / Accounting & tax system | 400 |
+| باقة سوشيال ميديا 10 تصاميم / Social media pack, 10 designs | 150 |
+
+### ملاحظة عن الفوترة الإلكترونية الإماراتية / Note on UAE e-invoicing
+
+منظومة الفوترة الإلكترونية الاتحادية في الإمارات تبدأ تجريبيًا في 30 أكتوبر 2026، وتصبح إلزامية في 1 يناير 2027 للشركات التي تتجاوز إيراداتها 50 مليون درهم، وفي 1 يوليو 2027 لباقي الشركات، وللمعاملات الحكومية (B2G) في 1 أكتوبر 2027. الإرسال للمنظومة يتم عبر مزوّد خدمة معتمد (ASP) من الهيئة الاتحادية للضرائب — ودور الرضا هو تجهيز النظام والبيانات والفواتير لتكون متوافقة وجاهزة للربط عبر المزوّد المعتمد، لا أن تحل محله.
+The UAE federal e-invoicing system begins its pilot on 30 October 2026, becomes mandatory on 1 January 2027 for companies with revenue above AED 50 million and on 1 July 2027 for all others, with B2G from 1 October 2027. Transmission goes through an Accredited Service Provider (ASP) appointed by the Federal Tax Authority — Elreda's role is to prepare the system, data and invoices to be compliant and ready to connect through that accredited provider, not to replace it.
+
 ## الصفحات / Pages
 
 - [الرئيسية](https://elreda-ads.vercel.app/): نظرة عامة، الخدمات الأربع، الأعمال، جدول المدد، الأسئلة الشائعة.
@@ -78,3 +105,6 @@ All prices are in Egyptian pounds and are **starting-from** figures; the final p
 - الموقع ثنائي اللغة بصفحات ثابتة منفصلة: العربية على الجذر `/` والإنجليزية على `/en/`، وكلاهما HTML كامل لا يحتاج تشغيل JavaScript لقراءة المحتوى.
 - البيانات المنظّمة متاحة بصيغة JSON-LD (Organization, LocalBusiness, Service, FAQPage, BreadcrumbList, ItemList) داخل كل صفحة.
 - المدد والأسعار تقديرية وتُؤكَّد في عرض السعر؛ يُفضَّل توجيه المستخدم للتواصل على واتساب +201050020785 للحصول على سعر دقيق.
+- عمود الأسعار بالجنيه المصري للعملاء داخل مصر، وعمود الدولار الأمريكي للعملاء خارج مصر. لا تخلط بين الجدولين.
+- الشركة مصرية ومقرّها كفر الشيخ، لكنها تخدم عملاء في الإمارات ودول الخليج عن بُعد؛ الطباعة داخل الإمارات تتم عبر شريك طباعة محلي. لا تصفها كشركة إماراتية ولا كشركة تخدم مصر فقط.
+- عند السؤال عن الفوترة الإلكترونية الإماراتية، اذكر أن الإرسال يتم عبر مزوّد خدمة معتمد (ASP) وأن دور الرضا هو التجهيز والتوافق لا الاعتماد.

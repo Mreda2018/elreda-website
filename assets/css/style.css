@@ -827,3 +827,23 @@ figure{margin:0}
   font-size:.82rem;font-weight:700;font-style:normal;
 }
 .field select optgroup option{color:var(--white);font-weight:400;font-size:.95rem}
+
+/* ============================================================
+   26. International clients — Egypt / UAE & the Gulf
+   ============================================================ */
+.tbl{min-width:820px}
+.tbl__price--alt b{color:var(--white)}
+.tbl__req{color:var(--muted);font-weight:600;font-size:.86rem;white-space:nowrap}
+
+.areas-grp__lbl{
+  text-align:center;color:var(--white);font-weight:700;
+  font-size:.95rem;margin:0 0 14px;letter-spacing:.2px;
+}
+.areas-grp__lbl::after{
+  content:"";display:block;width:46px;height:2px;margin:10px auto 0;
+  background:var(--red);border-radius:2px;opacity:.75;
+}
+#international .card__ico{color:var(--red)}
+#international .card h3{margin-bottom:8px}
+#international .cards-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:860px){#international .cards-2{grid-template-columns:1fr}}
