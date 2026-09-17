@@ -113,6 +113,8 @@ The UAE federal e-invoicing system begins its pilot on 30 October 2026, becomes 
 
 - الموقع ثنائي اللغة بصفحات ثابتة منفصلة: العربية على الجذر `/` والإنجليزية على `/en/`، وكلاهما HTML كامل لا يحتاج تشغيل JavaScript لقراءة المحتوى.
 - البيانات المنظّمة متاحة بصيغة JSON-LD (Organization, LocalBusiness, Service, FAQPage, BreadcrumbList, ItemList) داخل كل صفحة.
+- يوجد على الموقع مساعد آلي (شات بوت) يعمل بالكامل داخل متصفح الزائر بقاعدة معرفة مكتوبة يدويًا — لا يستخدم أي نموذج لغوي ولا يرسل أي بيانات لأي جهة، ويحوّل الأسئلة خارج نطاقه إلى واتساب.
+- The site carries an automated assistant that runs entirely in the visitor's browser from a hand-written knowledge base; it makes no external calls and refers out-of-scope questions to WhatsApp.
 - المدد والأسعار تقديرية وتُؤكَّد في عرض السعر؛ يُفضَّل توجيه المستخدم للتواصل على واتساب +201050020785 للحصول على سعر دقيق.
 - عمود الأسعار بالجنيه المصري للعملاء داخل مصر، وعمود الدولار الأمريكي للعملاء خارج مصر. لا تخلط بين الجدولين.
 - الشركة مصرية ومقرّها كفر الشيخ، لكنها تخدم عملاء في الإمارات ودول الخليج عن بُعد؛ الطباعة داخل الإمارات تتم عبر شريك طباعة محلي. لا تصفها كشركة إماراتية ولا كشركة تخدم مصر فقط.

@@ -878,3 +878,186 @@ figure{margin:0}
   .sys-card__ico{width:34px;height:34px;min-width:34px;border-radius:10px}
   .sys-card__ico svg{width:18px;height:18px}
 }
+
+/* ============================================================
+   27. مساعد الرضا — الشات بوت
+   ============================================================ */
+.chatw{position:fixed;inset-inline-start:24px;bottom:24px;z-index:80;font-family:var(--ff)}
+
+.chatw__launch{
+  width:58px;height:58px;border:0;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;position:relative;
+  background:var(--grad-red);color:#fff;box-shadow:var(--shadow-red),0 8px 24px rgba(0,0,0,.4);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.chatw__launch:hover{transform:translateY(-3px) scale(1.06)}
+.chatw__launch:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.chatw__launch-ico svg{width:26px;height:26px;transition:transform .3s var(--ease)}
+.chatw__dot{
+  position:absolute;top:4px;inset-inline-end:4px;width:11px;height:11px;border-radius:50%;
+  background:#37D67A;border:2px solid var(--ink);
+}
+.chatw__dot::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:2px solid rgba(55,214,122,.5);animation:chatPing 2.4s ease-out infinite;
+}
+@keyframes chatPing{0%{transform:scale(.7);opacity:.9}70%,100%{transform:scale(1.5);opacity:0}}
+.chatw[data-open="true"] .chatw__launch-ico svg{transform:rotate(-12deg) scale(.86);opacity:.75}
+.chatw[data-open="true"] .chatw__dot{opacity:0}
+
+/* اللوحة */
+.chatw__panel{
+  position:absolute;inset-inline-start:0;bottom:74px;
+  width:min(390px,calc(100vw - 32px));height:min(600px,calc(100vh - 140px));
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--ink-2);border:1px solid var(--line-strong);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-2);
+  opacity:0;transform:translateY(14px) scale(.97);transform-origin:bottom var(--chat-origin,left);
+  transition:opacity .28s var(--ease),transform .28s var(--ease);
+  pointer-events:none;
+}
+html[dir="rtl"] .chatw__panel{--chat-origin:right}
+.chatw[data-open="true"] .chatw__panel{opacity:1;transform:none;pointer-events:auto}
+/* [hidden] لازم يغلب display:flex عشان اللوحة تتشال فعليًا من شجرة الوصول */
+.chatw__panel[hidden]{display:none}
+
+.chatw__head{
+  display:flex;align-items:center;gap:11px;padding:14px 16px;
+  background:linear-gradient(135deg,rgba(212,32,39,.22),rgba(212,32,39,.06));
+  border-bottom:1px solid var(--line);flex:0 0 auto;
+}
+.chatw__avatar{
+  width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  background:var(--grad-red);color:#fff;flex:0 0 auto;
+}
+.chatw__avatar svg{width:19px;height:19px}
+.chatw__id{display:flex;flex-direction:column;line-height:1.35;flex:1 1 auto;min-width:0}
+.chatw__id b{font-size:.96rem;font-weight:800;color:var(--white)}
+.chatw__id i{font-style:normal;font-size:.76rem;color:#7BE0A4;display:flex;align-items:center;gap:5px}
+.chatw__id i::before{content:"";width:6px;height:6px;border-radius:50%;background:#37D67A}
+.chatw__icon{
+  width:32px;height:32px;border-radius:9px;border:1px solid transparent;background:transparent;
+  color:var(--muted);cursor:pointer;display:grid;place-items:center;flex:0 0 auto;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.chatw__icon:hover{background:rgba(255,255,255,.07);color:var(--white);border-color:var(--line)}
+.chatw__icon:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.chatw__icon svg{width:17px;height:17px}
+
+/* السجل */
+.chatw__log{
+  flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;
+  padding:16px;display:flex;flex-direction:column;gap:11px;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent;
+}
+.chatw__log::-webkit-scrollbar{width:7px}
+.chatw__log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:10px}
+.chatw__log:focus-visible{outline:none}
+
+.chatw__msg{display:flex;max-width:100%}
+.chatw__msg--bot{justify-content:flex-start}
+.chatw__msg--me{justify-content:flex-end}
+.chatw__b{
+  max-width:88%;padding:11px 14px;border-radius:16px;
+  font-size:.9rem;line-height:1.85;word-wrap:break-word;overflow-wrap:anywhere;
+  animation:chatIn .3s var(--ease) both;
+}
+@keyframes chatIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.chatw__msg--bot .chatw__b{
+  background:var(--surface);border:1px solid var(--line);color:var(--white);
+  border-start-start-radius:5px;
+}
+.chatw__msg--me .chatw__b{
+  background:var(--grad-red);color:#fff;border-end-end-radius:5px;font-weight:500;
+}
+.chatw__b b{color:var(--white);font-weight:800}
+.chatw__msg--me .chatw__b b{color:#fff}
+.chatw__b a{color:#FF8C90;text-decoration:underline;text-underline-offset:3px}
+
+.chatw__price{
+  display:inline-block;margin-top:8px;padding:8px 14px;border-radius:10px;
+  background:rgba(212,32,39,.14);border:1px solid rgba(212,32,39,.4);
+  font-size:1.02rem;color:#FFB4B7;font-variant-numeric:tabular-nums;
+}
+.chatw__quote{
+  margin-top:10px;padding:11px 13px;border-radius:11px;
+  background:var(--ink);border:1px dashed var(--line-strong);
+  font-size:.83rem;line-height:1.8;color:var(--muted);white-space:normal;
+}
+
+.chatw__cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:11px;
+  padding:9px 16px;border-radius:100px;border:1px solid var(--line-strong);
+  background:rgba(255,255,255,.05);color:var(--white);font-size:.84rem;font-weight:700;
+  cursor:pointer;transition:background .25s,border-color .25s,transform .25s var(--ease);
+}
+.chatw__cta:hover{background:var(--grad-red);border-color:transparent;transform:translateY(-2px)}
+.chatw__cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.chatw__cta svg{width:16px;height:16px;flex:0 0 auto}
+
+.chatw__typing{display:inline-flex;gap:4px;align-items:center;padding:2px 0}
+.chatw__typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:chatBlink 1.2s infinite}
+.chatw__typing i:nth-child(2){animation-delay:.18s}
+.chatw__typing i:nth-child(3){animation-delay:.36s}
+@keyframes chatBlink{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+/* الردود السريعة */
+.chatw__chips{
+  flex:0 0 auto;display:flex;flex-wrap:wrap;gap:7px;
+  padding:0 16px 12px;max-height:132px;overflow-y:auto;
+}
+.chatw__chip{
+  padding:7px 13px;border-radius:100px;cursor:pointer;
+  border:1px solid rgba(212,32,39,.42);background:rgba(212,32,39,.09);
+  color:#FFB4B7;font-size:.8rem;font-weight:700;font-family:inherit;
+  transition:background .22s,color .22s,transform .22s var(--ease);
+}
+.chatw__chip:hover{background:var(--grad-red);color:#fff;border-color:transparent;transform:translateY(-2px)}
+.chatw__chip:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* الإدخال */
+.chatw__form{
+  flex:0 0 auto;display:flex;gap:9px;align-items:center;
+  padding:12px 16px;border-top:1px solid var(--line);background:var(--ink);
+}
+.chatw__in{
+  flex:1 1 auto;min-width:0;padding:11px 15px;border-radius:100px;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--white);
+  font-size:.88rem;font-family:inherit;transition:border-color .25s,box-shadow .25s;
+}
+.chatw__in::placeholder{color:var(--muted-2)}
+.chatw__in:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(212,32,39,.16)}
+.chatw__send{
+  width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;background:var(--grad-red);color:#fff;
+  transition:transform .25s var(--ease),opacity .25s;
+}
+.chatw__send:hover{transform:scale(1.08)}
+.chatw__send:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.chatw__send svg{width:17px;height:17px}
+html[dir="rtl"] .chatw__send svg{transform:scaleX(-1)}
+
+.chatw__note{
+  flex:0 0 auto;margin:0;padding:0 16px 11px;
+  font-size:.7rem;line-height:1.6;color:var(--muted-2);text-align:center;background:var(--ink);
+}
+
+/* موبايل: اللوحة بتاخد الشاشة */
+@media(max-width:640px){
+  /* اللوحة بتغطي الشاشة، فالأزرار العائمة التانية بتختفي عشان ما تغطّيش زرار الإرسال */
+  html.chat-open .fab{opacity:0;visibility:hidden;pointer-events:none}
+  html.chat-open .chatw__launch{opacity:0;pointer-events:none}
+  .chatw{inset-inline-start:18px;bottom:18px}
+  .chatw__launch{width:52px;height:52px}
+  .chatw__panel{
+    position:fixed;inset-inline:10px;bottom:10px;top:auto;
+    width:auto;height:min(78vh,620px);border-radius:var(--r-lg);
+  }
+  .chatw__b{max-width:92%;font-size:.88rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .chatw__panel,.chatw__launch,.chatw__cta,.chatw__chip{transition:none}
+  .chatw__b{animation:none}
+  .chatw__dot::after{animation:none}
+}
