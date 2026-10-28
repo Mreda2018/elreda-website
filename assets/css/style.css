@@ -384,7 +384,7 @@ html[lang="ar"] .brand-sub{font-size:.7rem;letter-spacing:0;text-transform:none;
 .svc--rev .svc__media{order:2}
 .svc__media{
   position:relative;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line);
-  background:linear-gradient(150deg,var(--surface),var(--ink-2));aspect-ratio:4/3;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--surface),var(--ink-2));aspect-ratio:3/4;display:grid;place-items:center;
 }
 .svc__media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
 .svc__media:hover img{transform:scale(1.05)}
@@ -852,10 +852,7 @@ figure{margin:0}
    order:9 keeps it after the media (order:2 on .svc--rev) and the text column,
    otherwise grid auto-placement pushes the media into its own full-width row. */
 .svc__wide{order:9;grid-column:1/-1;margin-top:8px}
-/* the accounting column is much taller than the others, so give its image a
-   portrait ratio (the source art is 991x1400) instead of leaving dead space */
-.svc--wide .svc__media{aspect-ratio:3/4}
-@media(max-width:880px){.svc--wide .svc__media{aspect-ratio:4/3}}
+/* كل لوحات الأعمدة بورتريه 991×1400 — المقاس متضبوط في .svc__media */
 
 /* Faktra system card */
 .sys-card{
