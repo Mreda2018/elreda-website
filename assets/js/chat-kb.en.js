@@ -54,7 +54,7 @@
   /* ---------------- Company & contact ---------------- */
   add('about',
     'who are you company about elreda agency what do you do services overview business',
-    '<b>Elreda Advertising</b> is an Egyptian creative agency based in Ebshan, Bila, Kafr El-Sheikh, working with clients across <b>Egypt, the UAE and the Gulf</b>.<br>We cover four services under one roof: <b>design and brand identity</b> · <b>printing</b> · <b>websites and online stores</b> · <b>accounting and tax systems</b>.',
+    '<b>Elreda Advertising</b> is an Egyptian creative agency based in Ebshan, Bila, Kafr El-Sheikh, working with clients across <b>Egypt, the UAE and the Gulf</b>.<br>We cover five services under one roof: <b>design and brand identity</b> · <b>printing</b> · <b>web development</b> · <b>software solutions and AI for business</b> · <b>accounting and tax systems</b>.',
     ['See all services', 'Pricing', 'Our work']);
 
   add('contact',
@@ -338,6 +338,42 @@
     'Yes — we issue an <b>official invoice</b> after each payment, which matters if your company needs to book the expense.',
     ['Payment methods']);
 
+  /* ---------------- AI & software solutions ---------------- */
+  add('ai_overview',
+    'software solutions ai development custom artificial intelligence tech build systems',
+    'Our fifth pillar: <b>software solutions and AI for business</b>.<br>We build systems shaped around how you actually work, and put AI on the tasks that eat your team\u2019s day:<br>• Custom internal systems and dashboards<br>• Automating repetitive tasks and reports<br>• Connecting your systems through APIs<br>• Chatbots for your website and WhatsApp<br>• An AI assistant trained on your company\u2019s data<br>• Automated data extraction from invoices and documents<br>• Integration with accounting systems and online stores<br>• Web apps that run on every device',
+    ['Software pricing', 'Task automation', 'A chatbot for my site', 'AI assistant']);
+
+  add('ai_price',
+    'software ai custom system price cost quote how much is a custom system',
+    'Software and AI work is <b>quoted on request</b> — there is no published fixed price, because every system differs by scope, number of users and complexity.<br>How it works: a <b>free session</b> to understand your current process and where the time goes, then a <b>written proposal</b> with scope, timeline and price.',
+    ['Task automation', 'Custom systems', 'Open WhatsApp']);
+
+  add('automation',
+    'automation automate repetitive tasks reports manual time excel workflow',
+    'Automation means the repetitive work happens by itself instead of someone doing it daily:<br>• Reports that assemble and send themselves<br>• Data moving between systems without copy-paste<br>• Alerts when something actually needs you<br>• Spreadsheets that build and update on their own<br>The simple test: any task that repeats, takes time, and has clear steps is usually worth automating.',
+    ['Software pricing', 'Connecting systems', 'Custom systems']);
+
+  add('chatbot_service',
+    'chatbot bot conversation automatic reply website whatsapp customers',
+    'We build <b>chatbots</b> for your website and WhatsApp, trained on your services, prices and the questions your customers actually ask.<br>The value: instant replies around the clock, serious enquiries filtered, and the customer handed to your team with their details already captured.<br>The assistant you are talking to right now is a working example of ours.',
+    ['Software pricing', 'AI assistant', 'Task automation']);
+
+  add('ai_assistant',
+    'assistant trained company data files ask internal knowledge ai',
+    'We build an <b>AI assistant trained on your company\u2019s own data</b> — your files, policies, catalogues and prices.<br>Your team asks a question in plain language and gets the answer in seconds instead of digging through folders, and customers get accurate answers sourced from you rather than from the open internet.',
+    ['A chatbot for my site', 'Software pricing']);
+
+  add('custom_system',
+    'custom system internal dashboard bespoke software manage my company',
+    'When off-the-shelf software does not fit how you work, we build a <b>custom system</b>: a dashboard to run customers, orders, stock or your team the way your business actually operates \u2014 not the way the software insists.<br>It includes user permissions, reporting and backups.',
+    ['Software pricing', 'Connecting systems']);
+
+  add('integrations',
+    'integration connect api systems together store accounting sync data',
+    'We connect your systems through <b>APIs</b> so data moves on its own:<br>• Online store \u2192 accounting system<br>• Orders \u2192 stock \u2192 invoices<br>• WhatsApp \u2192 customer records<br>The result: you enter data once instead of three times, and errors drop sharply.',
+    ['Task automation', 'Accounting system', 'Software pricing']);
+
   /* ---------------- Process & policy ---------------- */
   add('process',
     'process methodology approach how do you work steps stages start workflow',
@@ -500,8 +536,8 @@
       reset: 'New conversation'
     },
 
-    greeting: 'Welcome to <b>Elreda Advertising</b> 👋<br>I can answer questions on our services, prices and timelines, explain the Faktra accounting system and e-invoicing, estimate a price, or recommend a package.<br>Ask away, or pick one of these:',
-    openChips: ['Pricing', 'Estimate my price', 'Recommend a package', 'Accounting system', 'Working with the UAE'],
+    greeting: 'Welcome to <b>Elreda Advertising</b> 👋<br>I can answer questions on our services, prices and timelines, explain the Faktra accounting system, software and AI work, estimate a price, or recommend a package.<br>Ask away, or pick one of these:',
+    openChips: ['Pricing', 'Estimate my price', 'AI & software solutions', 'Accounting system', 'Recommend a package'],
 
     fallback: 'I do not have a precise answer for that, and I would rather not guess about something affecting your business.<br>Would you like to reach the team on WhatsApp? Replies usually come within hours.',
     fallbackChips: ['Services', 'Pricing', 'Packages'],

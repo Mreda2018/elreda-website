@@ -986,7 +986,8 @@ html[dir="rtl"] .chatw__panel{--chat-origin:right}
 }
 
 .chatw__cta{
-  display:inline-flex;align-items:center;gap:8px;margin-top:11px;
+  /* flex (مش inline-flex) عشان ياخد سطر لوحده تحت نص الإجابة */
+  display:flex;width:fit-content;align-items:center;gap:8px;margin-top:11px;
   padding:9px 16px;border-radius:100px;border:1px solid var(--line-strong);
   background:rgba(255,255,255,.05);color:var(--white);font-size:.84rem;font-weight:700;
   cursor:pointer;transition:background .25s,border-color .25s,transform .25s var(--ease);
@@ -1061,3 +1062,13 @@ html[dir="rtl"] .chatw__send svg{transform:scaleX(-1)}
   .chatw__b{animation:none}
   .chatw__dot::after{animation:none}
 }
+
+/* ============================================================
+   28. العمود الخامس — حلول برمجية وذكاء اصطناعي
+   ============================================================ */
+.cards-5{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:20px}
+
+/* عمود خدمة بدون صورة: عرض كامل وقائمة على أعمدة */
+.svc--solo{grid-template-columns:1fr;align-items:start}
+.svc--solo .svc__list{grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}
+.svc--solo > div{max-width:none}
