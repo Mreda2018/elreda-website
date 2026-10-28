@@ -303,12 +303,18 @@ html[lang="ar"] .brand-sub{font-size:.7rem;letter-spacing:0;text-transform:none;
 @keyframes spin{to{transform:rotate(360deg)}}
 
 .scroll-cue{
-  position:absolute;bottom:26px;inset-inline-start:50%;transform:translateX(-50%);z-index:3;
+  /* left فيزيائي مش inset-inline-start: التوسيط لازم يبقى مستقل عن الاتجاه،
+     وإلا في RTL بتبقى right:50% + translateX(-50%) فيتزق لليسار بعرضه كله */
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;
   display:grid;place-items:center;gap:8px;color:var(--muted-2);font-size:.72rem;letter-spacing:.2em;
 }
 .scroll-cue i{display:block;width:22px;height:36px;border:1.5px solid var(--line-strong);border-radius:20px;position:relative}
 .scroll-cue i::after{content:"";position:absolute;top:7px;left:50%;translate:-50% 0;width:3px;height:7px;border-radius:3px;background:var(--red);animation:cue 1.8s infinite}
 @keyframes cue{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+/* على الموبايل والتابلت المحتوى بيملا الهيرو لحد تحت فالمؤشر بيدوس على الإحصائيات،
+   وعلى الشاشات القصيرة (موبايل بالعرض) نفس المشكلة — والتمرير هناك بديهي أصلًا */
+@media(max-width:900px),(max-height:720px){.scroll-cue{display:none}}
 
 @media(max-width:900px){
   .hero__grid{grid-template-columns:1fr;text-align:center}
@@ -763,7 +769,7 @@ figure{margin:0}
 .works{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 .work{display:flex;flex-direction:column;background:linear-gradient(160deg,var(--surface),var(--ink-2))}
 .work__img{position:relative;overflow:hidden}
-.work__img img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;transition:transform .9s var(--ease)}
+.work__img img{width:100%;aspect-ratio:991/1400;object-fit:cover;object-position:top;transition:transform .9s var(--ease)}
 .work:hover .work__img img{transform:scale(1.06)}
 .work__img::after{
   content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s var(--ease);
