@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<title>Elreda — portfolio boards</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#222}
+  .art{
+    position:relative;width:991px;height:1400px;overflow:hidden;isolation:isolate;
+    background:
+      radial-gradient(900px 640px at 78% 4%, rgba(212,32,39,.22), transparent 62%),
+      radial-gradient(800px 720px at 6% 100%, rgba(139,30,33,.18), transparent 64%),
+      linear-gradient(168deg,#17171E 0%,#101015 48%,#0A0A0D 100%);
+  }
+  .art::before{
+    content:"";position:absolute;inset:0;z-index:0;opacity:.85;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:62px 62px;
+    -webkit-mask-image:radial-gradient(780px 920px at 50% 46%,#000 30%,transparent 84%);
+            mask-image:radial-gradient(780px 920px at 50% 46%,#000 30%,transparent 84%);
+  }
+  .frame{position:absolute;inset:40px;border:1px solid rgba(255,255,255,.13);border-radius:26px;z-index:4;pointer-events:none}
+  .frame::after{
+    content:"";position:absolute;inset:-1px;border-radius:26px;border:1px solid transparent;
+    background:linear-gradient(150deg,rgba(212,32,39,.6),transparent 34%,transparent 70%,rgba(212,32,39,.32)) border-box;
+    -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+  }
+  .scene{position:absolute;inset:0;z-index:2}
+  .grain{position:absolute;inset:-20%;z-index:5;opacity:.2;pointer-events:none;mix-blend-mode:overlay}
+
+  .head{position:absolute;top:70px;left:74px;right:74px;z-index:6;display:flex;justify-content:space-between;align-items:center}
+  .idx{font:700 15px/1 'SFMono-Regular',Menlo,Consolas,monospace;letter-spacing:.18em;color:#E8595E}
+  .idx b{color:rgba(255,255,255,.35);font-weight:500}
+  .cat{font:600 13px/1 'SFMono-Regular',Menlo,Consolas,monospace;letter-spacing:.32em;color:rgba(255,255,255,.5);text-transform:uppercase}
+
+  .foot{position:absolute;bottom:66px;left:74px;right:74px;z-index:6;display:flex;justify-content:space-between;align-items:center}
+  .foot .wm{height:24px;opacity:.85}
+  .foot .mk{height:42px;opacity:.9}
+  .foot .rule{flex:1;height:1px;margin:0 24px;background:linear-gradient(90deg,rgba(212,32,39,.6),rgba(255,255,255,.08))}
+
+  text{font-family:'SFMono-Regular',Menlo,Consolas,monospace}
+  .mono{font-size:13px;fill:rgba(255,255,255,.5);letter-spacing:.12em}
+  .monoD{font-size:12px;fill:rgba(20,20,24,.55);letter-spacing:.1em}
+  .monoR{font-size:13px;fill:#E8595E;letter-spacing:.12em}
+</style>
+</head>
+<body>
+
+<!-- مكتبة مشتركة: فلاتر الشعار والظلال والخامات -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="toWhite" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/></filter>
+    <filter id="toBlack" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .07  0 0 0 0 .07  0 0 0 0 .08  0 0 0 1 0"/></filter>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#000" flood-opacity=".6"/></filter>
+    <filter id="shS" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".5"/></filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="18"/></filter>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBFBF9"/><stop offset="1" stop-color="#E3E3DE"/></linearGradient>
+    <linearGradient id="paperD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26262E"/><stop offset="1" stop-color="#15151A"/></linearGradient>
+    <linearGradient id="redG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E5343C"/><stop offset=".6" stop-color="#C81F26"/><stop offset="1" stop-color="#8B1E21"/></linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2=".7"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".16"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14141A"/><stop offset="1" stop-color="#0B0B0E"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3A44"/><stop offset="1" stop-color="#1E1E24"/></linearGradient>
+    <pattern id="markTile" width="96" height="96" patternUnits="userSpaceOnUse">
+      <image href="../assets/img/logo-mark.png" x="22" y="22" width="52" height="51" opacity=".22"/>
+    </pattern>
+    <pattern id="markTileW" width="84" height="84" patternUnits="userSpaceOnUse">
+      <image href="../assets/img/logo-mark.png" x="20" y="20" width="44" height="43" filter="url(#toWhite)" opacity=".18"/>
+    </pattern>
+  </defs>
+</svg>
+
+<!-- ================= 01 — STATIONERY ================= -->
+<div class="art" id="pf-01">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">01 <b>/ 07</b></span><span class="cat">Print Applications</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- envelope behind -->
+    <g transform="translate(470,250) rotate(9)" filter="url(#sh)">
+      <rect width="440" height="220" rx="6" fill="url(#paperD)"/>
+      <path d="M0 0 L220 128 L440 0" fill="none" stroke="rgba(212,32,39,.7)" stroke-width="2"/>
+      <image href="../assets/img/logo-mark.png" x="372" y="160" width="40" height="39" filter="url(#toWhite)" opacity=".85"/>
+      <rect x="30" y="172" width="110" height="5" rx="2.5" fill="rgba(255,255,255,.25)"/>
+      <rect x="30" y="186" width="74" height="5" rx="2.5" fill="rgba(255,255,255,.15)"/>
+    </g>
+    <!-- letterhead -->
+    <g transform="translate(130,300) rotate(-5)" filter="url(#sh)">
+      <rect width="440" height="622" rx="4" fill="url(#paper)"/>
+      <image href="../assets/img/logo-mark.png" x="370" y="36" width="44" height="43"/>
+      <image href="../assets/img/wordmark-light.png" x="170" y="50" width="186" height="23"/>
+      <rect x="30" y="96" width="384" height="1.5" fill="#D42027" opacity=".85"/>
+      <g fill="#1C1C20">
+        <rect x="290" y="134" width="124" height="7" rx="3.5" opacity=".75"/>
+        <rect x="330" y="150" width="84" height="6" rx="3" opacity=".4"/>
+      </g>
+      <g fill="#8E8E8A" opacity=".55">
+        <rect x="30" y="200" width="384" height="5" rx="2.5"/><rect x="60" y="216" width="354" height="5" rx="2.5"/>
+        <rect x="30" y="232" width="384" height="5" rx="2.5"/><rect x="110" y="248" width="304" height="5" rx="2.5"/>
+        <rect x="30" y="290" width="384" height="5" rx="2.5"/><rect x="40" y="306" width="374" height="5" rx="2.5"/>
+        <rect x="30" y="322" width="384" height="5" rx="2.5"/><rect x="150" y="338" width="264" height="5" rx="2.5"/>
+        <rect x="30" y="380" width="384" height="5" rx="2.5"/><rect x="80" y="396" width="334" height="5" rx="2.5"/>
+      </g>
+      <!-- stamp impression -->
+      <g transform="translate(110,470) rotate(-14)" opacity=".72">
+        <circle r="46" fill="none" stroke="#C81F26" stroke-width="3"/>
+        <circle r="37" fill="none" stroke="#C81F26" stroke-width="1.2"/>
+        <image href="../assets/img/logo-mark.png" x="-20" y="-20" width="40" height="39"/>
+      </g>
+      <rect x="0" y="600" width="440" height="22" fill="#D42027"/>
+      <rect x="0" y="0" width="440" height="622" rx="4" fill="url(#gloss)" opacity=".6"/>
+    </g>
+    <!-- business cards -->
+    <g transform="translate(468,690) rotate(-11)" filter="url(#sh)">
+      <rect width="330" height="200" rx="10" fill="#F6F6F3"/>
+      <image href="../assets/img/wordmark-light.png" x="122" y="40" width="178" height="22"/>
+      <rect x="194" y="84" width="106" height="6" rx="3" fill="#1C1C20" opacity=".7"/>
+      <rect x="220" y="98" width="80" height="5" rx="2.5" fill="#8E8E8A" opacity=".6"/>
+      <g fill="#8E8E8A" opacity=".5"><rect x="190" y="144" width="110" height="4" rx="2"/><rect x="214" y="156" width="86" height="4" rx="2"/></g>
+      <image href="../assets/img/logo-mark.png" x="28" y="120" width="52" height="51"/>
+    </g>
+    <g transform="translate(540,760) rotate(7)" filter="url(#sh)">
+      <rect width="330" height="200" rx="10" fill="url(#redG)"/>
+      <image href="../assets/img/logo-mark.png" x="122" y="44" width="86" height="85" filter="url(#toWhite)"/>
+      <rect x="0" y="0" width="330" height="200" rx="10" fill="url(#gloss)"/>
+    </g>
+    <!-- labels -->
+    <g transform="translate(110,1100)">
+      <rect width="770" height="104" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)"/>
+      <text x="34" y="44" class="mono">LETTERHEAD · ENVELOPE</text>
+      <text x="34" y="72" class="mono">BUSINESS CARDS · STAMP</text>
+      <text x="460" y="44" class="monoR">300 GSM · SPOT UV</text>
+      <text x="460" y="72" class="mono">A4 · DL · 90×55</text>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g1"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g1)"/></svg>
+</div>
+
+<!-- ================= 02 — DIGITAL ECOSYSTEM ================= -->
+<div class="art" id="pf-02">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">02 <b>/ 07</b></span><span class="cat">Digital Ecosystem</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- tablet behind -->
+    <g transform="translate(96,300)" filter="url(#sh)">
+      <rect width="330" height="440" rx="26" fill="#0D0D11" stroke="rgba(255,255,255,.16)" stroke-width="1.5"/>
+      <rect x="14" y="14" width="302" height="412" rx="16" fill="url(#screen)"/>
+      <image href="../assets/img/logo-mark.png" x="34" y="34" width="26" height="26"/>
+      <rect x="230" y="40" width="64" height="14" rx="7" fill="#D42027"/>
+      <g fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)">
+        <rect x="34" y="84" width="128" height="108" rx="12"/><rect x="170" y="84" width="128" height="108" rx="12"/>
+        <rect x="34" y="200" width="128" height="108" rx="12"/><rect x="170" y="200" width="128" height="108" rx="12"/>
+      </g>
+      <g fill="#D42027"><circle cx="58" cy="110" r="10"/><circle cx="194" cy="110" r="10" opacity=".6"/><circle cx="58" cy="226" r="10" opacity=".6"/><circle cx="194" cy="226" r="10" opacity=".6"/></g>
+      <g fill="rgba(255,255,255,.3)"><rect x="50" y="140" width="80" height="6" rx="3"/><rect x="186" y="140" width="70" height="6" rx="3"/><rect x="50" y="256" width="74" height="6" rx="3"/><rect x="186" y="256" width="84" height="6" rx="3"/></g>
+      <rect x="34" y="330" width="264" height="70" rx="12" fill="rgba(212,32,39,.14)" stroke="rgba(212,32,39,.45)"/>
+      <rect x="54" y="356" width="140" height="7" rx="3.5" fill="rgba(255,255,255,.6)"/>
+    </g>
+    <!-- laptop -->
+    <g transform="translate(190,470)" filter="url(#sh)">
+      <rect x="0" y="0" width="640" height="404" rx="18" fill="#0C0C10" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+      <rect x="14" y="14" width="612" height="376" rx="8" fill="url(#screen)"/>
+      <!-- site nav -->
+      <rect x="14" y="14" width="612" height="44" rx="8" fill="rgba(255,255,255,.04)"/>
+      <image href="../assets/img/logo-mark.png" x="578" y="22" width="28" height="28"/>
+      <image href="../assets/img/wordmark-dark.png" x="436" y="30" width="134" height="16"/>
+      <g fill="rgba(255,255,255,.32)"><rect x="240" y="33" width="44" height="6" rx="3"/><rect x="296" y="33" width="44" height="6" rx="3"/><rect x="352" y="33" width="44" height="6" rx="3"/></g>
+      <rect x="40" y="26" width="84" height="20" rx="10" fill="#D42027"/>
+      <!-- hero -->
+      <circle cx="170" cy="210" r="120" fill="#D42027" opacity=".22" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="92" y="128" width="160" height="158"/>
+      <g fill="rgba(255,255,255,.88)"><rect x="330" y="132" width="262" height="18" rx="9"/><rect x="380" y="160" width="212" height="18" rx="9"/></g>
+      <g fill="rgba(255,255,255,.36)"><rect x="352" y="198" width="240" height="7" rx="3.5"/><rect x="392" y="214" width="200" height="7" rx="3.5"/></g>
+      <rect x="470" y="246" width="122" height="34" rx="17" fill="#D42027"/>
+      <rect x="338" y="246" width="122" height="34" rx="17" fill="none" stroke="rgba(255,255,255,.3)"/>
+      <!-- stats row -->
+      <g fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)">
+        <rect x="40" y="312" width="180" height="56" rx="10"/><rect x="230" y="312" width="180" height="56" rx="10"/><rect x="420" y="312" width="180" height="56" rx="10"/>
+      </g>
+      <g fill="#E8595E"><rect x="60" y="330" width="44" height="10" rx="5"/><rect x="250" y="330" width="44" height="10" rx="5"/><rect x="440" y="330" width="44" height="10" rx="5"/></g>
+      <!-- base -->
+      <path d="M-46 404 h732 l-26 26 h-680 z" fill="url(#metal)"/>
+      <rect x="270" y="404" width="100" height="8" rx="4" fill="#0C0C10"/>
+    </g>
+    <!-- phone -->
+    <g transform="translate(700,620)" filter="url(#sh)">
+      <rect width="196" height="392" rx="32" fill="#0B0B0F" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+      <rect x="10" y="10" width="176" height="372" rx="24" fill="url(#screen)"/>
+      <rect x="70" y="20" width="56" height="8" rx="4" fill="rgba(255,255,255,.16)"/>
+      <image href="../assets/img/logo-mark.png" x="150" y="44" width="22" height="22"/>
+      <rect x="24" y="50" width="26" height="4" rx="2" fill="rgba(255,255,255,.4)"/><rect x="24" y="58" width="18" height="4" rx="2" fill="rgba(255,255,255,.4)"/>
+      <circle cx="98" cy="146" r="56" fill="#D42027" opacity=".25" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="58" y="104" width="80" height="79"/>
+      <g fill="rgba(255,255,255,.85)"><rect x="34" y="206" width="128" height="10" rx="5"/></g>
+      <g fill="rgba(255,255,255,.34)"><rect x="44" y="226" width="108" height="6" rx="3"/><rect x="56" y="240" width="84" height="6" rx="3"/></g>
+      <rect x="44" y="264" width="108" height="30" rx="15" fill="#D42027"/>
+      <g fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)"><rect x="24" y="310" width="70" height="56" rx="10"/><rect x="102" y="310" width="70" height="56" rx="10"/></g>
+    </g>
+    <g transform="translate(110,1100)">
+      <rect width="770" height="104" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)"/>
+      <text x="34" y="44" class="mono">WEBSITE · TABLET · MOBILE</text>
+      <text x="34" y="72" class="mono">ONE SYSTEM, EVERY SCREEN</text>
+      <text x="480" y="44" class="monoR">RESPONSIVE</text>
+      <text x="480" y="72" class="mono">RTL · LTR</text>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g2"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g2)"/></svg>
+</div>
+
+<!-- ================= 03 — IDENTITY SYSTEM ================= -->
+<div class="art" id="pf-03">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">03 <b>/ 07</b></span><span class="cat">Identity System</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- hero mark -->
+    <circle cx="495" cy="392" r="200" fill="#D42027" opacity=".3" filter="url(#glow)"/>
+    <g opacity=".45" stroke="rgba(255,255,255,.22)" fill="none">
+      <circle cx="495" cy="392" r="236" stroke-dasharray="3 8"/>
+      <circle cx="495" cy="392" r="178"/>
+      <line x1="200" y1="392" x2="790" y2="392" stroke-dasharray="3 8"/>
+      <line x1="495" y1="120" x2="495" y2="664" stroke-dasharray="3 8"/>
+    </g>
+    <image href="../assets/img/logo-mark.png" x="345" y="244" width="300" height="296"/>
+    <image href="../assets/img/wordmark-dark.png" x="335" y="606" width="320" height="40"/>
+    <!-- four tiles -->
+    <g transform="translate(110,720)">
+      <g>
+        <rect width="374" height="176" rx="18" fill="#111114" stroke="rgba(255,255,255,.14)"/>
+        <image href="../assets/img/logo-mark.png" x="146" y="36" width="82" height="81"/>
+        <text x="24" y="156" class="mono">PRIMARY</text>
+      </g>
+      <g transform="translate(396,0)">
+        <rect width="374" height="176" rx="18" fill="url(#redG)"/>
+        <image href="../assets/img/logo-mark.png" x="146" y="36" width="82" height="81" filter="url(#toWhite)"/>
+        <text x="24" y="156" style="fill:rgba(255,255,255,.75)" class="mono">REVERSED</text>
+      </g>
+      <g transform="translate(0,198)">
+        <rect width="374" height="176" rx="18" fill="#F3F3F0"/>
+        <image href="../assets/img/logo-mark.png" x="146" y="36" width="82" height="81" filter="url(#toBlack)"/>
+        <text x="24" y="156" class="monoD">MONOCHROME</text>
+      </g>
+      <g transform="translate(396,198)">
+        <rect width="374" height="176" rx="18" fill="#2A0E10"/>
+        <rect width="374" height="176" rx="18" fill="url(#markTile)"/>
+        <rect width="374" height="176" rx="18" fill="none" stroke="rgba(212,32,39,.4)"/>
+        <text x="24" y="156" class="monoR">PATTERN</text>
+      </g>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g3"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g3)"/></svg>
+</div>
+
+<!-- ================= 04 — GUIDELINES & PALETTE ================= -->
+<div class="art" id="pf-04">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">04 <b>/ 07</b></span><span class="cat">Brand Guidelines</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- open book -->
+    <g transform="translate(96,210)" filter="url(#sh)">
+      <path d="M0 18 Q0 0 18 0 H392 V560 H18 Q0 560 0 542 Z" fill="url(#paper)"/>
+      <path d="M408 0 H782 Q800 0 800 18 V542 Q800 560 782 560 H408 Z" fill="url(#paper)"/>
+      <rect x="392" y="0" width="16" height="560" fill="#C9C9C4"/>
+      <rect x="370" y="0" width="22" height="560" fill="#000" opacity=".06"/>
+      <rect x="408" y="0" width="22" height="560" fill="#000" opacity=".06"/>
+      <!-- left page: clear space -->
+      <text x="34" y="54" class="monoD">01 · CLEAR SPACE</text>
+      <rect x="34" y="66" width="324" height="1.2" fill="#D42027"/>
+      <g transform="translate(196,280)">
+        <rect x="-118" y="-118" width="236" height="236" fill="none" stroke="#D42027" stroke-width="1.4" stroke-dasharray="5 6"/>
+        <rect x="-78" y="-78" width="156" height="156" fill="none" stroke="rgba(20,20,24,.25)"/>
+        <image href="../assets/img/logo-mark.png" x="-70" y="-69" width="140" height="138"/>
+        <g fill="#D42027">
+          <text x="-6" y="-96" style="fill:#C81F26;font-size:15px">x</text>
+          <text x="-6" y="110" style="fill:#C81F26;font-size:15px">x</text>
+          <text x="-104" y="6" style="fill:#C81F26;font-size:15px">x</text>
+          <text x="94" y="6" style="fill:#C81F26;font-size:15px">x</text>
+        </g>
+      </g>
+      <text x="34" y="490" class="monoD">MIN SIZE 24 PX · 10 MM</text>
+      <text x="34" y="514" class="monoD">NEVER STRETCH · NEVER ROTATE</text>
+      <!-- right page: palette + type -->
+      <text x="442" y="54" class="monoD">02 · COLOUR &amp; TYPE</text>
+      <rect x="442" y="66" width="324" height="1.2" fill="#D42027"/>
+      <g transform="translate(442,94)">
+        <rect width="156" height="118" rx="8" fill="#D42027"/>
+        <rect x="168" width="156" height="118" rx="8" fill="#8B1E21"/>
+        <rect y="128" width="100" height="70" rx="8" fill="#111111"/>
+        <rect x="112" y="128" width="100" height="70" rx="8" fill="#F5F5F5" stroke="#D6D6D2"/>
+        <rect x="224" y="128" width="100" height="70" rx="8" fill="#6B6B6B"/>
+        <text x="12" y="104" style="fill:#fff;font-size:12px;letter-spacing:.08em">#D42027</text>
+        <text x="180" y="104" style="fill:#fff;font-size:12px;letter-spacing:.08em">#8B1E21</text>
+      </g>
+      <g transform="translate(442,330)">
+        <text x="0" y="78" style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:86px;fill:#16161A">Aa</text>
+        <text x="150" y="30" class="monoD">REGULAR</text>
+        <text x="150" y="54" class="monoD">MEDIUM</text>
+        <text x="150" y="78" style="fill:#C81F26;font-size:12px;letter-spacing:.1em">BOLD</text>
+        <line x1="0" y1="104" x2="324" y2="104" stroke="rgba(20,20,24,.2)"/>
+        <text x="0" y="130" class="monoD">TAJAWAL · MANROPE</text>
+      </g>
+    </g>
+    <!-- palette strip -->
+    <g transform="translate(110,850)">
+      <rect width="770" height="190" rx="18" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)"/>
+      <g transform="translate(30,30)">
+        <rect width="158" height="96" rx="12" fill="#D42027"/>
+        <rect x="174" width="158" height="96" rx="12" fill="#8B1E21"/>
+        <rect x="348" width="158" height="96" rx="12" fill="#F5F5F5"/>
+        <rect x="522" width="158" height="96" rx="12" fill="#111111" stroke="rgba(255,255,255,.2)"/>
+        <text x="0" y="128" class="monoR">D42027</text>
+        <text x="174" y="128" class="mono">8B1E21</text>
+        <text x="348" y="128" class="mono">F5F5F5</text>
+        <text x="522" y="128" class="mono">111111</text>
+      </g>
+    </g>
+    <!-- lockups -->
+    <g transform="translate(110,1066)">
+      <rect width="374" height="140" rx="16" fill="#0E0E12" stroke="rgba(255,255,255,.14)"/>
+      <image href="../assets/img/logo-mark.png" x="34" y="36" width="62" height="61"/>
+      <image href="../assets/img/wordmark-dark.png" x="112" y="52" width="232" height="29"/>
+      <text x="34" y="124" class="mono" style="font-size:11px">LOCKUP · ON DARK</text>
+      <g transform="translate(396,0)">
+        <rect width="374" height="140" rx="16" fill="url(#redG)"/>
+        <image href="../assets/img/logo-mark.png" x="34" y="36" width="62" height="61" filter="url(#toWhite)"/>
+        <image href="../assets/img/wordmark-dark.png" x="112" y="52" width="232" height="29"/>
+        <text x="34" y="124" style="font-size:11px;fill:rgba(255,255,255,.7);letter-spacing:.12em">LOCKUP · ON RED</text>
+      </g>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g4"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g4)"/></svg>
+</div>
+
+<!-- ================= 05 — EXTENDED APPLICATIONS (MERCH) ================= -->
+<div class="art" id="pf-05">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">05 <b>/ 07</b></span><span class="cat">Brand Merchandise</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <g transform="translate(110,150)">
+      <!-- tile helper: 374 x 282 -->
+      <!-- T-SHIRT -->
+      <g>
+        <rect width="374" height="282" rx="20" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(187,140)" filter="url(#shS)">
+          <path d="M-58 -96 L-110 -70 L-132 -18 L-92 2 L-82 -20 L-82 104 L82 104 L82 -20 L92 2 L132 -18 L110 -70 L58 -96 Q44 -70 0 -70 Q-44 -70 -58 -96 Z" fill="#17171C" stroke="rgba(255,255,255,.12)"/>
+          <path d="M-58 -96 Q-44 -70 0 -70 Q44 -70 58 -96" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="3"/>
+          <image href="../assets/img/logo-mark.png" x="-30" y="-44" width="60" height="59"/>
+        </g>
+        <text x="22" y="262" class="mono">T-SHIRT</text>
+      </g>
+      <!-- MUG -->
+      <g transform="translate(396,0)">
+        <rect width="374" height="282" rx="20" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(170,146)" filter="url(#shS)">
+          <path d="M66 -40 q52 0 52 46 q0 46 -52 46" fill="none" stroke="#1A1A1F" stroke-width="18"/>
+          <path d="M66 -40 q52 0 52 46 q0 46 -52 46" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="18" stroke-dasharray="0 0"/>
+          <rect x="-80" y="-86" width="160" height="178" rx="14" fill="#18181D" stroke="rgba(255,255,255,.14)"/>
+          <ellipse cx="0" cy="-86" rx="80" ry="12" fill="#25252C"/>
+          <ellipse cx="0" cy="-86" rx="68" ry="8" fill="#0A0A0D"/>
+          <image href="../assets/img/logo-mark.png" x="-36" y="-30" width="72" height="71"/>
+          <rect x="-80" y="-74" width="20" height="160" fill="#fff" opacity=".05"/>
+        </g>
+        <text x="22" y="262" class="mono">MUG</text>
+      </g>
+      <!-- CAP -->
+      <g transform="translate(0,304)">
+        <rect width="374" height="282" rx="20" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(187,150)" filter="url(#shS)">
+          <path d="M-104 20 Q-104 -92 0 -92 Q104 -92 104 20 Z" fill="#17171C" stroke="rgba(255,255,255,.12)"/>
+          <path d="M-104 20 Q-60 50 60 40 Q140 34 150 22 Q120 10 104 20 Z" fill="#101014" stroke="rgba(255,255,255,.1)"/>
+          <path d="M0 -92 V20 M-56 -78 Q-40 -30 -44 20 M56 -78 Q40 -30 44 20" stroke="rgba(255,255,255,.08)" fill="none"/>
+          <circle cx="0" cy="-92" r="6" fill="#26262C"/>
+          <image href="../assets/img/logo-mark.png" x="-28" y="-56" width="56" height="55"/>
+        </g>
+        <text x="22" y="262" class="mono">CAP</text>
+      </g>
+      <!-- TOTE -->
+      <g transform="translate(396,304)">
+        <rect width="374" height="282" rx="20" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(187,140) scale(.82)" filter="url(#shS)">
+          <path d="M-40 -70 Q-40 -116 0 -116 Q40 -116 40 -70" fill="none" stroke="#C9C1AE" stroke-width="9"/>
+          <rect x="-92" y="-72" width="184" height="182" rx="6" fill="#E6DECB"/>
+          <rect x="-92" y="-72" width="184" height="18" fill="#000" opacity=".06"/>
+          <image href="../assets/img/logo-mark.png" x="-40" y="-26" width="80" height="79"/>
+        </g>
+        <text x="22" y="262" class="mono">TOTE BAG</text>
+      </g>
+      <!-- ID BADGE -->
+      <g transform="translate(0,608)">
+        <rect width="374" height="282" rx="20" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <path d="M150 0 L176 80 M224 0 L198 80" stroke="#D42027" stroke-width="10" stroke-linecap="round"/>
+        <g transform="translate(127,76)" filter="url(#shS)">
+          <rect width="120" height="170" rx="12" fill="#F6F6F3"/>
+          <rect width="120" height="46" rx="12" fill="url(#redG)"/>
+          <rect y="34" width="120" height="12" fill="url(#redG)"/>
+          <image href="../assets/img/logo-mark.png" x="46" y="10" width="28" height="28" filter="url(#toWhite)"/>
+          <circle cx="60" cy="86" r="22" fill="#D8D8D3"/>
+          <rect x="24" y="120" width="72" height="7" rx="3.5" fill="#1C1C20" opacity=".75"/>
+          <rect x="34" y="134" width="52" height="5" rx="2.5" fill="#8E8E8A" opacity=".6"/>
+          <rect x="28" y="150" width="64" height="8" rx="2" fill="#16161A" opacity=".85"/>
+        </g>
+        <text x="22" y="262" class="mono">ID BADGE</text>
+      </g>
+      <!-- PAPER BAG -->
+      <g transform="translate(396,608)">
+        <rect width="374" height="282" rx="20" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(187,142) scale(.82)" filter="url(#shS)">
+          <path d="M-32 -78 Q-32 -116 0 -116 Q32 -116 32 -78" fill="none" stroke="#5E1216" stroke-width="7"/>
+          <path d="M-84 -80 H84 L96 110 H-96 Z" fill="url(#redG)"/>
+          <path d="M-84 -80 H84 L88 -60 H-88 Z" fill="#000" opacity=".14"/>
+          <image href="../assets/img/logo-mark.png" x="-38" y="-24" width="76" height="75" filter="url(#toWhite)"/>
+          <path d="M-84 -80 H84 L96 110 H-96 Z" fill="url(#gloss)"/>
+        </g>
+        <text x="22" y="262" class="mono">PAPER BAG</text>
+      </g>
+    </g>
+    <g transform="translate(110,1086)">
+      <rect width="770" height="104" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)"/>
+      <text x="34" y="44" class="mono">APPAREL · DRINKWARE · BAGS</text>
+      <text x="34" y="72" class="mono">STAFF IDENTIFICATION</text>
+      <text x="520" y="44" class="monoR">6 APPLICATIONS</text>
+      <text x="520" y="72" class="mono">ONE MARK</text>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g5"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g5)"/></svg>
+</div>
+
+<!-- ================= 06 — SOCIAL & DIGITAL CONTENT ================= -->
+<div class="art" id="pf-06">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">06 <b>/ 07</b></span><span class="cat">Social &amp; Content</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- floating posts left -->
+    <g transform="translate(96,260) rotate(-7)" filter="url(#sh)">
+      <rect width="250" height="312" rx="14" fill="url(#redG)"/>
+      <image href="../assets/img/logo-mark.png" x="80" y="70" width="90" height="89" filter="url(#toWhite)"/>
+      <rect x="40" y="196" width="170" height="12" rx="6" fill="#fff" opacity=".92"/>
+      <rect x="64" y="218" width="122" height="8" rx="4" fill="#fff" opacity=".55"/>
+      <rect x="85" y="250" width="80" height="26" rx="13" fill="#fff" opacity=".95"/>
+      <rect width="250" height="312" rx="14" fill="url(#gloss)"/>
+    </g>
+    <g transform="translate(120,620) rotate(5)" filter="url(#sh)">
+      <rect width="250" height="312" rx="14" fill="#141418" stroke="rgba(255,255,255,.14)"/>
+      <rect width="250" height="312" rx="14" fill="url(#markTileW)" opacity=".6"/>
+      <circle cx="125" cy="130" r="70" fill="#D42027" opacity=".3" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="80" y="86" width="90" height="89"/>
+      <rect x="40" y="214" width="170" height="10" rx="5" fill="rgba(255,255,255,.85)"/>
+      <rect x="62" y="234" width="126" height="7" rx="3.5" fill="rgba(255,255,255,.4)"/>
+    </g>
+    <!-- phone with profile grid -->
+    <g transform="translate(470,240)" filter="url(#sh)">
+      <rect width="330" height="660" rx="46" fill="#0B0B0F" stroke="rgba(255,255,255,.22)" stroke-width="1.6"/>
+      <rect x="14" y="14" width="302" height="632" rx="34" fill="url(#screen)"/>
+      <rect x="125" y="26" width="80" height="10" rx="5" fill="rgba(255,255,255,.14)"/>
+      <!-- profile header -->
+      <circle cx="74" cy="104" r="38" fill="url(#redG)"/>
+      <image href="../assets/img/logo-mark.png" x="52" y="82" width="44" height="43" filter="url(#toWhite)"/>
+      <g fill="rgba(255,255,255,.85)"><rect x="134" y="84" width="40" height="10" rx="5"/><rect x="196" y="84" width="40" height="10" rx="5"/><rect x="258" y="84" width="40" height="10" rx="5"/></g>
+      <g fill="rgba(255,255,255,.3)"><rect x="132" y="104" width="44" height="6" rx="3"/><rect x="194" y="104" width="44" height="6" rx="3"/><rect x="256" y="104" width="44" height="6" rx="3"/></g>
+      <rect x="36" y="160" width="120" height="9" rx="4.5" fill="rgba(255,255,255,.8)"/>
+      <rect x="36" y="178" width="210" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+      <rect x="36" y="210" width="258" height="34" rx="10" fill="#D42027"/>
+      <!-- grid 3x3 -->
+      <g transform="translate(22,264)">
+        <rect x="0"   y="0"   width="94" height="94" fill="url(#redG)"/>
+        <image href="../assets/img/logo-mark.png" x="27" y="27" width="40" height="39" filter="url(#toWhite)"/>
+        <rect x="98"  y="0"   width="94" height="94" fill="#1A1A20"/>
+        <rect x="114" y="34"  width="62" height="8" rx="4" fill="rgba(255,255,255,.6)"/><rect x="124" y="50" width="42" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+        <rect x="196" y="0"   width="94" height="94" fill="#F3F3F0"/>
+        <image href="../assets/img/logo-mark.png" x="223" y="27" width="40" height="39"/>
+        <rect x="0"   y="98"  width="94" height="94" fill="#15151A"/>
+        <image href="../assets/img/logo-mark.png" x="27" y="125" width="40" height="39"/>
+        <rect x="98"  y="98"  width="94" height="94" fill="#8B1E21"/>
+        <rect x="114" y="130" width="62" height="8" rx="4" fill="rgba(255,255,255,.75)"/><rect x="124" y="146" width="42" height="6" rx="3" fill="rgba(255,255,255,.4)"/>
+        <rect x="196" y="98"  width="94" height="94" fill="#1A1A20"/>
+        <rect x="196" y="98"  width="94" height="94" fill="url(#markTileW)"/>
+        <rect x="0"   y="196" width="94" height="94" fill="#F3F3F0"/>
+        <rect x="16"  y="228" width="62" height="8" rx="4" fill="#16161A" opacity=".75"/><rect x="26" y="244" width="42" height="6" rx="3" fill="#8E8E8A"/>
+        <rect x="98"  y="196" width="94" height="94" fill="url(#redG)"/>
+        <rect x="114" y="228" width="62" height="8" rx="4" fill="#fff" opacity=".85"/>
+        <rect x="196" y="196" width="94" height="94" fill="#15151A"/>
+        <image href="../assets/img/logo-mark.png" x="223" y="223" width="40" height="39" filter="url(#toWhite)" opacity=".8"/>
+      </g>
+    </g>
+    <g transform="translate(110,1086)">
+      <rect width="770" height="104" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)"/>
+      <text x="34" y="44" class="mono">FEED · STORY · PROFILE</text>
+      <text x="34" y="72" class="mono">1080 × 1350 · 1080 × 1920</text>
+      <text x="520" y="44" class="monoR">CONSISTENT GRID</text>
+      <text x="520" y="72" class="mono">PUBLISH-READY</text>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g6"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g6)"/></svg>
+</div>
+
+<!-- ================= 07 — ENVIRONMENTAL ================= -->
+<div class="art" id="pf-07">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">07 <b>/ 07</b></span><span class="cat">Environmental</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- storefront -->
+    <g transform="translate(110,168)">
+      <rect width="770" height="500" rx="18" fill="#121217" stroke="rgba(255,255,255,.12)"/>
+      <!-- facade bricks -->
+      <g stroke="rgba(255,255,255,.035)">
+        <path d="M0 60 H770 M0 120 H770 M0 180 H770"/>
+      </g>
+      <!-- sign box with glow -->
+      <rect x="70" y="40" width="630" height="128" rx="14" fill="#D42027" opacity=".45" filter="url(#glow)"/>
+      <rect x="70" y="40" width="630" height="128" rx="14" fill="#0A0A0D" stroke="rgba(212,32,39,.7)" stroke-width="2"/>
+      <image href="../assets/img/logo-mark.png" x="584" y="56" width="98" height="97"/>
+      <image href="../assets/img/wordmark-dark.png" x="150" y="84" width="412" height="51"/>
+      <!-- windows -->
+      <g>
+        <rect x="70" y="210" width="290" height="250" rx="6" fill="#2A1A14"/>
+        <rect x="70" y="210" width="290" height="250" rx="6" fill="url(#gloss)"/>
+        <rect x="410" y="210" width="290" height="250" rx="6" fill="#2A1A14"/>
+        <rect x="410" y="210" width="290" height="250" rx="6" fill="url(#gloss)"/>
+        <rect x="76" y="216" width="278" height="238" rx="4" fill="rgba(255,190,120,.10)"/>
+        <rect x="416" y="216" width="278" height="238" rx="4" fill="rgba(255,190,120,.10)"/>
+        <image href="../assets/img/logo-mark.png" x="170" y="280" width="90" height="89" opacity=".85"/>
+        <!-- door -->
+        <rect x="508" y="260" width="96" height="200" rx="4" fill="#0E0E12" stroke="rgba(255,255,255,.2)"/>
+        <rect x="586" y="350" width="6" height="30" rx="3" fill="rgba(255,255,255,.5)"/>
+      </g>
+      <rect y="470" width="770" height="30" rx="0" fill="#0A0A0D"/>
+    </g>
+    <!-- ground -->
+    <rect x="80" y="976" width="831" height="1.5" fill="rgba(255,255,255,.12)"/>
+    <ellipse cx="336" cy="972" rx="230" ry="10" fill="#000" opacity=".35"/>
+    <!-- van -->
+    <g transform="translate(110,724)" filter="url(#sh)">
+      <path d="M0 40 Q0 0 40 0 H360 Q392 0 404 26 L440 108 Q452 132 452 160 V196 Q452 214 434 214 H18 Q0 214 0 196 Z" fill="#17171C" stroke="rgba(255,255,255,.12)"/>
+      <path d="M360 14 Q386 14 396 34 L426 104 H340 V14 Z" fill="#0B0B0F" stroke="rgba(255,255,255,.15)"/>
+      <rect x="30" y="34" width="290" height="140" rx="8" fill="url(#redG)"/>
+      <image href="../assets/img/logo-mark.png" x="232" y="54" width="74" height="73" filter="url(#toWhite)"/>
+      <image href="../assets/img/wordmark-dark.png" x="44" y="136" width="200" height="25"/>
+      <circle cx="100" cy="214" r="32" fill="#0A0A0D" stroke="#2A2A30" stroke-width="8"/>
+      <circle cx="372" cy="214" r="32" fill="#0A0A0D" stroke="#2A2A30" stroke-width="8"/>
+      <circle cx="100" cy="214" r="10" fill="#3A3A42"/><circle cx="372" cy="214" r="10" fill="#3A3A42"/>
+    </g>
+    <!-- billboard -->
+    <g transform="translate(600,720)">
+      <rect x="128" y="160" width="14" height="96" fill="#24242A"/><rect x="104" y="252" width="62" height="6" rx="3" fill="#24242A"/>
+      <rect x="0" y="0" width="270" height="170" rx="8" fill="#D42027" opacity=".35" filter="url(#glow)"/>
+      <rect x="0" y="0" width="270" height="170" rx="8" fill="url(#redG)" filter="url(#shS)"/>
+      <image href="../assets/img/logo-mark.png" x="30" y="40" width="88" height="87" filter="url(#toWhite)"/>
+      <rect x="138" y="58" width="104" height="11" rx="5.5" fill="#fff" opacity=".92"/>
+      <rect x="150" y="80" width="92" height="8" rx="4" fill="#fff" opacity=".55"/>
+      <rect x="166" y="108" width="76" height="22" rx="11" fill="#fff" opacity=".95"/>
+      <rect x="0" y="0" width="270" height="170" rx="8" fill="url(#gloss)"/>
+    </g>
+    <g transform="translate(110,1086)">
+      <rect width="770" height="104" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)"/>
+      <text x="34" y="44" class="mono">STOREFRONT · VEHICLE · BILLBOARD</text>
+      <text x="34" y="72" class="mono">ILLUMINATED SIGNAGE</text>
+      <text x="560" y="44" class="monoR">OUTDOOR</text>
+      <text x="560" y="72" class="mono">DAY &amp; NIGHT</text>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g7"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g7)"/></svg>
+</div>
+
+</body>
+</html>
