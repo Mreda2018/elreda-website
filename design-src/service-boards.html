@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<title>Elreda — service boards</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#222}
+  .art{
+    position:relative;width:991px;height:1400px;overflow:hidden;isolation:isolate;
+    background:
+      radial-gradient(900px 640px at 78% 4%, rgba(212,32,39,.22), transparent 62%),
+      radial-gradient(800px 720px at 6% 100%, rgba(139,30,33,.18), transparent 64%),
+      linear-gradient(168deg,#17171E 0%,#101015 48%,#0A0A0D 100%);
+  }
+  .art::before{
+    content:"";position:absolute;inset:0;z-index:0;opacity:.85;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:62px 62px;
+    -webkit-mask-image:radial-gradient(780px 920px at 50% 46%,#000 30%,transparent 84%);
+            mask-image:radial-gradient(780px 920px at 50% 46%,#000 30%,transparent 84%);
+  }
+  .frame{position:absolute;inset:40px;border:1px solid rgba(255,255,255,.13);border-radius:26px;z-index:4;pointer-events:none}
+  .frame::after{
+    content:"";position:absolute;inset:-1px;border-radius:26px;border:1px solid transparent;
+    background:linear-gradient(150deg,rgba(212,32,39,.6),transparent 34%,transparent 70%,rgba(212,32,39,.32)) border-box;
+    -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+  }
+  .scene{position:absolute;inset:0;z-index:2}
+  .grain{position:absolute;inset:-20%;z-index:5;opacity:.2;pointer-events:none;mix-blend-mode:overlay}
+
+  .head{position:absolute;top:70px;left:74px;right:74px;z-index:6;display:flex;justify-content:flex-start;gap:22px;align-items:center}
+  .idx{font:700 15px/1 'SFMono-Regular',Menlo,Consolas,monospace;letter-spacing:.18em;color:#E8595E}
+  .idx b{color:rgba(255,255,255,.35);font-weight:500}
+  .cat{font:600 13px/1 'SFMono-Regular',Menlo,Consolas,monospace;letter-spacing:.32em;color:rgba(255,255,255,.5);text-transform:uppercase}
+
+  .foot{position:absolute;bottom:66px;left:74px;right:74px;z-index:6;display:flex;justify-content:space-between;align-items:center}
+  .foot .wm{height:24px;opacity:.85}
+  .foot .mk{height:42px;opacity:.9}
+  .foot .rule{flex:1;height:1px;margin:0 24px;background:linear-gradient(90deg,rgba(212,32,39,.6),rgba(255,255,255,.08))}
+
+  text{font-family:'SFMono-Regular',Menlo,Consolas,monospace}
+  .mono{font-size:13px;fill:rgba(255,255,255,.5);letter-spacing:.12em}
+  .monoD{font-size:12px;fill:rgba(20,20,24,.55);letter-spacing:.1em}
+  .monoR{font-size:13px;fill:#E8595E;letter-spacing:.12em}
+</style>
+</head>
+<body>
+
+<!-- مكتبة مشتركة: فلاتر الشعار والظلال والخامات -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="toWhite" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/></filter>
+    <filter id="toBlack" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .07  0 0 0 0 .07  0 0 0 0 .08  0 0 0 1 0"/></filter>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#000" flood-opacity=".6"/></filter>
+    <filter id="shS" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".5"/></filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="18"/></filter>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBFBF9"/><stop offset="1" stop-color="#E3E3DE"/></linearGradient>
+    <linearGradient id="paperD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26262E"/><stop offset="1" stop-color="#15151A"/></linearGradient>
+    <linearGradient id="redG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E5343C"/><stop offset=".6" stop-color="#C81F26"/><stop offset="1" stop-color="#8B1E21"/></linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2=".7"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".16"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14141A"/><stop offset="1" stop-color="#0B0B0E"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3A44"/><stop offset="1" stop-color="#1E1E24"/></linearGradient>
+    <pattern id="markTile" width="96" height="96" patternUnits="userSpaceOnUse">
+      <image href="../assets/img/logo-mark.png" x="22" y="22" width="52" height="51" opacity=".22"/>
+    </pattern>
+    <pattern id="markTileW" width="84" height="84" patternUnits="userSpaceOnUse">
+      <image href="../assets/img/logo-mark.png" x="20" y="20" width="44" height="43" filter="url(#toWhite)" opacity=".18"/>
+    </pattern>
+  </defs>
+</svg>
+
+
+<!-- ================= 01 — DESIGN ================= -->
+<div class="art" id="svc-design">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">01 <b>/ 05</b></span><span class="cat">Design</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- construction -->
+    <g transform="translate(495,420)">
+      <circle r="270" fill="none" stroke="rgba(255,255,255,.10)" stroke-dasharray="4 8"/>
+      <circle r="200" fill="none" stroke="rgba(212,32,39,.35)"/>
+      <circle r="130" fill="none" stroke="rgba(255,255,255,.08)" stroke-dasharray="2 6"/>
+      <line x1="-330" y1="0" x2="330" y2="0" stroke="rgba(255,255,255,.08)"/>
+      <line x1="0" y1="-300" x2="0" y2="300" stroke="rgba(255,255,255,.08)"/>
+      <line x1="-230" y1="-230" x2="230" y2="230" stroke="rgba(255,255,255,.05)"/>
+      <line x1="230" y1="-230" x2="-230" y2="230" stroke="rgba(255,255,255,.05)"/>
+      <circle r="150" fill="#D42027" opacity=".32" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="-150" y="-148" width="300" height="296"/>
+      <g stroke="#E8595E" stroke-width="2" fill="none">
+        <path d="M-190 -170 v-20 h20"/><path d="M190 -170 v-20 h-20"/>
+        <path d="M-190 170 v20 h20"/><path d="M190 170 v20 h-20"/>
+      </g>
+      <text x="206" y="-196" class="monoR" style="font-size:12px">GRID 8PT</text>
+      <text x="-300" y="226" class="mono" style="font-size:12px">CONSTRUCTION</text>
+    </g>
+    <!-- type + palette -->
+    <g transform="translate(110,760)">
+      <rect width="370" height="200" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="28" y="118" style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:96px;fill:#F5F5F5">Aa</text>
+      <text x="200" y="66" class="mono">REGULAR</text>
+      <text x="200" y="92" class="mono">MEDIUM</text>
+      <text x="200" y="118" class="monoR">BOLD</text>
+      <line x1="28" y1="146" x2="342" y2="146" stroke="rgba(255,255,255,.12)"/>
+      <text x="28" y="176" class="mono" style="font-size:12px">TAJAWAL · MANROPE</text>
+    </g>
+    <g transform="translate(510,760)">
+      <rect width="370" height="200" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <rect x="26" y="28" width="72" height="96" rx="10" fill="#D42027"/>
+      <rect x="108" y="28" width="72" height="96" rx="10" fill="#8B1E21"/>
+      <rect x="190" y="28" width="72" height="96" rx="10" fill="#F5F5F5"/>
+      <rect x="272" y="28" width="72" height="96" rx="10" fill="#111111" stroke="rgba(255,255,255,.22)"/>
+      <text x="26" y="150" class="monoR" style="font-size:11px">D42027</text>
+      <text x="108" y="150" class="mono" style="font-size:11px">8B1E21</text>
+      <text x="190" y="150" class="mono" style="font-size:11px">F5F5F5</text>
+      <text x="272" y="150" class="mono" style="font-size:11px">111111</text>
+      <text x="26" y="180" class="mono" style="font-size:12px">BRAND PALETTE</text>
+    </g>
+    <!-- 4 logo versions -->
+    <g transform="translate(110,990)">
+      <rect width="174" height="150" rx="16" fill="#0E0E12" stroke="rgba(255,255,255,.14)"/>
+      <image href="../assets/img/logo-mark.png" x="52" y="30" width="70" height="69"/>
+      <text x="16" y="134" class="mono" style="font-size:10px">PRIMARY</text>
+      <g transform="translate(198,0)">
+        <rect width="174" height="150" rx="16" fill="url(#redG)"/>
+        <image href="../assets/img/logo-mark.png" x="52" y="30" width="70" height="69" filter="url(#toWhite)"/>
+        <text x="16" y="134" style="font-size:10px;fill:rgba(255,255,255,.75);letter-spacing:.12em">REVERSED</text>
+      </g>
+      <g transform="translate(396,0)">
+        <rect width="174" height="150" rx="16" fill="#F3F3EF"/>
+        <image href="../assets/img/logo-mark.png" x="52" y="30" width="70" height="69" filter="url(#toBlack)"/>
+        <text x="16" y="134" class="monoD" style="font-size:10px">MONO</text>
+      </g>
+      <g transform="translate(594,0)">
+        <rect width="176" height="150" rx="16" fill="url(#markTile)" stroke="rgba(255,255,255,.14)"/>
+        <rect width="176" height="150" rx="16" fill="rgba(14,14,18,.35)"/>
+        <text x="16" y="134" class="mono" style="font-size:10px">PATTERN</text>
+      </g>
+    </g>
+    <!-- scale -->
+    <g transform="translate(110,1166)">
+      <rect width="770" height="84" rx="16" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="28" y="48" class="mono">MIN SIZE 24 PX · CLEAR SPACE 0.5X</text>
+      <image href="../assets/img/logo-mark.png" x="520" y="30" width="24" height="24"/>
+      <image href="../assets/img/logo-mark.png" x="562" y="26" width="32" height="32"/>
+      <image href="../assets/img/logo-mark.png" x="614" y="20" width="44" height="43"/>
+      <image href="../assets/img/logo-mark.png" x="680" y="14" width="58" height="57"/>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g1"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g1)"/></svg>
+</div>
+
+<!-- ================= 02 — PRINT ================= -->
+<div class="art" id="svc-print">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">02 <b>/ 05</b></span><span class="cat">Print</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- crop marks -->
+    <g stroke="rgba(255,255,255,.35)" stroke-width="1.2">
+      <path d="M150 190 h40 M170 170 v40"/><path d="M841 190 h-40 M821 170 v40"/>
+      <path d="M150 700 h40 M170 680 v40"/><path d="M841 700 h-40 M821 680 v40"/>
+    </g>
+    <circle cx="821" cy="190" r="10" fill="none" stroke="#E8595E"/>
+    <!-- white card -->
+    <g transform="translate(190,250) rotate(-6)" filter="url(#sh)">
+      <rect width="440" height="254" rx="14" fill="url(#paper)"/>
+      <image href="../assets/img/logo-mark.png" x="352" y="34" width="56" height="55"/>
+      <image href="../assets/img/wordmark-light.png" x="120" y="48" width="220" height="27"/>
+      <rect x="250" y="150" width="158" height="9" rx="4.5" fill="#1C1C20" opacity=".8"/>
+      <rect x="290" y="172" width="118" height="7" rx="3.5" fill="#8E8E8A" opacity=".6"/>
+      <rect x="0" y="238" width="440" height="16" fill="#D42027"/>
+    </g>
+    <!-- red card -->
+    <g transform="translate(380,410) rotate(5)" filter="url(#sh)">
+      <rect width="440" height="254" rx="14" fill="url(#redG)"/>
+      <image href="../assets/img/logo-mark.png" x="160" y="66" width="122" height="120" filter="url(#toWhite)"/>
+      <rect width="440" height="254" rx="14" fill="url(#gloss)"/>
+    </g>
+    <!-- CMYK -->
+    <g transform="translate(110,790)">
+      <rect width="770" height="110" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <circle cx="62" cy="55" r="26" fill="#00AEEF"/><circle cx="124" cy="55" r="26" fill="#EC008C"/>
+      <circle cx="186" cy="55" r="26" fill="#FFF200"/><circle cx="248" cy="55" r="26" fill="#1A1A1A" stroke="rgba(255,255,255,.25)"/>
+      <text x="320" y="48" class="mono">CMYK · 300 DPI</text>
+      <text x="320" y="76" class="monoR">3 MM BLEED · 5 MM SAFE</text>
+    </g>
+    <!-- paper weights -->
+    <g transform="translate(110,930)">
+      <rect width="770" height="110" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="28" y="42" class="mono">PAPER WEIGHT</text>
+      <rect x="28" y="62" width="160" height="8" rx="4" fill="rgba(255,255,255,.25)"/>
+      <rect x="208" y="58" width="240" height="14" rx="7" fill="rgba(255,255,255,.45)"/>
+      <rect x="468" y="54" width="274" height="22" rx="11" fill="#D42027"/>
+      <text x="28" y="96" class="mono" style="font-size:11px">80 GSM</text>
+      <text x="208" y="96" class="mono" style="font-size:11px">170 GSM</text>
+      <text x="468" y="96" class="monoR" style="font-size:11px">300 GSM</text>
+    </g>
+    <!-- finishes -->
+    <g transform="translate(110,1070)">
+      <rect width="246" height="180" rx="16" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <rect x="28" y="28" width="190" height="96" rx="10" fill="#F5F5F5"/><rect x="28" y="28" width="190" height="96" rx="10" fill="url(#gloss)"/>
+      <text x="28" y="156" class="mono" style="font-size:11px">GLOSS LAM</text>
+      <g transform="translate(262,0)">
+        <rect width="246" height="180" rx="16" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <rect x="28" y="28" width="190" height="96" rx="10" fill="#D9D9D4"/>
+        <text x="28" y="156" class="mono" style="font-size:11px">MATT LAM</text>
+      </g>
+      <g transform="translate(524,0)">
+        <rect width="246" height="180" rx="16" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <rect x="28" y="28" width="190" height="96" rx="10" fill="#141418"/>
+        <image href="../assets/img/logo-mark.png" x="98" y="46" width="60" height="59" filter="url(#toBlack)" opacity=".9"/>
+        <image href="../assets/img/logo-mark.png" x="98" y="46" width="60" height="59" filter="url(#toWhite)" opacity=".18"/>
+        <rect x="28" y="28" width="190" height="96" rx="10" fill="url(#gloss)"/>
+        <text x="28" y="156" class="monoR" style="font-size:11px">SPOT UV</text>
+      </g>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g2"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g2)"/></svg>
+</div>
+
+<!-- ================= 03 — WEB ================= -->
+<div class="art" id="svc-web">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">03 <b>/ 05</b></span><span class="cat">Web</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- browser -->
+    <g transform="translate(100,180)" filter="url(#sh)">
+      <rect width="720" height="520" rx="18" fill="url(#screen)" stroke="rgba(255,255,255,.16)"/>
+      <rect width="720" height="46" rx="18" fill="#1D1D24"/><rect y="30" width="720" height="16" fill="#1D1D24"/>
+      <circle cx="26" cy="23" r="6" fill="#FF5F57"/><circle cx="46" cy="23" r="6" fill="#FEBC2E"/><circle cx="66" cy="23" r="6" fill="#28C840"/>
+      <rect x="200" y="12" width="320" height="22" rx="11" fill="#0E0E12"/>
+      <text x="236" y="28" class="mono" style="font-size:11px">elreda-ads.vercel.app</text>
+      <!-- nav -->
+      <image href="../assets/img/logo-mark.png" x="660" y="70" width="34" height="33"/>
+      <image href="../assets/img/wordmark-dark.png" x="500" y="78" width="150" height="18"/>
+      <rect x="30" y="76" width="90" height="22" rx="11" fill="#D42027"/>
+      <rect x="140" y="84" width="46" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+      <rect x="200" y="84" width="46" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+      <rect x="260" y="84" width="46" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+      <!-- hero -->
+      <circle cx="190" cy="300" r="130" fill="#D42027" opacity=".28" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="90" y="200" width="200" height="197"/>
+      <rect x="400" y="230" width="280" height="22" rx="11" fill="#F5F5F5"/>
+      <rect x="440" y="266" width="240" height="22" rx="11" fill="#F5F5F5" opacity=".85"/>
+      <rect x="470" y="310" width="210" height="9" rx="4.5" fill="rgba(255,255,255,.35)"/>
+      <rect x="500" y="330" width="180" height="9" rx="4.5" fill="rgba(255,255,255,.25)"/>
+      <rect x="560" y="370" width="120" height="38" rx="19" fill="#D42027"/>
+      <rect x="430" y="370" width="116" height="38" rx="19" fill="none" stroke="rgba(255,255,255,.35)"/>
+      <g fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)">
+        <rect x="30" y="440" width="210" height="56" rx="10"/><rect x="255" y="440" width="210" height="56" rx="10"/><rect x="480" y="440" width="210" height="56" rx="10"/>
+      </g>
+    </g>
+    <!-- phone -->
+    <g transform="translate(680,470)" filter="url(#sh)">
+      <rect width="210" height="420" rx="30" fill="#0C0C10" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+      <rect x="78" y="14" width="54" height="8" rx="4" fill="#26262C"/>
+      <image href="../assets/img/logo-mark.png" x="160" y="38" width="28" height="28"/>
+      <circle cx="105" cy="150" r="58" fill="#D42027" opacity=".3" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="55" y="98" width="100" height="99"/>
+      <rect x="30" y="226" width="150" height="12" rx="6" fill="#F5F5F5"/>
+      <rect x="50" y="248" width="110" height="7" rx="3.5" fill="rgba(255,255,255,.35)"/>
+      <rect x="40" y="276" width="130" height="30" rx="15" fill="#D42027"/>
+      <rect x="22" y="330" width="78" height="64" rx="10" fill="rgba(255,255,255,.06)"/><rect x="110" y="330" width="78" height="64" rx="10" fill="rgba(255,255,255,.06)"/>
+    </g>
+    <!-- metrics -->
+    <g transform="translate(110,960)">
+      <rect width="250" height="250" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <circle cx="125" cy="110" r="66" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="12"/>
+      <circle cx="125" cy="110" r="66" fill="none" stroke="#28C840" stroke-width="12" stroke-linecap="round" stroke-dasharray="406 415" transform="rotate(-90 125 110)"/>
+      <text x="125" y="124" text-anchor="middle" style="font-family:'Helvetica Neue',Arial;font-weight:800;font-size:40px;fill:#F5F5F5">98</text>
+      <text x="125" y="214" text-anchor="middle" class="mono" style="font-size:11px">PERFORMANCE</text>
+      <g transform="translate(270,0)">
+        <rect width="500" height="117" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <text x="28" y="50" class="mono">RESPONSIVE · RTL / LTR</text>
+        <text x="28" y="82" class="monoR">SSL · FAST HOSTING</text>
+      </g>
+      <g transform="translate(270,133)">
+        <rect width="500" height="117" rx="18" fill="#0C0C10" stroke="rgba(255,255,255,.13)"/>
+        <text x="28" y="50" style="font-size:14px;fill:#E8595E">&lt;html lang="ar" dir="rtl"&gt;</text>
+        <text x="28" y="82" class="mono">SEO · SCHEMA · SITEMAP</text>
+      </g>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g3"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g3)"/></svg>
+</div>
+
+<!-- ================= 04 — ACCOUNTING ================= -->
+<div class="art" id="svc-accounting">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">04 <b>/ 05</b></span><span class="cat">Accounting</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- invoice -->
+    <g transform="translate(110,170)" filter="url(#sh)">
+      <rect width="470" height="740" rx="14" fill="url(#paper)"/>
+      <image href="../assets/img/logo-mark.png" x="384" y="34" width="56" height="55"/>
+      <image href="../assets/img/wordmark-light.png" x="150" y="48" width="220" height="27"/>
+      <rect x="30" y="40" width="90" height="30" rx="6" fill="#D42027"/>
+      <text x="44" y="60" style="font-size:13px;font-weight:700;fill:#fff;letter-spacing:.12em">INVOICE</text>
+      <rect x="30" y="110" width="410" height="1.5" fill="#D42027"/>
+      <rect x="290" y="134" width="150" height="8" rx="4" fill="#1C1C20" opacity=".75"/>
+      <rect x="330" y="152" width="110" height="6" rx="3" fill="#8E8E8A" opacity=".6"/>
+      <rect x="30" y="134" width="120" height="8" rx="4" fill="#1C1C20" opacity=".75"/>
+      <rect x="30" y="152" width="90" height="6" rx="3" fill="#8E8E8A" opacity=".6"/>
+      <rect x="30" y="196" width="410" height="34" rx="6" fill="#EDEDE8"/>
+      <g fill="#1C1C20" opacity=".55">
+        <rect x="46" y="210" width="60" height="6" rx="3"/><rect x="250" y="210" width="40" height="6" rx="3"/><rect x="360" y="210" width="60" height="6" rx="3"/>
+      </g>
+      <g fill="#8E8E8A" opacity=".55">
+        <rect x="46" y="252" width="150" height="6" rx="3"/><rect x="250" y="252" width="30" height="6" rx="3"/><rect x="370" y="252" width="50" height="6" rx="3"/>
+        <rect x="46" y="282" width="120" height="6" rx="3"/><rect x="250" y="282" width="30" height="6" rx="3"/><rect x="370" y="282" width="50" height="6" rx="3"/>
+        <rect x="46" y="312" width="170" height="6" rx="3"/><rect x="250" y="312" width="30" height="6" rx="3"/><rect x="370" y="312" width="50" height="6" rx="3"/>
+        <rect x="46" y="342" width="100" height="6" rx="3"/><rect x="250" y="342" width="30" height="6" rx="3"/><rect x="370" y="342" width="50" height="6" rx="3"/>
+      </g>
+      <rect x="30" y="380" width="410" height="1" fill="rgba(0,0,0,.15)"/>
+      <rect x="260" y="400" width="180" height="44" rx="8" fill="#141418"/>
+      <rect x="280" y="418" width="60" height="8" rx="4" fill="rgba(255,255,255,.5)"/>
+      <rect x="370" y="416" width="52" height="12" rx="6" fill="#E8595E"/>
+      <!-- QR -->
+      <g transform="translate(30,470)">
+        <rect width="150" height="150" fill="#fff" stroke="rgba(0,0,0,.12)"/>
+        <g fill="#141418">
+          <rect x="10" y="10" width="40" height="40"/><rect x="100" y="10" width="40" height="40"/><rect x="10" y="100" width="40" height="40"/>
+          <rect x="18" y="18" width="24" height="24" fill="#fff"/><rect x="108" y="18" width="24" height="24" fill="#fff"/><rect x="18" y="108" width="24" height="24" fill="#fff"/>
+          <rect x="24" y="24" width="12" height="12"/><rect x="114" y="24" width="12" height="12"/><rect x="24" y="114" width="12" height="12"/>
+          <rect x="60" y="12" width="10" height="10"/><rect x="76" y="24" width="10" height="10"/><rect x="60" y="36" width="10" height="10"/>
+          <rect x="62" y="60" width="10" height="10"/><rect x="80" y="62" width="10" height="10"/><rect x="100" y="66" width="10" height="10"/><rect x="124" y="60" width="10" height="10"/>
+          <rect x="14" y="66" width="10" height="10"/><rect x="34" y="76" width="10" height="10"/><rect x="62" y="84" width="10" height="10"/>
+          <rect x="66" y="104" width="10" height="10"/><rect x="84" y="118" width="10" height="10"/><rect x="104" y="100" width="10" height="10"/><rect x="122" y="116" width="10" height="10"/>
+          <rect x="100" y="128" width="10" height="10"/><rect x="62" y="128" width="10" height="10"/><rect x="126" y="86" width="10" height="10"/>
+        </g>
+      </g>
+      <!-- stamp -->
+      <g transform="translate(330,560) rotate(-14)">
+        <circle r="74" fill="none" stroke="#D42027" stroke-width="4" opacity=".85"/>
+        <circle r="62" fill="none" stroke="#D42027" stroke-width="1.5" opacity=".7"/>
+        <image href="../assets/img/logo-mark.png" x="-24" y="-38" width="48" height="47" opacity=".85"/>
+        <text x="0" y="30" text-anchor="middle" style="font-size:13px;font-weight:700;fill:#D42027;letter-spacing:.1em">E-INVOICE</text>
+        <text x="0" y="46" text-anchor="middle" style="font-size:10px;fill:#D42027;letter-spacing:.14em">SIGNED</text>
+      </g>
+      <rect x="0" y="724" width="470" height="16" fill="#D42027"/>
+    </g>
+    <!-- dashboard -->
+    <g transform="translate(610,230)">
+      <rect width="270" height="420" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="24" y="44" class="mono">REVENUE</text>
+      <rect x="24" y="60" width="96" height="10" rx="5" fill="#E8595E"/>
+      <g transform="translate(24,330)">
+        <rect x="0" y="-80" width="28" height="80" rx="6" fill="rgba(255,255,255,.18)"/>
+        <rect x="38" y="-120" width="28" height="120" rx="6" fill="rgba(255,255,255,.22)"/>
+        <rect x="76" y="-100" width="28" height="100" rx="6" fill="rgba(255,255,255,.22)"/>
+        <rect x="114" y="-170" width="28" height="170" rx="6" fill="rgba(255,255,255,.28)"/>
+        <rect x="152" y="-150" width="28" height="150" rx="6" fill="rgba(255,255,255,.28)"/>
+        <rect x="190" y="-220" width="28" height="220" rx="6" fill="#D42027"/>
+        <path d="M14 -100 L52 -140 L90 -120 L128 -190 L166 -172 L204 -240" fill="none" stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <line x1="24" y1="350" x2="246" y2="350" stroke="rgba(255,255,255,.12)"/>
+      <text x="24" y="386" class="mono" style="font-size:11px">LIVE DASHBOARD</text>
+    </g>
+    <g transform="translate(610,670)">
+      <rect width="130" height="110" rx="16" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="18" y="50" style="font-family:'Helvetica Neue',Arial;font-weight:800;font-size:30px;fill:#F5F5F5">14%</text>
+      <text x="18" y="84" class="mono" style="font-size:10px">VAT · EG</text>
+      <g transform="translate(140,0)">
+        <rect width="130" height="110" rx="16" fill="url(#redG)"/>
+        <text x="18" y="50" style="font-family:'Helvetica Neue',Arial;font-weight:800;font-size:30px;fill:#fff">5%</text>
+        <text x="18" y="84" style="font-size:10px;fill:rgba(255,255,255,.8);letter-spacing:.12em">VAT · UAE</text>
+      </g>
+    </g>
+    <!-- modules -->
+    <g transform="translate(110,960)">
+      <rect width="770" height="250" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="28" y="44" class="mono">SYSTEM MODULES</text>
+      <g transform="translate(28,70)">
+        <rect width="226" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="20" y="40" class="mono">SALES</text>
+        <rect x="243" width="226" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="263" y="40" class="mono">INVENTORY</text>
+        <rect x="486" width="228" height="66" rx="12" fill="rgba(212,32,39,.16)" stroke="rgba(212,32,39,.5)"/><text x="506" y="40" class="monoR">E-INVOICE</text>
+        <rect y="84" width="226" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="20" y="124" class="mono">POS</text>
+        <rect x="243" y="84" width="226" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="263" y="124" class="mono">PAYROLL</text>
+        <rect x="486" y="84" width="228" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="506" y="124" class="mono">TAX REPORTS</text>
+      </g>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g4"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g4)"/></svg>
+</div>
+
+<!-- ================= 05 — AI ================= -->
+<div class="art" id="svc-ai">
+  <div class="frame"></div>
+  <div class="head"><span class="idx">05 <b>/ 05</b></span><span class="cat">AI &amp; Software</span></div>
+  <svg class="scene" viewBox="0 0 991 1400" width="991" height="1400">
+    <!-- network -->
+    <g stroke="rgba(255,255,255,.14)" stroke-width="1.2" fill="none">
+      <path d="M495 420 L190 230"/><path d="M495 420 L800 230"/><path d="M495 420 L150 470"/><path d="M495 420 L840 470"/>
+      <path d="M495 420 L230 680"/><path d="M495 420 L760 680"/><path d="M190 230 L150 470 L230 680"/><path d="M800 230 L840 470 L760 680"/>
+    </g>
+    <g stroke="#D42027" stroke-width="2" fill="none" opacity=".75">
+      <path d="M495 420 L800 230"/><path d="M495 420 L230 680"/><path d="M495 420 L150 470"/>
+    </g>
+    <g fill="#16161C" stroke="rgba(255,255,255,.3)">
+      <circle cx="190" cy="230" r="14"/><circle cx="150" cy="470" r="14" fill="#D42027" stroke="#E8595E"/><circle cx="230" cy="680" r="14" fill="#D42027" stroke="#E8595E"/>
+      <circle cx="800" cy="230" r="14" fill="#D42027" stroke="#E8595E"/><circle cx="840" cy="470" r="14"/><circle cx="760" cy="680" r="14"/>
+    </g>
+    <!-- chip -->
+    <g transform="translate(495,420)">
+      <g stroke="rgba(255,255,255,.4)" stroke-width="5" stroke-linecap="round">
+        <path d="M-90 -175 v-30 M-30 -175 v-30 M30 -175 v-30 M90 -175 v-30"/>
+        <path d="M-90 175 v30 M-30 175 v30 M30 175 v30 M90 175 v30"/>
+        <path d="M-175 -90 h-30 M-175 -30 h-30 M-175 30 h-30 M-175 90 h-30"/>
+        <path d="M175 -90 h30 M175 -30 h30 M175 30 h30 M175 90 h30"/>
+      </g>
+      <rect x="-175" y="-175" width="350" height="350" rx="44" fill="url(#metal)" stroke="rgba(255,255,255,.2)" filter="url(#sh)"/>
+      <rect x="-135" y="-135" width="270" height="270" rx="30" fill="url(#redG)"/>
+      <circle r="110" fill="#fff" opacity=".12" filter="url(#glow)"/>
+      <image href="../assets/img/logo-mark.png" x="-90" y="-89" width="180" height="178" filter="url(#toWhite)"/>
+      <rect x="-135" y="-135" width="270" height="270" rx="30" fill="url(#gloss)"/>
+    </g>
+    <!-- flow -->
+    <g transform="translate(110,800)">
+      <rect width="770" height="130" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <g transform="translate(26,32)">
+        <rect width="150" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="75" y="40" text-anchor="middle" class="mono">INPUT</text>
+        <rect x="196" width="150" height="66" rx="12" fill="url(#redG)"/><text x="271" y="40" text-anchor="middle" style="font-size:13px;fill:#fff;letter-spacing:.12em">AI</text>
+        <rect x="392" width="150" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="467" y="40" text-anchor="middle" class="mono">AUTOMATE</text>
+        <rect x="588" width="130" height="66" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/><text x="653" y="40" text-anchor="middle" class="mono">REPORT</text>
+        <g stroke="#E8595E" stroke-width="2" fill="none" stroke-linecap="round"><path d="M156 33 h34 M182 25 l8 8 -8 8"/><path d="M352 33 h34 M378 25 l8 8 -8 8"/><path d="M548 33 h34 M574 25 l8 8 -8 8"/></g>
+      </g>
+    </g>
+    <!-- tiles -->
+    <g transform="translate(110,960)">
+      <rect width="246" height="250" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+      <text x="28" y="96" style="font-family:'Helvetica Neue',Arial;font-weight:800;font-size:38px;fill:#F5F5F5">{ }</text>
+      <text x="28" y="206" class="monoR">API</text>
+      <text x="28" y="228" class="mono" style="font-size:10px">CONNECT SYSTEMS</text>
+      <g transform="translate(262,0)">
+        <rect width="246" height="250" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(28,58)" stroke="#F5F5F5" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 20 a20 20 0 0 1 34 -14 l6 -6 v18 h-18 l6 -6 a12 12 0 0 0 -20 8"/><path d="M50 30 a20 20 0 0 1 -34 14 l-6 6 v-18 h18 l-6 6 a12 12 0 0 0 20 -8"/></g>
+        <text x="28" y="206" class="monoR">AUTOMATION</text>
+        <text x="28" y="228" class="mono" style="font-size:10px">NO MANUAL WORK</text>
+      </g>
+      <g transform="translate(524,0)">
+        <rect width="246" height="250" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.13)"/>
+        <g transform="translate(28,52)"><rect width="74" height="50" rx="14" fill="#D42027"/><path d="M14 50 l-6 16 22 -16" fill="#D42027"/><circle cx="22" cy="25" r="4" fill="#fff"/><circle cx="37" cy="25" r="4" fill="#fff"/><circle cx="52" cy="25" r="4" fill="#fff"/></g>
+        <text x="28" y="206" class="monoR">ASSISTANT</text>
+        <text x="28" y="228" class="mono" style="font-size:10px">WEB · WHATSAPP</text>
+      </g>
+    </g>
+  </svg>
+  <div class="foot"><img class="wm" src="../assets/img/wordmark-dark.png" alt=""><i class="rule"></i><img class="mk" src="../assets/img/logo-mark.png" alt=""></div>
+  <svg class="grain"><filter id="g5"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#g5)"/></svg>
+</div>
+</body>
+</html>

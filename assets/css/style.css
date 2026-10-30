@@ -390,10 +390,10 @@ html[lang="ar"] .brand-sub{font-size:.7rem;letter-spacing:0;text-transform:none;
 .svc--rev .svc__media{order:2}
 .svc__media{
   position:relative;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line);
-  background:linear-gradient(150deg,var(--surface),var(--ink-2));aspect-ratio:3/4;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--surface),var(--ink-2));aspect-ratio:991/1400;display:grid;place-items:center;
 }
 .svc__media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
-.svc__media:hover img{transform:scale(1.05)}
+.svc__media:hover img{transform:scale(1.025)}
 .svc__media .badge-abs{
   position:absolute;top:16px;inset-inline-start:16px;padding:7px 15px;border-radius:100px;
   background:rgba(8,8,10,.75);backdrop-filter:blur(10px);border:1px solid var(--line-strong);
