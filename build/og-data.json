@@ -1,5 +1,26 @@
 [
  {
+  "slug": "uae-e-invoicing",
+  "title": "الفوترة الإلكترونية في الإمارات",
+  "line": "المواعيد · مزوّد الخدمة · PINT AE",
+  "tag": "E-INVOICING · UAE",
+  "size": 56
+ },
+ {
+  "slug": "online-store-egypt",
+  "title": "إنشاء متجر إلكتروني في مصر",
+  "line": "المنصة · الدفع · الشحن",
+  "tag": "E-COMMERCE · EGYPT",
+  "size": 64
+ },
+ {
+  "slug": "software-solutions",
+  "title": "حلول برمجية للشركات",
+  "line": "أتمتة · أنظمة مخصّصة · AI",
+  "tag": "SOFTWARE · AI",
+  "size": 64
+ },
+ {
   "slug": "e-invoice-egypt",
   "title": "ربط الفاتورة الإلكترونية في مصر",
   "line": "دليل عملي خطوة بخطوة",
