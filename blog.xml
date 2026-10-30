@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>مدونة الرضا للدعاية والإعلان</title>
+  <link>https://elreda-ads.vercel.app/blog.html</link>
+  <description>مدونة الرضا للدعاية والإعلان: أدلة عملية لأصحاب المشاريع في مصر عن الفاتورة الإلكترونية، وتصميم الشعار والهوية البصرية، وتجهيز ملفات الطباعة، والمواقع والذكاء الاصطناعي للأعمال.</description>
+  <language>ar-eg</language>
+  <item>
+    <title>ربط الفاتورة الإلكترونية في مصر: الخطوات والمتطلبات خطوة بخطوة</title>
+    <link>https://elreda-ads.vercel.app/blog-e-invoice-egypt.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/blog-e-invoice-egypt.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>الأنظمة المحاسبية والضريبية</category>
+    <description>دليل عملي لربط الفاتورة الإلكترونية بمنظومة مصلحة الضرائب المصرية: من الملزم، والأوراق المطلوبة، والتوقيع الإلكتروني، وتكويد الأصناف EGS وGS1، والربط بنظام محاسبي، وأشهر أسباب رفض الفواتير.</description>
+  </item>
+  <item>
+    <title>5 أخطاء شائعة في تصميم الشعار تُضعف علامتك التجارية (وكيف تتجنبها)</title>
+    <link>https://elreda-ads.vercel.app/blog-logo-mistakes.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/blog-logo-mistakes.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>التصميم والهوية البصرية</category>
+    <description>أكثر 5 أخطاء تُضعف الشعار: التفاصيل الزائدة والألوان الكثيرة والخط صعب القراءة والنسخة الواحدة وملف JPG فقط، مع اختبارات بسيطة وقائمة تدقيق قبل اعتماد شعارك والملفات التي يجب أن تستلمها.</description>
+  </item>
+  <item>
+    <title>قبل إرسال ملفك للمطبعة: قائمة تدقيق من 6 نقاط لطباعة بدون مفاجآت</title>
+    <link>https://elreda-ads.vercel.app/blog-print-file-checklist.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/blog-print-file-checklist.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>الطباعة</category>
+    <description>كيف تجهّز ملف التصميم للطباعة: نظام ألوان CMYK، ودقة 300 DPI، وزيادة القص 3 مم، وهامش الأمان، وتضمين الخطوط، والبروفة، مع جدول المقاسات الشائعة وأوزان الورق والتشطيبات.</description>
+  </item>
+</channel>
+</rss>
