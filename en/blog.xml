@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Elreda Advertising Blog</title>
+  <link>https://elreda-ads.vercel.app/en/blog.html</link>
+  <description>The Elreda Advertising blog: practical guides for businesses in Egypt and the UAE on e-invoicing, logo and visual identity design, print-ready files, online stores, and software and AI solutions.</description>
+  <language>en</language>
+  <item>
+    <title>E-Invoicing in the UAE: Deadlines, Requirements and How to Prepare</title>
+    <link>https://elreda-ads.vercel.app/en/blog-uae-e-invoicing.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/en/blog-uae-e-invoicing.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>Accounting &amp; Tax Systems</category>
+    <description>A guide to mandatory e-invoicing in the UAE: go-live dates for each group, Accredited Service Providers (ASPs), the 5-corner model and PINT AE, readiness steps, and how it differs from Egypt&#x27;s system.</description>
+  </item>
+  <item>
+    <title>Building an Online Store in Egypt: Platform, Payments and Shipping, Step by Step</title>
+    <link>https://elreda-ads.vercel.app/en/blog-online-store-egypt.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/en/blog-online-store-egypt.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>Websites &amp; Online Stores</category>
+    <description>How to build an online store that actually sells in Egypt: choosing between Shopify, WooCommerce and a custom store, payment methods (cards, Meeza, Fawry, wallets and cash on delivery), shipping and returns, and a launch checklist.</description>
+  </item>
+  <item>
+    <title>Software Solutions for Business: When You Need Automation or a Custom System, and Where AI Helps</title>
+    <link>https://elreda-ads.vercel.app/en/blog-software-solutions.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/en/blog-software-solutions.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>AI &amp; Software Solutions</category>
+    <description>Signs your company needs a software solution, the difference between off-the-shelf software, automation and a custom system, tasks worth automating, where AI genuinely helps, and how to start a project without it getting out of hand.</description>
+  </item>
+  <item>
+    <title>Connecting to Egypt&#x27;s E-Invoice System: Steps and Requirements</title>
+    <link>https://elreda-ads.vercel.app/en/blog-e-invoice-egypt.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/en/blog-e-invoice-egypt.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>Accounting &amp; Tax Systems</category>
+    <description>A practical guide to connecting to the Egyptian Tax Authority&#x27;s e-invoice system: who must join, the documents you need, the electronic signature, EGS and GS1 item codes, connecting an accounting system, and the most common reasons invoices are rejected.</description>
+  </item>
+  <item>
+    <title>5 Common Logo Design Mistakes That Weaken Your Brand (and How to Avoid Them)</title>
+    <link>https://elreda-ads.vercel.app/en/blog-logo-mistakes.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/en/blog-logo-mistakes.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>Design &amp; Visual Identity</category>
+    <description>The 5 mistakes that weaken a logo most: too much detail, too many colours, hard-to-read type, a single version and a JPG-only file, with simple tests, a checklist before approving your logo, and the files you should receive.</description>
+  </item>
+  <item>
+    <title>Before You Send Your File to the Printer: a 6-Point Checklist for Print Without Surprises</title>
+    <link>https://elreda-ads.vercel.app/en/blog-print-file-checklist.html</link>
+    <guid isPermaLink="true">https://elreda-ads.vercel.app/en/blog-print-file-checklist.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0200</pubDate>
+    <category>Printing</category>
+    <description>How to prepare a design file for print: CMYK colour, 300 DPI, 3 mm bleed, safe margins, embedded fonts and a proof, with a table of common sizes, paper weights and finishes.</description>
+  </item>
+</channel>
+</rss>

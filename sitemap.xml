@@ -93,42 +93,126 @@
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog-uae-e-invoicing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-uae-e-invoicing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-uae-e-invoicing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-uae-e-invoicing.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog-uae-e-invoicing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-uae-e-invoicing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-uae-e-invoicing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-uae-e-invoicing.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog-online-store-egypt.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-online-store-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-online-store-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-online-store-egypt.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog-online-store-egypt.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-online-store-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-online-store-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-online-store-egypt.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog-software-solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-software-solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-software-solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-software-solutions.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog-software-solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-software-solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-software-solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-software-solutions.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog-e-invoice-egypt.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-e-invoice-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-e-invoice-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-e-invoice-egypt.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog-e-invoice-egypt.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-e-invoice-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-e-invoice-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-e-invoice-egypt.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog-logo-mistakes.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-logo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-logo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-logo-mistakes.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog-logo-mistakes.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-logo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-logo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-logo-mistakes.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elreda-ads.vercel.app/blog-print-file-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-print-file-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-print-file-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-print-file-checklist.html"/>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elreda-ads.vercel.app/en/blog-print-file-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://elreda-ads.vercel.app/blog-print-file-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elreda-ads.vercel.app/en/blog-print-file-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elreda-ads.vercel.app/blog-print-file-checklist.html"/>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

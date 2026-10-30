@@ -1,0 +1,126 @@
+<div class="tldr">
+  <h2>The 30-second summary</h2>
+  <ul>
+    <li><strong>Egypt's e-invoice system</strong> is the Egyptian Tax Authority (ETA) platform that receives business-to-business (B2B) sales invoices in real time, after they are electronically signed and validated.</li>
+    <li><strong>It is a legal requirement:</strong> Articles 35 and 37 of the Unified Tax Procedures Law No. 206 of 2020 require sales to be registered electronically and invoices or receipts to be issued electronically. The system was rolled out in phases until it covered VAT-registered companies.</li>
+    <li><strong>You need 5 things:</strong> registration on the ETA portal, an electronic signature certificate (USB token), item and service codes (EGS or GS1), an issuing method (the portal or a connected accounting system), and testing before going live.</li>
+    <li><strong>The fastest route</strong> for companies that issue many invoices is connecting their accounting system directly to the ETA through its API, instead of entering each invoice by hand.</li>
+  </ul>
+</div>
+
+<h2 id="what">What is Egypt's e-invoice system?</h2>
+<p>An e-invoice is not just a PDF sent by email. It is an invoice created as structured data, signed with an approved electronic signature, and sent to the Egyptian Tax Authority's system the moment it is issued. The system checks its data automatically (the seller's and buyer's tax numbers, item codes, tax calculations), gives it a unique ID, and marks it <strong>Valid</strong> or rejects it with a reason.</p>
+<p>The aim is for the Tax Authority to see sales between companies in real time, which reduces fake invoices and bases input VAT deductions on invoices that were actually registered. For you as a business owner, the practical result is this: <strong>any sales invoice to another business that does not go through the system is not recognised for tax purposes.</strong></p>
+
+<h2 id="who">Is my company required to join?</h2>
+<p>The requirement comes from the <strong>Unified Tax Procedures Law No. 206 of 2020</strong>:</p>
+<ul>
+  <li><strong>Article 35</strong> requires companies and legal entities to register their sales on the electronic system.</li>
+  <li><strong>Article 37</strong> requires taxpayers to issue a tax invoice or receipt in electronic form.</li>
+</ul>
+<p>The rollout began in phases from 2020, starting with large taxpayers, and expanded until it covered VAT-registered companies. Tax Authority officials have stated that late joining is treated as tax evasion, and that government entities only contract with companies through the e-invoice system.</p>
+<div class="note">
+  <strong>Rule of thumb:</strong> if your company is VAT-registered and sells to other companies or entities, assume you are required to join. Some cases are exempted by Tax Authority decisions, so check your specific position with your accountant or tax office before assuming you are out of scope.
+</div>
+
+<h2 id="before">What do you need before you start?</h2>
+<p>Prepare this list before taking any step, because one missing document can delay registration by days:</p>
+<table>
+  <thead><tr><th>Requirement</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Tax card + VAT registration certificate</td><td>Your tax registration number is the key to your account.</td></tr>
+    <tr><td>Commercial register</td><td>Valid, with the same details as the tax card.</td></tr>
+    <tr><td>National ID of the authorised person</td><td>The person who will manage the account.</td></tr>
+    <tr><td>Authorisation letter from the company</td><td>Names who is authorised to register and manage the system.</td></tr>
+    <tr><td>Company email and mobile number</td><td>Verification codes and login details are sent to them.</td></tr>
+    <tr><td>Electronic signature certificate (USB token)</td><td>From an approved provider, such as Egypt Trust or Misr for Central Clearing (MCDR). Each person who signs invoices needs their own certificate.</td></tr>
+    <tr><td>A list of every item and service you sell</td><td>Each one needs an approved code (EGS or GS1).</td></tr>
+    <tr><td>Activity code and branch numbers</td><td>With a single branch, its number is usually 0.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="steps">How to connect to the e-invoice system, step by step</h2>
+<ol class="steps">
+  <li>
+    <h3>Self-register on the Tax Authority portal</h3>
+    <p>On the official ETA website, choose e-invoice registration, enter your tax number and contact details, and upload the documents (commercial register, tax card, authorised person's ID). You confirm your email and mobile with a verification code, then the Authority reviews the request. Review usually takes a few working days, and once approved you receive your login details.</p>
+  </li>
+  <li>
+    <h3>Get an electronic signature certificate</h3>
+    <p>You contract with an approved electronic signature provider and receive a token (a USB key) holding your certificate. Without the signature no invoice is accepted, because it proves the invoice came from you and was not changed after it was issued.</p>
+  </li>
+  <li>
+    <h3>Code your items and services</h3>
+    <p>Every invoice line must carry an approved item code. You have two options: <strong>EGS codes</strong> (Egypt's coding system), registered and approved inside the ETA system, or international <strong>GS1 codes</strong> if your products already carry GS1 barcodes. Coding usually takes the longest for companies that sell many items, so start it early.</p>
+  </li>
+  <li>
+    <h3>Choose how you will issue invoices</h3>
+    <p>Either enter invoices manually on the ETA portal, or connect your accounting system. To connect, you register your system (ERP) from your ETA account and receive a <strong>Client ID</strong> and <strong>Client Secret</strong>, which you enter into the accounting system so it sends invoices automatically. See the comparison below.</p>
+  </li>
+  <li>
+    <h3>Test on the pre-production environment</h3>
+    <p>The ETA provides a pre-production environment with different login details from production. Send test invoices there and make sure codes, taxes and the signature all pass before you move to live issuing.</p>
+  </li>
+  <li>
+    <h3>Go live and monitor</h3>
+    <p>Once testing succeeds, switch the connection to production and start issuing. Track each invoice's status: <strong>valid</strong>, or <strong>invalid</strong> and in need of correction and resubmission. To cancel or correct an invoice, use cancellation or a credit/debit note inside the system, not just deletion from your books.</p>
+  </li>
+</ol>
+
+<h2 id="portal-vs-erp">Issue from the portal or connect an accounting system?</h2>
+<table>
+  <thead><tr><th></th><th>Issuing from the portal</th><th>Connecting an accounting system (API)</th></tr></thead>
+  <tbody>
+    <tr><td>Suits</td><td>A company issuing a few invoices a month</td><td>Any company with daily invoices or many items</td></tr>
+    <tr><td>Data entry</td><td>Manual, for every invoice</td><td>Automatic, from the system at the moment of sale</td></tr>
+    <tr><td>Risk of errors</td><td>Higher, because each invoice is typed twice</td><td>Lower, because data is entered once</td></tr>
+    <tr><td>Inventory and reports</td><td>Separate from the invoice</td><td>Linked to it in the same system</td></tr>
+    <tr><td>Cost</td><td>No system cost</td><td>System and integration cost, offset by the accountant's saved time</td></tr>
+  </tbody>
+</table>
+<p>A simple rule: if your accountant spends more than an hour a day entering invoices on the portal, connecting a system will pay for itself quickly.</p>
+
+<h2 id="errors">Common mistakes that make an invoice "invalid"</h2>
+<ul class="checks checks--x">
+  <li><strong>An unapproved or mismatched item code:</strong> the item exists in your system, but its code has not yet been approved on the ETA system.</li>
+  <li><strong>A wrong customer tax registration number:</strong> a missing or outdated number gets the invoice rejected straight away.</li>
+  <li><strong>Tax calculation or rounding differences:</strong> the line total does not match price × quantity − discount + tax the way the system calculates it.</li>
+  <li><strong>The wrong tax type or tax code:</strong> an exempt item registered at 14% VAT, or the reverse.</li>
+  <li><strong>A signature problem:</strong> the token is not connected, the certificate has expired, or it belongs to someone else.</li>
+  <li><strong>Using pre-production credentials in production</strong>, or the reverse.</li>
+</ul>
+
+<h2 id="receipt">What is the difference between the e-invoice and the e-receipt?</h2>
+<p>The <strong>e-invoice</strong> is for sales from one business to another or to a government entity (B2B and B2G), and carries the buyer's tax number. The <strong>e-receipt</strong> is for sales to end consumers (B2C), such as shops, restaurants and pharmacies; it is usually issued from the point of sale (POS) and sent to the Tax Authority on the same principle. Many companies need both: invoices for business customers, and receipts for retail customers.</p>
+
+<h2 id="faq">Frequently asked questions</h2>
+<div class="faq">
+  <details>
+    <summary>How long does it take to connect to the e-invoice system?</summary>
+    <p>Registration itself is usually reviewed within a few working days. The real time goes into coding items, setting up the system and testing. A company with a limited range of items may finish in a week or two; one with hundreds of items may need longer.</p>
+  </details>
+  <details>
+    <summary>Does every employee need an electronic signature?</summary>
+    <p>Each person who signs invoices needs their own signature certificate. Many companies have one or two people responsible for signing, while the rest of the team enters invoices into the system.</p>
+  </details>
+  <details>
+    <summary>Can I issue invoices from the portal without an accounting system?</summary>
+    <p>Yes, the portal lets you issue invoices manually, which suits a small number of invoices. As volume grows, manual entry becomes slow and error-prone, and connecting an accounting system becomes the practical option.</p>
+  </details>
+  <details>
+    <summary>What is the difference between EGS and GS1 codes?</summary>
+    <p>EGS is Egypt's coding system, and its codes are registered and approved inside the ETA system itself. GS1 is an international barcode system obtained from GS1 Egypt, and suits products that already carry an international barcode. Both are accepted.</p>
+  </details>
+  <details>
+    <summary>What happens if an invoice is rejected?</summary>
+    <p>The invoice shows as "invalid" with the reason. You fix the error (usually an item code, tax number or tax calculation) and resubmit it. An invalid invoice is not recognised for tax purposes until it is corrected.</p>
+  </details>
+  <details>
+    <summary>Are small companies required too?</summary>
+    <p>The requirement depends on VAT registration and the type of activity, not on company size alone, and some cases are exempted by Tax Authority decisions. Check your position with your accountant or tax office.</p>
+  </details>
+</div>
+
+<div class="note note--muted">
+  <strong>Note:</strong> this guide is general information based on the law and Egyptian Tax Authority statements at the time of writing, and the Authority's decisions are updated regularly. To confirm your company's position, refer to the <a href="https://www.eta.gov.eg" target="_blank" rel="noopener">official Egyptian Tax Authority website</a> or your accountant.
+</div>

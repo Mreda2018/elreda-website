@@ -9,3 +9,4 @@ node_modules/
 
 # ملفات معاينة يحفظها تطبيق Claude داخل المجلد
 Claude outputs/
+build/__pycache__/

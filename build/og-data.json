@@ -1,44 +1,98 @@
 [
  {
-  "slug": "uae-e-invoicing",
+  "file": "uae-e-invoicing.jpg",
+  "dir": "rtl",
   "title": "الفوترة الإلكترونية في الإمارات",
   "line": "المواعيد · مزوّد الخدمة · PINT AE",
   "tag": "E-INVOICING · UAE",
   "size": 56
  },
  {
-  "slug": "online-store-egypt",
+  "file": "en-uae-e-invoicing.jpg",
+  "dir": "ltr",
+  "title": "E-Invoicing in the UAE",
+  "line": "Deadlines · ASPs · PINT AE",
+  "tag": "E-INVOICING · UAE",
+  "size": 60
+ },
+ {
+  "file": "online-store-egypt.jpg",
+  "dir": "rtl",
   "title": "إنشاء متجر إلكتروني في مصر",
   "line": "المنصة · الدفع · الشحن",
   "tag": "E-COMMERCE · EGYPT",
   "size": 64
  },
  {
-  "slug": "software-solutions",
+  "file": "en-online-store-egypt.jpg",
+  "dir": "ltr",
+  "title": "Building an Online Store in Egypt",
+  "line": "Platform · Payments · Shipping",
+  "tag": "E-COMMERCE · EGYPT",
+  "size": 52
+ },
+ {
+  "file": "software-solutions.jpg",
+  "dir": "rtl",
   "title": "حلول برمجية للشركات",
   "line": "أتمتة · أنظمة مخصّصة · AI",
   "tag": "SOFTWARE · AI",
   "size": 64
  },
  {
-  "slug": "e-invoice-egypt",
+  "file": "en-software-solutions.jpg",
+  "dir": "ltr",
+  "title": "Software Solutions for Business",
+  "line": "Automation · Custom systems · AI",
+  "tag": "SOFTWARE · AI",
+  "size": 52
+ },
+ {
+  "file": "e-invoice-egypt.jpg",
+  "dir": "rtl",
   "title": "ربط الفاتورة الإلكترونية في مصر",
   "line": "دليل عملي خطوة بخطوة",
   "tag": "E-INVOICE · EGYPT",
   "size": 56
  },
  {
-  "slug": "logo-mistakes",
+  "file": "en-e-invoice-egypt.jpg",
+  "dir": "ltr",
+  "title": "Egypt's E-Invoice System",
+  "line": "A practical step-by-step guide",
+  "tag": "E-INVOICE · EGYPT",
+  "size": 60
+ },
+ {
+  "file": "logo-mistakes.jpg",
+  "dir": "rtl",
   "title": "5 أخطاء في تصميم الشعار تُضعف علامتك",
   "line": "وقائمة تدقيق قبل الاعتماد",
   "tag": "LOGO DESIGN",
   "size": 56
  },
  {
-  "slug": "print-file-checklist",
+  "file": "en-logo-mistakes.jpg",
+  "dir": "ltr",
+  "title": "5 Logo Mistakes That Weaken Your Brand",
+  "line": "Plus a checklist before you approve",
+  "tag": "LOGO DESIGN",
+  "size": 52
+ },
+ {
+  "file": "print-file-checklist.jpg",
+  "dir": "rtl",
   "title": "قبل إرسال ملفك للمطبعة",
   "line": "6 نقاط: CMYK · 300 DPI · Bleed",
   "tag": "PRINT CHECKLIST",
   "size": 64
+ },
+ {
+  "file": "en-print-file-checklist.jpg",
+  "dir": "ltr",
+  "title": "Before You Send Your File to the Printer",
+  "line": "6 checks: CMYK · 300 DPI · Bleed",
+  "tag": "PRINT CHECKLIST",
+  "size": 52
  }
 ]
