@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Elreda — services reel (motion source)</title>
+<!--
+  Motion-graphics source for the Instagram reel. Every frame is drawn by seek(t) (seconds),
+  so the render is deterministic. Render: python3 -m http.server 8899 from the repo root,
+  then node build/reel.js. Safe zone for Reels: keep text between y≈260 and y≈1500.
+-->
+<style>
+@font-face{font-family:T;src:url(/build/fonts/tajawal-arabic-500-normal.woff2);font-weight:500}
+@font-face{font-family:T;src:url(/build/fonts/tajawal-arabic-800-normal.woff2);font-weight:800}
+@font-face{font-family:T;src:url(/build/fonts/tajawal-arabic-900-normal.woff2);font-weight:900}
+@font-face{font-family:M;src:url(/build/fonts/manrope-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:M;src:url(/build/fonts/manrope-latin-800-normal.woff2);font-weight:800}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0A0A0D}
+body{font-family:T,M,sans-serif;color:#F5F5F5;position:relative}
+.abs{position:absolute}
+#bg{inset:0;background:linear-gradient(165deg,#17171E 0%,#0E0E12 50%,#08080A 100%)}
+#grid{inset:-200px;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:90px 90px;-webkit-mask:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%)}
+.glow{border-radius:50%;background:radial-gradient(circle,rgba(212,32,39,.55),transparent 65%);filter:blur(20px)}
+#frame{inset:46px;border:1.5px solid rgba(255,255,255,.12);border-radius:40px}
+#grain{inset:0;opacity:.12;mix-blend-mode:overlay;pointer-events:none}
+.mk{width:300px}
+.wipe{inset:0;background:linear-gradient(150deg,#E0262D,#B81C22 55%,#7E161A);transform-origin:0 50%}
+h1,h2{font-weight:900;line-height:1.15;text-align:center}
+.em{color:#FF4950}
+.chip{display:inline-flex;align-items:center;gap:14px;font-weight:800;font-size:44px;padding:20px 32px;border-radius:999px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.16);white-space:nowrap}
+.chip i{width:14px;height:14px;border-radius:50%;background:#D42027;flex:none}
+.ibox{width:220px;height:220px;border-radius:56px;display:grid;place-items:center;background:linear-gradient(150deg,#E0262D,#8B1E21);box-shadow:0 30px 90px rgba(212,32,39,.45)}
+.ibox svg{width:120px;height:120px;color:#fff}
+.num{font:800 420px/1 M;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.12);letter-spacing:-12px}
+.tag{font:800 30px M;letter-spacing:.3em;color:#FF5A60;text-align:center}
+.bars{display:flex;gap:14px}
+.bars span{width:120px;height:8px;border-radius:8px;background:rgba(255,255,255,.14);overflow:hidden;position:relative}
+.bars span b{position:absolute;inset:0;background:#D42027;transform-origin:100% 50%}
+.pill{font-weight:800;font-size:56px;padding:26px 46px;border-radius:999px;border:2px solid rgba(255,255,255,.22);background:rgba(255,255,255,.05)}
+.ltr{direction:ltr;unicode-bidi:isolate;font-family:M}
+</style>
+</head>
+<body>
+<div id="bg" class="abs"></div>
+<div id="grid" class="abs"></div>
+<div id="g1" class="abs glow" style="width:1100px;height:1100px;left:-10px;top:300px"></div>
+<div id="g2" class="abs glow" style="width:800px;height:800px;left:500px;top:1300px;opacity:.5"></div>
+<div id="frame" class="abs"></div>
+
+<!-- Scene A: hook -->
+<div id="A" class="abs" style="inset:0">
+  <img id="A_mk" class="abs mk" src="/assets/img/logo-mark.png" style="left:390px;top:330px">
+  <h1 id="A_1" class="abs" style="left:0;right:0;top:770px;font-size:128px">عندك مشروع؟</h1>
+  <h2 id="A_2" class="abs" style="left:0;right:0;top:960px;font-size:96px;font-weight:800;color:rgba(255,255,255,.85)">كل اللي محتاجه</h2>
+  <h2 id="A_3" class="abs" style="left:0;right:0;top:1090px;font-size:116px"><span class="em">في مكان واحد.</span></h2>
+</div>
+
+<!-- Scene B: five pillars -->
+<div id="B" class="abs" style="inset:0">
+  <div id="B_bars" class="abs bars" style="left:0;right:0;top:250px;justify-content:center"><span><b></b></span><span><b></b></span><span><b></b></span><span><b></b></span><span><b></b></span></div>
+  <div id="B_num" class="abs num" style="left:80px;top:330px"></div>
+  <div id="B_box" class="abs ibox" style="left:430px;top:560px"></div>
+  <p id="B_tag" class="abs tag" style="left:0;right:0;top:850px"></p>
+  <h2 id="B_title" class="abs" style="left:60px;right:60px;top:920px;font-size:120px"></h2>
+  <div id="B_chips" class="abs" style="left:60px;right:60px;top:1210px;display:flex;flex-direction:column;align-items:center;gap:22px"></div>
+</div>
+
+<!-- Scene C: reach -->
+<div id="C" class="abs" style="inset:0">
+  <p id="C_tag" class="abs tag" style="left:0;right:0;top:470px">ONLINE · EGYPT · UAE · GULF</p>
+  <h2 id="C_1" class="abs" style="left:0;right:0;top:560px;font-size:116px">نخدمك من<br>أي مكان</h2>
+  <div id="C_p" class="abs" style="left:0;right:0;top:900px;display:flex;flex-direction:column;align-items:center;gap:30px">
+    <span class="pill" id="C_p1">مصر</span><span class="pill" id="C_p2">الإمارات</span><span class="pill" id="C_p3">الخليج</span>
+  </div>
+  <p id="C_2" class="abs" style="left:80px;right:80px;top:1370px;font-size:48px;font-weight:500;text-align:center;color:rgba(255,255,255,.78)">نفس الجودة ونفس الهوية<br>من الكارت لحد الموقع</p>
+</div>
+
+<!-- Scene D: CTA -->
+<div id="D_wipe" class="abs wipe"></div>
+<div id="D" class="abs" style="inset:0">
+  <div id="D_g" class="abs glow" style="width:900px;height:900px;left:90px;top:140px;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 65%)"></div>
+  <img id="D_mk" class="abs mk" src="/assets/img/logo-mark.png" style="left:390px;top:330px;filter:brightness(0) invert(1)">
+  <img id="D_wm" class="abs" src="/assets/img/wordmark-dark.png" style="left:190px;top:720px;width:700px">
+  <h2 id="D_1" class="abs" style="left:0;right:0;top:900px;font-size:92px">ابعتلنا على الواتساب</h2>
+  <p id="D_2" class="abs ltr" style="left:0;right:0;top:1060px;font-size:88px;font-weight:800;text-align:center">+20 105 002 0785</p>
+  <p id="D_3" class="abs ltr" style="left:0;right:0;top:1200px;font-size:46px;font-weight:700;text-align:center;color:rgba(255,255,255,.85)">elreda-ads.vercel.app</p>
+  <p id="D_4" class="abs" style="left:0;right:0;top:1300px;text-align:center"><span class="chip" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.4)"><span class="ltr">@elreda.ads</span></span></p>
+</div>
+
+<svg id="grain" class="abs" width="1080" height="1920"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<script>
+const IC={
+ design:'M12 19l7-7 3 3-7 7-3-3z M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z M2 2l7.6 7.6 M13 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0z',
+ print:'M6 9V2h12v7 M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2 M6 14h12v8H6z',
+ web:'M2 4h20v14H2z M8 22h8 M12 18v4 M2 8h20',
+ acc:'M5 2h14v20l-3-2-2 2-2-2-2 2-2-2-3 2z M9 7h6 M9 11h6 M9 15h4',
+ ai:'M7 7h10v10H7z M10 10h4v4h-4z M9 2v3 M15 2v3 M9 19v3 M15 19v3 M2 9h3 M2 15h3 M19 9h3 M19 15h3'};
+const P=[
+ {k:'design',tag:'DESIGN',t:'التصميم',c:['هوية بصرية كاملة','سوشيال ميديا','يافطات ولوحات']},
+ {k:'print',tag:'PRINT',t:'الطباعة',c:['كروت وأوراق رسمية','بروشور ومنيو','رول أب وتشطيبات']},
+ {k:'web',tag:'WEB & STORES',t:'المواقع والمتاجر',c:['موقع لشركتك','متجر ببوابات دفع','ظهور في جوجل']},
+ {k:'acc',tag:'ACCOUNTING',t:'الأنظمة المحاسبية',c:['نظام «فكترة»','الفاتورة الإلكترونية','مصر والإمارات']},
+ {k:'ai',tag:'AI & SOFTWARE',t:'حلول برمجية<br>وذكاء اصطناعي',c:['أتمتة الشغل','شات بوت واتساب','أنظمة مخصّصة']}];
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const r=(t,a,b)=>cl((t-a)/(b-a));                 // 0..1 progress of t between a and b
+const eo=x=>1-Math.pow(1-x,3);                    // ease out cubic
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2; // ease in-out
+const back=x=>{const c=1.7,d=c+1;return 1+d*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function set(el,o,tx=0,ty=0,s=1,rot=0){el.style.opacity=o;el.style.transform=`translate(${tx}px,${ty}px) scale(${s}) rotate(${rot}deg)`}
+const T={A:[0,3.2],B:[3.2,15.2],C:[15.2,19.4],D:[19.4,24.5]};
+const PD=2.4; // seconds per pillar
+let cur=-1;
+function pillar(i){
+  if(i===cur)return; cur=i; const p=P[i];
+  $('B_num').textContent='0'+(i+1);
+  $('B_box').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${IC[p.k]}"/></svg>`;
+  $('B_tag').textContent=p.tag; $('B_title').innerHTML=p.t;
+  $('B_title').style.fontSize=i===4?'100px':'120px';
+  $('B_chips').style.top=i===4?'1250px':'1180px';
+  $('B_chips').innerHTML=p.c.map(x=>`<span class="chip"><i></i>${x}</span>`).join('');
+}
+function seek(t){
+  // background life
+  $('grid').style.transform=`translateY(${(t*14)%90}px)`;
+  $('g1').style.transform=`translate(${Math.sin(t*.6)*60}px,${Math.cos(t*.5)*40}px) scale(${1+Math.sin(t*1.3)*.05})`;
+  $('g2').style.transform=`translate(${Math.cos(t*.4)*50}px,${Math.sin(t*.7)*30}px)`;
+  // ---- A
+  const aOut=eio(r(t,2.75,3.2));
+  $('A').style.opacity=t<3.25?1:0;
+  const m=back(r(t,0,.9));
+  set($('A_mk'),r(t,0,.5)*(1-aOut),0,-40*aOut,(.55+.45*m)*(1+.15*aOut),-12*(1-eo(r(t,0,.9))));
+  $('A_mk').style.filter=`drop-shadow(0 30px ${40+30*Math.sin(t*3)}px rgba(212,32,39,.6))`;
+  set($('A_1'),eo(r(t,.45,1.05))*(1-aOut),0,70*(1-eo(r(t,.45,1.05)))-60*aOut);
+  set($('A_2'),eo(r(t,1.2,1.7))*(1-aOut),0,60*(1-eo(r(t,1.2,1.7)))-60*aOut);
+  set($('A_3'),eo(r(t,1.55,2.1))*(1-aOut),0,0,.85+.15*back(r(t,1.55,2.1))+.06*aOut);
+  // ---- B
+  const inB=t>=T.B[0]-0.05&&t<T.B[1]+0.05;
+  $('B').style.opacity=inB?1:0;
+  if(inB){
+    const lt=cl(t-T.B[0],0,T.B[1]-T.B[0]-0.001), i=Math.min(4,Math.floor(lt/PD)), u=lt-i*PD;
+    pillar(i);
+    const out=eio(r(u,PD-.32,PD)), dx=-140*out; // exit slides toward the reading end
+    const enter=i===0?eo(r(u,0,.35)):1;
+    $('B_bars').style.opacity=enter;
+    [...$('B_bars').children].forEach((s,k)=>{s.firstChild.style.transform=`scaleX(${k<i?1:k===i?cl(u/PD):0})`});
+    set($('B_num'),.9*eo(r(u,0,.45))*(1-out),220*(1-eo(r(u,0,.5)))+dx*.6,0);
+    set($('B_box'),r(u,.05,.3)*(1-out),dx,0,(.4+.6*back(r(u,.05,.55)))*(1-.2*out),18*(1-eo(r(u,.05,.55))));
+    set($('B_tag'),eo(r(u,.2,.5))*(1-out),dx,20*(1-eo(r(u,.2,.5))));
+    set($('B_title'),eo(r(u,.25,.7))*(1-out),dx,70*(1-eo(r(u,.25,.7))));
+    [...$('B_chips').children].forEach((c,k)=>{const a=.55+k*.14;set(c,eo(r(u,a,a+.35))*(1-out),dx+120*(1-eo(r(u,a,a+.35))),0)});
+  }
+  // ---- C
+  const inC=t>=T.C[0]-0.05&&t<T.C[1]+0.05; $('C').style.opacity=inC?1:0;
+  if(inC){
+    const u=t-T.C[0], out=eio(r(t,T.C[1]-.35,T.C[1]));
+    set($('C_tag'),eo(r(u,0,.4))*(1-out),0,20*(1-eo(r(u,0,.4))));
+    set($('C_1'),eo(r(u,.1,.6))*(1-out),0,80*(1-eo(r(u,.1,.6))),1-.04*out);
+    ['C_p1','C_p2','C_p3'].forEach((id,k)=>{const a=.6+k*.22;set($(id),r(u,a,a+.2)*(1-out),0,0,.6+.4*back(r(u,a,a+.45)))});
+    $('C_p2').style.background=`rgba(212,32,39,${.25*r(u,1.2,1.6)})`;
+    set($('C_2'),eo(r(u,1.5,2))*(1-out),0,40*(1-eo(r(u,1.5,2))));
+  }
+  // ---- D
+  const w=eio(r(t,T.D[0]-.25,T.D[0]+.35));
+  $('D_wipe').style.transform=`scaleX(${w})`; $('D_wipe').style.transformOrigin='100% 50%';
+  const inD=t>=T.D[0]; $('D').style.opacity=inD?1:0;
+  if(inD){
+    const u=t-T.D[0];
+    set($('D_mk'),r(u,.2,.6),0,0,(.5+.5*back(r(u,.2,.9)))*(1+.025*Math.sin(u*3)),0);
+    $('D_g').style.opacity=.6+.4*Math.sin(u*2);
+    set($('D_wm'),eo(r(u,.6,1.1)),0,30*(1-eo(r(u,.6,1.1))));
+    set($('D_1'),eo(r(u,.9,1.4)),0,50*(1-eo(r(u,.9,1.4))));
+    set($('D_2'),eo(r(u,1.2,1.7)),0,0,.8+.2*back(r(u,1.2,1.8)));
+    set($('D_3'),eo(r(u,1.6,2.1)),0,30*(1-eo(r(u,1.6,2.1))));
+    set($('D_4'),eo(r(u,1.9,2.4)),0,30*(1-eo(r(u,1.9,2.4))),1+.03*Math.sin(u*4)*r(u,2.4,2.6));
+  }
+}
+window.DURATION=T.D[1]; window.seek=seek; seek(0);
+</script>
+</body>
+</html>
