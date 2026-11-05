@@ -126,7 +126,14 @@
     mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     setTimeout(run, 3600);
   }
-  function takeOver(el) { el.removeAttribute('data-reveal'); el.removeAttribute('data-delay'); el.classList.add('in'); }
+  // GSAP takes an element over from the CSS reveal. Transitions are switched off first: an element
+  // with its own `transition` (e.g. .stat) would still be fading from 0 when gsap.from() reads its
+  // "end" values, and would stay invisible.
+  function takeOver(el) {
+    el.style.transition = 'none';
+    el.removeAttribute('data-reveal'); el.removeAttribute('data-delay'); el.classList.add('in');
+    void el.offsetWidth;
+  }
   // elements with a CSS transition on transform would fight GSAP: switch it off for the tween
   function noTr(t) { gsap.set(t, { transition: 'none' }); }
   function backTr(t) { gsap.set(t, { clearProps: 'transition' }); }
@@ -230,7 +237,7 @@
   // stats boxes
   gsap.utils.toArray('.stats .stat').forEach(function (s, i) {
     takeOver(s);
-    gsap.from(s, { autoAlpha: 0, y: 40, scale: 0.9, duration: 1, delay: i * 0.08, ease: 'back.out(1.6)', onStart: function () { noTr(s); }, onComplete: function () { gsap.set(s, { clearProps: 'transform,transition' }); },
+    gsap.fromTo(s, { autoAlpha: 0, y: 40, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 1, delay: i * 0.08, ease: 'back.out(1.6)', onComplete: function () { gsap.set(s, { clearProps: 'transform,transition' }); },
       scrollTrigger: { trigger: s, start: 'top 92%', once: true } });
   });
 
